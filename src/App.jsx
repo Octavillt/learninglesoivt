@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TOPICS } from "./constants/topics";
 import VerbsSection       from "./features/verbs/VerbsSection";
 import FruitsSection      from "./features/fruits/FruitsSection";
@@ -34,6 +34,10 @@ export default function App() {
   const [active, setActive] = useState("verbs");
   const Section = SECTIONS[active];
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [active]);
+
   return (
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: "#0f172a", color: "#f8fafc" }}>
       <div style={{ background: "linear-gradient(135deg,#1e3a8a,#7c3aed)", padding: "18px 20px", textAlign: "center" }}>
@@ -61,7 +65,7 @@ export default function App() {
         ))}
       </nav>
 
-      <main style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
+      <main key={active} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
         <Section />
       </main>
     </div>
