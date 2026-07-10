@@ -7,6 +7,7 @@ const TOPIC_OPTIONS = [
   { value: "numbers",         label: "🔢 Numbers" },
   { value: "time",            label: "🕐 Time" },
   { value: "dates",           label: "📅 Dates" },
+  { value: "countries",       label: "🌎 Countries" },
   { value: "jobs",            label: "👷 Jobs" },
   { value: "family",          label: "👪 Family" },
   { value: "tobe",            label: "✅ Verb To Be" },

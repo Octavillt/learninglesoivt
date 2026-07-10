@@ -6,6 +6,7 @@ import PluralSection      from "./features/plural/PluralSection";
 import NumbersSection     from "./features/numbers/NumbersSection";
 import TimeSection        from "./features/time/TimeSection";
 import DatesSection       from "./features/dates/DatesSection";
+import CountriesSection   from "./features/countries/CountriesSection";
 import FamilySection      from "./features/family/FamilySection";
 import JobsSection        from "./features/jobs/JobsSection";
 import ToBeSection        from "./features/tobe/ToBeSection";
@@ -22,6 +23,7 @@ const SECTIONS = {
   numbers:        NumbersSection,
   time:           TimeSection,
   dates:          DatesSection,
+  countries:      CountriesSection,
   family:         FamilySection,
   jobs:           JobsSection,
   tobe:           ToBeSection,

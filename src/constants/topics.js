@@ -5,6 +5,7 @@ export const TOPICS = [
   { id: "numbers",        label: "🔢 Numbers",       color: "#DB2777" },
   { id: "time",           label: "🕐 Time",          color: "#0284C7" },
   { id: "dates",          label: "📅 Dates",         color: "#22D3EE" },
+  { id: "countries",      label: "🌎 Countries",     color: "#0EA5E9" },
   { id: "family",         label: "👪 Family",        color: "#CA8A04" },
   { id: "jobs",           label: "👷 Jobs",          color: "#16A34A" },
   { id: "tobe",           label: "✅ Verb To Be",    color: "#DC2626" },

@@ -792,6 +792,78 @@ export const QUESTIONS = [
     hint: "Fruta verde, cremosa, muy popular en guacamole 🥑",
     explanation: "Aguacate = Avocado.",
   },
+
+  // ── Countries & Nationalities ─────────────────────────────────
+  {
+    topic: "countries",
+    question: "Fill in: Where ___ you from? I'm from Mexico.",
+    answers: ["are"],
+    hint: "You → ARE (Verb To Be)",
+    explanation: "Where ARE you from? Se usa Verb To Be para preguntar origen.",
+  },
+  {
+    topic: "countries",
+    question: "What's the nationality for someone from Mexico?",
+    answers: ["mexican"],
+    hint: "País → Mexico, nacionalidad → ___",
+    explanation: "Mexico → MEXICAN.",
+  },
+  {
+    topic: "countries",
+    question: "What's the nationality for someone from Spain?",
+    answers: ["spanish"],
+    hint: "País → Spain, nacionalidad → ___",
+    explanation: "Spain → SPANISH.",
+  },
+  {
+    topic: "countries",
+    question: "What's the nationality for someone from Japan?",
+    answers: ["japanese"],
+    hint: "País → Japan, nacionalidad → ___",
+    explanation: "Japan → JAPANESE.",
+  },
+  {
+    topic: "countries",
+    question: "What's the nationality for someone from France?",
+    answers: ["french"],
+    hint: "País → France, nacionalidad → ___",
+    explanation: "France → FRENCH.",
+  },
+  {
+    topic: "countries",
+    question: "Translate to English: Estados Unidos",
+    answers: ["united states", "the united states"],
+    hint: "País donde está Nueva York",
+    explanation: "Estados Unidos = UNITED STATES.",
+  },
+  {
+    topic: "countries",
+    question: "Fill in: I ___ from Argentina. (Verb To Be)",
+    answers: ["am"],
+    hint: "I → AM",
+    explanation: "I AM from Argentina.",
+  },
+  {
+    topic: "countries",
+    question: "Fill in: She's from Brazil. She's ___.",
+    answers: ["brazilian"],
+    hint: "País → Brazil, nacionalidad → ___",
+    explanation: "Brazil → BRAZILIAN.",
+  },
+  {
+    topic: "countries",
+    question: "Fill in: Where do you ___? I live in Mexico City.",
+    answers: ["live"],
+    hint: "Verbo para decir dónde resides",
+    explanation: "Where do you LIVE? I live in Mexico City.",
+  },
+  {
+    topic: "countries",
+    question: "What is PAÍS in English?",
+    answers: ["country"],
+    hint: "Ej. Mexico, Spain, Japan son ejemplos de esto",
+    explanation: "País = COUNTRY.",
+  },
 ];
 
 export function getByTopic(topic) {
