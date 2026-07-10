@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TOPICS } from "./constants/topics";
 import VerbsSection       from "./features/verbs/VerbsSection";
 import FruitsSection      from "./features/fruits/FruitsSection";
@@ -36,9 +36,18 @@ const SECTIONS = {
 export default function App() {
   const [active, setActive] = useState("verbs");
   const Section = SECTIONS[active];
+  const navRef = useRef(null);
+  const btnRefs = useRef({});
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [active]);
+
+  useEffect(() => {
+    const btn = btnRefs.current[active];
+    if (btn) {
+      btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
   }, [active]);
 
   return (
@@ -48,25 +57,29 @@ export default function App() {
         <p style={{ margin: "5px 0 0", opacity: 0.75, fontSize: "13px" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
       </div>
 
-      <nav style={{ display: "flex", flexWrap: "wrap", gap: "5px", padding: "10px 12px", background: "#1e293b", position: "sticky", top: 0, zIndex: 10, borderBottom: "1px solid #334155" }}>
-        {TOPICS.map(t => (
-          <button
-            key={t.id}
-            onClick={() => setActive(t.id)}
-            style={{
-              padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
-              fontSize: "13px", fontWeight: 600,
-              background: active === t.id ? t.color : "#334155",
-              color: "#fff",
-              boxShadow: active === t.id ? `0 0 12px ${t.color}55` : "none",
-              transform: active === t.id ? "scale(1.04)" : "scale(1)",
-              transition: "all 0.15s",
-            }}
-          >
-            {t.label}
-          </button>
-        ))}
-      </nav>
+      <div className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: "#1e293b", borderBottom: "1px solid #334155" }}>
+        <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
+          {TOPICS.map(t => (
+            <button
+              key={t.id}
+              ref={el => { btnRefs.current[t.id] = el; }}
+              onClick={() => setActive(t.id)}
+              style={{
+                flex: "0 0 auto", scrollSnapAlign: "center",
+                padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
+                fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
+                background: active === t.id ? t.color : "#334155",
+                color: "#fff",
+                boxShadow: active === t.id ? `0 0 12px ${t.color}55` : "none",
+                transform: active === t.id ? "scale(1.04)" : "scale(1)",
+                transition: "all 0.15s",
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </nav>
+      </div>
 
       <main key={active} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
         <Section />

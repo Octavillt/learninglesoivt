@@ -23,3 +23,61 @@ html {
 .section-transition {
   animation: sectionFadeIn 0.28s ease;
 }
+
+.nav-wrap {
+  position: relative;
+}
+
+.nav-wrap::before,
+.nav-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #1e293b, transparent);
+}
+
+.nav-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #1e293b, transparent);
+}
+
+.nav-scroller {
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-scroller::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.nav-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (min-width: 700px) {
+  .nav-scroller {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    justify-content: center;
+  }
+
+  .nav-wrap::before,
+  .nav-wrap::after {
+    display: none;
+  }
+}
