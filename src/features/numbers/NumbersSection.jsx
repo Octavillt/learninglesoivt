@@ -1,5 +1,6 @@
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
+import NumberStepper from "./NumberStepper";
 import {
   NUMBERS_0_20,
   TEENS,
@@ -109,6 +110,9 @@ export default function NumbersSection() {
           ))}
         </div>
       </div>
+
+      <SectionTitle color="#f472b6">🕹️ Práctica interactiva</SectionTitle>
+      <NumberStepper />
     </div>
   );
 }
