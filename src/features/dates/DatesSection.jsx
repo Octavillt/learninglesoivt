@@ -29,12 +29,12 @@ export default function DatesSection() {
       </div>
 
       <SectionTitle color="#fbbf24">🗓️ Months of the year</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "16px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "6px", marginBottom: "16px" }}>
         {MONTHS.map(([en, es], i) => (
-          <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-            <span style={{ color: "#fbbf24", fontWeight: 800, fontSize: "12px", minWidth: "16px" }}>{i + 1}</span>
-            <span style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "12px", flex: 1, textAlign: "left" }}>{en}</span>
-            <span style={{ color: "#64748b", fontSize: "11px" }}>{es}</span>
+          <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px", minWidth: 0 }}>
+            <span style={{ color: "#fbbf24", fontWeight: 800, fontSize: "12px", minWidth: "16px", flexShrink: 0 }}>{i + 1}</span>
+            <span style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "12px", flex: 1, textAlign: "left", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{en}</span>
+            <span style={{ color: "#64748b", fontSize: "11px", flexShrink: 0 }}>{es}</span>
           </div>
         ))}
       </div>
