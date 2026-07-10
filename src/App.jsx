@@ -13,6 +13,7 @@ import DemosSection       from "./features/demonstratives/DemosSection";
 import PrepSection        from "./features/prepositions/PrepSection";
 import ProgressiveSection from "./features/progressive/ProgressiveSection";
 import QuizSection        from "./features/quiz/QuizSection";
+import Footer              from "./components/Footer";
 
 const SECTIONS = {
   verbs:          VerbsSection,
@@ -68,6 +69,8 @@ export default function App() {
       <main key={active} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
         <Section />
       </main>
+
+      <Footer />
     </div>
   );
 }
