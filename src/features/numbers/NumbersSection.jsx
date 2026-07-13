@@ -11,10 +11,10 @@ import {
   ROOM_NUMBERS,
 } from "./data";
 
-const NumberChip = ({ n, word, color }) => (
-  <div style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px" }}>
-    <span style={{ color: color || "#64748b", fontWeight: 800, fontSize: "13px", minWidth: "26px" }}>{n}</span>
-    <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "14px" }}>
+const NumberChip = ({ n, word, color, wide }) => (
+  <div style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", flexWrap: wide ? "wrap" : "nowrap", justifyContent: "space-between", alignItems: "center", gap: "6px 10px" }}>
+    <span style={{ color: color || "#64748b", fontWeight: 800, fontSize: "13px", minWidth: wide ? "auto" : "26px", whiteSpace: "nowrap" }}>{n}</span>
+    <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "14px", textAlign: "right" }}>
       {TEENS.includes(word) ? (
         <>
           {word.replace(/teen$/, "")}
@@ -58,9 +58,9 @@ export default function NumbersSection() {
       </div>
 
       <SectionTitle color="#c084fc">100 en adelante</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "6px", marginBottom: "16px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "6px", marginBottom: "16px" }}>
         {BIG_NUMBERS.map(([n, word]) => (
-          <NumberChip key={n} n={n} word={word} color="#c084fc" />
+          <NumberChip key={n} n={n} word={word} color="#c084fc" wide />
         ))}
       </div>
 
