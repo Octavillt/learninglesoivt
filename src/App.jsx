@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { TOPICS } from "./constants/topics";
+import { AuthProvider, useAuth } from "./auth/AuthContext";
+import LoginGate from "./auth/LoginGate";
+import { THEME } from "./styles/theme";
+import { LEVELS } from "./constants/levels";
 import VerbsSection       from "./features/verbs/VerbsSection";
 import FruitsSection      from "./features/fruits/FruitsSection";
 import PluralSection      from "./features/plural/PluralSection";
@@ -34,10 +37,27 @@ const SECTIONS = {
 };
 
 export default function App() {
+  return (
+    <AuthProvider>
+      <AppShell />
+    </AuthProvider>
+  );
+}
+
+function AppShell() {
+  const [levelId, setLevelId] = useState(LEVELS[0].id);
   const [active, setActive] = useState("verbs");
+  const level = LEVELS.find(l => l.id === levelId);
   const Section = SECTIONS[active];
   const navRef = useRef(null);
   const btnRefs = useRef({});
+  const { user, loading, logout } = useAuth();
+
+  function selectLevel(l) {
+    if (!l.available || l.id === levelId) return;
+    setLevelId(l.id);
+    setActive(l.topics[0].id);
+  }
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,16 +70,57 @@ export default function App() {
     }
   }, [active]);
 
+  if (loading) {
+    return (
+      <div style={{ minHeight: "100vh", background: "#0f172a" }} />
+    );
+  }
+
+  if (!user) {
+    return <LoginGate />;
+  }
+
   return (
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: "#0f172a", color: "#f8fafc" }}>
-      <div style={{ background: "linear-gradient(135deg,#1e3a8a,#7c3aed)", padding: "18px 20px", textAlign: "center" }}>
-        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800 }}>🎓 English — Básico I</h1>
+      <div style={{ background: THEME.headerGradient, padding: "18px 20px", textAlign: "center", position: "relative" }}>
+        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800 }}>🎓 English — {level.label}</h1>
         <p style={{ margin: "5px 0 0", opacity: 0.75, fontSize: "13px" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
+
+        <div style={{ marginTop: "12px", display: "flex", gap: "8px", justifyContent: "center", flexWrap: "wrap" }}>
+          {LEVELS.map(l => (
+            <button
+              key={l.id}
+              onClick={() => selectLevel(l)}
+              disabled={!l.available}
+              title={l.available ? l.label : "Próximamente"}
+              style={{
+                padding: "6px 14px", borderRadius: "20px",
+                border: l.id === levelId ? "1px solid rgba(255,255,255,0.9)" : "1px solid rgba(255,255,255,0.3)",
+                background: l.id === levelId ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)",
+                color: "#fff", fontSize: "12px", fontWeight: l.id === levelId ? 700 : 500,
+                cursor: l.available ? "pointer" : "not-allowed",
+                opacity: l.available ? 1 : 0.45,
+              }}
+            >
+              {l.label}{!l.available && " 🔒"}
+            </button>
+          ))}
+        </div>
+
+        <div style={{ marginTop: "10px", display: "flex", gap: "8px", justifyContent: "center", alignItems: "center", fontSize: "13px" }}>
+          <span style={{ opacity: 0.85 }}>👋 {user.displayName}</span>
+          <button
+            onClick={logout}
+            style={{ padding: "5px 12px", borderRadius: "20px", border: "1px solid rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: "12px", cursor: "pointer" }}
+          >
+            Cerrar sesión
+          </button>
+        </div>
       </div>
 
       <div className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: "#1e293b", borderBottom: "1px solid #334155" }}>
         <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
-          {TOPICS.map(t => (
+          {level.topics.map(t => (
             <button
               key={t.id}
               ref={el => { btnRefs.current[t.id] = el; }}
