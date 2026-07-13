@@ -31,11 +31,11 @@ export default function TimeSection() {
       </RuleBox>
 
       <SectionTitle color="#38bdf8">⏱️ PAST — de la hora en punto a la media (minuto 1-30)</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "10px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "6px", marginBottom: "10px" }}>
         {CLOCK_PAST.map(({ min, label }) => (
-          <div key={min} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-            <span style={{ color: "#38bdf8", fontWeight: 800, fontSize: "13px" }}>:{String(min).padStart(2, "0")}</span>
-            <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "13px" }}>{label}</span>
+          <div key={min} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "4px 8px" }}>
+            <span style={{ color: "#38bdf8", fontWeight: 800, fontSize: "13px", whiteSpace: "nowrap" }}>:{String(min).padStart(2, "0")}</span>
+            <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "13px", textAlign: "right" }}>{label}</span>
           </div>
         ))}
       </div>
@@ -45,11 +45,11 @@ export default function TimeSection() {
       </div>
 
       <SectionTitle color="#fb923c">⏱️ TO — de la media a la siguiente hora (minuto 31-59)</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "10px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "6px", marginBottom: "10px" }}>
         {CLOCK_TO.map(({ min, label }) => (
-          <div key={min} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
-            <span style={{ color: "#fb923c", fontWeight: 800, fontSize: "13px" }}>:{String(60 - min).padStart(2, "0")}</span>
-            <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "13px" }}>{label}</span>
+          <div key={min} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "4px 8px" }}>
+            <span style={{ color: "#fb923c", fontWeight: 800, fontSize: "13px", whiteSpace: "nowrap" }}>:{String(60 - min).padStart(2, "0")}</span>
+            <span style={{ color: "#e2e8f0", fontWeight: 600, fontSize: "13px", textAlign: "right" }}>{label}</span>
           </div>
         ))}
       </div>

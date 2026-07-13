@@ -25,10 +25,8 @@ export default function AnalogClock() {
     return angleFromCenter(CENTER, CENTER, x, y);
   }, []);
 
-  const handleMove = useCallback((e) => {
-    if (!dragging.current) return;
-    const angle = pointFromEvent(e);
-    if (dragging.current === "minute") {
+  const applyAngle = useCallback((hand, angle) => {
+    if (hand === "minute") {
       const m = Math.round(angle / 6) % 60;
       setMinute(m);
     } else {
@@ -36,19 +34,33 @@ export default function AnalogClock() {
       const wholeHour = Math.floor(h12) % 12;
       setHour(wholeHour === 0 ? 12 : wholeHour);
     }
-  }, [pointFromEvent]);
+  }, []);
+
+  const handleMove = useCallback((e) => {
+    if (!dragging.current) return;
+    applyAngle(dragging.current, pointFromEvent(e));
+  }, [pointFromEvent, applyAngle]);
 
   const startDrag = (hand) => (e) => {
     e.preventDefault();
+    e.stopPropagation();
     dragging.current = hand;
-    const move = (ev) => handleMove(ev);
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+    applyAngle(hand, pointFromEvent(e));
+
+    const move = (ev) => {
+      ev.preventDefault();
+      handleMove(ev);
+    };
     const up = () => {
       dragging.current = null;
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
     };
-    window.addEventListener("pointermove", move);
+    window.addEventListener("pointermove", move, { passive: false });
     window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", up);
   };
 
   const hourAngle = ((hour % 12) + minute / 60) * 30;
@@ -66,7 +78,7 @@ export default function AnalogClock() {
   const phrase = timeToWords(hour, minute);
 
   return (
-    <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
+    <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center", touchAction: "none" }}>
       <div style={{ color: "#64748b", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🖱️ Arrastra las manecillas
       </div>
@@ -75,7 +87,7 @@ export default function AnalogClock() {
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         width={SIZE}
         height={SIZE}
-        style={{ touchAction: "none", userSelect: "none" }}
+        style={{ touchAction: "none", userSelect: "none", WebkitUserSelect: "none" }}
       >
         <circle cx={CENTER} cy={CENTER} r={CENTER - 6} fill="#0f172a" stroke="#334155" strokeWidth="3" />
         {Array.from({ length: 12 }).map((_, i) => {
@@ -102,15 +114,18 @@ export default function AnalogClock() {
         <line x1={CENTER} y1={CENTER} x2={minuteEnd.x} y2={minuteEnd.y} stroke="#fb923c" strokeWidth="4" strokeLinecap="round" />
         <circle cx={CENTER} cy={CENTER} r="5" fill="#f8fafc" />
 
-        <circle
-          cx={hourEnd.x} cy={hourEnd.y} r="12" fill="transparent"
-          style={{ cursor: "grab" }}
-          onPointerDown={startDrag("hour")}
-        />
-        <circle
-          cx={minuteEnd.x} cy={minuteEnd.y} r="12" fill="transparent"
-          style={{ cursor: "grab" }}
+        {/* minute hand grab area drawn first so the (longer) hour hand wins overlap near the center */}
+        <line
+          x1={CENTER} y1={CENTER} x2={minuteEnd.x} y2={minuteEnd.y}
+          stroke="transparent" strokeWidth="30" strokeLinecap="round"
+          style={{ cursor: "grab", touchAction: "none" }}
           onPointerDown={startDrag("minute")}
+        />
+        <line
+          x1={CENTER} y1={CENTER} x2={hourEnd.x} y2={hourEnd.y}
+          stroke="transparent" strokeWidth="30" strokeLinecap="round"
+          style={{ cursor: "grab", touchAction: "none" }}
+          onPointerDown={startDrag("hour")}
         />
       </svg>
 
