@@ -40,10 +40,5 @@
     "supertest": "^7.2.2",
     "vite": "^8.1.1",
     "vitest": "^4.1.10"
-  },
-  "pnpm": {
-    "overrides": {
-      "sql-escaper": "1.5.0"
-    }
   }
 }
