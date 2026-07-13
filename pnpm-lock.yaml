@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  sql-escaper: 1.5.0
+  sql-escaper: 1.4.0
 
 importers:
 
@@ -1222,8 +1222,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  sql-escaper@1.5.0:
-    resolution: {integrity: sha512-JCY91/D1lVq7p6RzuHg9XFQH9vT9L22bljsk+uTdMWke4ZqPCCE+iIMNPmJPUUTywn6eW2nncaWc+MizKZgF4A==}
+  sql-escaper@1.4.0:
+    resolution: {integrity: sha512-Ti/Zx9J3aITMYUMFhCKbkplQjyi7Kk2SyYXp+rzrkyKZetIy19XbQtVZ+0ZR5aVm/178tIJ6+aVvBqXkH+Xs7w==}
     engines: {bun: '>=1.0.0', deno: '>=2.0.0', node: '>=12.0.0'}
 
   stackback@0.0.2:
@@ -2277,7 +2277,7 @@ snapshots:
       long: 5.3.2
       lru.min: 1.1.4
       named-placeholders: 1.1.6
-      sql-escaper: 1.5.0
+      sql-escaper: 1.4.0
 
   named-placeholders@1.1.6:
     dependencies:
@@ -2492,7 +2492,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  sql-escaper@1.5.0: {}
+  sql-escaper@1.4.0: {}
 
   stackback@0.0.2: {}
 
