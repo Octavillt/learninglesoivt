@@ -1,4 +1,5 @@
 import { useQuiz } from "./useQuiz";
+import { THEME } from "../../styles/theme";
 
 const TOPIC_OPTIONS = [
   { value: "mixed",           label: "🎲 Mezcla de todos los temas" },
@@ -25,6 +26,7 @@ export default function QuizSection() {
     score, percentage,
     started,
     nextQuestion, submitAnswer,
+    saveState, saveScore,
   } = useQuiz();
 
   return (
@@ -44,6 +46,27 @@ export default function QuizSection() {
         )}
       </div>
 
+      {score.total > 0 && (
+        <button
+          onClick={saveScore}
+          disabled={saveState === "saving" || saveState === "saved"}
+          style={{
+            width: "100%", padding: "10px", borderRadius: "10px", border: "none", marginBottom: "14px",
+            background: saveState === "saved" ? "#052e16" : "#1e293b",
+            color: saveState === "saved" ? "#4ade80" : "#e2e8f0",
+            fontSize: "13px", fontWeight: 600,
+            cursor: saveState === "saving" || saveState === "saved" ? "default" : "pointer",
+          }}
+        >
+          {saveState === "saved" ? "✅ Puntuación guardada" : saveState === "saving" ? "Guardando..." : "💾 Guardar puntuación en mi cuenta"}
+        </button>
+      )}
+      {saveState === "error" && (
+        <div style={{ color: "#f87171", fontSize: "12px", marginBottom: "10px", textAlign: "center" }}>
+          No se pudo guardar. Intenta de nuevo.
+        </div>
+      )}
+
       {/* Selector de tema */}
       <select
         value={topic}
@@ -57,7 +80,7 @@ export default function QuizSection() {
       {!started && (
         <button
           onClick={nextQuestion}
-          style={{ width: "100%", padding: "16px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#7c3aed,#2563eb)", color: "#fff", fontSize: "18px", fontWeight: 700, cursor: "pointer" }}
+          style={{ width: "100%", padding: "16px", borderRadius: "12px", border: "none", background: THEME.buttonGradient, color: "#fff", fontSize: "18px", fontWeight: 700, cursor: "pointer" }}
         >
           🚀 ¡Empezar Quiz!
         </button>
@@ -89,7 +112,7 @@ export default function QuizSection() {
               <button
                 onClick={submitAnswer}
                 disabled={!answer.trim()}
-                style={{ width: "100%", padding: "13px", borderRadius: "10px", border: "none", background: answer.trim() ? "#2563eb" : "#334155", color: "#fff", fontSize: "15px", fontWeight: 700, cursor: answer.trim() ? "pointer" : "not-allowed", transition: "background 0.2s" }}
+                style={{ width: "100%", padding: "13px", borderRadius: "10px", border: "none", background: answer.trim() ? THEME.accentSolid : "#334155", color: "#fff", fontSize: "15px", fontWeight: 700, cursor: answer.trim() ? "pointer" : "not-allowed", transition: "background 0.2s" }}
               >
                 ✔️ Verificar respuesta
               </button>
@@ -113,7 +136,7 @@ export default function QuizSection() {
               </div>
               <button
                 onClick={nextQuestion}
-                style={{ width: "100%", padding: "14px", borderRadius: "10px", border: "none", background: "linear-gradient(135deg,#7c3aed,#2563eb)", color: "#fff", fontSize: "16px", fontWeight: 700, cursor: "pointer" }}
+                style={{ width: "100%", padding: "14px", borderRadius: "10px", border: "none", background: THEME.buttonGradient, color: "#fff", fontSize: "16px", fontWeight: 700, cursor: "pointer" }}
               >
                 ➡️ Siguiente pregunta
               </button>
