@@ -47,7 +47,7 @@ export default function App() {
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
     setLevelId(l.id);
-    setActive(l.topics[0].id);
+    setActive(l.topics[0]?.id ?? null);
   }
 
   useEffect(() => {
@@ -93,32 +93,44 @@ export default function App() {
         </div>
       </div>
 
-      <div className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
-        <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
-          {level.topics.map(t => (
-            <button
-              key={t.id}
-              ref={el => { btnRefs.current[t.id] = el; }}
-              onClick={() => setActive(t.id)}
-              style={{
-                flex: "0 0 auto", scrollSnapAlign: "center",
-                padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
-                fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
-                background: active === t.id ? t.color : theme.navPillIdle,
-                color: "#fff",
-                boxShadow: active === t.id ? `0 0 12px ${t.color}55` : "none",
-                transform: active === t.id ? "scale(1.04)" : "scale(1)",
-                transition: "all 0.15s",
-              }}
-            >
-              {t.label}
-            </button>
-          ))}
-        </nav>
-      </div>
+      {level.topics.length > 0 && (
+        <div className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
+          <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
+            {level.topics.map(t => (
+              <button
+                key={t.id}
+                ref={el => { btnRefs.current[t.id] = el; }}
+                onClick={() => setActive(t.id)}
+                style={{
+                  flex: "0 0 auto", scrollSnapAlign: "center",
+                  padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
+                  fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
+                  background: active === t.id ? t.color : theme.navPillIdle,
+                  color: "#fff",
+                  boxShadow: active === t.id ? `0 0 12px ${t.color}55` : "none",
+                  transform: active === t.id ? "scale(1.04)" : "scale(1)",
+                  transition: "all 0.15s",
+                }}
+              >
+                {t.label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      )}
 
-      <main key={active} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
-        <Section />
+      <main key={active ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
+        {Section ? (
+          <Section />
+        ) : (
+          <div style={{ textAlign: "center", padding: "60px 20px" }}>
+            <div style={{ fontSize: "52px", marginBottom: "14px" }}>🚧</div>
+            <h2 style={{ margin: "0 0 8px", color: theme.text }}>Estamos preparando {level.label}</h2>
+            <p style={{ margin: 0, color: theme.textMuted, fontSize: "14px" }}>
+              Muy pronto encontrarás aquí nuevos temas para seguir avanzando.
+            </p>
+          </div>
+        )}
       </main>
 
       <Footer theme={theme} />

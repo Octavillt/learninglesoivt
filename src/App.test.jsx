@@ -6,9 +6,9 @@ import App from "./App";
 describe("App — selector de color y niveles", () => {
   beforeEach(() => localStorage.clear());
 
-  it("arranca en Básico 1 con el tema por defecto (Pizarra)", () => {
+  it("arranca en Básico I con el tema por defecto (Pizarra)", () => {
     render(<App />);
-    expect(screen.getByRole("heading", { name: /english — básico 1/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
   });
 
@@ -45,11 +45,34 @@ describe("App — selector de color y niveles", () => {
     expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra el selector de niveles con Básico 1 activo y 2/3 bloqueados", () => {
+  it("muestra los niveles en romano: I y II habilitados, III bloqueado", () => {
     render(<App />);
-    expect(screen.getByRole("button", { name: "Básico 1" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: /Básico 2/ })).toBeDisabled();
-    expect(screen.getByRole("button", { name: /Básico 3/ })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /Básico III/ })).toBeDisabled();
+  });
+
+  it("entrar a Básico II muestra la pantalla de 'en construcción'", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
+    expect(screen.getByText(/estamos preparando básico ii/i)).toBeInTheDocument();
+    // Sin temas aún: la barra de navegación de temas no se muestra
+    expect(screen.queryByRole("button", { name: /🏃 Verbos/ })).not.toBeInTheDocument();
+  });
+
+  it("volver de Básico II a Básico I restaura los temas", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+    await user.click(screen.getByRole("button", { name: "Básico I" }));
+
+    expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
+    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
   it("la barra de temas muestra los temas del nivel activo", () => {
