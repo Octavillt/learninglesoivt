@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { THEMES, THEME_ORDER, DEFAULT_THEME, loadThemeId, saveThemeId } from "./theme";
 
 describe("theme catalog", () => {
-  it("tiene las 5 paletas esperadas (A-D + claro) en orden", () => {
-    expect(THEME_ORDER).toEqual(["esmeralda", "petroleo", "vino", "indigo", "claro"]);
+  it("tiene las 5 paletas neutras esperadas en orden", () => {
+    expect(THEME_ORDER).toEqual(["pizarra", "grafito", "carbon", "berenjena", "marino"]);
     THEME_ORDER.forEach(id => expect(THEMES[id]).toBeDefined());
   });
 
@@ -16,15 +16,16 @@ describe("theme catalog", () => {
     });
   });
 
-  it("el tema claro usa fondo claro y texto oscuro (patrón invertido)", () => {
-    expect(THEMES.claro.bg).toBe("#f1f5f9");
-    expect(THEMES.claro.text).toBe("#0f172a");
+  it("todas las paletas comparten el mismo fondo oscuro (son neutras, no compiten con el contenido)", () => {
+    THEME_ORDER.forEach(id => {
+      expect(THEMES[id].bg).toBe("#0f172a");
+      expect(THEMES[id].surface).toBe("#1e293b");
+    });
   });
 
-  it("los temas oscuros comparten el mismo fondo base", () => {
-    ["esmeralda", "petroleo", "vino", "indigo"].forEach(id => {
-      expect(THEMES[id].bg).toBe("#0f172a");
-    });
+  it("el tema por defecto es Pizarra", () => {
+    expect(DEFAULT_THEME).toBe("pizarra");
+    expect(THEMES[DEFAULT_THEME]).toBeDefined();
   });
 });
 
@@ -36,8 +37,8 @@ describe("persistencia del tema", () => {
   });
 
   it("guarda y recupera un tema válido", () => {
-    saveThemeId("vino");
-    expect(loadThemeId()).toBe("vino");
+    saveThemeId("marino");
+    expect(loadThemeId()).toBe("marino");
   });
 
   it("ignora un valor guardado inválido y cae al por defecto", () => {

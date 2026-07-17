@@ -1,10 +1,11 @@
-// Paletas seleccionables por el usuario. Cada una define el degradado del
-// header, el degradado de botones primarios, el acento, y los colores de
-// superficie/fondo/texto (para que el tema "Claro" invierta toda la app).
+// Paletas seleccionables por el usuario para el header.
 //
-// Los cuatro temas oscuros (A-D) comparten el mismo fondo/superficie oscuros
-// y solo cambian el degradado del header y el acento. "Claro" (E) usa fondos
-// claros con acentos análogos, manteniendo los mismos patrones de color.
+// Todas son NEUTRAS y OSCURAS a propósito: el contenido ya usa 14 colores
+// saturados (las pills de temas) + 8 tokens de color, así que el header debe
+// enmarcar ese contenido en lugar de competir con él. Cada paleta es un
+// neutro profundo con un leve sesgo de matiz distinto. Comparten el mismo
+// fondo/superficie oscuros; solo cambian el degradado del header, el de los
+// botones primarios y el acento.
 
 const DARK_SURFACE = {
   bg: "#0f172a",
@@ -17,67 +18,61 @@ const DARK_SURFACE = {
 };
 
 export const THEMES = {
-  esmeralda: {
-    id: "esmeralda",
-    label: "Esmeralda",
-    emoji: "🌿",
-    headerGradient: "linear-gradient(135deg,#064e3b,#0f766e)",
-    buttonGradient: "linear-gradient(135deg,#059669,#0d9488)",
-    accent: "#0f766e",
-    accentSolid: "#059669",
+  pizarra: {
+    id: "pizarra",
+    label: "Pizarra",
+    emoji: "🌑",
+    headerGradient: "linear-gradient(135deg,#0f172a,#334155)",
+    buttonGradient: "linear-gradient(135deg,#334155,#475569)",
+    accent: "#334155",
+    accentSolid: "#475569",
     ...DARK_SURFACE,
   },
-  petroleo: {
-    id: "petroleo",
-    label: "Azul petróleo",
+  grafito: {
+    id: "grafito",
+    label: "Grafito",
+    emoji: "🪨",
+    headerGradient: "linear-gradient(135deg,#111827,#1f2937)",
+    buttonGradient: "linear-gradient(135deg,#374151,#4b5563)",
+    accent: "#1f2937",
+    accentSolid: "#4b5563",
+    ...DARK_SURFACE,
+  },
+  carbon: {
+    id: "carbon",
+    label: "Carbón cálido",
+    emoji: "🌰",
+    headerGradient: "linear-gradient(135deg,#1c1917,#292524)",
+    buttonGradient: "linear-gradient(135deg,#44403c,#57534e)",
+    accent: "#292524",
+    accentSolid: "#57534e",
+    ...DARK_SURFACE,
+  },
+  berenjena: {
+    id: "berenjena",
+    label: "Berenjena",
+    emoji: "🍆",
+    headerGradient: "linear-gradient(135deg,#1e1b2e,#312e4a)",
+    buttonGradient: "linear-gradient(135deg,#4c4870,#5b5688)",
+    accent: "#312e4a",
+    accentSolid: "#5b5688",
+    ...DARK_SURFACE,
+  },
+  marino: {
+    id: "marino",
+    label: "Marino",
     emoji: "🌊",
-    headerGradient: "linear-gradient(135deg,#082f49,#155e75)",
-    buttonGradient: "linear-gradient(135deg,#0369a1,#0e7490)",
-    accent: "#155e75",
-    accentSolid: "#0369a1",
+    headerGradient: "linear-gradient(135deg,#0c1e3a,#1e3a5f)",
+    buttonGradient: "linear-gradient(135deg,#1e3a5f,#2d5075)",
+    accent: "#1e3a5f",
+    accentSolid: "#2d5075",
     ...DARK_SURFACE,
-  },
-  vino: {
-    id: "vino",
-    label: "Vino tinto",
-    emoji: "🍷",
-    headerGradient: "linear-gradient(135deg,#4c0519,#9f1239)",
-    buttonGradient: "linear-gradient(135deg,#9f1239,#be123c)",
-    accent: "#9f1239",
-    accentSolid: "#be123c",
-    ...DARK_SURFACE,
-  },
-  indigo: {
-    id: "indigo",
-    label: "Índigo",
-    emoji: "🌌",
-    headerGradient: "linear-gradient(135deg,#1e1b4b,#3730a3)",
-    buttonGradient: "linear-gradient(135deg,#4338ca,#3730a3)",
-    accent: "#3730a3",
-    accentSolid: "#4338ca",
-    ...DARK_SURFACE,
-  },
-  claro: {
-    id: "claro",
-    label: "Claro",
-    emoji: "☀️",
-    headerGradient: "linear-gradient(135deg,#0369a1,#0e7490)",
-    buttonGradient: "linear-gradient(135deg,#0369a1,#0e7490)",
-    accent: "#0e7490",
-    accentSolid: "#0369a1",
-    bg: "#f1f5f9",
-    surface: "#ffffff",
-    surfaceAlt: "#e2e8f0",
-    border: "#cbd5e1",
-    text: "#0f172a",
-    textMuted: "#475569",
-    navPillIdle: "#cbd5e1",
   },
 };
 
-export const THEME_ORDER = ["esmeralda", "petroleo", "vino", "indigo", "claro"];
+export const THEME_ORDER = ["pizarra", "grafito", "carbon", "berenjena", "marino"];
 
-export const DEFAULT_THEME = "petroleo";
+export const DEFAULT_THEME = "pizarra";
 const STORAGE_KEY = "learningles.theme";
 
 export function loadThemeId() {

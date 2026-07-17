@@ -6,19 +6,19 @@ import App from "./App";
 describe("App — selector de color y niveles", () => {
   beforeEach(() => localStorage.clear());
 
-  it("arranca en Básico 1 con el tema por defecto (petróleo)", () => {
+  it("arranca en Básico 1 con el tema por defecto (Pizarra)", () => {
     render(<App />);
     expect(screen.getByRole("heading", { name: /english — básico 1/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
   });
 
-  it("el selector de color muestra las 5 paletas al abrirlo", async () => {
+  it("el selector de color muestra las 5 paletas neutras al abrirlo", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
     const menu = screen.getByRole("menu");
-    for (const label of [/Esmeralda/, /Azul petróleo/, /Vino/, /Índigo/, /Claro/]) {
+    for (const label of [/Pizarra/, /Grafito/, /Carbón cálido/, /Berenjena/, /Marino/]) {
       expect(within(menu).getByText(label)).toBeInTheDocument();
     }
   });
@@ -28,19 +28,19 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
-    await user.click(screen.getByRole("menuitemradio", { name: /Vino/ }));
+    await user.click(screen.getByRole("menuitemradio", { name: /Marino/ }));
 
-    expect(localStorage.getItem("learningles.theme")).toBe("vino");
+    expect(localStorage.getItem("learningles.theme")).toBe("marino");
   });
 
   it("recuerda el color guardado al volver a montar la app", async () => {
-    localStorage.setItem("learningles.theme", "claro");
+    localStorage.setItem("learningles.theme", "berenjena");
     render(<App />);
 
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /color/i }));
-    const claro = screen.getByRole("menuitemradio", { name: /Claro/ });
-    expect(claro).toHaveAttribute("aria-checked", "true");
+    const berenjena = screen.getByRole("menuitemradio", { name: /Berenjena/ });
+    expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
   it("muestra el selector de niveles con Básico 1 activo y 2/3 bloqueados", () => {
