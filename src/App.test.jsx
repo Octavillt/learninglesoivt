@@ -12,25 +12,27 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
   });
 
-  it("el selector de color muestra las 5 paletas neutras al abrirlo", async () => {
+  it("el selector de color muestra las 8 paletas al abrirlo", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
     const menu = screen.getByRole("menu");
-    for (const label of [/Pizarra/, /Grafito/, /Carbón cálido/, /Berenjena/, /Marino/]) {
+    for (const label of [/Pizarra/, /Grafito/, /Carbón cálido/, /Berenjena/, /Marino/, /Esmeralda/, /Vino tinto/, /Índigo/]) {
       expect(within(menu).getByText(label)).toBeInTheDocument();
     }
   });
 
-  it("elegir un color aplica el degradado y persiste en localStorage", async () => {
+  it("elegir un color persiste en localStorage y tiñe el fondo completo de la app", async () => {
     const user = userEvent.setup();
-    render(<App />);
+    const { container } = render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
-    await user.click(screen.getByRole("menuitemradio", { name: /Marino/ }));
+    await user.click(screen.getByRole("menuitemradio", { name: /Vino tinto/ }));
 
-    expect(localStorage.getItem("learningles.theme")).toBe("marino");
+    expect(localStorage.getItem("learningles.theme")).toBe("vino");
+    // El contenedor raíz usa el fondo teñido del tema, no solo el header
+    expect(container.firstChild).toHaveStyle({ background: "#1f040d" });
   });
 
   it("recuerda el color guardado al volver a montar la app", async () => {

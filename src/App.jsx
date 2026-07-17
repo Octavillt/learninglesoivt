@@ -121,7 +121,7 @@ export default function App() {
         <Section />
       </main>
 
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 }

@@ -11,18 +11,27 @@ export default function ThemePicker({ themeId, onSelect }) {
         onClick={() => setOpen(o => !o)}
         aria-haspopup="true"
         aria-expanded={open}
-        aria-label="Elegir color del tema"
+        aria-label="Cambiar color del tema"
+        title="Cambiar color del tema"
         style={{
-          padding: "6px 12px", borderRadius: "20px",
-          border: "1px solid rgba(255,255,255,0.4)",
+          display: "inline-flex", alignItems: "center", gap: "5px",
+          padding: "4px 8px 4px 4px", borderRadius: "20px",
+          border: "1px solid rgba(255,255,255,0.45)",
           background: "rgba(255,255,255,0.12)",
-          color: "#fff", fontSize: "12px", fontWeight: 600, cursor: "pointer",
-          display: "inline-flex", alignItems: "center", gap: "6px",
+          cursor: "pointer",
         }}
       >
-        <span>{current.emoji}</span>
-        <span>Color</span>
-        <span style={{ fontSize: "9px" }}>{open ? "▲" : "▼"}</span>
+        <span
+          aria-hidden="true"
+          style={{
+            width: "22px", height: "22px", borderRadius: "50%",
+            background: current.headerGradient,
+            border: "2px solid rgba(255,255,255,0.85)",
+            boxShadow: "0 0 6px rgba(0,0,0,0.35)",
+            display: "inline-block",
+          }}
+        />
+        <span aria-hidden="true" style={{ color: "#fff", fontSize: "9px" }}>{open ? "▲" : "▼"}</span>
       </button>
 
       {open && (
@@ -35,8 +44,8 @@ export default function ThemePicker({ themeId, onSelect }) {
             role="menu"
             style={{
               position: "absolute", top: "calc(100% + 6px)", right: 0, zIndex: 50,
-              background: "#1e293b", border: "1px solid #334155", borderRadius: "12px",
-              padding: "6px", minWidth: "170px", boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+              background: current.surface, border: `1px solid ${current.border}`, borderRadius: "12px",
+              padding: "6px", minWidth: "175px", boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
             }}
           >
             {THEME_ORDER.map(id => {
@@ -51,8 +60,8 @@ export default function ThemePicker({ themeId, onSelect }) {
                   style={{
                     width: "100%", display: "flex", alignItems: "center", gap: "10px",
                     padding: "9px 10px", borderRadius: "8px", border: "none", cursor: "pointer",
-                    background: selected ? "#334155" : "transparent",
-                    color: "#f8fafc", fontSize: "13px", fontWeight: selected ? 700 : 500,
+                    background: selected ? current.surfaceAlt : "transparent",
+                    color: current.text, fontSize: "13px", fontWeight: selected ? 700 : 500,
                     textAlign: "left",
                   }}
                 >
@@ -61,10 +70,10 @@ export default function ThemePicker({ themeId, onSelect }) {
                     style={{
                       width: "20px", height: "20px", borderRadius: "50%",
                       background: t.headerGradient, flex: "0 0 auto",
-                      border: "1px solid rgba(255,255,255,0.25)",
+                      border: "1px solid rgba(255,255,255,0.3)",
                     }}
                   />
-                  <span style={{ flex: 1 }}>{t.emoji} {t.label}</span>
+                  <span style={{ flex: 1 }}>{t.label}</span>
                   {selected && <span style={{ color: "#4ade80" }}>✓</span>}
                 </button>
               );
