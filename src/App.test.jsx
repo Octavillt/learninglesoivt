@@ -6,48 +6,73 @@ import App from "./App";
 describe("App — selector de color y niveles", () => {
   beforeEach(() => localStorage.clear());
 
-  it("arranca en Básico 1 con el tema por defecto (petróleo)", () => {
+  it("arranca en Básico I con el tema por defecto (Pizarra)", () => {
     render(<App />);
-    expect(screen.getByRole("heading", { name: /english — básico 1/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
   });
 
-  it("el selector de color muestra las 5 paletas al abrirlo", async () => {
+  it("el selector de color muestra las 8 paletas al abrirlo", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
     const menu = screen.getByRole("menu");
-    for (const label of [/Esmeralda/, /Azul petróleo/, /Vino/, /Índigo/, /Claro/]) {
+    for (const label of [/Pizarra/, /Grafito/, /Carbón cálido/, /Berenjena/, /Marino/, /Esmeralda/, /Vino tinto/, /Índigo/]) {
       expect(within(menu).getByText(label)).toBeInTheDocument();
     }
   });
 
-  it("elegir un color aplica el degradado y persiste en localStorage", async () => {
+  it("elegir un color persiste en localStorage y tiñe el fondo completo de la app", async () => {
     const user = userEvent.setup();
-    render(<App />);
+    const { container } = render(<App />);
 
     await user.click(screen.getByRole("button", { name: /color/i }));
-    await user.click(screen.getByRole("menuitemradio", { name: /Vino/ }));
+    await user.click(screen.getByRole("menuitemradio", { name: /Vino tinto/ }));
 
     expect(localStorage.getItem("learningles.theme")).toBe("vino");
+    // El contenedor raíz usa el fondo teñido del tema, no solo el header
+    expect(container.firstChild).toHaveStyle({ background: "#1f040d" });
   });
 
   it("recuerda el color guardado al volver a montar la app", async () => {
-    localStorage.setItem("learningles.theme", "claro");
+    localStorage.setItem("learningles.theme", "berenjena");
     render(<App />);
 
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: /color/i }));
-    const claro = screen.getByRole("menuitemradio", { name: /Claro/ });
-    expect(claro).toHaveAttribute("aria-checked", "true");
+    const berenjena = screen.getByRole("menuitemradio", { name: /Berenjena/ });
+    expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra el selector de niveles con Básico 1 activo y 2/3 bloqueados", () => {
+  it("muestra los niveles en romano: I y II habilitados, III bloqueado", () => {
     render(<App />);
-    expect(screen.getByRole("button", { name: "Básico 1" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: /Básico 2/ })).toBeDisabled();
-    expect(screen.getByRole("button", { name: /Básico 3/ })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /Básico III/ })).toBeDisabled();
+  });
+
+  it("entrar a Básico II muestra la pantalla de 'en construcción'", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
+    expect(screen.getByText(/estamos preparando básico ii/i)).toBeInTheDocument();
+    // Sin temas aún: la barra de navegación de temas no se muestra
+    expect(screen.queryByRole("button", { name: /🏃 Verbos/ })).not.toBeInTheDocument();
+  });
+
+  it("volver de Básico II a Básico I restaura los temas", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+    await user.click(screen.getByRole("button", { name: "Básico I" }));
+
+    expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
+    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
   it("la barra de temas muestra los temas del nivel activo", () => {

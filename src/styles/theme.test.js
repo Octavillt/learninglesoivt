@@ -2,29 +2,39 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { THEMES, THEME_ORDER, DEFAULT_THEME, loadThemeId, saveThemeId } from "./theme";
 
 describe("theme catalog", () => {
-  it("tiene las 5 paletas esperadas (A-D + claro) en orden", () => {
-    expect(THEME_ORDER).toEqual(["esmeralda", "petroleo", "vino", "indigo", "claro"]);
+  it("tiene las 8 paletas esperadas en orden", () => {
+    expect(THEME_ORDER).toEqual([
+      "pizarra", "grafito", "carbon", "berenjena", "marino", "esmeralda", "vino", "indigo",
+    ]);
     THEME_ORDER.forEach(id => expect(THEMES[id]).toBeDefined());
   });
 
-  it("cada paleta define los tokens necesarios para pintar la UI", () => {
+  it("cada paleta define los tokens necesarios para pintar la UI completa", () => {
     THEME_ORDER.forEach(id => {
       const t = THEMES[id];
-      for (const key of ["headerGradient", "buttonGradient", "accent", "bg", "surface", "text", "navPillIdle"]) {
+      for (const key of ["headerGradient", "buttonGradient", "accent", "bg", "surface", "surfaceAlt", "border", "text", "textMuted", "navPillIdle"]) {
         expect(t[key], `${id}.${key}`).toBeTruthy();
       }
     });
   });
 
-  it("el tema claro usa fondo claro y texto oscuro (patrón invertido)", () => {
-    expect(THEMES.claro.bg).toBe("#f1f5f9");
-    expect(THEMES.claro.text).toBe("#0f172a");
+  it("cada paleta tiñe el fondo con su propio matiz (bg distinto por tema)", () => {
+    const backgrounds = THEME_ORDER.map(id => THEMES[id].bg);
+    expect(new Set(backgrounds).size).toBe(THEME_ORDER.length);
   });
 
-  it("los temas oscuros comparten el mismo fondo base", () => {
-    ["esmeralda", "petroleo", "vino", "indigo"].forEach(id => {
-      expect(THEMES[id].bg).toBe("#0f172a");
+  it("todos los fondos son oscuros para no competir con los colores del contenido", () => {
+    // Un fondo oscuro tiene los tres canales RGB bajos (< 0x60)
+    THEME_ORDER.forEach(id => {
+      const hex = THEMES[id].bg.replace("#", "");
+      const [r, g, b] = [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16));
+      expect(Math.max(r, g, b), `${id}.bg=${THEMES[id].bg}`).toBeLessThan(0x60);
     });
+  });
+
+  it("el tema por defecto es Pizarra", () => {
+    expect(DEFAULT_THEME).toBe("pizarra");
+    expect(THEMES[DEFAULT_THEME]).toBeDefined();
   });
 });
 
