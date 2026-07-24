@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LEVELS } from "./constants/levels";
+import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
+import { NavigationContext } from "./navigation/NavigationContext";
 import { useTheme } from "./styles/useTheme";
 import ThemePicker from "./components/ThemePicker";
 import VerbsSection       from "./features/verbs/VerbsSection";
@@ -16,10 +18,24 @@ import DemosSection       from "./features/demonstratives/DemosSection";
 import PrepSection        from "./features/prepositions/PrepSection";
 import ProgressiveSection from "./features/progressive/ProgressiveSection";
 import QuizSection        from "./features/quiz/QuizSection";
+import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
+import AdjectivesSection     from "./features/adjectives/AdjectivesSection";
+import WhQuestionsSection    from "./features/whQuestions/WhQuestionsSection";
+import ArticlesSection       from "./features/articles/ArticlesSection";
+import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
+import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNounsSection";
+import VocabularySection      from "./features/vocabulary/VocabularySection";
 import Footer              from "./components/Footer";
 
 const SECTIONS = {
   verbs:          VerbsSection,
+  irregularVerbs: IrregularVerbsSection,
+  adjectives:     AdjectivesSection,
+  whQuestions:    WhQuestionsSection,
+  articles:       ArticlesSection,
+  possessiveAdjectives: PossessiveAdjectivesSection,
+  possessiveNouns:      PossessiveNounsSection,
+  vocabulary:     VocabularySection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
@@ -35,10 +51,18 @@ const SECTIONS = {
   quiz:           QuizSection,
 };
 
+function activeFor(level, map) {
+  return level.topics.find(t => t.id === map[level.id])?.id ?? level.topics[0]?.id ?? null;
+}
+
 export default function App() {
   const { theme, themeId, selectTheme } = useTheme();
+  // activeMap es la fuente de verdad en memoria (funciona aunque localStorage
+  // esté roto/bloqueado); loadActiveTopics/saveActiveTopic solo la sincronizan
+  // con localStorage como bonus para sobrevivir a un reload de la página.
+  const [activeMap, setActiveMap] = useState(() => loadActiveTopics());
   const [levelId, setLevelId] = useState(LEVELS[0].id);
-  const [active, setActive] = useState("verbs");
+  const [active, setActive] = useState(() => activeFor(LEVELS[0], loadActiveTopics()));
   const level = LEVELS.find(l => l.id === levelId);
   const Section = SECTIONS[active];
   const navRef = useRef(null);
@@ -47,7 +71,24 @@ export default function App() {
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
     setLevelId(l.id);
-    setActive(l.topics[0]?.id ?? null);
+    setActive(activeFor(l, activeMap));
+  }
+
+  // Fuente única para cambiar de tema: la usan tanto los botones de la barra
+  // de navegación (mismo nivel) como los enlaces <RelatedTopic> que pueden
+  // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I).
+  function goToTopic(targetLevelId, topicId) {
+    const targetLevel = LEVELS.find(l => l.id === targetLevelId);
+    if (!targetLevel || !targetLevel.available) return;
+    const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
+    if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
+    setActive(resolved);
+    setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
+    saveActiveTopic(targetLevel.id, resolved);
+  }
+
+  function selectTopic(topicId) {
+    goToTopic(levelId, topicId);
   }
 
   useEffect(() => {
@@ -62,6 +103,7 @@ export default function App() {
   }, [active]);
 
   return (
+    <NavigationContext.Provider value={{ goTo: goToTopic }}>
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: theme.bg, color: theme.text }}>
       <div style={{ background: theme.headerGradient, padding: "18px 20px", textAlign: "center", position: "relative" }}>
         <div style={{ position: "absolute", top: "14px", right: "16px" }}>
@@ -100,7 +142,7 @@ export default function App() {
               <button
                 key={t.id}
                 ref={el => { btnRefs.current[t.id] = el; }}
-                onClick={() => setActive(t.id)}
+                onClick={() => selectTopic(t.id)}
                 style={{
                   flex: "0 0 auto", scrollSnapAlign: "center",
                   padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
@@ -135,5 +177,6 @@ export default function App() {
 
       <Footer theme={theme} />
     </div>
+    </NavigationContext.Provider>
   );
 }

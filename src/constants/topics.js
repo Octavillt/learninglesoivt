@@ -14,3 +14,13 @@ export const TOPICS = [
   { id: "progressive",    label: "🌀 Progresivo",    color: "#9333EA" },
   { id: "quiz",           label: "🎯 Quiz",          color: "#EAB308" },
 ];
+
+export const TOPICS_BASICO2 = [
+  { id: "irregularVerbs",        label: "🏃 Verbos Irregulares",      color: "#7C3AED" },
+  { id: "adjectives",            label: "🎨 Adjetivos Calificativos", color: "#0D9488" },
+  { id: "whQuestions",           label: "❓ WH Questions",            color: "#22D3EE" },
+  { id: "articles",              label: "📖 Articles",                color: "#A3E635" },
+  { id: "possessiveAdjectives",  label: "🙋 Possessive Adjectives",   color: "#E879F9" },
+  { id: "possessiveNouns",       label: "🔑 Possessive Nouns",        color: "#818CF8" },
+  { id: "vocabulary",            label: "🗣️ Vocabulario",             color: "#FB923C" },
+];
