@@ -7,6 +7,8 @@ export const C = {
   demo:    { fg: "#c084fc", bg: "#2e1065" },
   neg:     { fg: "#f87171", bg: "#450a0a" },
   ending:  { fg: "#34d399", bg: "#022c22" },
+  past:        { fg: "#38bdf8", bg: "#082f49" },
+  participle:  { fg: "#c084fc", bg: "#3b0764" },
 };
 
 export const LABELS = {
@@ -18,4 +20,6 @@ export const LABELS = {
   demo: "Demostrativo",
   neg: "Negación",
   ending: "Terminación plural",
+  past: "Simple Past",
+  participle: "Past Participle",
 };

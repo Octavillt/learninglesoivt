@@ -52,16 +52,15 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("button", { name: /Básico III/ })).toBeDisabled();
   });
 
-  it("entrar a Básico II muestra la pantalla de 'en construcción'", async () => {
+  it("entrar a Básico II muestra la sección de Verbos Irregulares", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico II" }));
 
     expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
-    expect(screen.getByText(/estamos preparando básico ii/i)).toBeInTheDocument();
-    // Sin temas aún: la barra de navegación de temas no se muestra
-    expect(screen.queryByRole("button", { name: /🏃 Verbos/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🏃 Verbos Irregulares" })).toBeInTheDocument();
+    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
   it("volver de Básico II a Básico I restaura los temas", async () => {

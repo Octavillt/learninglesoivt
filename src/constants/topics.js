@@ -14,3 +14,7 @@ export const TOPICS = [
   { id: "progressive",    label: "🌀 Progresivo",    color: "#9333EA" },
   { id: "quiz",           label: "🎯 Quiz",          color: "#EAB308" },
 ];
+
+export const TOPICS_BASICO2 = [
+  { id: "irregularVerbs", label: "🏃 Verbos Irregulares", color: "#7C3AED" },
+];
