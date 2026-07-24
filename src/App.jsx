@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { LEVELS } from "./constants/levels";
+import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
 import { useTheme } from "./styles/useTheme";
 import ThemePicker from "./components/ThemePicker";
 import VerbsSection       from "./features/verbs/VerbsSection";
@@ -18,12 +19,22 @@ import ProgressiveSection from "./features/progressive/ProgressiveSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
 import AdjectivesSection     from "./features/adjectives/AdjectivesSection";
+import WhQuestionsSection    from "./features/whQuestions/WhQuestionsSection";
+import ArticlesSection       from "./features/articles/ArticlesSection";
+import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
+import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNounsSection";
+import VocabularySection      from "./features/vocabulary/VocabularySection";
 import Footer              from "./components/Footer";
 
 const SECTIONS = {
   verbs:          VerbsSection,
   irregularVerbs: IrregularVerbsSection,
   adjectives:     AdjectivesSection,
+  whQuestions:    WhQuestionsSection,
+  articles:       ArticlesSection,
+  possessiveAdjectives: PossessiveAdjectivesSection,
+  possessiveNouns:      PossessiveNounsSection,
+  vocabulary:     VocabularySection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
@@ -39,10 +50,18 @@ const SECTIONS = {
   quiz:           QuizSection,
 };
 
+function activeFor(level, map) {
+  return level.topics.find(t => t.id === map[level.id])?.id ?? level.topics[0]?.id ?? null;
+}
+
 export default function App() {
   const { theme, themeId, selectTheme } = useTheme();
+  // activeMap es la fuente de verdad en memoria (funciona aunque localStorage
+  // esté roto/bloqueado); loadActiveTopics/saveActiveTopic solo la sincronizan
+  // con localStorage como bonus para sobrevivir a un reload de la página.
+  const [activeMap, setActiveMap] = useState(() => loadActiveTopics());
   const [levelId, setLevelId] = useState(LEVELS[0].id);
-  const [active, setActive] = useState("verbs");
+  const [active, setActive] = useState(() => activeFor(LEVELS[0], loadActiveTopics()));
   const level = LEVELS.find(l => l.id === levelId);
   const Section = SECTIONS[active];
   const navRef = useRef(null);
@@ -51,7 +70,13 @@ export default function App() {
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
     setLevelId(l.id);
-    setActive(l.topics[0]?.id ?? null);
+    setActive(activeFor(l, activeMap));
+  }
+
+  function selectTopic(topicId) {
+    setActive(topicId);
+    setActiveMap(prev => ({ ...prev, [levelId]: topicId }));
+    saveActiveTopic(levelId, topicId);
   }
 
   useEffect(() => {
@@ -104,7 +129,7 @@ export default function App() {
               <button
                 key={t.id}
                 ref={el => { btnRefs.current[t.id] = el; }}
-                onClick={() => setActive(t.id)}
+                onClick={() => selectTopic(t.id)}
                 style={{
                   flex: "0 0 auto", scrollSnapAlign: "center",
                   padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",

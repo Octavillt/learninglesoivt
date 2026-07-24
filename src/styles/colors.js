@@ -11,6 +11,11 @@ export const C = {
   participle:  { fg: "#c084fc", bg: "#3b0764" },
   adj:     { fg: "#2dd4bf", bg: "#042f2e" },
   adjOpp:  { fg: "#fb7185", bg: "#4c0519" },
+  wh:      { fg: "#22d3ee", bg: "#083344" },
+  art:     { fg: "#a3e635", bg: "#1a2e05" },
+  zero:    { fg: "#64748b", bg: "#020617" },
+  poss:    { fg: "#e879f9", bg: "#4a044e" },
+  gen:     { fg: "#818cf8", bg: "#1e1b4b" },
 };
 
 export const LABELS = {
@@ -26,4 +31,9 @@ export const LABELS = {
   participle: "Past Participle",
   adj: "Adjetivo",
   adjOpp: "Contrario",
+  wh: "Palabra WH",
+  art: "Artículo",
+  zero: "Sin artículo (Ø)",
+  poss: "Adjetivo Posesivo",
+  gen: "Posesivo ('s)",
 };
