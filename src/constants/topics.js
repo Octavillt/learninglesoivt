@@ -16,5 +16,6 @@ export const TOPICS = [
 ];
 
 export const TOPICS_BASICO2 = [
-  { id: "irregularVerbs", label: "🏃 Verbos Irregulares", color: "#7C3AED" },
+  { id: "irregularVerbs", label: "🏃 Verbos Irregulares",      color: "#7C3AED" },
+  { id: "adjectives",     label: "🎨 Adjetivos Calificativos", color: "#0D9488" },
 ];

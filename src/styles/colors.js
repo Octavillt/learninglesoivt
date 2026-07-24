@@ -9,6 +9,8 @@ export const C = {
   ending:  { fg: "#34d399", bg: "#022c22" },
   past:        { fg: "#38bdf8", bg: "#082f49" },
   participle:  { fg: "#c084fc", bg: "#3b0764" },
+  adj:     { fg: "#2dd4bf", bg: "#042f2e" },
+  adjOpp:  { fg: "#fb7185", bg: "#4c0519" },
 };
 
 export const LABELS = {
@@ -22,4 +24,6 @@ export const LABELS = {
   ending: "Terminación plural",
   past: "Simple Past",
   participle: "Past Participle",
+  adj: "Adjetivo",
+  adjOpp: "Contrario",
 };

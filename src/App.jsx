@@ -17,11 +17,13 @@ import PrepSection        from "./features/prepositions/PrepSection";
 import ProgressiveSection from "./features/progressive/ProgressiveSection";
 import QuizSection        from "./features/quiz/QuizSection";
 import IrregularVerbsSection from "./features/irregularVerbs/IrregularVerbsSection";
+import AdjectivesSection     from "./features/adjectives/AdjectivesSection";
 import Footer              from "./components/Footer";
 
 const SECTIONS = {
   verbs:          VerbsSection,
   irregularVerbs: IrregularVerbsSection,
+  adjectives:     AdjectivesSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
