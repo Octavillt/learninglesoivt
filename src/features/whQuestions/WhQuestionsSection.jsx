@@ -1,6 +1,7 @@
 import Token from "../../components/Token";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
+import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
@@ -34,6 +35,7 @@ export default function WhQuestionsSection() {
           example={[{ t: "Where", r: "wh" }, { t: "is", r: "verb_be" }, { t: "he", r: "subject" }, { t: "?", color: "#94a3b8" }]}
         />
         <div style={{ color: "#64748b", fontSize: "13px" }}>🇲🇽 ¿Dónde está él?</div>
+        <RelatedTopic levelId="basico1" topicId="tobe" />
       </RuleBox>
 
       <SectionTitle color={COLOR}>📋 Las 8 palabras WH</SectionTitle>
@@ -54,10 +56,11 @@ export default function WhQuestionsSection() {
 
       <RuleBox icon="🔑" rule="Bonus — Whose (¿de quién?)" color={COLOR}>
         <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>
-          <Token t="Whose" r="wh" /> pregunta a quién le pertenece algo. La respuesta normalmente usa un <Token t="posesivo" r="gen" /> — mira el tema de <strong style={{ color: "#f8fafc" }}>Posesivos</strong> para más detalle.
+          <Token t="Whose" r="wh" /> pregunta a quién le pertenece algo. La respuesta normalmente usa un <Token t="posesivo" r="gen" /> con <strong style={{ color: "#f8fafc" }}>'s</strong>.
         </div>
         <div style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "8px" }}>Whose backpack is this? → It's Israel's.</div>
         <div style={{ color: "#64748b", fontSize: "12px" }}>🇲🇽 ¿De quién es esta mochila? → Es de Israel.</div>
+        <RelatedTopic levelId="basico2" topicId="possessiveNouns" />
       </RuleBox>
     </div>
   );

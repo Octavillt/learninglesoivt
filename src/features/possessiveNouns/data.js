@@ -15,6 +15,26 @@ export const GEN_RULES = [
   },
 ];
 
+// Cuándo usar 's y cuándo es más natural usar "of"
+export const OF_VS_GEN = [
+  {
+    icon: "🧑", title: `Usa 's — personas, animales, tiempo`,
+    examples: [
+      { pts: [gen("Maria's"), " car"], esp: "el carro de María" },
+      { pts: [gen("the dog's"), " leg"], esp: "la pata del perro" },
+      { pts: [gen("today's"), " newspaper"], esp: "el periódico de hoy" },
+    ],
+  },
+  {
+    icon: "📦", title: `Usa "of" — objetos y cosas sin vida`,
+    examples: [
+      { pts: ["the color ", { t: "of", r: "gen" }, " the car"], esp: "el color del carro" },
+      { pts: ["the name ", { t: "of", r: "gen" }, " the book"], esp: "el nombre del libro" },
+      { pts: ["the end ", { t: "of", r: "gen" }, " the movie"], esp: "el final de la película" },
+    ],
+  },
+];
+
 export const EXAMPLE_SENTENCES = [
   { pts: ["This is ", gen("Octavio's"), " helmet."],              esp: "Este es el casco de Octavio." },
   { pts: ["That is ", gen("Leslie's"), " backpack."],              esp: "Esa es la mochila de Leslie." },

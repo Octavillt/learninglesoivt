@@ -1,5 +1,6 @@
 import Token from "../../components/Token";
 import Legend from "../../components/Legend";
+import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
@@ -52,6 +53,10 @@ export default function ArticlesSection() {
             ))}
           </div>
         </div>
+        <div style={{ color: "#64748b", fontSize: "12px", marginTop: "10px" }}>
+          💡 Ya viste una primera versión de esta regla en Verb To Be de Básico I — aquí la repasamos junto con sus excepciones.
+        </div>
+        <RelatedTopic levelId="basico1" topicId="tobe" />
       </RuleBox>
 
       <RuleBox icon="🎯" rule="Excepciones — el sonido no siempre es lo que esperas" color={COLOR}>

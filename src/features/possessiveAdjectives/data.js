@@ -21,6 +21,38 @@ export const EXAMPLE_SENTENCES = [
   { pts: ["Is this ", poss("your"), " backpack?"],          esp: "¿Esta es tu mochila?" },
 ];
 
+// [pronombre, adjetivo posesivo, pronombre posesivo, español, color de acento]
+export const POSSESSIVE_PRONOUNS = [
+  { subj: "I",    adj: "my",    pron: "mine",   esp: "mío / mía / míos / mías", color: "#f87171" },
+  { subj: "You",  adj: "your",  pron: "yours",  esp: "tuyo / tuya(s)",          color: "#fbbf24" },
+  { subj: "He",   adj: "his",   pron: "his",    esp: "suyo (de él)",           color: "#60a5fa" },
+  { subj: "She",  adj: "her",   pron: "hers",   esp: "suyo (de ella)",         color: "#f472b6" },
+  { subj: "It",   adj: "its",   pron: "its",    esp: "casi no se usa así",     color: "#4ade80" },
+  { subj: "We",   adj: "our",   pron: "ours",   esp: "nuestro/a(s)",           color: "#34d399" },
+  { subj: "They", adj: "their", pron: "theirs", esp: "suyo (de ellos)",        color: "#c084fc" },
+];
+
+// Adjetivo + sustantivo  →  Pronombre solo (el sustantivo desaparece)
+export const PRONOUN_CONTRAST = [
+  { before: ["This is ", poss("my"), " book."],          after: ["This book is ", poss("mine"), "."],    esp: "Este libro es mío." },
+  { before: ["Is that ", poss("your"), " car?"],          after: ["Is that car ", poss("yours"), "?"],    esp: "¿Ese carro es tuyo?" },
+  { before: ["These are ", poss("her"), " shoes."],       after: ["These shoes are ", poss("hers"), "."], esp: "Estos zapatos son de ella." },
+  { before: ["That is ", poss("our"), " house."],         after: ["That house is ", poss("ours"), "."],   esp: "Esa casa es nuestra." },
+  { before: ["Those are ", poss("their"), " bags."],      after: ["Those bags are ", poss("theirs"), "."], esp: "Esas bolsas son de ellos." },
+];
+
+// El error más común: "its" (posesivo) vs "it's" (contracción de "it is" / "it has")
+export const ITS_VS_ITS = [
+  { form: "its", why: "Posesivo — de eso/él/ella. Sin apóstrofe.", examples: [
+    { pts: ["The dog wagged ", poss("its"), " tail."], esp: "El perro movió su cola." },
+    { pts: ["The company changed ", poss("its"), " name."], esp: "La empresa cambió su nombre." },
+  ] },
+  { form: "it's", why: `Contracción de "it is" o "it has". Con apóstrofe.`, examples: [
+    { pts: ["It's raining."], esp: "Está lloviendo. (it is)" },
+    { pts: ["It's been a long day."], esp: "Ha sido un día largo. (it has)" },
+  ] },
+];
+
 // Ejercicio — 15 oraciones resueltas (banco: my×2, your×3, his×2, her×2, its×2, our×2, their×2)
 export const POSSESSIVE_EXERCISE = [
   { pts: ["I forgot ", poss("my"), " keys."],                          esp: "Olvidé mis llaves." },

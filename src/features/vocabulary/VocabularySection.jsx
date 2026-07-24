@@ -1,3 +1,4 @@
+import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import {
@@ -88,12 +89,14 @@ export default function VocabularySection() {
         Lista completa por categoría en el tema <strong style={{ color: "#f8fafc" }}>Jobs</strong> de Básico I.
       </div>
       <MiniWordGrid items={JOBS_SUMMARY} color="#4ade80" />
+      <RelatedTopic levelId="basico1" topicId="jobs" />
 
       <SectionTitle color="#c084fc">👪 Resumen — Family más comunes</SectionTitle>
       <div style={{ color: "#64748b", fontSize: "12px", marginBottom: "8px" }}>
         Árbol familiar completo en el tema <strong style={{ color: "#f8fafc" }}>Family</strong> de Básico I.
       </div>
       <MiniWordGrid items={FAMILY_SUMMARY} color="#c084fc" />
+      <RelatedTopic levelId="basico1" topicId="family" />
     </div>
   );
 }

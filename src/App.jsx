@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LEVELS } from "./constants/levels";
 import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
+import { NavigationContext } from "./navigation/NavigationContext";
 import { useTheme } from "./styles/useTheme";
 import ThemePicker from "./components/ThemePicker";
 import VerbsSection       from "./features/verbs/VerbsSection";
@@ -73,10 +74,21 @@ export default function App() {
     setActive(activeFor(l, activeMap));
   }
 
+  // Fuente única para cambiar de tema: la usan tanto los botones de la barra
+  // de navegación (mismo nivel) como los enlaces <RelatedTopic> que pueden
+  // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I).
+  function goToTopic(targetLevelId, topicId) {
+    const targetLevel = LEVELS.find(l => l.id === targetLevelId);
+    if (!targetLevel || !targetLevel.available) return;
+    const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
+    if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
+    setActive(resolved);
+    setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
+    saveActiveTopic(targetLevel.id, resolved);
+  }
+
   function selectTopic(topicId) {
-    setActive(topicId);
-    setActiveMap(prev => ({ ...prev, [levelId]: topicId }));
-    saveActiveTopic(levelId, topicId);
+    goToTopic(levelId, topicId);
   }
 
   useEffect(() => {
@@ -91,6 +103,7 @@ export default function App() {
   }, [active]);
 
   return (
+    <NavigationContext.Provider value={{ goTo: goToTopic }}>
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: theme.bg, color: theme.text }}>
       <div style={{ background: theme.headerGradient, padding: "18px 20px", textAlign: "center", position: "relative" }}>
         <div style={{ position: "absolute", top: "14px", right: "16px" }}>
@@ -164,5 +177,6 @@ export default function App() {
 
       <Footer theme={theme} />
     </div>
+    </NavigationContext.Provider>
   );
 }
