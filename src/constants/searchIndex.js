@@ -1,0 +1,217 @@
+import { TOPICS, TOPICS_BASICO2 } from "./topics";
+
+// Índice de búsqueda global: por cada tema, guardamos su label + un puñado
+// de palabras clave (inglés/español) representativas de su contenido, para
+// poder buscar por tema completo y saltar directo a él con goTo().
+// Si se agrega contenido nuevo a un data.js, conviene sumar aquí sus
+// palabras más relevantes (no hace falta ser exhaustivo).
+
+const topicMeta = {};
+[...TOPICS, ...TOPICS_BASICO2].forEach(t => { topicMeta[t.id] = t; });
+
+const SEARCH_KEYWORDS = {
+  verbs: [
+    "answer","ask","be","break","buy","carry","clean","close","cook","come","cry","cut",
+    "dance","do","draw","drink","drive","eat","erase","find","fly","get up","give","go",
+    "have","help","jump","learn","listen to","live","look up","make","open","paint","pay",
+    "push","play","read","run","see","sell","sing","sit","sleep","speak","swim","study",
+    "take","teach","think","visit","want","walk","wake up","wash","watch","work","write",
+    "contestar","preguntar","romper","comprar","limpiar","cocinar","llorar","cortar",
+    "bailar","hacer","dibujar","beber","manejar","comer","borrar","encontrar","volar",
+    "levantarse","dar","ir","tener","ayudar","saltar","aprender","escuchar","vivir",
+    "buscar","abrir","pintar","pagar","jugar","leer","correr","ver","vender","cantar",
+    "sentarse","dormir","hablar","nadar","estudiar","tomar","enseñar","pensar","visitar",
+    "querer","caminar","despertarse","lavar","trabajar","escribir","verbos",
+  ],
+  fruits: [
+    "apple","banana","orange","strawberry","grape","watermelon","pineapple","mango",
+    "pear","cherry","peach","lemon","coconut","melon","kiwi","blueberry","avocado",
+    "tomato","lime","pomegranate",
+    "manzana","plátano","naranja","fresa","uva","sandía","piña","mango","pera","cereza",
+    "durazno","limón","coco","melón","kiwi","arándano","aguacate","jitomate","lima",
+    "granada","frutas",
+  ],
+  plural: [
+    "plural","cat","book","car","dog","apple","box","watch","bus","dish","cherry",
+    "city","baby","boy","toy","day","potato","tomato","shampoo","radio","wolf","wife",
+    "leaf","cliff","fish","sheep","deer","man","men","woman","women","child","children",
+    "tooth","teeth","foot","feet","mouse","mice","gato","libro","carro","perro","manzana",
+    "caja","reloj","autobús","plato","cereza","ciudad","bebé","niño","juguete","día",
+    "papa","irregular",
+  ],
+  numbers: [
+    "numbers","zero","one","two","three","four","five","six","seven","eight","nine","ten",
+    "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen",
+    "nineteen","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety",
+    "hundred","thousand","million","billion","números","cero","uno","dos","tres","cuatro",
+    "cinco","room number","cell",
+  ],
+  time: [
+    "time","clock","o'clock","past","to","half past","quarter past","quarter to","hour",
+    "minute","digital","analog","hora","reloj","minutos","cuarto","media",
+  ],
+  dates: [
+    "dates","days","months","monday","tuesday","wednesday","thursday","friday","saturday",
+    "sunday","january","february","march","april","may","june","july","august","september",
+    "october","november","december","ordinal","first","second","third","season","spring",
+    "summer","fall","autumn","winter","fechas","días","meses","lunes","martes","miércoles",
+    "jueves","viernes","sábado","domingo","enero","febrero","marzo","abril","mayo","junio",
+    "julio","agosto","septiembre","octubre","noviembre","diciembre","estaciones","primavera",
+    "verano","otoño","invierno","weekday","weekend",
+  ],
+  countries: [
+    "countries","country","nationality","mexico","united states","canada","brazil",
+    "argentina","colombia","spain","france","italy","germany","united kingdom","portugal",
+    "russia","china","japan","south korea","india","australia","switzerland","netherlands",
+    "greece","turkey","egypt","cuba","peru","chile","venezuela","mexican","american",
+    "canadian","brazilian","spanish","french","italian","german","british","where are you from",
+    "países","méxico","nacionalidad","ciudad","city","cities",
+  ],
+  family: [
+    "family","mom","mother","dad","father","brother","sister","siblings","grandma",
+    "grandmother","grandpa","grandfather","aunt","uncle","cousin","son","daughter",
+    "husband","wife","nephew","niece","stepfather","stepmother","stepson","stepdaughter",
+    "son-in-law","daughter-in-law","brother-in-law","sister-in-law","mother-in-law",
+    "father-in-law","godfather","godmother","boyfriend","girlfriend","grandson",
+    "granddaughter","grandchildren","pet","familia","mamá","papá","hermano","hermana",
+    "abuela","abuelo","tía","tío","primo","prima","hijo","hija","esposo","esposa",
+    "sobrino","sobrina","padrastro","madrastra","yerno","nuera","cuñado","cuñada","suegra",
+    "suegro","padrino","madrina","novio","novia","nieto","nieta","mascota",
+  ],
+  jobs: [
+    "jobs","profession","doctor","nurse","dentist","surgeon","veterinarian","cleaner",
+    "maid","housewife","delivery man","mail man","barber","hairdresser","cashier",
+    "director","producer","singer","ballerina","clown","drummer","photographer","musician",
+    "actor","actress","carpenter","builder","civil engineer","electricist","engineer",
+    "technician","mechanic","firefighter","police officer","pilot","lawyer","judge",
+    "accountant","programmer","journalist","teacher","athlete","chef","cook","waiter",
+    "waitress","farmer","hospital","court","stadium","school","office","restaurant",
+    "construction site","studio","police station","fire station","airport","farm",
+    "trabajos","profesión","doctor","enfermero","dentista","veterinario","limpiador",
+    "cartero","cajero","bombero","policía","abogado","juez","contador","maestro","chef",
+    "granjero","hospital","escuela","oficina","restaurante",
+  ],
+  tobe: [
+    "to be","am","is","are","verb to be","soy","eres","es","somos","son","estoy","está",
+    "estamos","están","afirmativo","negativo","pregunta","isn't","aren't",
+  ],
+  demonstratives: [
+    "this","that","these","those","demonstratives","near","far","este","esta","estos",
+    "estas","ese","esa","esos","esas","cerca","lejos",
+  ],
+  prepositions: [
+    "prepositions","in","on","under","behind","in front of","next to","between","above",
+    "preposiciones","dentro","encima","sobre","debajo","detrás","enfrente","al lado",
+    "entre","por encima",
+  ],
+  progressive: [
+    "progressive","-ing","present progressive","gerund","playing","eating","reading",
+    "running","dancing","writing","sitting","swimming","progresivo","gerundio",
+    "está jugando","está comiendo",
+  ],
+  quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
+
+  irregularVerbs: [
+    "irregular verbs","past","participle","simple past","was","were","been","became",
+    "began","broke","brought","built","bought","caught","chose","came","cost","cut","did",
+    "drew","drank","drove","ate","fell","fed","felt","found","flew","got","gave","went",
+    "grew","hung","had","heard","hit","held","hurt","kept","knew","left","let","lost",
+    "made","met","paid","put","read","rode","rang","rose","ran","said","saw","sold","sent",
+    "set","sang","sat","spoke","stood","stuck","took","taught","told","thought","threw",
+    "understood","woke","wore","won","wrote","phonetics","ipa","pronunciation","vowels",
+    "consonants","diphthongs","verbos irregulares","pasado","participio","fonética",
+    "pronunciación",
+  ],
+  adjectives: [
+    "adjectives","big","small","tall","short","long","wide","narrow","thick","thin",
+    "heavy","light","young","old","new","beautiful","ugly","clean","dirty","bright","dark",
+    "straight","curly","neat","messy","kind","mean","friendly","funny","serious","smart",
+    "silly","brave","cowardly","honest","dishonest","patient","impatient","generous",
+    "selfish","polite","rude","happy","sad","excited","bored","calm","nervous","proud",
+    "ashamed","tired","energetic","confident","shy","hot","cold","warm","cool","sunny",
+    "cloudy","wet","dry","windy","fast","slow","easy","difficult","simple","complicated",
+    "quiet","loud","good","bad","cheap","expensive","strong","weak","full","empty","rich",
+    "poor","safe","dangerous","soft","hard","adjetivos","grande","pequeño","alto","bajo",
+    "feliz","triste","caliente","frío","fácil","difícil","calificativos",
+  ],
+  whQuestions: [
+    "wh questions","what","where","why","how","when","who","which","whose","qué","dónde",
+    "por qué","cómo","cuándo","quién","cuál","de quién",
+  ],
+  articles: [
+    "articles","a","an","the","zero article","university","hour","european","honest",
+    "artículos","sustantivos","incontables",
+  ],
+  possessiveAdjectives: [
+    "possessive adjectives","my","your","his","her","its","our","their","adjetivos posesivos",
+    "mi","tu","su","nuestro","its vs it's",
+  ],
+  possessiveNouns: [
+    "possessive nouns","'s","genitive","apostrophe","of","posesivo de sustantivos",
+    "genitivo","apóstrofe",
+  ],
+  vocabulary: [
+    "vocabulary","greetings","hello","hi","good morning","good afternoon","good evening",
+    "how are you","introductions","my name is","nice to meet you","goodbyes","bye",
+    "goodbye","see you later","business","employee","employer","manager","product",
+    "service","price","discount","invoice","profit","loss","income","expense","salary",
+    "budget","investment","tax","office","warehouse","meeting","contract","deadline",
+    "report","schedule","email","vocabulario","saludos","despedidas","presentaciones",
+    "negocios",
+  ],
+};
+
+function buildIndex() {
+  const entries = [];
+  [
+    { levelId: "basico1", topics: TOPICS },
+    { levelId: "basico2", topics: TOPICS_BASICO2 },
+  ].forEach(({ levelId, topics }) => {
+    topics.forEach(t => {
+      entries.push({
+        levelId,
+        topicId: t.id,
+        label: t.label,
+        color: t.color,
+        keywords: SEARCH_KEYWORDS[t.id] ?? [],
+      });
+    });
+  });
+  return entries;
+}
+
+export const SEARCH_INDEX = buildIndex();
+
+function normalize(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "");
+}
+
+// Busca temas cuyo label o keywords contengan el query. Prioriza coincidencias
+// en el label del tema y luego las que matchean por contenido/keyword.
+export function searchTopics(query) {
+  const q = normalize(query.trim());
+  if (!q) return [];
+
+  const results = [];
+  for (const entry of SEARCH_INDEX) {
+    const label = normalize(entry.label);
+    const labelMatch = label.includes(q);
+    const matchedKeyword = !labelMatch
+      ? entry.keywords.find(k => normalize(k).includes(q))
+      : null;
+
+    if (labelMatch || matchedKeyword) {
+      results.push({
+        ...entry,
+        matchedKeyword,
+        priority: labelMatch ? 0 : 1,
+      });
+    }
+  }
+
+  results.sort((a, b) => a.priority - b.priority || a.label.localeCompare(b.label));
+  return results;
+}

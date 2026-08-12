@@ -5,20 +5,28 @@ import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
-import { WH_WORDS, WH_QA } from "./data";
+import { WH_WORDS, WH_QA, WH_TRANSLATIONS } from "./data";
 
 const COLOR = "#22d3ee";
 
-function WhWordCard({ word, use, example, esp }) {
+function WhWordCard({ word, translation, use, example, esp, relatedTopic }) {
   return (
     <div style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${COLOR}` }}>
-      <div style={{ color: COLOR, fontWeight: 900, fontSize: "18px", marginBottom: "2px" }}>{word}?</div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "2px" }}>
+        <span style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{word}?</span>
+        <span style={{ color: "#64748b", fontSize: "13px", fontWeight: 600 }}>{translation}</span>
+      </div>
       <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{use}</div>
       <div style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</div>
       <div style={{ color: "#64748b", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {esp}</div>
+      {relatedTopic && <RelatedTopic levelId={relatedTopic.levelId} topicId={relatedTopic.topicId} />}
     </div>
   );
 }
+
+const WH_WORD_LINKS = {
+  "What time": { levelId: "basico1", topicId: "time" },
+};
 
 export default function WhQuestionsSection() {
   return (
@@ -38,21 +46,36 @@ export default function WhQuestionsSection() {
         <RelatedTopic levelId="basico1" topicId="tobe" />
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📋 Las 8 palabras WH</SectionTitle>
+      <SectionTitle color={COLOR}>📋 Las palabras WH</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "10px" }}>
-        {WH_WORDS.map(([word, use, example, esp]) => (
-          <WhWordCard key={word} word={word} use={use} example={example} esp={esp} />
+        {WH_WORDS.map(([word, translation, use, example, esp]) => (
+          <WhWordCard
+            key={word}
+            word={word}
+            translation={translation}
+            use={use}
+            example={example}
+            esp={esp}
+            relatedTopic={WH_WORD_LINKS[word]}
+          />
         ))}
       </div>
 
       <SectionTitle color={COLOR}>❓ Preguntas y respuestas</SectionTitle>
-      {WH_QA.map(({ q, a, esp }, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
-          <div style={{ lineHeight: 2 }}><Sentence pts={q} /></div>
-          <div style={{ color: "#64748b", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
-          <div style={{ color: "#64748b", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
-        </div>
-      ))}
+      {WH_QA.map(({ q, a, esp }, i) => {
+        const whWord = q[0]?.t;
+        const translation = WH_TRANSLATIONS[whWord];
+        return (
+          <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+            <div style={{ lineHeight: 2, display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
+              <Sentence pts={q} />
+              {translation && <span style={{ color: "#64748b", fontSize: "12px", fontWeight: 600 }}>({translation})</span>}
+            </div>
+            <div style={{ color: "#64748b", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
+            <div style={{ color: "#64748b", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
+          </div>
+        );
+      })}
 
       <RuleBox icon="🔑" rule="Bonus — Whose (¿de quién?)" color={COLOR}>
         <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>

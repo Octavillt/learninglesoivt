@@ -1,16 +1,20 @@
 const wh = t => ({ t, r: "wh" });
 
-// [palabra, uso, ejemplo, español]
+// [palabra, traducción corta, uso, ejemplo, español]
 export const WH_WORDS = [
-  ["What", "Objetos / actividades", "What is that?", "¿Qué es eso?"],
-  ["Where", "Lugares", "Where is he?", "¿Dónde está él?"],
-  ["Why", "Razones / explicaciones", "Why are you late?", "¿Por qué llegas tarde?"],
-  ["How", "Descripción / modo", "How are you?", "¿Cómo estás?"],
-  ["When", "Tiempo / fechas", "When is the party?", "¿Cuándo es la fiesta?"],
-  ["Who", "Personas", "Who is she?", "¿Quién es ella?"],
-  ["Which", "Objetos, actividades u opciones", "Which one do you want?", "¿Cuál quieres?"],
-  ["Whose", "A quién pertenece algo", "Whose backpack is this?", "¿De quién es esta mochila?"],
+  ["What", "¿Qué?", "Objetos / actividades", "What is that?", "¿Qué es eso?"],
+  ["Where", "¿Dónde?", "Lugares", "Where is he?", "¿Dónde está él?"],
+  ["Why", "¿Por qué?", "Razones / explicaciones", "Why are you late?", "¿Por qué llegas tarde?"],
+  ["How", "¿Cómo?", "Descripción / modo", "How are you?", "¿Cómo estás?"],
+  ["When", "¿Cuándo?", "Tiempo / fechas", "When is the party?", "¿Cuándo es la fiesta?"],
+  ["Who", "¿Quién?", "Personas", "Who is she?", "¿Quién es ella?"],
+  ["Which", "¿Cuál?", "Objetos, actividades u opciones", "Which one do you want?", "¿Cuál quieres?"],
+  ["Whose", "¿De quién?", "A quién pertenece algo", "Whose backpack is this?", "¿De quién es esta mochila?"],
+  ["What time", "¿Qué hora?", "Preguntar la hora", "What time is it?", "¿Qué hora es?"],
 ];
+
+// Mapa palabra WH → traducción corta, derivado de WH_WORDS para no repetir datos
+export const WH_TRANSLATIONS = Object.fromEntries(WH_WORDS.map(([word, translation]) => [word, translation]));
 
 export const WH_QA = [
   { q: [wh("Where"), " is he?"], a: "He is in Alaquàs.", esp: "¿Dónde está él? — Él está en Alaquàs." },
