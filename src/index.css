@@ -69,6 +69,20 @@ html {
   background: transparent;
 }
 
+@keyframes searchHighlightPulse {
+  0%, 100% { background-color: rgba(250, 204, 21, 0.55); }
+  50%      { background-color: rgba(250, 204, 21, 0.2); }
+}
+
+.search-highlight {
+  animation: searchHighlightPulse 1s ease-in-out 3;
+  text-decoration: underline;
+  text-decoration-color: #facc15;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  border-radius: 3px;
+}
+
 @media (min-width: 700px) {
   .nav-scroller {
     flex-wrap: wrap !important;

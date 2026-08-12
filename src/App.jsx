@@ -3,7 +3,9 @@ import { LEVELS } from "./constants/levels";
 import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
 import { NavigationContext } from "./navigation/NavigationContext";
 import { useTheme } from "./styles/useTheme";
+import { scrollToAndHighlight } from "./constants/highlightMatch";
 import ThemePicker from "./components/ThemePicker";
+import GlobalSearch from "./components/GlobalSearch";
 import VerbsSection       from "./features/verbs/VerbsSection";
 import FruitsSection      from "./features/fruits/FruitsSection";
 import PluralSection      from "./features/plural/PluralSection";
@@ -67,6 +69,9 @@ export default function App() {
   const Section = SECTIONS[active];
   const navRef = useRef(null);
   const btnRefs = useRef({});
+  // Término a resaltar en la sección tras saltar ahí desde el buscador
+  // global; se consume una sola vez en el useEffect que sigue a `active`.
+  const pendingHighlightRef = useRef(null);
 
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
@@ -76,11 +81,13 @@ export default function App() {
 
   // Fuente única para cambiar de tema: la usan tanto los botones de la barra
   // de navegación (mismo nivel) como los enlaces <RelatedTopic> que pueden
-  // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I).
-  function goToTopic(targetLevelId, topicId) {
+  // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I)
+  // y el buscador global, que además puede pedir resaltar un término.
+  function goToTopic(targetLevelId, topicId, highlightTerm) {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
     if (!targetLevel || !targetLevel.available) return;
     const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
+    pendingHighlightRef.current = highlightTerm ?? null;
     if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
     setActive(resolved);
     setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
@@ -92,7 +99,16 @@ export default function App() {
   }
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const term = pendingHighlightRef.current;
+    pendingHighlightRef.current = null;
+    if (term) {
+      // scrollToAndHighlight ya hace su propio scroll hasta la coincidencia;
+      // si no logra encontrar el término, al menos deja la sección arriba.
+      window.scrollTo({ top: 0, behavior: "auto" });
+      scrollToAndHighlight(term);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [active]);
 
   useEffect(() => {
@@ -112,6 +128,10 @@ export default function App() {
 
         <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800, color: "#fff" }}>🎓 English — {level.label}</h1>
         <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
+
+        <div style={{ marginTop: "12px", display: "flex", justifyContent: "center" }}>
+          <GlobalSearch onSelect={goToTopic} />
+        </div>
 
         <div style={{ marginTop: "12px", display: "flex", gap: "8px", justifyContent: "center", flexWrap: "wrap" }}>
           {LEVELS.map(l => (

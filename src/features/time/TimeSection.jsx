@@ -7,7 +7,10 @@ import { CLOCK_PAST, CLOCK_TO, TIME_EXAMPLES, TIME_DIGITAL } from "./data";
 export default function TimeSection() {
   return (
     <div>
-      <h2 style={{ color: "#38bdf8", marginTop: 0 }}>🕐 What time is it?</h2>
+      <h2 style={{ color: "#38bdf8", marginTop: 0, display: "flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap" }}>
+        <span>🕐 What time is it?</span>
+        <span style={{ color: "#64748b", fontSize: "14px", fontWeight: 600 }}>¿Qué hora es?</span>
+      </h2>
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 En inglés, para decir la hora primero se dicen los <strong style={{ color: "#f8fafc" }}>minutos</strong> y después la <strong style={{ color: "#f8fafc" }}>hora</strong>: <strong style={{ color: "#38bdf8" }}>PAST</strong> = después de la hora en punto (minutos 1–30), <strong style={{ color: "#fb923c" }}>TO</strong> = antes de la siguiente hora (minutos 31–59).
       </div>
