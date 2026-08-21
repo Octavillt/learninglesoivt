@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
@@ -78,5 +78,43 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /🎯 Quiz/ })).toBeInTheDocument();
+  });
+});
+
+describe("App — buscador global y resaltado", () => {
+  beforeEach(() => localStorage.clear());
+
+  async function buscarYElegir(user, termino) {
+    await user.clear(screen.getByPlaceholderText("Buscar tema o palabra..."));
+    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), termino);
+    await user.click(await screen.findByRole("option", { name: /Verbos/ }));
+  }
+
+  function resaltado() {
+    return document.querySelector("main mark.search-highlight");
+  }
+
+  it("resalta la coincidencia al elegir un resultado del buscador", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await buscarYElegir(user, "dance");
+
+    await waitFor(() => expect(resaltado()).toHaveTextContent("Dance"));
+  });
+
+  it("vuelve a resaltar cuando la segunda búsqueda cae en la sección ya abierta", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await buscarYElegir(user, "dance");
+    await waitFor(() => expect(resaltado()).toHaveTextContent("Dance"));
+
+    await buscarYElegir(user, "erase");
+
+    await waitFor(() => expect(resaltado()).toHaveTextContent("Erase"));
+    // El resaltado anterior se deshace: sin esto los <mark> se acumularían
+    // porque la sección no se remonta al no cambiar de tema.
+    expect(document.querySelectorAll("main mark.search-highlight")).toHaveLength(1);
   });
 });

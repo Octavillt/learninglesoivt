@@ -150,6 +150,15 @@ const SEARCH_KEYWORDS = {
     "possessive nouns","'s","genitive","apostrophe","of","posesivo de sustantivos",
     "genitivo","apóstrofe",
   ],
+  gerunds: [
+    "ing","gerund","gerundio","uso del ing","verbo como sustantivo","swimming","reading",
+    "cooking","dancing","running","shopping","like","love","enjoy","hate","don't mind",
+    "prefer","start","finish","stop","keep","continue","avoid","practice","suggest",
+    "go shopping","good at","interested in","afraid of","without","before","after",
+    "instead of","thank you for","infinitivo","to + verbo","want","need","decide","hope",
+    "plan","ing vs to","gerundio vs infinitivo","cvc","doblar consonante","spelling",
+    "preposición + ing","sujeto","errores comunes",
+  ],
   vocabulary: [
     "vocabulary","greetings","hello","hi","good morning","good afternoon","good evening",
     "how are you","introductions","my name is","nice to meet you","goodbyes","bye",
