@@ -29,6 +29,7 @@ import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNo
 import GerundsSection         from "./features/gerunds/GerundsSection";
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import Footer              from "./components/Footer";
+import BackToTop           from "./components/BackToTop";
 
 const SECTIONS = {
   verbs:          VerbsSection,
@@ -207,6 +208,7 @@ export default function App() {
       </main>
 
       <Footer theme={theme} />
+      <BackToTop theme={theme} />
     </div>
     </NavigationContext.Provider>
   );
