@@ -4,11 +4,16 @@
 // Section vive en JSX plano (sin data-attributes por palabra), esta es la
 // única forma de apuntar al lugar exacto sin instrumentar cada feature.
 
+const MARK_ATTR = "data-search-mark";
+const HIGHLIGHT_MS = 3200;
+
+let pendingTimers = [];
+
 function normalize(str) {
   return str
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "");
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 function findTextNode(root, term) {
@@ -27,6 +32,19 @@ function findTextNode(root, term) {
   return walker.nextNode();
 }
 
+// Devuelve el DOM al estado exacto en que lo dejó React. Cuando la búsqueda
+// apunta a la sección que ya está abierta, React no remonta <main> y los
+// <mark> de búsquedas previas sobrevivirían: se irían acumulando y, al repetir
+// un término, el nuevo <mark> se anidaría dentro del viejo sin animarse.
+function clearHighlights() {
+  document.querySelectorAll(`mark[${MARK_ATTR}]`).forEach(mark => {
+    const parent = mark.parentNode;
+    if (!parent) return;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+  });
+}
+
 // Envuelve el nodo de texto encontrado en un <mark> temporal para poder
 // hacerle scroll y aplicarle la animación de resaltado vía CSS.
 function wrapAndHighlight(textNode) {
@@ -35,6 +53,7 @@ function wrapAndHighlight(textNode) {
 
   const mark = document.createElement("mark");
   mark.className = "search-highlight";
+  mark.setAttribute(MARK_ATTR, "");
   mark.style.background = "transparent";
   mark.style.color = "inherit";
   parent.replaceChild(mark, textNode);
@@ -43,9 +62,14 @@ function wrapAndHighlight(textNode) {
 }
 
 export function scrollToAndHighlight(term, { root = document.querySelector("main"), delay = 260 } = {}) {
+  // Una búsqueda nueva invalida a la anterior aunque su resaltado siga vivo.
+  pendingTimers.forEach(window.clearTimeout);
+  pendingTimers = [];
+  clearHighlights();
+
   if (!root || !term) return;
 
-  window.setTimeout(() => {
+  pendingTimers.push(window.setTimeout(() => {
     const textNode = findTextNode(root, term);
     if (!textNode) return;
 
@@ -54,8 +78,6 @@ export function scrollToAndHighlight(term, { root = document.querySelector("main
 
     mark.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    window.setTimeout(() => {
-      mark.classList.remove("search-highlight");
-    }, 3200);
-  }, delay);
+    pendingTimers.push(window.setTimeout(clearHighlights, HIGHLIGHT_MS));
+  }, delay));
 }

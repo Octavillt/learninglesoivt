@@ -26,6 +26,7 @@ import WhQuestionsSection    from "./features/whQuestions/WhQuestionsSection";
 import ArticlesSection       from "./features/articles/ArticlesSection";
 import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
 import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNounsSection";
+import GerundsSection         from "./features/gerunds/GerundsSection";
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import Footer              from "./components/Footer";
 
@@ -37,6 +38,7 @@ const SECTIONS = {
   articles:       ArticlesSection,
   possessiveAdjectives: PossessiveAdjectivesSection,
   possessiveNouns:      PossessiveNounsSection,
+  gerunds:        GerundsSection,
   vocabulary:     VocabularySection,
   fruits:         FruitsSection,
   plural:         PluralSection,
@@ -70,8 +72,13 @@ export default function App() {
   const navRef = useRef(null);
   const btnRefs = useRef({});
   // Término a resaltar en la sección tras saltar ahí desde el buscador
-  // global; se consume una sola vez en el useEffect que sigue a `active`.
+  // global; se consume una sola vez en el useEffect de navegación.
   const pendingHighlightRef = useRef(null);
+  // `active` no basta como disparador: si el resultado elegido pertenece a la
+  // sección que ya está abierta, setActive recibe el mismo valor y React no
+  // vuelve a ejecutar el efecto, así que el término nunca se resaltaba. Este
+  // contador cambia en cada navegación y garantiza que el efecto corra.
+  const [navSeq, setNavSeq] = useState(0);
 
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
@@ -87,7 +94,10 @@ export default function App() {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
     if (!targetLevel || !targetLevel.available) return;
     const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
-    pendingHighlightRef.current = highlightTerm ?? null;
+    pendingHighlightRef.current = highlightTerm
+      ? { term: highlightTerm, sameSection: targetLevel.id === levelId && resolved === active }
+      : null;
+    setNavSeq(n => n + 1);
     if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
     setActive(resolved);
     setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
@@ -99,17 +109,18 @@ export default function App() {
   }
 
   useEffect(() => {
-    const term = pendingHighlightRef.current;
+    const pending = pendingHighlightRef.current;
     pendingHighlightRef.current = null;
-    if (term) {
-      // scrollToAndHighlight ya hace su propio scroll hasta la coincidencia;
-      // si no logra encontrar el término, al menos deja la sección arriba.
-      window.scrollTo({ top: 0, behavior: "auto" });
-      scrollToAndHighlight(term);
+    if (pending) {
+      // scrollToAndHighlight hace su propio scroll hasta la coincidencia. Al
+      // quedarnos en la sección abierta evitamos el salto previo al inicio
+      // (se vería como un parpadeo) y el retardo que espera al nuevo render.
+      if (!pending.sameSection) window.scrollTo({ top: 0, behavior: "auto" });
+      scrollToAndHighlight(pending.term, pending.sameSection ? { delay: 0 } : undefined);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [active]);
+  }, [active, navSeq]);
 
   useEffect(() => {
     const btn = btnRefs.current[active];

@@ -22,5 +22,6 @@ export const TOPICS_BASICO2 = [
   { id: "articles",              label: "📖 Articles",                color: "#A3E635" },
   { id: "possessiveAdjectives",  label: "🙋 Possessive Adjectives",   color: "#E879F9" },
   { id: "possessiveNouns",       label: "🔑 Possessive Nouns",        color: "#818CF8" },
+  { id: "gerunds",               label: "🔄 Uso del ING",             color: "#F472B6" },
   { id: "vocabulary",            label: "🗣️ Vocabulario",             color: "#FB923C" },
 ];
