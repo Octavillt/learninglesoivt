@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2 } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3 } from "./topics";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
 // de palabras clave (inglés/español) representativas de su contenido, para
@@ -7,7 +7,7 @@ import { TOPICS, TOPICS_BASICO2 } from "./topics";
 // palabras más relevantes (no hace falta ser exhaustivo).
 
 const topicMeta = {};
-[...TOPICS, ...TOPICS_BASICO2].forEach(t => { topicMeta[t.id] = t; });
+[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
   verbs: [
@@ -184,6 +184,23 @@ const SEARCH_KEYWORDS = {
     "report","schedule","email","vocabulario","saludos","despedidas","presentaciones",
     "negocios",
   ],
+
+  inOnAt: [
+    "in on at","in","on","at","time expressions","expresiones de tiempo","at night","at noon",
+    "at midnight","at the moment","at lunchtime","at christmas","o'clock","in the morning",
+    "in the afternoon","in the evening","in january","in 1990","in 2020","in summer",
+    "in winter","in the 90s","on monday","on friday","on march 20th","on january 1st",
+    "on my birthday","on monday morning","on the weekend","at the weekend","at home","at work",
+    "at school","at the bus stop","on the table","on the wall","on main street",
+    "on the second floor","on the bus","in the box","in the kitchen","in the car","in mexico",
+    "on time","in time","on tv","on the phone","in the end","at the end of","in english",
+    "on foot","how often","how often do you","once","twice","three times","four times",
+    "several times","once a week","twice a year","three times a day","every day","every week",
+    "every month","every year","every sunday","frecuencia","frequency","cada cuánto",
+    "una vez","dos veces","varias veces","todos los días","preposiciones de tiempo",
+    "preposiciones de lugar","en la mañana","en la noche","en punto","fechas","días",
+    "meses","años","estaciones",
+  ],
 };
 
 function buildIndex() {
@@ -191,6 +208,7 @@ function buildIndex() {
   [
     { levelId: "basico1", topics: TOPICS },
     { levelId: "basico2", topics: TOPICS_BASICO2 },
+    { levelId: "basico3", topics: TOPICS_BASICO3 },
   ].forEach(({ levelId, topics }) => {
     topics.forEach(t => {
       entries.push({

@@ -31,6 +31,13 @@ describe("searchTopics", () => {
     expect(results.every(r => r.levelId === "basico2")).toBe(true);
   });
 
+  it("encuentra el tema de Básico III por una expresión de su contenido", () => {
+    const results = searchTopics("how often");
+    const inOnAt = results.find(r => r.topicId === "inOnAt");
+    expect(inOnAt).toBeDefined();
+    expect(inOnAt.levelId).toBe("basico3");
+  });
+
   it("prioriza coincidencias de label sobre coincidencias de contenido", () => {
     const results = searchTopics("time");
     expect(results[0].topicId).toBe("time");

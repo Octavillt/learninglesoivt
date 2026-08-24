@@ -26,3 +26,7 @@ export const TOPICS_BASICO2 = [
   { id: "simplePresent",         label: "⏰ Simple Present",          color: "#38BDF8" },
   { id: "vocabulary",            label: "🗣️ Vocabulario",             color: "#FB923C" },
 ];
+
+export const TOPICS_BASICO3 = [
+  { id: "inOnAt", label: "📍 In / On / At", color: "#FB923C" },
+];
