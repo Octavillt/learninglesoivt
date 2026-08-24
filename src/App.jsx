@@ -27,6 +27,7 @@ import ArticlesSection       from "./features/articles/ArticlesSection";
 import PossessiveAdjectivesSection from "./features/possessiveAdjectives/PossessiveAdjectivesSection";
 import PossessiveNounsSection      from "./features/possessiveNouns/PossessiveNounsSection";
 import GerundsSection         from "./features/gerunds/GerundsSection";
+import SimplePresentSection   from "./features/simplePresent/SimplePresentSection";
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
@@ -40,6 +41,7 @@ const SECTIONS = {
   possessiveAdjectives: PossessiveAdjectivesSection,
   possessiveNouns:      PossessiveNounsSection,
   gerunds:        GerundsSection,
+  simplePresent:  SimplePresentSection,
   vocabulary:     VocabularySection,
   fruits:         FruitsSection,
   plural:         PluralSection,

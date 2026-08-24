@@ -63,6 +63,17 @@ describe("App — selector de color y niveles", () => {
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
+  it("abre el tema de Simple Present desde la barra de Básico II", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+    await user.click(screen.getByRole("button", { name: /⏰ Simple Present/ }));
+
+    expect(screen.getByRole("heading", { name: /Simple Present — Presente Simple/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Interrogativo/ })).toBeInTheDocument();
+  });
+
   it("volver de Básico II a Básico I restaura los temas", async () => {
     const user = userEvent.setup();
     render(<App />);
