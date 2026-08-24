@@ -14,7 +14,7 @@ const TOPIC_OPTIONS = [
   { value: "demonstratives",  label: "👆 This / That / These / Those" },
   { value: "prepositions",    label: "📍 Preposiciones" },
   { value: "progressive",     label: "⚡ Forma -ING" },
-  { value: "fruits",          label: "🍎 Frutas" },
+  { value: "fruits",          label: "🍎 Frutas y Verduras" },
 ];
 
 export default function QuizSection() {

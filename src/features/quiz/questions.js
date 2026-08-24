@@ -721,7 +721,7 @@ export const QUESTIONS = [
     explanation: "Mail man = Cartero.",
   },
 
-  // ── Frutas ────────────────────────────────────────────────────
+  // ── Frutas y Verduras ─────────────────────────────────────────
   {
     topic: "fruits",
     question: "What is APPLE in Spanish?",
@@ -791,6 +791,104 @@ export const QUESTIONS = [
     answers: ["avocado"],
     hint: "Fruta verde, cremosa, muy popular en guacamole 🥑",
     explanation: "Aguacate = Avocado.",
+  },
+  {
+    topic: "fruits",
+    question: "What is CARROT in Spanish?",
+    answers: ["zanahoria"],
+    hint: "Verdura naranja y alargada 🥕",
+    explanation: "Carrot = Zanahoria.",
+  },
+  {
+    topic: "fruits",
+    question: "What is ONION in Spanish?",
+    answers: ["cebolla"],
+    hint: "Verdura que te hace llorar al cortarla 🧅",
+    explanation: "Onion = Cebolla. Lleva AN: an onion.",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Lechuga",
+    answers: ["lettuce"],
+    hint: "Verdura de hojas verdes para la ensalada 🥬",
+    explanation: "Lechuga = Lettuce.",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Papa",
+    answers: ["potato"],
+    hint: "Con ella se hacen las papas fritas 🥔",
+    explanation: "Papa = Potato. Su plural es potatoes.",
+  },
+  {
+    topic: "fruits",
+    question: "What is BROCCOLI in Spanish?",
+    answers: ["brócoli", "brocoli"],
+    hint: "Verdura verde con forma de arbolito 🥦",
+    explanation: "Broccoli = Brócoli.",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Chícharos",
+    answers: ["peas", "pea"],
+    hint: "Bolitas verdes pequeñas 🫛",
+    explanation: "Chícharos = Peas.",
+  },
+  {
+    topic: "fruits",
+    question: "What is CORN in Spanish?",
+    answers: ["elote", "maíz", "maiz"],
+    hint: "Amarillo, se come en la calle con limón 🌽",
+    explanation: "Corn = Elote / Maíz.",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Pepino",
+    answers: ["cucumber"],
+    hint: "Verde, largo y muy fresco 🥒",
+    explanation: "Pepino = Cucumber.",
+  },
+  {
+    topic: "fruits",
+    question: "What is GARLIC in Spanish?",
+    answers: ["ajo"],
+    hint: "Pequeño, blanco y de olor fuerte 🧄",
+    explanation: "Garlic = Ajo.",
+  },
+  {
+    topic: "fruits",
+    question: "Fill in: I eat ___ (una zanahoria) every day.",
+    answers: ["a carrot"],
+    hint: "Carrot empieza con consonante",
+    explanation: "A carrot: se usa A porque carrot empieza con sonido consonante.",
+  },
+  {
+    topic: "fruits",
+    question: "What is MUSHROOM in Spanish?",
+    answers: ["champiñón", "champinon", "hongo", "seta"],
+    hint: "Crece en lugares húmedos, va en la pizza 🍄",
+    explanation: "Mushroom = Champiñón / Hongo.",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Jitomate (el rojo)",
+    answers: ["tomato"],
+    hint: "Rojo, va en la salsa 🍅",
+    explanation: "Jitomate = Tomato. Su plural es tomatoes.",
+  },
+  {
+    topic: "fruits",
+    question: "What is TOMATILLO in Spanish?",
+    answers: ["tomate verde", "tomate", "tomatillo"],
+    hint: "Es el verde, para la salsa verde 🍏",
+    explanation: "Tomatillo = Tomate verde. Ojo: el rojo es tomato (jitomate).",
+  },
+  {
+    topic: "fruits",
+    question: "Translate to English: Nopales",
+    answers: ["nopales", "cactus paddles", "nopal"],
+    hint: "Verdura de cactus, se come con huevo 🌵",
+    explanation: "Nopales = Nopales / Cactus paddles. En inglés se usa mucho la palabra en español.",
   },
 
   // ── Countries & Nationalities ─────────────────────────────────
