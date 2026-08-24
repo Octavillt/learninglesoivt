@@ -21,6 +21,30 @@ export const FRUITS = [
   { name: "Pomegranate", esp: "Granada",    emoji: "🍎", color: "#be123c" },
 ];
 
+export const VEGETABLES = [
+  { name: "Carrot",       esp: "Zanahoria",   emoji: "🥕", color: "#f97316" },
+  { name: "Broccoli",     esp: "Brócoli",     emoji: "🥦", color: "#16a34a" },
+  { name: "Lettuce",      esp: "Lechuga",     emoji: "🥬", color: "#4ade80" },
+  { name: "Cucumber",     esp: "Pepino",      emoji: "🥒", color: "#22c55e" },
+  { name: "Onion",        esp: "Cebolla",     emoji: "🧅", color: "#c084fc" },
+  { name: "Garlic",       esp: "Ajo",         emoji: "🧄", color: "#cbd5e1" },
+  { name: "Potato",       esp: "Papa",        emoji: "🥔", color: "#ca8a04" },
+  { name: "Sweet potato", esp: "Camote",      emoji: "🍠", color: "#fb923c" },
+  { name: "Corn",         esp: "Elote / Maíz",emoji: "🌽", color: "#facc15" },
+  { name: "Chili",        esp: "Chile",       emoji: "🌶️", color: "#dc2626" },
+  { name: "Bell pepper",  esp: "Pimiento",    emoji: "🫑", color: "#15803d" },
+  { name: "Mushroom",     esp: "Champiñón",   emoji: "🍄", color: "#b45309" },
+  { name: "Eggplant",     esp: "Berenjena",   emoji: "🍆", color: "#a855f7" },
+  { name: "Peas",         esp: "Chícharos",   emoji: "🫛", color: "#65a30d" },
+  { name: "Beans",        esp: "Frijoles",    emoji: "🫘", color: "#92400e" },
+  { name: "Pumpkin",      esp: "Calabaza",    emoji: "🎃", color: "#ea580c" },
+  { name: "Olive",        esp: "Aceituna",    emoji: "🫒", color: "#84cc16" },
+  { name: "Ginger",       esp: "Jengibre",    emoji: "🫚", color: "#d97706" },
+  { name: "Tomato",       esp: "Jitomate (rojo)",   emoji: "🍅", color: "#dc2626" },
+  { name: "Tomatillo",    esp: "Tomate verde",      emoji: "🍏", color: "#4d7c0f" },
+  { name: "Nopales",      esp: "Nopales (cactus)",  emoji: "🌵", color: "#15803d" },
+];
+
 const su = t => ({ t, r: "subject" });
 const vb = t => ({ t, r: "verb_be" });
 const vv = t => ({ t, r: "verb" });
@@ -32,4 +56,16 @@ export const FRUIT_SENTENCES = [
   { pts: [su("These"), " ", vb("are"), " grapes."],           esp: "Éstas son uvas." },
   { pts: [su("He"), " ", vv("drinks"), " orange juice."],     esp: "Él toma jugo de naranja." },
   { pts: [su("We"), " ", vv("buy"), " strawberries."],        esp: "Nosotros compramos fresas." },
+];
+
+export const VEGETABLE_SENTENCES = [
+  { pts: [su("I"), " ", vv("eat"), " carrots."],                  esp: "Yo como zanahorias." },
+  { pts: [su("She"), " ", vv("cooks"), " broccoli on Sundays."],  esp: "Ella cocina brócoli los domingos." },
+  { pts: [su("This"), " ", vb("is"), " an onion."],               esp: "Ésta es una cebolla." },
+  { pts: [su("Those"), " ", vb("are"), " potatoes."],             esp: "Ésas son papas." },
+  { pts: [su("We"), " ", vv("buy"), " vegetables at the market."],esp: "Nosotros compramos verduras en el mercado." },
+  { pts: [su("He"), " ", vv("makes"), " a salad with lettuce."],  esp: "Él hace una ensalada con lechuga." },
+  { pts: [su("This"), " ", vb("is"), " a red tomato."],           esp: "Éste es un jitomate rojo." },
+  { pts: [su("Those"), " ", vb("are"), " tomatillos."],           esp: "Ésos son tomates verdes." },
+  { pts: [su("My mom"), " ", vv("cooks"), " nopales with eggs."], esp: "Mi mamá cocina nopales con huevo." },
 ];
