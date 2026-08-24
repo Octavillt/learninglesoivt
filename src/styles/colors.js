@@ -17,6 +17,8 @@ export const C = {
   zero:    { fg: "#64748b", bg: "#020617" },
   poss:    { fg: "#e879f9", bg: "#4a044e" },
   gen:     { fg: "#818cf8", bg: "#1e1b4b" },
+  aux:     { fg: "#a78bfa", bg: "#2e1065" },
+  s3:      { fg: "#f472b6", bg: "#3b0764" },
 };
 
 export const LABELS = {
@@ -38,4 +40,6 @@ export const LABELS = {
   zero: "Sin artículo (Ø)",
   poss: "Adjetivo Posesivo",
   gen: "Posesivo ('s)",
+  aux: "Auxiliar (do / does)",
+  s3: "Terminación -s (he/she/it)",
 };

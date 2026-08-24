@@ -45,11 +45,11 @@ describe("App — selector de color y niveles", () => {
     expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra los niveles en romano: I y II habilitados, III bloqueado", () => {
+  it("muestra los tres niveles en romano habilitados", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: /Básico III/ })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Básico III" })).toBeEnabled();
   });
 
   it("entrar a Básico II muestra la sección de Verbos Irregulares", async () => {
@@ -60,6 +60,29 @@ describe("App — selector de color y niveles", () => {
 
     expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "🏃 Verbos Irregulares" })).toBeInTheDocument();
+    expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
+  });
+
+  it("abre el tema de Simple Present desde la barra de Básico II", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+    await user.click(screen.getByRole("button", { name: /⏰ Simple Present/ }));
+
+    expect(screen.getByRole("heading", { name: /Simple Present — Presente Simple/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Interrogativo/ })).toBeInTheDocument();
+  });
+
+  it("entrar a Básico III muestra la sección de In / On / At", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico III" }));
+
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico III" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /In \/ On \/ At — Tiempo y lugar/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Expresiones de tiempo/ })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 

@@ -9,13 +9,13 @@ const inf = t => ({ t, r: "inf" });
 // y como gerundio (el verbo funcionando como sustantivo).
 export const TWO_USES = [
   {
-    icon: "🌀", title: "1. Presente Progresivo", subtitle: "acción que pasa AHORA",
-    formula: "sujeto + to be + verbo-ING",
+    icon: "🌀", title: "Presente Progresivo",
+    subtitle: "La acción que pasa AHORA MISMO",
     example: { pts: [su("She"), " ", vb("is"), " ", vv("swimm"), ig("ing"), " right now."], esp: "Ella está nadando ahora mismo." },
   },
   {
-    icon: "📦", title: "2. Gerundio (verbo como sustantivo)", subtitle: "el nombre de la actividad",
-    formula: "verbo-ING = 'el/la ...ar'",
+    icon: "📦", title: "Gerundio — el verbo como sustantivo",
+    subtitle: "El nombre de la actividad: swimming = nadar",
     example: { pts: [su("Swimm"), ig("ing"), " is good for your health."], esp: "Nadar es bueno para tu salud." },
   },
 ];
@@ -23,15 +23,18 @@ export const TWO_USES = [
 // Repaso rápido de cómo se escribe el -ING (mismas 3 reglas de Básico I).
 export const SPELLING_RULES = [
   {
-    icon: "1️⃣", title: "Regla normal", desc: "La mayoría: solo agrega -ING", color: "#4ade80",
+    rule: "Regla 1 — Solo agrega ING", color: "#4ade80",
+    desc: "La mayoría de verbos: solo pones -ING al final 😊",
     words: [["work", "ing"], ["study", "ing"], ["read", "ing"], ["play", "ing"], ["talk", "ing"]],
   },
   {
-    icon: "2️⃣", title: "Termina en -E", desc: "Quita la E y agrega -ING", color: "#fbbf24",
+    rule: "Regla 2 — Termina en E: quita la E y pon ING", color: "#fbbf24",
+    desc: "Si el verbo termina en E (que no se pronuncia), quítala y pon -ING",
     words: [["danc", "ing", "dance"], ["writ", "ing", "write"], ["mak", "ing", "make"], ["driv", "ing", "drive"], ["tak", "ing", "take"]],
   },
   {
-    icon: "3️⃣", title: "Patrón CVC", desc: "Consonante-vocal-consonante: dobla la última letra", color: "#f472b6",
+    rule: "Regla 3 — CVC: dobla la última letra y pon ING", color: "#f472b6",
+    desc: "Verbos cortos con patrón consonante-vocal-consonante: duplica la última letra",
     words: [["runn", "ing", "run"], ["swimm", "ing", "swim"], ["sitt", "ing", "sit"], ["stopp", "ing", "stop"], ["shopp", "ing", "shop"]],
   },
 ];
@@ -92,6 +95,7 @@ export const AFTER_PREP = [
 export const ING_VS_TO = {
   ing: {
     icon: "🔄", title: "Piden -ING",
+    subtitle: "Gustos, y empezar / terminar / evitar una actividad",
     verbs: ["like", "love", "enjoy", "hate", "finish", "stop", "keep", "avoid", "practice", "suggest"],
     examples: [
       { pts: [su("I"), " ", vv("enjoy"), " ", vv("swimm"), ig("ing"), "."],  esp: "Disfruto nadar." },
@@ -100,6 +104,7 @@ export const ING_VS_TO = {
   },
   to: {
     icon: "➡️", title: "Piden to + verbo",
+    subtitle: "Planes, deseos e intenciones — lo que todavía no pasa",
     verbs: ["want", "need", "decide", "hope", "plan", "learn", "would like"],
     examples: [
       { pts: [su("I"), " ", vv("want"), " ", inf("to eat"), " pizza."],      esp: "Quiero comer pizza." },
