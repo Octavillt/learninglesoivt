@@ -1,7 +1,10 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { searchTopics } from "../constants/searchIndex";
+import { LEVELS } from "../constants/levels";
 
-const LEVEL_LABELS = { basico1: "Básico I", basico2: "Básico II" };
+// Derivado de LEVELS para que un nivel nuevo no quede sin etiqueta en los
+// resultados (Básico III se mostraba vacío con el mapa escrito a mano).
+const LEVEL_LABELS = Object.fromEntries(LEVELS.map(l => [l.id, l.label]));
 
 export default function GlobalSearch({ onSelect }) {
   const [query, setQuery] = useState("");
@@ -54,7 +57,7 @@ export default function GlobalSearch({ onSelect }) {
   }
 
   return (
-    <div ref={wrapRef} style={{ position: "relative", width: "100%", maxWidth: "360px" }}>
+    <div ref={wrapRef} style={{ position: "relative", width: "100%", maxWidth: "360px", minWidth: 0 }}>
       <div style={{ position: "relative" }}>
         <span aria-hidden="true" style={{
           position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)",
@@ -64,8 +67,13 @@ export default function GlobalSearch({ onSelect }) {
         </span>
         <input
           ref={inputRef}
+          className="search-input search-input--pill"
           type="search"
           role="combobox"
+          autoComplete="off"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           aria-expanded={open && results.length > 0}
           aria-controls={listboxId}
           aria-autocomplete="list"
@@ -79,7 +87,7 @@ export default function GlobalSearch({ onSelect }) {
             padding: "7px 10px 7px 28px", borderRadius: "20px",
             border: "1px solid rgba(255,255,255,0.35)",
             background: "rgba(255,255,255,0.12)",
-            color: "#fff", fontSize: "13px", outline: "none",
+            color: "#fff", outline: "none",
           }}
         />
       </div>

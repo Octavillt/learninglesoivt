@@ -46,4 +46,12 @@ describe("searchTopics", () => {
   it("no devuelve resultados para un query sin coincidencias", () => {
     expect(searchTopics("xyznotfound")).toEqual([]);
   });
+
+  it("encuentra Numbers & Letters por abecedario, vocales o deletreo", () => {
+    for (const q of ["abecedario", "vocales", "deletrear", "letters"]) {
+      const hit = searchTopics(q).find(r => r.topicId === "numbers");
+      expect(hit, q).toBeDefined();
+      expect(hit.levelId).toBe("basico1");
+    }
+  });
 });

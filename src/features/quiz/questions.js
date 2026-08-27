@@ -447,6 +447,50 @@ export const QUESTIONS = [
     explanation: "En números de teléfono o habitación, el 0 se dice 'OH' [oʊ].",
   },
 
+  // ── Letras (mismo tema que Numbers & Letters) ────────────────
+  {
+    topic: "numbers",
+    question: "¿Cuántas letras tiene el abecedario inglés?",
+    answers: ["26", "veintiseis", "veintiséis", "twenty-six", "twenty six"],
+    hint: "Las mismas del español, menos una",
+    explanation: "El alphabet tiene 26 letras: las del español sin la Ñ.",
+  },
+  {
+    topic: "numbers",
+    question: "Escribe las 5 vocales del inglés (separadas por espacio).",
+    answers: ["a e i o u", "aeiou", "a, e, i, o, u"],
+    hint: "Son las mismas del español",
+    explanation: "Vowels: A E I O U. Las otras 21 letras son consonants.",
+  },
+  {
+    topic: "numbers",
+    question: "¿Cómo se llama la letra W al deletrear?",
+    answers: ["double u", "double-u", "dabliu", "dábliu"],
+    hint: "Literalmente 'doble u'",
+    explanation: "W se dice DOUBLE U /ˈdʌbəljuː/.",
+  },
+  {
+    topic: "numbers",
+    question: "¿Cómo se llama la letra H al deletrear?",
+    answers: ["aitch", "eitch", "eich", "aich"],
+    hint: "Suena 'eich'",
+    explanation: "H se dice AITCH /eɪtʃ/, no 'hache'.",
+  },
+  {
+    topic: "numbers",
+    question: "Spell the word 'HELLO' out loud: H-E-___-O",
+    answers: ["double l", "double-l", "doble l", "l l", "ll"],
+    hint: "Dos letras iguales seguidas se dicen juntas",
+    explanation: "Las letras repetidas se deletrean con 'double': H-E-DOUBLE L-O.",
+  },
+  {
+    topic: "numbers",
+    question: "En 'cake', ¿la A tiene sonido largo o corto?",
+    answers: ["largo", "long", "sonido largo", "long sound"],
+    hint: "Suena igual que el nombre de la letra: 'ei'",
+    explanation: "Sonido LARGO /eɪ/: cake suena 'keik'. El corto sería 'cat' /æ/.",
+  },
+
   // ── What time is it? ─────────────────────────────────────────
   {
     topic: "time",

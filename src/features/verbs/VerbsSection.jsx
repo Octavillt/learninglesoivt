@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
+import FilterableList from "../../components/FilterableList";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RuleBox from "../../components/RuleBox";
@@ -37,20 +38,20 @@ export default function VerbsSection() {
       {VERB_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
       <SectionTitle color="#a78bfa">📋 Lista de todos los verbos</SectionTitle>
-      <input
+      <FilterableList
         placeholder="🔍 Busca: eat, comer, run..."
         value={filter}
-        onChange={e => setFilter(e.target.value)}
-        style={{ width: "100%", padding: "11px 15px", borderRadius: "10px", border: "none", background: "#1e293b", color: "#fff", fontSize: "15px", marginBottom: "10px", boxSizing: "border-box" }}
-      />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "5px" }}>
-        {filtered.map(([en, es]) => (
-          <div key={en} style={{ background: "#1e293b", borderRadius: "7px", padding: "9px 13px", borderLeft: "3px solid #7c3aed", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ color: "#4ade80", fontWeight: 700 }}>{en}</span>
-            <span style={{ color: "#94a3b8", fontSize: "13px" }}>{es}</span>
-          </div>
-        ))}
-      </div>
+        onChange={setFilter}
+      >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "5px" }}>
+          {filtered.map(([en, es]) => (
+            <div key={en} style={{ background: "#1e293b", borderRadius: "7px", padding: "9px 13px", borderLeft: "3px solid #7c3aed", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ color: "#4ade80", fontWeight: 700 }}>{en}</span>
+              <span style={{ color: "#94a3b8", fontSize: "13px" }}>{es}</span>
+            </div>
+          ))}
+        </div>
+      </FilterableList>
     </div>
   );
 }

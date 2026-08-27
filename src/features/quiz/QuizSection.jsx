@@ -4,7 +4,7 @@ const TOPIC_OPTIONS = [
   { value: "mixed",           label: "🎲 Mezcla de todos los temas" },
   { value: "verbs",           label: "📝 Verbos" },
   { value: "plural",          label: "🔢 Plurales" },
-  { value: "numbers",         label: "🔢 Numbers" },
+  { value: "numbers",         label: "🔢 Numbers & Letters" },
   { value: "time",            label: "🕐 Time" },
   { value: "dates",           label: "📅 Dates" },
   { value: "countries",       label: "🌎 Countries" },
