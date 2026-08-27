@@ -4,15 +4,22 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  /* `clip` en vez de `hidden`: corta cualquier desplazamiento horizontal
+     (el que dejaba la vista "descuadrada" a la izquierda al enfocar un
+     buscador en móvil) sin crear un contenedor de scroll, que rompería el
+     position: sticky de la barra de temas. */
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: #0f172a;
   color: #f8fafc;
   font-family: 'Segoe UI', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 @keyframes sectionFadeIn {
@@ -81,6 +88,55 @@ html {
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
   border-radius: 3px;
+}
+
+/* El tamaño de letra de los buscadores vive aquí (y no en el style inline de
+   cada input) porque el media query de abajo necesita poder ganarle. */
+.search-input {
+  font-size: 15px;
+}
+
+.search-input--pill {
+  font-size: 13px;
+}
+
+/* Safari en iOS hace zoom al enfocar un input con font-size menor a 16px y,
+   al hacerlo, arrastra la página hacia un lado. Con 16px en pantallas
+   táctiles no hay zoom y la vista se mantiene alineada. */
+@media (max-width: 900px), (pointer: coarse) {
+  .search-input,
+  .search-input--pill {
+    font-size: 16px;
+  }
+}
+
+/* El buscador de cada lista se queda pegado debajo de la barra de temas
+   (--nav-h y --page-bg los publica App.jsx según el nivel y el tema activos)
+   para que al filtrar los resultados siempre queden a la vista. */
+.filter-sticky {
+  position: sticky;
+  top: var(--nav-h, 52px);
+  z-index: 5;
+  background: var(--page-bg, #0f172a);
+  padding: 8px 0;
+  margin-bottom: 4px;
+}
+
+/* Con filtro activo la zona de resultados reserva una pantalla de alto: si el
+   documento se queda más corto que la ventana, el navegador no puede subir
+   hasta el campo y la consulta termina a media pantalla (o tapada por el
+   teclado del móvil). Sin filtro la lista completa ya es larga de sobra. */
+.filter-results--room {
+  /* El tope evita reservar un hueco enorme en pantallas muy altas: ahí no hay
+     teclado tapando nada y basta con que el campo suba lo suficiente. */
+  min-height: min(calc(100svh - var(--nav-h, 52px) - 96px), 620px);
+}
+
+/* La X nativa del type="search" en Safari queda casi invisible sobre el
+   fondo oscuro; la teñimos para que se vea que se puede limpiar el filtro. */
+.search-input::-webkit-search-cancel-button {
+  filter: invert(1) opacity(0.55);
+  cursor: pointer;
 }
 
 @media (min-width: 700px) {

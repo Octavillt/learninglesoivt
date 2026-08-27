@@ -2,7 +2,7 @@ export const TOPICS = [
   { id: "verbs",          label: "🏃 Verbos",       color: "#7C3AED" },
   { id: "fruits",         label: "🍎 Frutas y Verduras", color: "#ea580c" },
   { id: "plural",         label: "➕ Plural",        color: "#059669" },
-  { id: "numbers",        label: "🔢 Numbers",       color: "#DB2777" },
+  { id: "numbers",        label: "🔢 Numbers & Letters", color: "#DB2777" },
   { id: "time",           label: "🕐 Time",          color: "#0284C7" },
   { id: "dates",          label: "📅 Dates",         color: "#22D3EE" },
   { id: "countries",      label: "🌎 Countries",     color: "#0EA5E9" },

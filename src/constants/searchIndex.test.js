@@ -61,5 +61,11 @@ describe("searchTopics", () => {
     const results = searchTopics("adverbios de frecuencia");
     expect(results.some(r => r.topicId === "simplePresentAdvanced" && r.levelId === "basico3")).toBe(true);
     expect(results.some(r => r.topicId === "simplePresent")).toBe(false);
+  it("encuentra Numbers & Letters por abecedario, vocales o deletreo", () => {
+    for (const q of ["abecedario", "vocales", "deletrear", "letters"]) {
+      const hit = searchTopics(q).find(r => r.topicId === "numbers");
+      expect(hit, q).toBeDefined();
+      expect(hit.levelId).toBe("basico1");
+    }
   });
 });

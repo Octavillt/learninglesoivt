@@ -1,6 +1,7 @@
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import NumberStepper from "./NumberStepper";
+import LettersPanel from "./LettersPanel";
 import {
   NUMBERS_0_20,
   TEENS,
@@ -28,9 +29,15 @@ const NumberChip = ({ n, word, color, wide }) => (
 export default function NumbersSection() {
   return (
     <div>
-      <h2 style={{ color: "#f472b6", marginTop: 0 }}>🔢 Cardinal Numbers</h2>
+      <h2 style={{ color: "#f472b6", marginTop: 0 }}>🔢 Numbers &amp; Letters</h2>
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Los <strong style={{ color: "#f8fafc" }}>cardinal numbers</strong> son los números que usamos para contar (0, 1, 2, 3...). Del 13 al 19 comparten la terminación <strong style={{ color: "#fbbf24" }}>-teen</strong>.
+        💡 Los dos cimientos del inglés hablado: los <strong style={{ color: "#f8fafc" }}>numbers</strong> para contar, dar precios, horas o teléfonos, y las{" "}
+        <strong style={{ color: "#f8fafc" }}>letters</strong> para deletrear tu nombre o cualquier palabra que no te entiendan.
+      </div>
+
+      <SectionTitle color="#f472b6">🔢 Cardinal Numbers — números para contar</SectionTitle>
+      <div style={{ color: "#64748b", fontSize: "13px", marginBottom: "10px" }}>
+        Los <strong style={{ color: "#e2e8f0" }}>cardinal numbers</strong> son los que usamos para contar (0, 1, 2, 3...). Del 13 al 19 comparten la terminación <strong style={{ color: "#fbbf24" }}>-teen</strong>.
       </div>
 
       <SectionTitle color="#f472b6">0 – 20</SectionTitle>
@@ -113,6 +120,8 @@ export default function NumbersSection() {
 
       <SectionTitle color="#f472b6">🕹️ Práctica interactiva</SectionTitle>
       <NumberStepper />
+
+      <LettersPanel />
     </div>
   );
 }
