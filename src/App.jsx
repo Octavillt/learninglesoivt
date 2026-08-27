@@ -30,6 +30,7 @@ import GerundsSection         from "./features/gerunds/GerundsSection";
 import SimplePresentSection   from "./features/simplePresent/SimplePresentSection";
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import InOnAtSection          from "./features/inOnAt/InOnAtSection";
+import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/SimplePresentAdvancedSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -46,6 +47,7 @@ const SECTIONS = {
   simplePresent:  SimplePresentSection,
   vocabulary:     VocabularySection,
   inOnAt:         InOnAtSection,
+  simplePresentAdvanced: SimplePresentAdvancedSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

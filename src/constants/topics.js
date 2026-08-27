@@ -28,5 +28,6 @@ export const TOPICS_BASICO2 = [
 ];
 
 export const TOPICS_BASICO3 = [
-  { id: "inOnAt", label: "📍 In / On / At", color: "#FB923C" },
+  { id: "inOnAt",                label: "📍 In / On / At",            color: "#FB923C" },
+  { id: "simplePresentAdvanced", label: "🔁 Simple Present Avanzado", color: "#0EA5E9" },
 ];

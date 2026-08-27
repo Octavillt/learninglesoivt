@@ -47,6 +47,20 @@ describe("searchTopics", () => {
     expect(searchTopics("xyznotfound")).toEqual([]);
   });
 
+  it("reparte el Simple Present entre Básico II (fundamentos) y Básico III (avanzado)", () => {
+    const results = searchTopics("simple present");
+    const basico = results.find(r => r.topicId === "simplePresent");
+    const avanzado = results.find(r => r.topicId === "simplePresentAdvanced");
+    expect(basico).toBeDefined();
+    expect(avanzado).toBeDefined();
+    expect(basico.levelId).toBe("basico2");
+    expect(avanzado.levelId).toBe("basico3");
+  });
+
+  it("los adverbios de frecuencia ahora se buscan en el Simple Present de Básico III", () => {
+    const results = searchTopics("adverbios de frecuencia");
+    expect(results.some(r => r.topicId === "simplePresentAdvanced" && r.levelId === "basico3")).toBe(true);
+    expect(results.some(r => r.topicId === "simplePresent")).toBe(false);
   it("encuentra Numbers & Letters por abecedario, vocales o deletreo", () => {
     for (const q of ["abecedario", "vocales", "deletrear", "letters"]) {
       const hit = searchTopics(q).find(r => r.topicId === "numbers");

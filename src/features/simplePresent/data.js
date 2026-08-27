@@ -3,7 +3,6 @@ const vb = t => ({ t, r: "verb" });
 const s3 = t => ({ t, r: "s3" });
 const ax = t => ({ t, r: "aux" });
 const no = t => ({ t, r: "neg" });
-const wh = t => ({ t, r: "wh" });
 
 // Para qué sirve el tiempo — cada uso con su ejemplo modelo
 export const SP_USES = [
@@ -93,52 +92,12 @@ export const SP_INT = [
   { q: [ax("Do"), " ", su("we"), " ", vb("need"), " a ticket?"],       a: "Yes, we do. / No, we don't.",       esp: "¿Necesitamos un boleto?" },
 ];
 
-export const SP_WH = [
-  { q: [wh("What"), " ", ax("do"), " ", su("you"), " ", vb("do"), "?"],                a: "I'm a teacher.",              esp: "¿A qué te dedicas?" },
-  { q: [wh("Where"), " ", ax("does"), " ", su("she"), " ", vb("live"), "?"],           a: "She lives in Puebla.",        esp: "¿Dónde vive ella?" },
-  { q: [wh("When"), " ", ax("do"), " ", su("they"), " ", vb("start"), "?"],            a: "They start at 8 a.m.",        esp: "¿Cuándo empiezan?" },
-  { q: [wh("Why"), " ", ax("does"), " ", su("he"), " ", vb("study"), " English?"],     a: "Because he wants a better job.", esp: "¿Por qué estudia inglés?" },
-  { q: [wh("How often"), " ", ax("do"), " ", su("you"), " ", vb("exercise"), "?"],     a: "Three times a week.",         esp: "¿Cada cuánto haces ejercicio?" },
-];
-
-// [adverbio, español, frecuencia aproximada]
-export const FREQUENCY_ADVERBS = [
-  ["always", "siempre", "100%"],
-  ["usually", "normalmente", "80%"],
-  ["often", "a menudo", "60%"],
-  ["sometimes", "a veces", "40%"],
-  ["rarely", "rara vez", "10%"],
-  ["never", "nunca", "0%"],
-];
-
-export const FREQUENCY_EXAMPLES = [
-  { pts: [su("She"), " always ", vb("drink"), s3("s"), " coffee in the morning."], esp: "Ella siempre toma café en la mañana." },
-  { pts: [su("I"), " never ", vb("eat"), " fast food."],                            esp: "Yo nunca como comida rápida." },
-  { pts: [su("They"), " sometimes ", vb("work"), " on Saturdays."],                 esp: "Ellos a veces trabajan los sábados." },
-];
-
-export const SP_VS_PROG = [
-  {
-    icon: "⏰", title: "Simple Present", subtitle: "Siempre / en general",
-    when: "Rutinas, hábitos y hechos. No importa qué pasa en este momento.",
-    markers: ["every day", "usually", "on Mondays", "always", "never"],
-    example: { pts: [su("I"), " ", vb("work"), " in a bank."], esp: "Trabajo en un banco (es mi trabajo, todos los días)." },
-  },
-  {
-    icon: "🌀", title: "Present Progressive", subtitle: "Ahora mismo",
-    when: "Lo que está pasando en este instante, aunque no sea lo de siempre.",
-    markers: ["now", "right now", "at the moment", "today"],
-    example: { pts: [su("I"), " am ", vb("work"), { t: "ing", r: "ing" }, " right now."], esp: "Estoy trabajando ahora mismo." },
-  },
-];
-
 export const COMMON_MISTAKES = [
   { wrong: "He work in a bank.",      right: "He works in a bank.",      esp: "Con he / she / it el verbo SIEMPRE lleva -s." },
   { wrong: "She doesn't works here.", right: "She doesn't work here.",   esp: "La -s ya está en doesn't — el verbo se queda en su forma base." },
   { wrong: "Does he works here?",     right: "Does he work here?",       esp: "Mismo caso: Does ya carga la -s de la tercera persona." },
   { wrong: "I no like coffee.",       right: "I don't like coffee.",     esp: "El inglés no niega con un simple no: necesita don't / doesn't." },
   { wrong: "Do she like pizza?",      right: "Does she like pizza?",     esp: "Con he / she / it el auxiliar es Does, no Do." },
-  { wrong: "He is work every day.",   right: "He works every day.",      esp: "El Simple Present no usa am / is / are — ese es el progresivo." },
 ];
 
 export const EXERCISE = [
@@ -153,5 +112,4 @@ export const EXERCISE = [
   { q: "(not / open) The bank ___ on Sundays.",  pts: [su("The bank"), " ", ax("does"), no("n't"), " ", vb("open"), " on Sundays."], esp: "El banco no abre los domingos." },
   { q: "(speak) ___ you ___ Spanish?",           pts: [ax("Do"), " ", su("you"), " ", vb("speak"), " Spanish?"],               esp: "¿Hablas español?" },
   { q: "(live) ___ your brother ___ here?",      pts: [ax("Does"), " ", su("your brother"), " ", vb("live"), " here?"],        esp: "¿Tu hermano vive aquí?" },
-  { q: "(start) What time ___ the class ___?",   pts: [wh("What time"), " ", ax("does"), " ", su("the class"), " ", vb("start"), "?"], esp: "¿A qué hora empieza la clase?" },
 ];
