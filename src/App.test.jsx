@@ -72,6 +72,9 @@ describe("App — selector de color y niveles", () => {
 
     expect(screen.getByRole("heading", { name: /Simple Present — Presente Simple/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Interrogativo/ })).toBeInTheDocument();
+    // El contenido avanzado ya no vive en Básico II
+    expect(screen.queryByRole("heading", { name: /WH Questions con do \/ does/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Adverbios de frecuencia/ })).not.toBeInTheDocument();
   });
 
   it("entrar a Básico III muestra la sección de In / On / At", async () => {
@@ -84,6 +87,19 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("heading", { name: /In \/ On \/ At — Tiempo y lugar/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Expresiones de tiempo/ })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
+  });
+
+  it("abre el tema de Simple Present Avanzado desde la barra de Básico III", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico III" }));
+    await user.click(screen.getByRole("button", { name: /🔁 Simple Present Avanzado/ }));
+
+    expect(screen.getByRole("heading", { name: /Simple Present Avanzado/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /WH Questions con do \/ does/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Simple Present vs\. Present Progressive/ })).toBeInTheDocument();
   });
 
   it("volver de Básico II a Básico I restaura los temas", async () => {

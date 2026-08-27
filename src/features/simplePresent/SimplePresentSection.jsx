@@ -7,8 +7,7 @@ import RuleBox from "../../components/RuleBox";
 import Sentence from "../../components/Sentence";
 import SectionTitle from "../../components/SectionTitle";
 import {
-  SP_USES, SP_AFF, THIRD_PERSON_RULES, SP_NEG, SP_INT, SP_WH,
-  FREQUENCY_ADVERBS, FREQUENCY_EXAMPLES, SP_VS_PROG, COMMON_MISTAKES, EXERCISE,
+  SP_USES, SP_AFF, THIRD_PERSON_RULES, SP_NEG, SP_INT, COMMON_MISTAKES, EXERCISE,
 } from "./data";
 
 const COLOR = "#38bdf8";
@@ -36,7 +35,7 @@ export default function SimplePresentSection() {
         💡 Es el tiempo de lo que haces <strong style={{ color: "#f8fafc" }}>siempre, todos los días o en general</strong> — no de lo que estás haciendo justo ahora. Tiene dos particularidades: con <Token t="he / she / it" r="subject" /> el verbo lleva <Token t="s" r="s3" />, y para negar o preguntar aparece el auxiliar <Token t="do" r="aux" /> / <Token t="does" r="aux" />.<br />
         🇲🇽 <em>Ella trabaja aquí.</em> → 🇺🇸 <em>She works here.</em>
       </div>
-      <Legend roles={["subject", "verb", "s3", "aux", "neg", "wh"]} />
+      <Legend roles={["subject", "verb", "s3", "aux", "neg"]} />
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "18px" }}>
         {CONJUGATIONS.map(r => (
@@ -136,49 +135,6 @@ export default function SimplePresentSection() {
       </RuleBox>
       {SP_INT.map((ex, i) => <QaCard key={i} q={ex.q} a={ex.a} esp={ex.esp} />)}
 
-      <SectionTitle color={COLOR}>🔎 WH Questions con do / does</SectionTitle>
-      <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8, marginBottom: "8px" }}>
-        Si quieres pedir información (no un sí/no), la palabra <Token t="WH" r="wh" /> se pone antes del auxiliar y todo lo demás se queda igual. 📐 <strong style={{ color: "#f8fafc" }}>WH word + do/does + sujeto + verbo?</strong>
-      </div>
-      {SP_WH.map((ex, i) => <QaCard key={i} q={ex.q} a={ex.a} esp={ex.esp} />)}
-      <RelatedTopic levelId="basico2" topicId="whQuestions" />
-
-      <SectionTitle color={COLOR}>🔁 Adverbios de frecuencia</SectionTitle>
-      <RuleBox icon="📍" rule="Van ANTES del verbo principal (pero después de am / is / are)" color={COLOR}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "8px", marginBottom: "10px" }}>
-          {FREQUENCY_ADVERBS.map(([word, esp, pct]) => (
-            <div key={word} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px 12px" }}>
-              <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "14px" }}>{word}</div>
-              <div style={{ color: "#64748b", fontSize: "12px" }}>{esp}</div>
-              <div style={{ color: COLOR, fontSize: "11px", fontWeight: 700, marginTop: "2px" }}>{pct}</div>
-            </div>
-          ))}
-        </div>
-        <div style={{ color: "#4ade80", fontSize: "13px" }}>✅ She <strong>always</strong> drinks coffee.</div>
-        <div style={{ color: "#4ade80", fontSize: "13px" }}>✅ She is <strong>always</strong> late.</div>
-        <div style={{ color: "#f87171", fontSize: "13px" }}>❌ She drinks always coffee.</div>
-      </RuleBox>
-      {FREQUENCY_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-
-      <SectionTitle color={COLOR}>🆚 Simple Present vs. Present Progressive</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "10px" }}>
-        {SP_VS_PROG.map(({ icon, title, subtitle, when, markers, example }) => (
-          <div key={title} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px" }}>
-            <div style={{ color: COLOR, fontWeight: 800, fontSize: "14px" }}>{icon} {title}</div>
-            <div style={{ color: "#64748b", fontSize: "12px", marginBottom: "8px" }}>{subtitle}</div>
-            <div style={{ color: "#94a3b8", fontSize: "12px", lineHeight: 1.7, marginBottom: "8px" }}>{when}</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "8px" }}>
-              {markers.map(m => (
-                <span key={m} style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: "20px", padding: "3px 10px", color: "#e2e8f0", fontSize: "12px", fontWeight: 700 }}>{m}</span>
-              ))}
-            </div>
-            <div style={{ lineHeight: 2 }}><Sentence pts={example.pts} /></div>
-            <div style={{ color: "#64748b", fontSize: "12px", marginTop: "4px" }}>🇲🇽 {example.esp}</div>
-          </div>
-        ))}
-      </div>
-      <RelatedTopic levelId="basico1" topicId="progressive" label="Repasar el Presente Progresivo" />
-
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {COMMON_MISTAKES.map((m, i) => (
         <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
@@ -196,6 +152,12 @@ export default function SimplePresentSection() {
           <div style={{ color: "#64748b", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>
         </div>
       ))}
+      <RuleBox icon="➡️" rule="¿Ya lo dominas? El Simple Present continúa en Básico III" color={COLOR}>
+        <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>
+          Con esto ya puedes <strong style={{ color: "#f8fafc" }}>afirmar, negar y preguntar</strong>. En Básico III le sumamos las preguntas de información (What / Where / When + do / does), los adverbios de frecuencia y el contraste con el Presente Progresivo.
+        </div>
+        <RelatedTopic levelId="basico3" topicId="simplePresentAdvanced" label="Seguir con el Simple Present avanzado" />
+      </RuleBox>
     </div>
   );
 }

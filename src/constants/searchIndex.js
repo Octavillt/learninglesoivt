@@ -170,10 +170,8 @@ const SEARCH_KEYWORDS = {
     "simple present","presente simple","present simple","do","does","don't","doesn't",
     "do not","does not","auxiliar","tercera persona","third person","he she it","-s","-es",
     "-ies","works","studies","watches","goes","has","have","rutina","routine","habits",
-    "hábitos","every day","todos los días","usually","always","often","sometimes","rarely",
-    "never","how often","adverbios de frecuencia","frequency adverbs","siempre","nunca",
-    "a veces","horarios","hechos","afirmativo","negativo","interrogativo","short answers",
-    "yes i do","no he doesn't","simple present vs progressive","presente simple vs progresivo",
+    "hábitos","every day","todos los días","horarios","hechos","afirmativo","negativo",
+    "interrogativo","short answers","yes i do","no he doesn't","conjugación",
   ],
   vocabulary: [
     "vocabulary","greetings","hello","hi","good morning","good afternoon","good evening",
@@ -200,6 +198,16 @@ const SEARCH_KEYWORDS = {
     "una vez","dos veces","varias veces","todos los días","preposiciones de tiempo",
     "preposiciones de lugar","en la mañana","en la noche","en punto","fechas","días",
     "meses","años","estaciones",
+  ],
+  simplePresentAdvanced: [
+    "simple present avanzado","presente simple avanzado","simple present ii",
+    "wh questions con do","wh questions con does","preguntas de información",
+    "what do you do","where does she live","when do they start","why does he study",
+    "how often","cada cuánto","adverbios de frecuencia","frequency adverbs",
+    "always","usually","often","sometimes","rarely","never","siempre","normalmente",
+    "a menudo","a veces","rara vez","nunca","porcentaje de frecuencia",
+    "simple present vs progressive","presente simple vs progresivo","present progressive",
+    "progresivo","ahora mismo","right now","now","at the moment","today","marcadores de tiempo",
   ],
 };
 

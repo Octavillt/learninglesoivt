@@ -178,7 +178,7 @@ export default function InOnAtSection() {
         <div style={{ color: "#4ade80", fontSize: "13px" }}>✅ He brushes his teeth every day.</div>
       </RuleBox>
       {FREQUENCY_EXAMPLES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
-      <RelatedTopic levelId="basico2" topicId="simplePresent" label="Repasar los adverbios de frecuencia" />
+      <RelatedTopic levelId="basico3" topicId="simplePresentAdvanced" label="Repasar los adverbios de frecuencia" />
 
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {MISTAKES.map((m, i) => (
