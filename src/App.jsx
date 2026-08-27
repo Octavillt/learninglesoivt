@@ -32,6 +32,7 @@ import VocabularySection      from "./features/vocabulary/VocabularySection";
 import InOnAtSection          from "./features/inOnAt/InOnAtSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
+import BackToPrevious      from "./components/BackToPrevious";
 
 const SECTIONS = {
   verbs:          VerbsSection,
@@ -64,6 +65,13 @@ function activeFor(level, map) {
   return level.topics.find(t => t.id === map[level.id])?.id ?? level.topics[0]?.id ?? null;
 }
 
+function topicLabel(levelId, topicId) {
+  const level = LEVELS.find(l => l.id === levelId);
+  const topic = level?.topics.find(t => t.id === topicId);
+  if (!topic) return null;
+  return `${topic.label} · ${level.label}`;
+}
+
 export default function App() {
   const { theme, themeId, selectTheme } = useTheme();
   // activeMap es la fuente de verdad en memoria (funciona aunque localStorage
@@ -75,6 +83,7 @@ export default function App() {
   const level = LEVELS.find(l => l.id === levelId);
   const Section = SECTIONS[active];
   const navRef = useRef(null);
+  const navWrapRef = useRef(null);
   const btnRefs = useRef({});
   // Término a resaltar en la sección tras saltar ahí desde el buscador
   // global; se consume una sola vez en el useEffect de navegación.
@@ -84,11 +93,23 @@ export default function App() {
   // vuelve a ejecutar el efecto, así que el término nunca se resaltaba. Este
   // contador cambia en cada navegación y garantiza que el efecto corra.
   const [navSeq, setNavSeq] = useState(0);
+  // Pila de temas visitados para la flecha de "volver a la sección anterior".
+  // Se limita a los últimos saltos: es un atajo de vuelta rápida, no un
+  // historial completo de la sesión.
+  const [backStack, setBackStack] = useState([]);
+  const previous = backStack[backStack.length - 1] ?? null;
 
-  function selectLevel(l) {
-    if (!l.available || l.id === levelId) return;
-    setLevelId(l.id);
-    setActive(activeFor(l, activeMap));
+  // Aplica la navegación sin tocar la pila: la usan tanto goToTopic (que sí
+  // apila el tema que se deja atrás) como goBack (que la consume).
+  function applyNavigation(targetLevel, resolved, highlightTerm) {
+    pendingHighlightRef.current = highlightTerm
+      ? { term: highlightTerm, sameSection: targetLevel.id === levelId && resolved === active }
+      : null;
+    setNavSeq(n => n + 1);
+    if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
+    setActive(resolved);
+    setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
+    saveActiveTopic(targetLevel.id, resolved);
   }
 
   // Fuente única para cambiar de tema: la usan tanto los botones de la barra
@@ -99,14 +120,26 @@ export default function App() {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
     if (!targetLevel || !targetLevel.available) return;
     const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
-    pendingHighlightRef.current = highlightTerm
-      ? { term: highlightTerm, sameSection: targetLevel.id === levelId && resolved === active }
-      : null;
-    setNavSeq(n => n + 1);
-    if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
-    setActive(resolved);
-    setActiveMap(prev => ({ ...prev, [targetLevel.id]: resolved }));
-    saveActiveTopic(targetLevel.id, resolved);
+    // Volver a buscar algo dentro del tema abierto no es un salto: apilarlo
+    // dejaría la flecha apuntando a la sección donde ya estamos.
+    const isJump = targetLevel.id !== levelId || resolved !== active;
+    if (isJump && active) {
+      setBackStack(prev => [...prev, { levelId, topicId: active }].slice(-10));
+    }
+    applyNavigation(targetLevel, resolved, highlightTerm);
+  }
+
+  function goBack() {
+    if (!previous) return;
+    const targetLevel = LEVELS.find(l => l.id === previous.levelId);
+    if (!targetLevel) return;
+    setBackStack(prev => prev.slice(0, -1));
+    applyNavigation(targetLevel, previous.topicId, null);
+  }
+
+  function selectLevel(l) {
+    if (!l.available || l.id === levelId) return;
+    goToTopic(l.id, activeFor(l, activeMap));
   }
 
   function selectTopic(topicId) {
@@ -134,6 +167,45 @@ export default function App() {
     }
   }, [active]);
 
+  // En iOS, al enfocar un buscador el zoom visual puede dejar scrollX > 0 y
+  // la pantalla se ve "corrida" a la izquierda. Recolocamos en 0 sin tocar el
+  // scroll vertical (el usuario no pidió anular el zoom, solo el descuadre).
+  useEffect(() => {
+    function realignX() {
+      if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+    }
+    window.addEventListener("scroll", realignX, { passive: true });
+    window.visualViewport?.addEventListener("scroll", realignX);
+    window.visualViewport?.addEventListener("resize", realignX);
+    return () => {
+      window.removeEventListener("scroll", realignX);
+      window.visualViewport?.removeEventListener("scroll", realignX);
+      window.visualViewport?.removeEventListener("resize", realignX);
+    };
+  }, []);
+
+  // Los buscadores de lista se pegan justo debajo de la barra de temas, así
+  // que necesitan su alto (cambia si las pills se acomodan en varias filas) y
+  // el fondo del tema activo para tapar lo que pasa por detrás.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty("--page-bg", theme.bg);
+
+    const wrap = navWrapRef.current;
+    if (!wrap) {
+      root.style.setProperty("--nav-h", "0px");
+      return;
+    }
+    const measure = () => {
+      root.style.setProperty("--nav-h", `${Math.round(wrap.getBoundingClientRect().height)}px`);
+    };
+    measure();
+    if (typeof ResizeObserver !== "function") return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(wrap);
+    return () => observer.disconnect();
+  }, [theme.bg, levelId]);
+
   return (
     <NavigationContext.Provider value={{ goTo: goToTopic }}>
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: theme.bg, color: theme.text }}>
@@ -145,7 +217,7 @@ export default function App() {
         <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800, color: "#fff" }}>🎓 English — {level.label}</h1>
         <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
 
-        <div style={{ marginTop: "12px", display: "flex", justifyContent: "center" }}>
+        <div style={{ marginTop: "12px", display: "flex", justifyContent: "center", minWidth: 0, width: "100%" }}>
           <GlobalSearch onSelect={goToTopic} />
         </div>
 
@@ -172,7 +244,7 @@ export default function App() {
       </div>
 
       {level.topics.length > 0 && (
-        <div className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
+        <div ref={navWrapRef} className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
           <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
             {level.topics.map(t => (
               <button
@@ -212,6 +284,11 @@ export default function App() {
       </main>
 
       <Footer theme={theme} />
+      <BackToPrevious
+        theme={theme}
+        label={previous ? topicLabel(previous.levelId, previous.topicId) : null}
+        onClick={goBack}
+      />
       <BackToTop theme={theme} />
     </div>
     </NavigationContext.Provider>

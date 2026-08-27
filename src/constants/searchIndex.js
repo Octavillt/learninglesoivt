@@ -52,6 +52,10 @@ const SEARCH_KEYWORDS = {
     "nineteen","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety",
     "hundred","thousand","million","billion","números","cero","uno","dos","tres","cuatro",
     "cinco","room number","cell",
+    "letters","letras","alphabet","abecedario","alfabeto","abc","vowels","vocales",
+    "consonants","consonantes","spelling","deletrear","how do you spell","double l",
+    "sonido largo","sonido corto","long vowel","short vowel","a e i o u",
+    "nombre de las letras","letter names",
   ],
   time: [
     "time","clock","o'clock","past","to","half past","quarter past","quarter to","hour",

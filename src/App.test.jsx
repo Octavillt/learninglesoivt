@@ -93,7 +93,8 @@ describe("App — selector de color y niveles", () => {
     await user.click(screen.getByRole("button", { name: "Básico II" }));
     await user.click(screen.getByRole("button", { name: "Básico I" }));
 
-    expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
+    // Nombre exacto: la flecha de regreso también menciona el tema anterior
+    expect(screen.getByRole("button", { name: "🏃 Verbos" })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
@@ -101,6 +102,56 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /🎯 Quiz/ })).toBeInTheDocument();
+  });
+
+  it("Numbers & Letters incluye números, abecedario y vocales", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: /🔢 Numbers & Letters/ }));
+
+    expect(screen.getByRole("heading", { name: "🔢 Numbers & Letters" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Cardinal Numbers/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Vowels/ })).toBeInTheDocument();
+  });
+});
+
+describe("App — flecha para volver a la sección anterior", () => {
+  beforeEach(() => localStorage.clear());
+
+  const flecha = () => screen.queryByRole("button", { name: /^Volver a / });
+
+  it("no aparece hasta que hay una sección anterior", () => {
+    render(<App />);
+    expect(flecha()).not.toBeInTheDocument();
+  });
+
+  it("regresa al tema anterior del mismo nivel", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: /🎯 Quiz/ }));
+    expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Volver a 🏃 Verbos · Básico I" }));
+
+    expect(screen.getByRole("heading", { name: "📝 Verbos" })).toBeInTheDocument();
+    // Consumida la pila, la flecha deja de ofrecerse
+    expect(flecha()).not.toBeInTheDocument();
+  });
+
+  it("regresa también al nivel anterior", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico II" }));
+    expect(screen.getByRole("heading", { name: "🏃 Verbos Irregulares" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Volver a 🏃 Verbos · Básico I" }));
+
+    expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "📝 Verbos" })).toBeInTheDocument();
   });
 });
 
@@ -139,5 +190,16 @@ describe("App — buscador global y resaltado", () => {
     // El resaltado anterior se deshace: sin esto los <mark> se acumularían
     // porque la sección no se remonta al no cambiar de tema.
     expect(document.querySelectorAll("main mark.search-highlight")).toHaveLength(1);
+  });
+
+  it("salta a Numbers & Letters al buscar 'abecedario'", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "abecedario");
+    await user.click(await screen.findByRole("option", { name: /Numbers & Letters/ }));
+
+    expect(screen.getByRole("heading", { name: "🔢 Numbers & Letters" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
   });
 });

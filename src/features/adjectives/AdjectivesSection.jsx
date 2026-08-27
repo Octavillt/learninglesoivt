@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
+import FilterableList from "../../components/FilterableList";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RuleBox from "../../components/RuleBox";
@@ -105,13 +106,13 @@ export default function AdjectivesSection() {
       {AFTER_VERB_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
       <SectionTitle color={COLOR}>📋 Lista de adjetivos más comunes</SectionTitle>
-      <input
+      <FilterableList
         placeholder="🔍 Busca: big, happy, feliz, contrario..."
         value={filter}
-        onChange={e => setFilter(e.target.value)}
-        style={{ width: "100%", padding: "11px 15px", borderRadius: "10px", border: "none", background: "#1e293b", color: "#fff", fontSize: "15px", marginBottom: "10px", boxSizing: "border-box" }}
-      />
-      <AdjectiveTable rows={filtered} />
+        onChange={setFilter}
+      >
+        <AdjectiveTable rows={filtered} />
+      </FilterableList>
     </div>
   );
 }
