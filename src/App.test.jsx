@@ -1,10 +1,12 @@
-import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+import { EXAM_REVIEW_END } from "./constants/topicAvailability";
 
 describe("App — selector de color y niveles", () => {
   beforeEach(() => localStorage.clear());
+  afterEach(() => vi.useRealTimers());
 
   it("arranca en Básico I con el tema por defecto (Pizarra)", () => {
     render(<App />);
@@ -100,6 +102,22 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("heading", { name: /WH Questions con do \/ does/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Simple Present vs\. Present Progressive/ })).toBeInTheDocument();
+  });
+
+  it("oculta el repaso temporal al llegar su hora límite", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(EXAM_REVIEW_END - 1);
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Básico III" }));
+    fireEvent.click(screen.getByRole("button", { name: "📝 Repaso para examen" }));
+    expect(screen.getByRole("heading", { name: /Repaso para el examen/ })).toBeInTheDocument();
+
+    act(() => vi.advanceTimersByTime(1));
+
+    expect(screen.queryByRole("button", { name: "📝 Repaso para examen" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Repaso para el examen/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /In \/ On \/ At — Tiempo y lugar/ })).toBeInTheDocument();
   });
 
   it("volver de Básico II a Básico I restaura los temas", async () => {

@@ -1,3 +1,5 @@
+import { EXAM_REVIEW_END } from "./topicAvailability";
+
 export const TOPICS = [
   { id: "verbs",          label: "🏃 Verbos",       color: "#7C3AED" },
   { id: "fruits",         label: "🍎 Frutas y Verduras", color: "#ea580c" },
@@ -30,4 +32,10 @@ export const TOPICS_BASICO2 = [
 export const TOPICS_BASICO3 = [
   { id: "inOnAt",                label: "📍 In / On / At",            color: "#FB923C" },
   { id: "simplePresentAdvanced", label: "🔁 Simple Present Avanzado", color: "#0EA5E9" },
+  {
+    id: "examReview",
+    label: "📝 Repaso para examen",
+    color: "#EC4899",
+    availableUntil: EXAM_REVIEW_END,
+  },
 ];

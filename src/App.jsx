@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LEVELS } from "./constants/levels";
 import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
+import { EXAM_REVIEW_END, getAvailableTopics, isTopicAvailable } from "./constants/topicAvailability";
 import { NavigationContext } from "./navigation/NavigationContext";
 import { useTheme } from "./styles/useTheme";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
@@ -31,6 +32,7 @@ import SimplePresentSection   from "./features/simplePresent/SimplePresentSectio
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import InOnAtSection          from "./features/inOnAt/InOnAtSection";
 import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/SimplePresentAdvancedSection";
+import ExamReviewSection from "./features/examReview/ExamReviewSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -48,6 +50,7 @@ const SECTIONS = {
   vocabulary:     VocabularySection,
   inOnAt:         InOnAtSection,
   simplePresentAdvanced: SimplePresentAdvancedSection,
+  examReview: ExamReviewSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
@@ -63,19 +66,23 @@ const SECTIONS = {
   quiz:           QuizSection,
 };
 
-function activeFor(level, map) {
-  return level.topics.find(t => t.id === map[level.id])?.id ?? level.topics[0]?.id ?? null;
+function activeFor(level, map, now = Date.now()) {
+  const topics = getAvailableTopics(level.topics, now);
+  return topics.find(t => t.id === map[level.id])?.id ?? topics[0]?.id ?? null;
 }
 
-function topicLabel(levelId, topicId) {
+function topicLabel(levelId, topicId, now = Date.now()) {
   const level = LEVELS.find(l => l.id === levelId);
   const topic = level?.topics.find(t => t.id === topicId);
-  if (!topic) return null;
+  if (!topic || !isTopicAvailable(topic, now)) return null;
   return `${topic.label} · ${level.label}`;
 }
 
 export default function App() {
   const { theme, themeId, selectTheme } = useTheme();
+  // Esta actualización también corre mientras la página está abierta: así el
+  // repaso no necesita un reload para desaparecer justo a la hora acordada.
+  const [now, setNow] = useState(() => Date.now());
   // activeMap es la fuente de verdad en memoria (funciona aunque localStorage
   // esté roto/bloqueado); loadActiveTopics/saveActiveTopic solo la sincronizan
   // con localStorage como bonus para sobrevivir a un reload de la página.
@@ -83,7 +90,13 @@ export default function App() {
   const [levelId, setLevelId] = useState(LEVELS[0].id);
   const [active, setActive] = useState(() => activeFor(LEVELS[0], loadActiveTopics()));
   const level = LEVELS.find(l => l.id === levelId);
-  const Section = SECTIONS[active];
+  const visibleTopics = getAvailableTopics(level.topics, now);
+  // Evita que una sección vencida se pinte siquiera durante el render que
+  // ocurre al llegar la hora límite; el efecto de abajo sincroniza el estado.
+  const resolvedActive = visibleTopics.some(t => t.id === active)
+    ? active
+    : activeFor(level, activeMap, now);
+  const Section = SECTIONS[resolvedActive];
   const navRef = useRef(null);
   const navWrapRef = useRef(null);
   const btnRefs = useRef({});
@@ -121,7 +134,11 @@ export default function App() {
   function goToTopic(targetLevelId, topicId, highlightTerm) {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
     if (!targetLevel || !targetLevel.available) return;
-    const resolved = targetLevel.topics.some(t => t.id === topicId) ? topicId : activeFor(targetLevel, activeMap);
+    const availableTopics = getAvailableTopics(targetLevel.topics, now);
+    const resolved = availableTopics.some(t => t.id === topicId)
+      ? topicId
+      : activeFor(targetLevel, activeMap, now);
+    if (!resolved) return;
     // Volver a buscar algo dentro del tema abierto no es un salto: apilarlo
     // dejaría la flecha apuntando a la sección donde ya estamos.
     const isJump = targetLevel.id !== levelId || resolved !== active;
@@ -136,17 +153,49 @@ export default function App() {
     const targetLevel = LEVELS.find(l => l.id === previous.levelId);
     if (!targetLevel) return;
     setBackStack(prev => prev.slice(0, -1));
-    applyNavigation(targetLevel, previous.topicId, null);
+    const availableTopics = getAvailableTopics(targetLevel.topics, now);
+    const resolved = availableTopics.some(t => t.id === previous.topicId)
+      ? previous.topicId
+      : activeFor(targetLevel, activeMap, now);
+    if (resolved) applyNavigation(targetLevel, resolved, null);
   }
 
   function selectLevel(l) {
     if (!l.available || l.id === levelId) return;
-    goToTopic(l.id, activeFor(l, activeMap));
+    goToTopic(l.id, activeFor(l, activeMap, now));
   }
 
   function selectTopic(topicId) {
     goToTopic(levelId, topicId);
   }
+
+  useEffect(() => {
+    function refreshAvailability() {
+      setNow(Date.now());
+    }
+
+    const remaining = EXAM_REVIEW_END - Date.now();
+    const timer = remaining > 0 ? window.setTimeout(refreshAvailability, remaining) : undefined;
+    window.addEventListener("focus", refreshAvailability);
+    document.addEventListener("visibilitychange", refreshAvailability);
+    return () => {
+      if (timer) window.clearTimeout(timer);
+      window.removeEventListener("focus", refreshAvailability);
+      document.removeEventListener("visibilitychange", refreshAvailability);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentLevel = LEVELS.find(item => item.id === levelId);
+    const currentTopics = currentLevel ? getAvailableTopics(currentLevel.topics, now) : [];
+    if (currentTopics.some(topic => topic.id === active)) return;
+    const fallback = currentTopics[0]?.id;
+    if (!fallback || !currentLevel) return;
+    setNavSeq(sequence => sequence + 1);
+    setActive(fallback);
+    setActiveMap(previousMap => ({ ...previousMap, [currentLevel.id]: fallback }));
+    saveActiveTopic(currentLevel.id, fallback);
+  }, [now, levelId, active]);
 
   useEffect(() => {
     const pending = pendingHighlightRef.current;
@@ -163,11 +212,11 @@ export default function App() {
   }, [active, navSeq]);
 
   useEffect(() => {
-    const btn = btnRefs.current[active];
+    const btn = btnRefs.current[resolvedActive];
     if (btn) {
       btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
-  }, [active]);
+  }, [resolvedActive]);
 
   // En iOS, al enfocar un buscador el zoom visual puede dejar scrollX > 0 y
   // la pantalla se ve "corrida" a la izquierda. Recolocamos en 0 sin tocar el
@@ -220,7 +269,7 @@ export default function App() {
         <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
 
         <div style={{ marginTop: "12px", display: "flex", justifyContent: "center", minWidth: 0, width: "100%" }}>
-          <GlobalSearch onSelect={goToTopic} />
+          <GlobalSearch onSelect={goToTopic} now={now} />
         </div>
 
         <div style={{ marginTop: "12px", display: "flex", gap: "8px", justifyContent: "center", flexWrap: "wrap" }}>
@@ -245,10 +294,10 @@ export default function App() {
         </div>
       </div>
 
-      {level.topics.length > 0 && (
+      {visibleTopics.length > 0 && (
         <div ref={navWrapRef} className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
           <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
-            {level.topics.map(t => (
+            {visibleTopics.map(t => (
               <button
                 key={t.id}
                 ref={el => { btnRefs.current[t.id] = el; }}
@@ -257,10 +306,10 @@ export default function App() {
                   flex: "0 0 auto", scrollSnapAlign: "center",
                   padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
                   fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
-                  background: active === t.id ? t.color : theme.navPillIdle,
+                  background: resolvedActive === t.id ? t.color : theme.navPillIdle,
                   color: "#fff",
-                  boxShadow: active === t.id ? `0 0 12px ${t.color}55` : "none",
-                  transform: active === t.id ? "scale(1.04)" : "scale(1)",
+                  boxShadow: resolvedActive === t.id ? `0 0 12px ${t.color}55` : "none",
+                  transform: resolvedActive === t.id ? "scale(1.04)" : "scale(1)",
                   transition: "all 0.15s",
                 }}
               >
@@ -271,7 +320,7 @@ export default function App() {
         </div>
       )}
 
-      <main key={active ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
+      <main key={resolvedActive ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
         {Section ? (
           <Section />
         ) : (
@@ -288,7 +337,7 @@ export default function App() {
       <Footer theme={theme} />
       <BackToPrevious
         theme={theme}
-        label={previous ? topicLabel(previous.levelId, previous.topicId) : null}
+        label={previous ? topicLabel(previous.levelId, previous.topicId, now) : null}
         onClick={goBack}
       />
       <BackToTop theme={theme} />

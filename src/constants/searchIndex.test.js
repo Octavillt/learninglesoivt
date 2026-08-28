@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { searchTopics } from "./searchIndex";
+import { EXAM_REVIEW_END } from "./topicAvailability";
 
 describe("searchTopics", () => {
   it("devuelve vacío para query vacío o solo espacios", () => {
@@ -61,6 +62,15 @@ describe("searchTopics", () => {
     const results = searchTopics("adverbios de frecuencia");
     expect(results.some(r => r.topicId === "simplePresentAdvanced" && r.levelId === "basico3")).toBe(true);
     expect(results.some(r => r.topicId === "simplePresent")).toBe(false);
+  });
+
+  it("muestra el repaso temporal antes del límite y lo excluye después", () => {
+    const before = searchTopics("daily blog", EXAM_REVIEW_END - 1);
+    const after = searchTopics("daily blog", EXAM_REVIEW_END);
+    expect(before.some(r => r.topicId === "examReview")).toBe(true);
+    expect(after.some(r => r.topicId === "examReview")).toBe(false);
+  });
+
   it("encuentra Numbers & Letters por abecedario, vocales o deletreo", () => {
     for (const q of ["abecedario", "vocales", "deletrear", "letters"]) {
       const hit = searchTopics(q).find(r => r.topicId === "numbers");
