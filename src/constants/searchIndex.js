@@ -1,4 +1,5 @@
 import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3 } from "./topics";
+import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
 // de palabras clave (inglés/español) representativas de su contenido, para
@@ -213,6 +214,14 @@ const SEARCH_KEYWORDS = {
     "simple present vs progressive","presente simple vs progresivo","present progressive",
     "progresivo","ahora mismo","right now","now","at the moment","today","marcadores de tiempo",
   ],
+  examReview: [
+    "repaso","examen","exam review","simple present wh questions","wh questions",
+    "frequency adverbs","adverbios de frecuencia","always","usually","often","sometimes","never",
+    "adjectives ed ing","adjetivos ed ing","bored boring","excited exciting","tired tiring",
+    "daily blog","the daily blog","start work","walk your dog","have coffee","get ready for work",
+    "take the subway","make phone calls","go home","have dinner","frequency expressions",
+    "once twice","every day","places we live","places we live p 49","neighborhood","lively","noisy",
+  ],
 };
 
 function buildIndex() {
@@ -228,6 +237,7 @@ function buildIndex() {
         topicId: t.id,
         label: t.label,
         color: t.color,
+        availableUntil: t.availableUntil,
         keywords: SEARCH_KEYWORDS[t.id] ?? [],
       });
     });
@@ -246,12 +256,13 @@ function normalize(str) {
 
 // Busca temas cuyo label o keywords contengan el query. Prioriza coincidencias
 // en el label del tema y luego las que matchean por contenido/keyword.
-export function searchTopics(query) {
+export function searchTopics(query, now = Date.now()) {
   const q = normalize(query.trim());
   if (!q) return [];
 
   const results = [];
   for (const entry of SEARCH_INDEX) {
+    if (!isTopicAvailable(entry, now)) continue;
     const label = normalize(entry.label);
     const labelMatch = label.includes(q);
     const matchedKeyword = !labelMatch

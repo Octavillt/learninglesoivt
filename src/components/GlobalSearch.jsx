@@ -6,7 +6,7 @@ import { LEVELS } from "../constants/levels";
 // resultados (Básico III se mostraba vacío con el mapa escrito a mano).
 const LEVEL_LABELS = Object.fromEntries(LEVELS.map(l => [l.id, l.label]));
 
-export default function GlobalSearch({ onSelect }) {
+export default function GlobalSearch({ onSelect, now }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +14,7 @@ export default function GlobalSearch({ onSelect }) {
   const inputRef = useRef(null);
   const listboxId = useId();
 
-  const results = useMemo(() => searchTopics(query), [query]);
+  const results = useMemo(() => searchTopics(query, now), [query, now]);
 
   useEffect(() => {
     setActiveIndex(0);
