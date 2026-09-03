@@ -104,6 +104,19 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByRole("heading", { name: /Simple Present vs\. Present Progressive/ })).toBeInTheDocument();
   });
 
+  it("abre Giving Directions desde la barra de Básico III", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Básico III" }));
+    await user.click(screen.getByRole("button", { name: /Giving Directions/ }));
+
+    expect(screen.getByRole("heading", { name: /Giving Directions — Dar indicaciones/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Movimientos esenciales/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Practica con el mapa/ })).toBeInTheDocument();
+    expect(screen.getByText("Go straight ahead", { selector: "div" })).toBeInTheDocument();
+  });
+
   it("oculta el repaso temporal al llegar su hora límite", () => {
     vi.useFakeTimers();
     vi.setSystemTime(EXAM_REVIEW_END - 1);

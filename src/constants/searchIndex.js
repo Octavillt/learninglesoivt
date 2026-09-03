@@ -214,6 +214,15 @@ const SEARCH_KEYWORDS = {
     "simple present vs progressive","presente simple vs progresivo","present progressive",
     "progresivo","ahora mismo","right now","now","at the moment","today","marcadores de tiempo",
   ],
+  directions: [
+    "giving directions","directions","dar indicaciones","pedir indicaciones","cómo llegar",
+    "go straight ahead","turn left","turn right","turn around","go over the bridge",
+    "go past","take the first left","take the first right","take the second left",
+    "take the second right","on the corner","next to","across from","between",
+    "traffic light","intersection","where is","how do i get to","excuse me",
+    "sigue derecho","todo recto","izquierda","derecha","puente","esquina","semáforo",
+    "main street","park avenue","river street","gym","hospital","high school","coffee shop",
+  ],
   examReview: [
     "repaso","examen","exam review","simple present wh questions","wh questions",
     "frequency adverbs","adverbios de frecuencia","always","usually","often","sometimes","never",
