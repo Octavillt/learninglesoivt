@@ -39,6 +39,14 @@ describe("searchTopics", () => {
     expect(inOnAt.levelId).toBe("basico3");
   });
 
+  it("encuentra Giving Directions por indicaciones en inglés o español", () => {
+    for (const query of ["turn right", "sigue derecho", "cómo llegar"]) {
+      const result = searchTopics(query).find(r => r.topicId === "directions");
+      expect(result, query).toBeDefined();
+      expect(result.levelId).toBe("basico3");
+    }
+  });
+
   it("prioriza coincidencias de label sobre coincidencias de contenido", () => {
     const results = searchTopics("time");
     expect(results[0].topicId).toBe("time");

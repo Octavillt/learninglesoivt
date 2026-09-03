@@ -33,6 +33,7 @@ import VocabularySection      from "./features/vocabulary/VocabularySection";
 import InOnAtSection          from "./features/inOnAt/InOnAtSection";
 import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/SimplePresentAdvancedSection";
 import ExamReviewSection from "./features/examReview/ExamReviewSection";
+import DirectionsSection from "./features/directions/DirectionsSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -51,6 +52,7 @@ const SECTIONS = {
   inOnAt:         InOnAtSection,
   simplePresentAdvanced: SimplePresentAdvancedSection,
   examReview: ExamReviewSection,
+  directions: DirectionsSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
