@@ -147,8 +147,10 @@ describe("App — selector de color y niveles", () => {
 
   it("la barra de temas muestra los temas del nivel activo", () => {
     render(<App />);
-    expect(screen.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /🎯 Quiz/ })).toBeInTheDocument();
+    const topics = within(screen.getByRole("navigation"));
+    expect(topics.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
+    expect(topics.queryByRole("button", { name: /Quiz/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeInTheDocument();
   });
 
   it("Numbers & Letters incluye números, abecedario y vocales", async () => {
@@ -174,7 +176,7 @@ describe("App — flecha para volver a la sección anterior", () => {
     expect(flecha()).not.toBeInTheDocument();
   });
 
-  it("regresa al tema anterior del mismo nivel", async () => {
+  it("regresa desde el módulo Quiz al tema anterior", async () => {
     const user = userEvent.setup();
     render(<App />);
 

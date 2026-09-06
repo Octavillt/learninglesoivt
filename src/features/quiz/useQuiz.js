@@ -2,12 +2,13 @@ import { useState } from "react";
 import { getByTopic, getRandom } from "./questions";
 
 function checkAnswer(userAnswer, acceptedAnswers) {
-  const normalized = userAnswer.trim().toLowerCase();
-  return acceptedAnswers.some(a => a.toLowerCase() === normalized);
+  const normalize = value => value.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/[.!?¿¡]+/g, "").replace(/\s+/g, " ").trim();
+  return acceptedAnswers.some(a => normalize(a) === normalize(userAnswer));
 }
 
 export function useQuiz() {
-  const [topic, setTopic]       = useState("mixed");
+  const [levelId, updateLevel] = useState("all");
+  const [topic, updateTopic] = useState("mixed");
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer]     = useState("");
   const [feedback, setFeedback] = useState(null);
@@ -15,11 +16,24 @@ export function useQuiz() {
   const [started, setStarted]   = useState(false);
   const [history, setHistory]   = useState([]);
 
+  function reset() {
+    setQuestion(null);
+    setAnswer("");
+    setFeedback(null);
+    setScore({ correct: 0, total: 0 });
+    setHistory([]);
+    setStarted(false);
+  }
+
+  function setTopic(value) { updateTopic(value); reset(); }
+  function setLevelId(value) { updateLevel(value); updateTopic("mixed"); reset(); }
+
   function nextQuestion() {
-    const pool = getByTopic(topic).filter(q => !history.includes(q));
-    const remaining = pool.length > 0 ? pool : getByTopic(topic);
-    const q = getRandom(remaining);
-    setHistory(prev => (remaining === getByTopic(topic) ? [q] : [...prev, q]));
+    const all = getByTopic(topic, levelId);
+    const pool = all.filter(q => !history.includes(q));
+    const q = getRandom(pool.length ? pool : all);
+    if (!q) return;
+    setHistory(prev => pool.length ? [...prev, q] : [q]);
     setQuestion(q);
     setAnswer("");
     setFeedback(null);
@@ -27,7 +41,7 @@ export function useQuiz() {
   }
 
   function submitAnswer() {
-    if (!answer.trim() || !question) return;
+    if (!answer.trim() || !question || feedback) return;
     const correct = checkAnswer(answer, question.answers);
     setFeedback({ correct, explanation: question.explanation });
     setScore(prev => ({ correct: prev.correct + (correct ? 1 : 0), total: prev.total + 1 }));
@@ -36,6 +50,8 @@ export function useQuiz() {
   const percentage = score.total > 0 ? Math.round((score.correct / score.total) * 100) : null;
 
   return {
+    levelId, setLevelId,
+    questionCount: getByTopic(topic, levelId).length,
     topic, setTopic,
     question,
     answer, setAnswer,
