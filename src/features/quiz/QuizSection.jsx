@@ -1,24 +1,12 @@
 import { useQuiz } from "./useQuiz";
 
-const TOPIC_OPTIONS = [
-  { value: "mixed",           label: "🎲 Mezcla de todos los temas" },
-  { value: "verbs",           label: "📝 Verbos" },
-  { value: "plural",          label: "🔢 Plurales" },
-  { value: "numbers",         label: "🔢 Numbers & Letters" },
-  { value: "time",            label: "🕐 Time" },
-  { value: "dates",           label: "📅 Dates" },
-  { value: "countries",       label: "🌎 Countries" },
-  { value: "jobs",            label: "👷 Jobs" },
-  { value: "family",          label: "👪 Family" },
-  { value: "tobe",            label: "✅ Verb To Be" },
-  { value: "demonstratives",  label: "👆 This / That / These / Those" },
-  { value: "prepositions",    label: "📍 Preposiciones" },
-  { value: "progressive",     label: "⚡ Forma -ING" },
-  { value: "fruits",          label: "🍎 Frutas y Verduras" },
-];
+import { LEVELS } from "../../constants/levels";
+
+const STUDY_LEVELS = LEVELS.filter(level => level.id !== "quiz");
 
 export default function QuizSection() {
   const {
+    levelId, setLevelId, questionCount,
     topic, setTopic,
     question, answer, setAnswer,
     feedback,
@@ -30,6 +18,7 @@ export default function QuizSection() {
   return (
     <div>
       <h2 style={{ color: "#fff", marginTop: 0 }}>🎯 Quiz</h2>
+      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa todas las secciones de Básico I, II y III, incluyendo el repaso para examen. Elige un módulo o combina todos los temas.</p>
 
       {/* Puntuación */}
       <div style={{ background: "#1e293b", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -44,14 +33,27 @@ export default function QuizSection() {
         )}
       </div>
 
-      {/* Selector de tema */}
+      <label htmlFor="quiz-level" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Módulo</label>
+      <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "#1e293b", color: "#fff", fontSize: 16, marginBottom: 12 }}>
+        <option value="all">Todos los módulos</option>
+        {STUDY_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
+      </select>
+      <label htmlFor="quiz-topic" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Sección</label>
       <select
+        id="quiz-topic"
         value={topic}
         onChange={e => setTopic(e.target.value)}
         style={{ width: "100%", padding: "11px", borderRadius: "10px", border: "none", background: "#1e293b", color: "#fff", fontSize: "14px", marginBottom: "12px" }}
       >
-        {TOPIC_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+        <option value="mixed">🎲 Mezcla de todos los temas</option>
+        {STUDY_LEVELS.filter(level => levelId === "all" || level.id === levelId).map(level => (
+          <optgroup key={level.id} label={level.label}>
+            {level.topics.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+          </optgroup>
+        ))}
       </select>
+
+      <p style={{ color: "#94a3b8", fontSize: 13 }}>{questionCount} preguntas disponibles. Cambiar el módulo o la sección reinicia la puntuación.</p>
 
       {/* Pantalla inicial */}
       {!started && (
@@ -70,6 +72,8 @@ export default function QuizSection() {
             {question.question}
           </div>
 
+          <p style={{ color: "#94a3b8", fontSize: 13 }}>{STUDY_LEVELS.flatMap(level => level.topics.map(item => ({ ...item, levelLabel: level.label }))).filter(item => item.id === question.topic).map(item => item.levelLabel + " · " + item.label).join("")}</p>
+          {question.options && <p style={{ color: "#cbd5e1" }}>Escribe una opción: {question.options.join(" | ")}</p>}
           {question.hint && (
             <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "14px", padding: "8px 12px", background: "#0f172a", borderRadius: "8px" }}>
               💡 {question.hint}

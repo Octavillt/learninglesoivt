@@ -1,3 +1,6 @@
+import { MODULE_QUESTIONS } from "./moduleQuestions";
+import { LEVELS } from "../../constants/levels";
+
 // Cada pregunta tiene:
 //   question  — texto que se muestra al estudiante
 //   answers   — array de respuestas aceptadas (case-insensitive)
@@ -6,6 +9,7 @@
 //   explanation — se muestra al revelar la respuesta correcta
 
 export const QUESTIONS = [
+  ...MODULE_QUESTIONS,
   // ── Verb To Be ────────────────────────────────────────────────
   {
     topic: "tobe",
@@ -1008,9 +1012,10 @@ export const QUESTIONS = [
   },
 ];
 
-export function getByTopic(topic) {
-  if (topic === "mixed") return QUESTIONS;
-  return QUESTIONS.filter(q => q.topic === topic);
+export function getByTopic(topic, levelId = "all") {
+  const topics = LEVELS.find(level => level.id === levelId)?.topics;
+  return QUESTIONS.filter(q => (topic === "mixed" || q.topic === topic) &&
+    (levelId === "all" || topics?.some(t => t.id === q.topic)));
 }
 
 export function getRandom(pool) {

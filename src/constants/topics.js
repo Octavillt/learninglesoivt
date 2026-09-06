@@ -14,7 +14,6 @@ export const TOPICS = [
   { id: "demonstratives", label: "👉 This / That",   color: "#D97706" },
   { id: "prepositions",   label: "📍 Preposiciones", color: "#2563EB" },
   { id: "progressive",    label: "🌀 Progresivo",    color: "#9333EA" },
-  { id: "quiz",           label: "🎯 Quiz",          color: "#EAB308" },
 ];
 
 export const TOPICS_BASICO2 = [
@@ -40,3 +39,5 @@ export const TOPICS_BASICO3 = [
     availableUntil: EXAM_REVIEW_END,
   },
 ];
+
+export const TOPICS_QUIZ = [{ id: "quiz", label: "🎯 Práctica general", color: "#EAB308" }];
