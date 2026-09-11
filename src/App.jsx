@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LEVELS } from "./constants/levels";
 import { loadActiveTopics, saveActiveTopic } from "./constants/activeTopics";
-import { EXAM_REVIEW_END, getAvailableTopics, isTopicAvailable } from "./constants/topicAvailability";
+import { getAvailableTopics, isTopicAvailable } from "./constants/topicAvailability";
 import { NavigationContext } from "./navigation/NavigationContext";
 import { useTheme } from "./styles/useTheme";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
@@ -32,6 +32,7 @@ import SimplePresentSection   from "./features/simplePresent/SimplePresentSectio
 import VocabularySection      from "./features/vocabulary/VocabularySection";
 import InOnAtSection          from "./features/inOnAt/InOnAtSection";
 import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/SimplePresentAdvancedSection";
+import TopicsExamSection from "./features/topicsExam/TopicsExamSection";
 import ExamReviewSection from "./features/examReview/ExamReviewSection";
 import DirectionsSection from "./features/directions/DirectionsSection";
 import Footer              from "./components/Footer";
@@ -52,6 +53,7 @@ const SECTIONS = {
   inOnAt:         InOnAtSection,
   simplePresentAdvanced: SimplePresentAdvancedSection,
   examReview: ExamReviewSection,
+  topicsExam: TopicsExamSection,
   directions: DirectionsSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
@@ -105,6 +107,10 @@ export default function App() {
   // Término a resaltar en la sección tras saltar ahí desde el buscador
   // global; se consume una sola vez en el useEffect de navegación.
   const pendingHighlightRef = useRef(null);
+  // El mismo término, pero como estado: las secciones que muestran su
+  // contenido por pestañas (Topics Exam) necesitan abrir la que lo contiene
+  // antes de que corra el resaltado.
+  const [highlightTerm, setHighlightTerm] = useState(null);
   // `active` no basta como disparador: si el resultado elegido pertenece a la
   // sección que ya está abierta, setActive recibe el mismo valor y React no
   // vuelve a ejecutar el efecto, así que el término nunca se resaltaba. Este
@@ -122,6 +128,7 @@ export default function App() {
     pendingHighlightRef.current = highlightTerm
       ? { term: highlightTerm, sameSection: targetLevel.id === levelId && resolved === active }
       : null;
+    setHighlightTerm(highlightTerm ?? null);
     setNavSeq(n => n + 1);
     if (targetLevel.id !== levelId) setLevelId(targetLevel.id);
     setActive(resolved);
@@ -176,8 +183,12 @@ export default function App() {
       setNow(Date.now());
     }
 
-    const remaining = EXAM_REVIEW_END - Date.now();
-    const timer = remaining > 0 ? window.setTimeout(refreshAvailability, remaining) : undefined;
+    const deadlines = LEVELS.flatMap(item => item.topics)
+      .map(topic => topic.availableUntil).filter(deadline => deadline > Date.now());
+    const remaining = deadlines.length ? Math.min(...deadlines) - Date.now() : 0;
+    const timer = remaining > 0
+      ? window.setTimeout(refreshAvailability, Math.min(remaining, 2147483647))
+      : undefined;
     window.addEventListener("focus", refreshAvailability);
     document.addEventListener("visibilitychange", refreshAvailability);
     return () => {
@@ -185,7 +196,7 @@ export default function App() {
       window.removeEventListener("focus", refreshAvailability);
       document.removeEventListener("visibilitychange", refreshAvailability);
     };
-  }, []);
+  }, [now]);
 
   useEffect(() => {
     const currentLevel = LEVELS.find(item => item.id === levelId);
@@ -324,7 +335,11 @@ export default function App() {
 
       <main key={resolvedActive ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
         {Section ? (
-          <Section />
+          <Section
+            key={resolvedActive === "quiz" ? LEVELS.flatMap(item => getAvailableTopics(item.topics, now)).map(item => item.id).join(",") : resolvedActive}
+            highlightTerm={highlightTerm}
+            highlightSeq={navSeq}
+          />
         ) : (
           <div style={{ textAlign: "center", padding: "60px 20px" }}>
             <div style={{ fontSize: "52px", marginBottom: "14px" }}>🚧</div>

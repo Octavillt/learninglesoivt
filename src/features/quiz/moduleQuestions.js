@@ -6,6 +6,7 @@ import { EXERCISE as SIMPLE_PRESENT } from "../simplePresent/data";
 import { EXERCISE as IN_ON_AT } from "../inOnAt/data";
 import { SP_ADV_EXERCISE } from "../simplePresentAdvanced/data";
 import { PRACTICE as DIRECTIONS } from "../directions/data";
+import { PRACTICE as TOPICS_EXAM } from "../topicsExam/data";
 import { PRACTICE as EXAM_REVIEW } from "../examReview/data";
 import { IRREGULAR_VERBS } from "../irregularVerbs/data";
 import { BEFORE_NOUN_SENTENCES, AFTER_VERB_SENTENCES } from "../adjectives/data";
@@ -36,6 +37,7 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...TOPICS_EXAM.map(row => ({ topic: "topicsExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...missingToken("articles", ARTICLE_EXERCISE),
   ...missingToken("possessiveAdjectives", POSSESSIVE_EXERCISE),
   ...completeSentences("possessiveNouns", JOIN_EXERCISE),

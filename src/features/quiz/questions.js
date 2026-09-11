@@ -1,4 +1,5 @@
 import { MODULE_QUESTIONS } from "./moduleQuestions";
+import { getAvailableTopics } from "../../constants/topicAvailability";
 import { LEVELS } from "../../constants/levels";
 
 // Cada pregunta tiene:
@@ -1012,9 +1013,10 @@ export const QUESTIONS = [
   },
 ];
 
-export function getByTopic(topic, levelId = "all") {
+export function getByTopic(topic, levelId = "all", now = Date.now()) {
+  const available = new Set(getAvailableTopics(LEVELS.flatMap(level => level.topics), now).map(item => item.id));
   const topics = LEVELS.find(level => level.id === levelId)?.topics;
-  return QUESTIONS.filter(q => (topic === "mixed" || q.topic === topic) &&
+  return QUESTIONS.filter(q => available.has(q.topic) && (topic === "mixed" || q.topic === topic) &&
     (levelId === "all" || topics?.some(t => t.id === q.topic)));
 }
 

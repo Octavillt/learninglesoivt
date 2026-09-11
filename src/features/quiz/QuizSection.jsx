@@ -1,5 +1,6 @@
 import { useQuiz } from "./useQuiz";
 
+import { getAvailableTopics } from "../../constants/topicAvailability";
 import { LEVELS } from "../../constants/levels";
 
 const STUDY_LEVELS = LEVELS.filter(level => level.id !== "quiz");
@@ -48,7 +49,7 @@ export default function QuizSection() {
         <option value="mixed">🎲 Mezcla de todos los temas</option>
         {STUDY_LEVELS.filter(level => levelId === "all" || level.id === levelId).map(level => (
           <optgroup key={level.id} label={level.label}>
-            {level.topics.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+            {getAvailableTopics(level.topics).map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
           </optgroup>
         ))}
       </select>

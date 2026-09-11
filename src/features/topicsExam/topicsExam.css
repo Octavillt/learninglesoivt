@@ -1,0 +1,242 @@
+/* Topics Exam — módulo por pestañas. Paleta alineada con el resto de la app
+   (slate 900/800) y acento rosa #ec4899. Mobile first: todo lo que en escritorio
+   es tabla o rejilla, en el teléfono se convierte en tarjetas apiladas. */
+
+.topics-exam { color: #cbd5e1; font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
+.topics-exam strong, .topics-exam b { color: #f8fafc; }
+.topics-exam p { margin: 0 0 10px; }
+.exam-text { color: #cbd5e1; font-size: 14px; line-height: 1.75; }
+.exam-text p:first-child, .exam-text ol:first-child, .exam-text ul:first-child { margin-top: 0; }
+.exam-text p:last-child, .exam-text ol:last-child, .exam-text ul:last-child { margin-bottom: 0; }
+.exam-text ol, .exam-text ul { padding-left: 20px; margin: 0 0 10px; }
+.exam-text li { margin-bottom: 5px; }
+
+/* Encabezado ------------------------------------------------------------- */
+.exam-header { border: 1px solid #ec489944; border-radius: 14px; padding: 16px 18px;
+  background: linear-gradient(135deg, #3b0764, #1e293b); margin-bottom: 14px; }
+.exam-header h2 { color: #f9a8d4; margin: 0 0 6px; font-size: 20px; line-height: 1.3; }
+.exam-header p { color: #cbd5e1; margin: 0 0 10px; }
+.exam-header-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.exam-header-meta span { background: #0f172a99; border: 1px solid #475569; border-radius: 20px;
+  padding: 5px 11px; font-size: 12px; color: #e2e8f0; }
+
+/* Pestañas --------------------------------------------------------------- */
+.exam-tabs { display: flex; gap: 7px; overflow-x: auto; padding: 8px 2px; margin-bottom: 12px;
+  /* Se queda pegada justo debajo de la barra de temas (--nav-h la publica
+     App.jsx), igual que .filter-sticky. */
+  position: sticky; top: var(--nav-h, 52px); z-index: 5;
+  background: var(--page-bg, #0f172a); backdrop-filter: blur(6px);
+  border-bottom: 1px solid #1e293b; scrollbar-width: thin; }
+.exam-tabs::-webkit-scrollbar { height: 5px; }
+.exam-tabs::-webkit-scrollbar-thumb { background: #475569; border-radius: 5px; }
+.exam-tab { flex: 0 0 auto; background: #1e293b; border: 1px solid #334155; border-radius: 20px;
+  color: #cbd5e1; cursor: pointer; font-size: 13px; font-weight: 700; padding: 8px 14px;
+  white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
+.exam-tab:hover { background: #334155; color: #f8fafc; }
+.exam-tab.is-active { background: #ec4899; border-color: #ec4899; color: #150520; }
+.exam-tab:focus-visible, .exam-chip:focus-visible, .exam-plan-card:focus-visible,
+.exam-route-step:focus-visible { outline: 2px solid #f9a8d4; outline-offset: 2px; }
+
+.exam-panel { animation: exam-fade .25s ease; }
+@keyframes exam-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .exam-panel { animation: none; } }
+.exam-panel-title { font-size: 16px; margin: 4px 0 12px; line-height: 1.35; }
+
+.exam-pager { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px;
+  padding-top: 14px; border-top: 1px solid #1e293b; }
+
+/* Botones tipo chip ------------------------------------------------------ */
+.exam-chip { background: #1e293b; border: 1px solid #334155; border-radius: 20px; color: #e2e8f0;
+  cursor: pointer; font-size: 13px; font-weight: 700; padding: 8px 14px; transition: background .15s; }
+.exam-chip:hover:not(:disabled) { background: #334155; }
+.exam-chip:disabled { opacity: .4; cursor: not-allowed; }
+.exam-chip.is-active { background: #ec4899; border-color: #ec4899; color: #150520; }
+.exam-chip.is-right { background: #052e16; border-color: #22c55e; color: #86efac; }
+.exam-chip.is-wrong { background: #450a0a; border-color: #ef4444; color: #fca5a5; }
+.exam-chip-count { background: #0f172a66; border-radius: 10px; font-size: 11px; padding: 1px 6px; margin-left: 4px; }
+.exam-filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+
+/* Tablas ----------------------------------------------------------------- */
+.exam-table-wrap { overflow-x: auto; margin-bottom: 14px; border-radius: 10px; }
+.exam-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
+.exam-table caption { caption-side: top; color: #94a3b8; font-size: 12px; text-align: left; padding-bottom: 7px; }
+.exam-table th { background: #334155; color: #fbcfe8; font-size: 12.5px; }
+.exam-table td { background: #1e293b; vertical-align: top; }
+.exam-table th, .exam-table td { padding: 11px 12px; border-bottom: 2px solid #0f172a; }
+.exam-table tr:last-child td { border-bottom: none; }
+
+/* Cajas y avisos --------------------------------------------------------- */
+.exam-callout { display: flex; gap: 11px; align-items: flex-start; background: #1e293b;
+  border-left: 4px solid #38bdf8; border-radius: 10px; padding: 13px 15px; margin-bottom: 12px; }
+.exam-callout-warn { border-left-color: #fbbf24; }
+.exam-callout-icon { font-size: 18px; line-height: 1.4; }
+.exam-callout-title { color: #f8fafc; font-weight: 800; font-size: 14px; margin-bottom: 5px; }
+
+/* Pasos numerados -------------------------------------------------------- */
+.exam-steps { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+.exam-steps li { display: flex; gap: 11px; background: #1e293b; border-radius: 10px; padding: 12px 14px; }
+.exam-step-number { flex: 0 0 26px; height: 26px; border-radius: 50%; background: #ec4899; color: #150520;
+  font-weight: 800; font-size: 13px; display: grid; place-items: center; }
+.exam-step-title { color: #f8fafc; font-weight: 700; }
+.exam-step-detail { color: #94a3b8; font-size: 13px; }
+
+/* Fórmulas --------------------------------------------------------------- */
+.exam-pattern { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 13px 15px; margin-bottom: 10px; }
+.exam-pattern-label { color: #f9a8d4; font-size: 11.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; margin-bottom: 8px; }
+.exam-pattern-parts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; line-height: 2.1; }
+.exam-pattern-part { display: inline-flex; align-items: center; gap: 6px; }
+.exam-plus { color: #475569; font-weight: 700; }
+.exam-pattern-plain { color: #f8fafc; font-weight: 700; font-size: 14px; }
+.exam-pattern-example { margin-top: 9px; padding-top: 9px; border-top: 1px solid #1e293b;
+  color: #94a3b8; font-size: 13px; }
+
+/* Reglas de ortografía --------------------------------------------------- */
+.exam-rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 9px; margin-bottom: 14px; }
+.exam-rule-card { background: #1e293b; border-radius: 10px; border-top: 3px solid #475569; padding: 12px 14px; }
+.exam-rule-title { font-weight: 800; font-size: 13.5px; }
+.exam-rule-desc { color: #94a3b8; font-size: 12.5px; margin: 4px 0 8px; }
+.exam-rule-words { display: flex; flex-wrap: wrap; gap: 6px; }
+.exam-rule-word { background: #0f172a; border-radius: 7px; padding: 4px 9px; font-size: 13px; color: #e2e8f0; }
+.exam-rule-word em { color: #64748b; font-style: normal; font-size: 12px; }
+
+/* Decisión entre tiempos ------------------------------------------------- */
+.exam-decision { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.exam-decision-card { background: #1e293b; border-radius: 12px; padding: 14px 15px; border-top: 3px solid #ec4899; }
+.exam-decision-head { color: #f8fafc; font-weight: 800; font-size: 15px; }
+.exam-decision-sub { color: #94a3b8; font-size: 12.5px; margin-bottom: 8px; }
+.exam-decision-ask { color: #fbcfe8; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.exam-signals { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.exam-signal { background: #0f172a; border: 1px solid #334155; border-radius: 20px; color: #7dd3fc;
+  font-size: 11.5px; font-weight: 700; padding: 3px 9px; }
+.exam-decision-example { border-top: 1px solid #334155; padding-top: 8px; font-size: 13px; color: #94a3b8; }
+
+/* Comparación de tiempos ------------------------------------------------- */
+.exam-compare { display: grid; gap: 9px; margin-bottom: 14px; }
+.exam-compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.exam-compare-cell { background: #1e293b; border-radius: 10px; padding: 11px 13px; display: grid; gap: 4px; font-size: 13px; }
+.exam-compare-cell span:last-child { color: #64748b; font-size: 12px; }
+.exam-tag { justify-self: start; border-radius: 20px; font-size: 11px; font-weight: 800; padding: 2px 8px; }
+.exam-tag-sp { background: #052e16; color: #4ade80; }
+.exam-tag-pp { background: #3b0764; color: #f472b6; }
+
+/* Píldoras de vocabulario ------------------------------------------------ */
+.exam-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.exam-pill { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 8px 12px;
+  font-size: 13px; color: #cbd5e1; display: grid; gap: 2px; }
+.exam-pill span { color: #64748b; font-size: 12px; }
+
+/* Errores típicos -------------------------------------------------------- */
+.exam-mistakes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 9px; margin-bottom: 14px; }
+.exam-mistake { background: #1e293b; border-radius: 10px; padding: 12px 14px; }
+.exam-mistake-wrong { color: #f87171; }
+.exam-mistake-right { color: #4ade80; margin-top: 2px; }
+.exam-mistake-note { color: #64748b; font-size: 12.5px; margin-top: 7px; padding-top: 7px; border-top: 1px solid #334155; }
+
+/* Ejercicio guiado de There is / There are ------------------------------- */
+.exam-drill { display: grid; gap: 10px; margin-bottom: 14px; }
+.exam-drill-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 13px 15px; }
+.exam-drill-card.is-right { border-color: #22c55e66; }
+.exam-drill-card.is-wrong { border-color: #ef444466; }
+.exam-drill-sentence { color: #f8fafc; font-weight: 600; margin: 0 0 9px; }
+.exam-drill-options { display: flex; flex-wrap: wrap; gap: 7px; }
+.exam-drill-feedback { margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;
+  display: grid; gap: 5px; font-size: 13px; color: #cbd5e1; }
+.exam-drill-esp { color: #64748b; font-size: 12.5px; }
+
+/* Directions: movimiento vs ubicación ------------------------------------ */
+.exam-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.exam-split-card { background: #1e293b; border-radius: 12px; padding: 14px 15px; border-top: 3px solid #ec4899; }
+.exam-split-head { color: #f8fafc; font-weight: 800; font-size: 14px; margin-bottom: 6px; }
+.exam-move-list { display: grid; gap: 7px; }
+.exam-move { display: flex; gap: 10px; align-items: flex-start; background: #0f172a; border-radius: 9px; padding: 9px 11px; }
+.exam-move-icon { font-size: 17px; min-width: 24px; text-align: center; }
+.exam-move b { display: block; color: #f8fafc; font-size: 13.5px; }
+.exam-move span span { display: block; color: #94a3b8; font-size: 12px; }
+.exam-move em { display: block; color: #64748b; font-size: 12px; margin-top: 3px; }
+
+/* Mapa de la ruta -------------------------------------------------------- */
+.exam-map-block { margin-bottom: 14px; }
+.exam-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: #334155;
+  border: 3px solid #475569; border-radius: 12px; padding: 4px; margin-bottom: 10px; }
+.exam-map-cell { position: relative; aspect-ratio: 1; background: #0f172a; border-radius: 7px;
+  display: grid; place-items: center; padding: 4px; text-align: center; transition: background .2s; }
+.exam-map-cell.is-visited { background: #3b0764; }
+.exam-map-cell.is-current { background: #ec4899; box-shadow: 0 0 0 2px #f9a8d4; }
+.exam-map-place { display: grid; gap: 2px; }
+.exam-map-icon { font-size: 20px; }
+.exam-map-name { color: #e2e8f0; font-size: 10px; font-weight: 700; line-height: 1.2; }
+.exam-map-cell.is-current .exam-map-name { color: #150520; }
+.exam-map-you { position: absolute; bottom: 2px; right: 4px; font-size: 15px; }
+.exam-map-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.exam-map-counter { color: #94a3b8; font-size: 12.5px; font-weight: 700; }
+.exam-route-list { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 7px; counter-reset: route; }
+.exam-route-step { width: 100%; text-align: left; background: #1e293b; border: 1px solid #334155;
+  border-radius: 10px; padding: 11px 13px; cursor: pointer; display: grid; gap: 3px; }
+.exam-route-step.is-current { border-color: #ec4899; background: #2b1030; }
+.exam-route-step strong { color: #f8fafc; font-size: 13.5px; }
+.exam-route-step span { color: #94a3b8; font-size: 12.5px; }
+.exam-route-note { color: #64748b !important; font-size: 12px !important; }
+.exam-route-full { background: #0f172a; border-radius: 10px; padding: 11px 13px; font-size: 13px; }
+
+/* Diálogo ---------------------------------------------------------------- */
+.exam-dialogue { display: grid; gap: 7px; margin-bottom: 14px; }
+.exam-line { display: flex; gap: 10px; align-items: flex-start; background: #1e293b; border-radius: 10px; padding: 10px 13px; }
+.exam-line-b { background: #17212f; }
+.exam-speaker { flex: 0 0 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  background: #ec4899; color: #150520; font-weight: 800; font-size: 12px; }
+.exam-line-b .exam-speaker { background: #38bdf8; color: #08263a; }
+.exam-line strong { display: block; font-size: 13.5px; }
+.exam-line span { color: #64748b; font-size: 12.5px; }
+
+/* Orden de adjetivos ----------------------------------------------------- */
+.exam-order { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.exam-order-chip { background: #1e293b; border: 1px solid #475569; border-radius: 9px; padding: 7px 11px; display: grid; gap: 1px; }
+.exam-order-chip b { color: #f9a8d4; font-size: 13px; }
+.exam-order-chip span { color: #64748b; font-size: 11.5px; }
+
+/* Plan de estudio -------------------------------------------------------- */
+.exam-plan { display: grid; gap: 8px; margin-bottom: 14px; }
+.exam-plan-card { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left;
+  background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 13px 15px; cursor: pointer;
+  transition: border-color .15s, background .15s; }
+.exam-plan-card:hover { border-color: #ec4899; background: #24182e; }
+.exam-plan-number { flex: 0 0 30px; height: 30px; border-radius: 9px; background: #ec4899; color: #150520;
+  font-weight: 800; display: grid; place-items: center; }
+.exam-plan-body { display: grid; gap: 3px; flex: 1; }
+.exam-plan-title { color: #f8fafc; font-weight: 800; font-size: 14px; }
+.exam-plan-detail { color: #94a3b8; font-size: 12.5px; }
+.exam-priority { justify-self: start; border-radius: 20px; font-size: 11px; font-weight: 700; padding: 2px 8px; margin-top: 3px; }
+.exam-priority-alta { background: #450a0a; color: #fca5a5; }
+.exam-priority-media { background: #1e293b; color: #7dd3fc; border: 1px solid #334155; }
+.exam-plan-go { color: #ec4899; font-size: 18px; font-weight: 800; }
+
+/* Responsive ------------------------------------------------------------- */
+@media (max-width: 700px) {
+  .exam-compare-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  /* Las tablas dejan de hacer scroll horizontal: cada fila es una tarjeta y
+     cada celda muestra su encabezado. */
+  .exam-table-wrap { overflow-x: visible; }
+  .exam-table, .exam-table tbody, .exam-table tr, .exam-table td { display: block; width: 100%; }
+  .exam-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .exam-table tr { background: #1e293b; border-radius: 10px; padding: 4px 0; margin-bottom: 9px; }
+  .exam-table td { border-bottom: 1px solid #334155; padding: 9px 13px; }
+  .exam-table tr td:last-child { border-bottom: none; }
+  .exam-table td::before { content: attr(data-label); display: block; color: #f9a8d4; font-size: 11px;
+    font-weight: 800; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 3px; }
+  .exam-table td:empty { display: none; }
+}
+
+@media (max-width: 480px) {
+  .topics-exam { font-size: 13.5px; }
+  .exam-header { padding: 14px; }
+  .exam-header h2 { font-size: 18px; }
+  .exam-tab { font-size: 12.5px; padding: 7px 12px; }
+  .exam-map-name { font-size: 8.5px; }
+  .exam-map-icon { font-size: 16px; }
+  .exam-pager .exam-chip { flex: 1; }
+  .exam-callout { padding: 12px; }
+}
