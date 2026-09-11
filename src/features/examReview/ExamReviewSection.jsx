@@ -17,7 +17,7 @@ import {
 
 const COLOR = "#ec4899";
 
-function VocabGrid({ entries, columns = 2 }) {
+export function VocabGrid({ entries, columns = 2 }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(${columns === 3 ? "170px" : "230px"}, 1fr))`, gap: "8px", marginBottom: "10px" }}>
       {entries.map(([word, esp, example]) => (
@@ -31,17 +31,17 @@ function VocabGrid({ entries, columns = 2 }) {
   );
 }
 
-function Practice() {
-  const [answers, setAnswers] = useState(() => Array(PRACTICE.length).fill(null));
+export function Practice({ questions = PRACTICE }) {
+  const [answers, setAnswers] = useState(() => Array(questions.length).fill(null));
   const attempted = answers.filter(answer => answer !== null).length;
-  const correct = answers.reduce((total, answer, index) => total + (answer === PRACTICE[index].correct ? 1 : 0), 0);
+  const correct = answers.reduce((total, answer, index) => total + (answer === questions[index].correct ? 1 : 0), 0);
   const message = useMemo(() => {
     if (attempted === 0) return "Elige una respuesta para revisar tu progreso.";
-    if (attempted < PRACTICE.length) return `Llevas ${correct} de ${attempted} correctas.`;
-    return correct === PRACTICE.length
+    if (attempted < questions.length) return `Llevas ${correct} de ${attempted} correctas.`;
+    return correct === questions.length
       ? "¡Excelente! Llegas muy preparado/a al examen."
-      : `Resultado final: ${correct}/${PRACTICE.length}. Revisa las explicaciones y vuelve a intentarlo.`;
-  }, [attempted, correct]);
+      : `Resultado final: ${correct}/${questions.length}. Revisa las explicaciones y vuelve a intentarlo.`;
+  }, [attempted, correct, questions.length]);
 
   function choose(questionIndex, optionIndex) {
     setAnswers(previous => previous.map((answer, index) => index === questionIndex ? optionIndex : answer));
@@ -51,19 +51,19 @@ function Practice() {
     <div style={{ background: "#1e293b", borderRadius: "12px", padding: "15px", marginBottom: "10px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "12px" }}>
         <div>
-          <div style={{ color: COLOR, fontWeight: 800 }}>🎯 Mini simulador — {PRACTICE.length} preguntas</div>
+          <div style={{ color: COLOR, fontWeight: 800 }}>🎯 Mini simulador — {questions.length} preguntas</div>
           <div aria-live="polite" style={{ color: "#94a3b8", fontSize: "13px", marginTop: "3px" }}>{message}</div>
         </div>
         <button
           type="button"
-          onClick={() => setAnswers(Array(PRACTICE.length).fill(null))}
+          onClick={() => setAnswers(Array(questions.length).fill(null))}
           style={{ background: "#334155", border: "none", borderRadius: "20px", color: "#e2e8f0", cursor: "pointer", fontSize: "12px", fontWeight: 700, padding: "7px 12px" }}
         >
           Reiniciar
         </button>
       </div>
 
-      {PRACTICE.map((item, index) => {
+      {questions.map((item, index) => {
         const answer = answers[index];
         const answered = answer !== null;
         const isCorrect = answer === item.correct;

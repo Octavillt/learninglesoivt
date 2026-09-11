@@ -10,3 +10,6 @@ export function isTopicAvailable(topic, now = Date.now()) {
 export function getAvailableTopics(topics, now = Date.now()) {
   return topics.filter(topic => isTopicAvailable(topic, now));
 }
+
+// Domingo 13 de septiembre, 23:59 en Ciudad de México (UTC-6).
+export const TOPICS_EXAM_END = Date.parse("2026-09-13T23:59:00-06:00");

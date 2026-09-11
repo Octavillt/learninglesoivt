@@ -223,6 +223,16 @@ const SEARCH_KEYWORDS = {
     "sigue derecho","todo recto","izquierda","derecha","puente","esquina","semáforo",
     "main street","park avenue","river street","gym","hospital","high school","coffee shop",
   ],
+  topicsExam: [
+    "topics exam", "exam topics", "examen", "repaso", "there is", "there are", "hay",
+    "simple present", "present progressive", "present continuous", "directions", "indicaciones",
+    "technology equipment", "tecnología", "teclado", "keyboard", "mouse", "ratón", "monitor", "microphone", "micrófono",
+    "headphones", "audífonos", "smartphone", "teléfono inteligente", "social media", "redes sociales",
+    "sentimientos", "embarrassed", "apenado", "avergonzado", "angry", "enojado", "sad", "triste", "ed ing",
+    "orden de adjetivos", "adjective order", "quality", "opinion", "size", "age", "shape", "color", "origin", "material",
+    "formas verbales", "participio", "participle", "spoke", "spoken", "speak speaking",
+    "expresiones de tiempo", "time expression", "adverbios de frecuencia", "frequency adverbs", "verbos en -es", "tercera persona",
+  ],
   examReview: [
     "repaso","examen","exam review","simple present wh questions","wh questions",
     "frequency adverbs","adverbios de frecuencia","always","usually","often","sometimes","never",
