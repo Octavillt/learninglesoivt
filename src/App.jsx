@@ -35,6 +35,7 @@ import SimplePresentAdvancedSection from "./features/simplePresentAdvanced/Simpl
 import TopicsExamSection from "./features/topicsExam/TopicsExamSection";
 import ExamReviewSection from "./features/examReview/ExamReviewSection";
 import DirectionsSection from "./features/directions/DirectionsSection";
+import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -55,6 +56,7 @@ const SECTIONS = {
   examReview: ExamReviewSection,
   topicsExam: TopicsExamSection,
   directions: DirectionsSection,
+  bodyParts: BodyPartsSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

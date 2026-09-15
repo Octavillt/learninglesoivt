@@ -47,11 +47,20 @@ describe("App — selector de color y niveles", () => {
     expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra los tres niveles en romano habilitados", () => {
+  it("muestra los cuatro niveles en romano habilitados", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico III" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Básico IV" })).toBeEnabled();
+  });
+
+  it("abre Partes del cuerpo al entrar a Básico IV", () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole("button", { name: "Básico IV" }));
+    expect(screen.getByRole("heading", { name: "🧍 Partes del cuerpo — Body Parts" })).toBeInTheDocument();
+    expect(screen.getByText("eyelashes")).toBeInTheDocument();
+    expect(screen.getByText("dedo del pie")).toBeInTheDocument();
   });
 
   it("entrar a Básico II muestra la sección de Verbos Irregulares", async () => {

@@ -41,4 +41,8 @@ export const TOPICS_BASICO3 = [
   },
 ];
 
+export const TOPICS_BASICO4 = [
+  { id: "bodyParts", label: "🧍 Partes del cuerpo", color: "#14B8A6" },
+];
+
 export const TOPICS_QUIZ = [{ id: "quiz", label: "🎯 Práctica general", color: "#EAB308" }];
