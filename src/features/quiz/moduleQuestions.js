@@ -12,6 +12,7 @@ import { IRREGULAR_VERBS } from "../irregularVerbs/data";
 import { BEFORE_NOUN_SENTENCES, AFTER_VERB_SENTENCES } from "../adjectives/data";
 import { WH_WORDS } from "../whQuestions/data";
 import { GREETINGS, GOODBYES } from "../vocabulary/data";
+import { BODY_WORDS } from "../bodyParts/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -37,6 +38,18 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...BODY_WORDS.map(([en, es]) => ({
+    topic: "bodyParts",
+    question: `Traduce al inglés: ${es}`,
+    answers: en === "pinky" ? [en, "little finger"] : [en],
+    explanation: `${en} = ${es}`,
+  })),
+  ...BODY_WORDS.filter(([, , plural]) => plural).map(([en, , plural]) => ({
+    topic: "bodyParts",
+    question: `Escribe el plural de ${en}.`,
+    answers: [plural],
+    explanation: `${en} → ${plural}`,
+  })),
   ...TOPICS_EXAM.map(row => ({ topic: "topicsExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...missingToken("articles", ARTICLE_EXERCISE),
   ...missingToken("possessiveAdjectives", POSSESSIVE_EXERCISE),

@@ -1,4 +1,5 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_QUIZ } from "./topics";
+import { BODY_WORDS } from "../features/bodyParts/data";
 import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
@@ -8,7 +9,7 @@ import { isTopicAvailable } from "./topicAvailability";
 // palabras más relevantes (no hace falta ser exhaustivo).
 
 const topicMeta = {};
-[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
+[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
   verbs: [
@@ -121,6 +122,7 @@ const SEARCH_KEYWORDS = {
     "running","dancing","writing","sitting","swimming","progresivo","gerundio",
     "está jugando","está comiendo",
   ],
+  bodyParts: ["body parts", "partes del cuerpo", "little finger", ...BODY_WORDS.flat().filter(Boolean)],
   quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
 
   irregularVerbs: [
@@ -249,6 +251,7 @@ function buildIndex() {
     { levelId: "basico1", topics: TOPICS },
     { levelId: "basico2", topics: TOPICS_BASICO2 },
     { levelId: "basico3", topics: TOPICS_BASICO3 },
+    { levelId: "basico4", topics: TOPICS_BASICO4 },
     { levelId: "quiz", topics: TOPICS_QUIZ },
   ].forEach(({ levelId, topics }) => {
     topics.forEach(t => {
