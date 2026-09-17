@@ -8,7 +8,7 @@ export const WH_WORDS = [
   ["How", "¿Cómo?", "Descripción / modo", "How are you?", "¿Cómo estás?"],
   ["When", "¿Cuándo?", "Tiempo / fechas", "When is the party?", "¿Cuándo es la fiesta?"],
   ["Who", "¿Quién?", "Personas", "Who is she?", "¿Quién es ella?"],
-  ["Which", "¿Cuál?", "Objetos, actividades u opciones", "Which one do you want?", "¿Cuál quieres?"],
+  ["Which", "¿Cuál?", "Objetos, actividades u opciones", "Which one is yours?", "¿Cuál es tuyo?"],
   ["Whose", "¿De quién?", "A quién pertenece algo", "Whose backpack is this?", "¿De quién es esta mochila?"],
   ["What time", "¿Qué hora?", "Preguntar la hora", "What time is it?", "¿Qué hora es?"],
 ];

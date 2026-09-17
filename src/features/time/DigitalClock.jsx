@@ -25,7 +25,7 @@ export default function DigitalClock() {
 
   return (
     <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
-      <div style={{ color: "#64748b", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🔢 Ajusta la hora y los minutos
       </div>
 
@@ -36,7 +36,7 @@ export default function DigitalClock() {
             {String(hour).padStart(2, "0")}
           </div>
           <StepperButton onClick={() => changeHour(-1)}>▼</StepperButton>
-          <div style={{ color: "#475569", fontSize: "11px", fontWeight: 700 }}>HOUR</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>HOUR</div>
         </div>
 
         <div style={{ color: "#f8fafc", fontWeight: 800, fontSize: "34px" }}>:</div>
@@ -47,7 +47,7 @@ export default function DigitalClock() {
             {String(minute).padStart(2, "0")}
           </div>
           <StepperButton onClick={() => changeMinute(-5)}>▼</StepperButton>
-          <div style={{ color: "#475569", fontSize: "11px", fontWeight: 700 }}>MIN</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", fontWeight: 700 }}>MIN</div>
         </div>
       </div>
 

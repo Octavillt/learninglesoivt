@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import Token from "../../components/Token";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
@@ -14,11 +15,11 @@ function WhWordCard({ word, translation, use, example, esp, relatedTopic }) {
     <div style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${COLOR}` }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "2px" }}>
         <span style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{word}?</span>
-        <span style={{ color: "#64748b", fontSize: "13px", fontWeight: 600 }}>{translation}</span>
+        <span style={{ color: "#94a3b8", fontSize: "13px", fontWeight: 600 }}>{translation}</span>
       </div>
       <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{use}</div>
       <div style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</div>
-      <div style={{ color: "#64748b", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {esp}</div>
+      <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {esp}</div>
       {relatedTopic && <RelatedTopic levelId={relatedTopic.levelId} topicId={relatedTopic.topicId} />}
     </div>
   );
@@ -31,7 +32,7 @@ const WH_WORD_LINKS = {
 export default function WhQuestionsSection() {
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>❓ WH Questions</h2>
+      <TopicHeading topicId="whQuestions" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Las <Token t="WH Questions" r="wh" /> se usan para pedir información específica (no se responden con sí/no). Casi todas empiezan con <strong style={{ color: "#f8fafc" }}>W</strong> o <strong style={{ color: "#f8fafc" }}>H</strong>: what, where, why, how, when, who, which, whose.
       </div>
@@ -42,7 +43,7 @@ export default function WhQuestionsSection() {
           parts={[{ t: "WH word", r: "wh" }, { t: "am / is / are", r: "verb_be" }, { t: "Sujeto", r: "subject" }, { t: "?", color: "#e2e8f0" }]}
           example={[{ t: "Where", r: "wh" }, { t: "is", r: "verb_be" }, { t: "he", r: "subject" }, { t: "?", color: "#94a3b8" }]}
         />
-        <div style={{ color: "#64748b", fontSize: "13px" }}>🇲🇽 ¿Dónde está él?</div>
+        <div style={{ color: "#94a3b8", fontSize: "13px" }}>🇲🇽 ¿Dónde está él?</div>
         <RelatedTopic levelId="basico1" topicId="tobe" />
       </RuleBox>
 
@@ -69,10 +70,10 @@ export default function WhQuestionsSection() {
           <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
             <div style={{ lineHeight: 2, display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
               <Sentence pts={q} />
-              {translation && <span style={{ color: "#64748b", fontSize: "12px", fontWeight: 600 }}>({translation})</span>}
+              {translation && <span style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 600 }}>({translation})</span>}
             </div>
-            <div style={{ color: "#64748b", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
-            <div style={{ color: "#64748b", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
+            <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
+            <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
           </div>
         );
       })}
@@ -82,7 +83,7 @@ export default function WhQuestionsSection() {
           <Token t="Whose" r="wh" /> pregunta a quién le pertenece algo. La respuesta normalmente usa un <Token t="posesivo" r="gen" /> con <strong style={{ color: "#f8fafc" }}>'s</strong>.
         </div>
         <div style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "8px" }}>Whose backpack is this? → It's Israel's.</div>
-        <div style={{ color: "#64748b", fontSize: "12px" }}>🇲🇽 ¿De quién es esta mochila? → Es de Israel.</div>
+        <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 ¿De quién es esta mochila? → Es de Israel.</div>
         <RelatedTopic levelId="basico2" topicId="possessiveNouns" />
       </RuleBox>
     </div>

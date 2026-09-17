@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
@@ -10,7 +11,7 @@ const card = { background: "#1e293b", borderRadius: "10px", padding: "12px 16px"
 export default function BodyPartsSection() {
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>🧍 Partes del cuerpo — Body Parts</h2>
+      <TopicHeading topicId="bodyParts" />
       <div style={{ ...card, color: "#94a3b8", fontSize: "14px", lineHeight: 1.8 }}>
         Aprende a nombrar las partes del cuerpo en inglés. Cada tarjeta muestra su traducción y su plural para hablar de una o varias partes. La zona resaltada en turquesa te ayuda a identificar cada parte.
       </div>
@@ -66,9 +67,8 @@ export default function BodyPartsSection() {
       <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
       <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.8 }}>
         Señala una parte de tu cuerpo y di su nombre en inglés. Después intenta decir su plural.
-        En el Quiz, selecciona Básico IV para practicar traducciones y plurales de esta sección.
+        Usa el botón de práctica al final para repasar traducciones y plurales de esta sección.
       </p>
-      <RelatedTopic levelId="quiz" topicId="quiz" label="Ir al Quiz general" />
     </div>
   );
 }

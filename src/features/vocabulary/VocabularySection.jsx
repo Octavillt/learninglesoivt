@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
@@ -23,7 +24,7 @@ function PhraseGrid({ items }) {
               {TAG_LABELS[tag]}
             </span>
           </div>
-          <div style={{ color: "#64748b", fontSize: "12px", marginTop: "3px" }}>{esp}</div>
+          <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "3px" }}>{esp}</div>
         </div>
       ))}
     </div>
@@ -36,7 +37,7 @@ function MiniWordGrid({ items, color }) {
       {items.map(([en, es]) => (
         <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "9px 10px", borderLeft: `3px solid ${color}` }}>
           <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "13px" }}>{en}</div>
-          <div style={{ color: "#64748b", fontSize: "11px", marginTop: "1px" }}>{es}</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "1px" }}>{es}</div>
         </div>
       ))}
     </div>
@@ -46,7 +47,7 @@ function MiniWordGrid({ items, color }) {
 export default function VocabularySection() {
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>🗣️ Vocabulario</h2>
+      <TopicHeading topicId="vocabulary" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Frases clave para saludar, presentarte y despedirte, más vocabulario de negocios y un resumen rápido de oficios y familia.
       </div>
@@ -67,7 +68,7 @@ export default function VocabularySection() {
               <div style={{ fontSize: "13px" }}>
                 <strong style={{ color: COLOR }}>{d.who}:</strong> <span style={{ color: "#e2e8f0" }}>{d.line}</span>
               </div>
-              <div style={{ color: "#64748b", fontSize: "12px" }}>🇲🇽 {d.esp}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 {d.esp}</div>
             </div>
           ))}
         </div>
@@ -85,15 +86,15 @@ export default function VocabularySection() {
       ))}
 
       <SectionTitle color="#4ade80">👷 Resumen — Jobs más comunes</SectionTitle>
-      <div style={{ color: "#64748b", fontSize: "12px", marginBottom: "8px" }}>
-        Lista completa por categoría en el tema <strong style={{ color: "#f8fafc" }}>Jobs</strong> de Básico I.
+      <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>
+        Amplía el vocabulario de profesiones en el tema <strong style={{ color: "#f8fafc" }}>Oficios y profesiones</strong> de Básico I.
       </div>
       <MiniWordGrid items={JOBS_SUMMARY} color="#4ade80" />
       <RelatedTopic levelId="basico1" topicId="jobs" />
 
       <SectionTitle color="#c084fc">👪 Resumen — Family más comunes</SectionTitle>
-      <div style={{ color: "#64748b", fontSize: "12px", marginBottom: "8px" }}>
-        Árbol familiar completo en el tema <strong style={{ color: "#f8fafc" }}>Family</strong> de Básico I.
+      <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>
+        Árbol familiar completo en el tema <strong style={{ color: "#f8fafc" }}>La familia</strong> de Básico I.
       </div>
       <MiniWordGrid items={FAMILY_SUMMARY} color="#c084fc" />
       <RelatedTopic levelId="basico1" topicId="family" />

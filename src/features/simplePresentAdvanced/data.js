@@ -55,12 +55,12 @@ export const SP_VS_PROG = [
 ];
 
 export const SP_ADV_MISTAKES = [
-  { wrong: "He is work every day.", right: "He works every day.", esp: "El Simple Present no usa am / is / are — ese es el progresivo." },
+  { wrong: "He is work every day.", right: "He works every day.", esp: "Work en presente simple va sin be: He works. Be sí tiene presente simple: He is a teacher." },
   { wrong: "Where she lives?", right: "Where does she live?", esp: "La pregunta WH también necesita el auxiliar, y el verbo va sin -s." },
   { wrong: "What does he does?", right: "What does he do?", esp: "Does ya carga la -s; el verbo do se queda en su forma base." },
   { wrong: "She drinks always coffee.", right: "She always drinks coffee.", esp: "El adverbio de frecuencia va ANTES del verbo principal." },
-  { wrong: "She always is late.", right: "She is always late.", esp: "Con am / is / are el adverbio va DESPUÉS, no antes." },
-  { wrong: "I am working here every day.", right: "I work here every day.", esp: "Con every day toca Simple Present; el progresivo es para lo de ahora mismo." },
+  { wrong: "She are always late.", right: "She is always late.", esp: "Con she usa is. La posición habitual de always con be es después del verbo." },
+  { wrong: "I working here every day.", right: "I work here every day.", esp: "Para una rutina estable usa presente simple. El progresivo también puede expresar una rutina temporal: I am working here every day this week." },
 ];
 
 export const SP_ADV_EXERCISE = [
@@ -71,6 +71,6 @@ export const SP_ADV_EXERCISE = [
   { q: "(always / arrive) She ___ early.", pts: [su("She"), " always ", vb("arrive"), s3("s"), " early."], esp: "Ella siempre llega temprano." },
   { q: "(never / drink) They ___ soda.", pts: [su("They"), " never ", vb("drink"), " soda."], esp: "Ellos nunca toman refresco." },
   { q: "(usually / be) He ___ late.", pts: [su("He"), " ", be("is"), " usually late."], esp: "Normalmente llega tarde." },
-  { q: "(sleep) Be quiet — the baby ___ now.", pts: [su("The baby"), " is ", vb("sleep"), ing("ing"), " now."], esp: "Guarda silencio: el bebé está durmiendo ahora." },
+  { q: "(sleep) The baby ___ now.", pts: [su("The baby"), " is ", vb("sleep"), ing("ing"), " now."], esp: "El bebé está durmiendo ahora." },
   { q: "(sleep) My baby ___ eight hours every night.", pts: [su("My baby"), " ", vb("sleep"), s3("s"), " eight hours every night."], esp: "Mi bebé duerme ocho horas cada noche." },
 ];

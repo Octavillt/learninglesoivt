@@ -62,13 +62,13 @@ export const THIRD_PERSON_RULES = [
     words: [["play", "s"], ["say", "s"], ["buy", "s"], ["enjoy", "s"]],
   },
   {
-    rule: "5. Termina en O → + ES", color: "#fb923c",
+    rule: "5. GO y DO → goes y does", color: "#fb923c",
     desc: "Son pocos, pero son de los más usados.",
     words: [["go", "es"], ["do", "es"]],
   },
   {
     rule: "6. Irregular — HAVE cambia a HAS", color: "#f87171",
-    desc: "Es el único verbo que cambia por completo en la tercera persona.",
+    desc: "Have cambia a has. Be tiene su propia conjugación: am, is, are.",
     words: [["ha", "s", "have"]],
   },
 ];
@@ -93,10 +93,10 @@ export const SP_INT = [
 ];
 
 export const COMMON_MISTAKES = [
-  { wrong: "He work in a bank.",      right: "He works in a bank.",      esp: "Con he / she / it el verbo SIEMPRE lleva -s." },
+  { wrong: "He work in a bank.",      right: "He works in a bank.",      esp: "En afirmaciones con verbos como work, he / she / it requiere -s. Be y have tienen formas especiales." },
   { wrong: "She doesn't works here.", right: "She doesn't work here.",   esp: "La -s ya está en doesn't — el verbo se queda en su forma base." },
   { wrong: "Does he works here?",     right: "Does he work here?",       esp: "Mismo caso: Does ya carga la -s de la tercera persona." },
-  { wrong: "I no like coffee.",       right: "I don't like coffee.",     esp: "El inglés no niega con un simple no: necesita don't / doesn't." },
+  { wrong: "I no like coffee.",       right: "I don't like coffee.",     esp: "Para negar like en presente simple usa don’t / doesn’t + like. Con be se usa am/is/are + not." },
   { wrong: "Do she like pizza?",      right: "Does she like pizza?",     esp: "Con he / she / it el auxiliar es Does, no Do." },
 ];
 

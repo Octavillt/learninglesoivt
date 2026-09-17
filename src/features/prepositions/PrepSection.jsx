@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import ExampleCard from "../../components/ExampleCard";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
@@ -8,18 +9,18 @@ import { PREP_LIST, PREP_EX } from "./data";
 export default function PrepSection() {
   return (
     <div>
-      <h2 style={{ color: "#60a5fa", marginTop: 0 }}>📍 Preposiciones de lugar</h2>
+      <TopicHeading topicId="prepositions" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Las preposiciones de lugar nos dicen <strong style={{ color: "#f8fafc" }}>DÓNDE está algo</strong>.
       </div>
       <Legend roles={["subject", "verb_be", "prep"]} />
 
-      <RuleBox icon="📐" rule="Fórmula — siempre la misma estructura" color="#fb923c">
+      <RuleBox icon="📐" rule="Estructura para indicar ubicación con to be" color="#fb923c">
         <Formula
-          parts={[{ t: "Sujeto", r: "subject" }, { t: "is / are", r: "verb_be" }, { t: "preposición", r: "prep" }, { t: "Lugar", color: "#e2e8f0" }]}
+          parts={[{ t: "Sujeto", r: "subject" }, { t: "am / is / are", r: "verb_be" }, { t: "preposición", r: "prep" }, { t: "Lugar", color: "#e2e8f0" }]}
           example={[{ t: "The cat", r: "subject" }, { t: "is", r: "verb_be" }, { t: "in", r: "prep" }, { t: "the box.", color: "#94a3b8" }]}
         />
-        <div style={{ color: "#64748b", fontSize: "13px" }}>🇲🇽 El gato está <strong>dentro de</strong> la caja.</div>
+        <div style={{ color: "#94a3b8", fontSize: "13px" }}>🇲🇽 El gato está <strong>dentro de</strong> la caja.</div>
       </RuleBox>
 
       <SectionTitle color="#fb923c">📋 Lista de preposiciones</SectionTitle>

@@ -1,3 +1,5 @@
+import TopicHeading from "../../components/TopicHeading";
+import RelatedTopic from "../../components/RelatedTopic";
 import { useState } from "react";
 import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
@@ -17,9 +19,9 @@ export default function VerbsSection() {
 
   return (
     <div>
-      <h2 style={{ color: "#a78bfa", marginTop: 0 }}>📝 Verbos</h2>
+      <TopicHeading topicId="verbs" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Un <Token t="verbo" r="verb" /> describe la <strong style={{ color: "#f8fafc" }}>acción</strong> que realiza el <Token t="sujeto" r="subject" />.
+        💡 Un <Token t="verbo" r="verb" /> puede expresar una <strong style={{ color: "#f8fafc" }}>acción o un estado</strong> del <Token t="sujeto" r="subject" />.
       </div>
       <Legend roles={["subject", "verb"]} />
 
@@ -28,16 +30,18 @@ export default function VerbsSection() {
           parts={[{ t: "Sujeto", r: "subject" }, { t: "Verbo", r: "verb" }, { t: "Complemento", color: "#e2e8f0" }]}
           example={[{ t: "She", r: "subject" }, { t: "reads", r: "verb" }, { t: "a book.", color: "#94a3b8" }]}
         />
-        <div style={{ color: "#64748b", fontSize: "13px", marginTop: "6px" }}>
-          💬 El <strong style={{ color: "#fbbf24" }}>sujeto</strong> es quien hace la acción. El <strong style={{ color: "#4ade80" }}>verbo</strong> es la acción. El complemento es el resto.
+        <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "6px" }}>
+          💬 El <strong style={{ color: "#fbbf24" }}>sujeto</strong> es quien hace la acción. El <strong style={{ color: "#4ade80" }}>verbo</strong> expresa una acción o un estado. El complemento añade información.
         </div>
-        <div style={{ color: "#64748b", fontSize: "13px", marginTop: "4px" }}>🇲🇽 Ella lee un libro.</div>
+        <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "4px" }}>🇲🇽 Ella lee un libro.</div>
       </RuleBox>
 
       <SectionTitle color="#a78bfa">🔍 Verbos en oraciones simples</SectionTitle>
+      <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "10px" }}>Busca primero quién hace la acción y cuál es el verbo. Aquí aparecen reads y sleeps con he/she; estudiarás esa terminación con detalle en el presente simple de Básico II.</p>
       {VERB_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
+      <RelatedTopic levelId="basico2" topicId="simplePresent" label="Más adelante: la terminación de he / she / it" />
 
-      <SectionTitle color="#a78bfa">📋 Lista de todos los verbos</SectionTitle>
+      <SectionTitle color="#a78bfa">📋 Verbos frecuentes para consultar</SectionTitle>
       <FilterableList
         placeholder="🔍 Busca: eat, comer, run..."
         value={filter}

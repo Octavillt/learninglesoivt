@@ -48,7 +48,7 @@ describe("searchTopics", () => {
   });
 
   it("prioriza coincidencias de label sobre coincidencias de contenido", () => {
-    const results = searchTopics("time");
+    const results = searchTopics("hora");
     expect(results[0].topicId).toBe("time");
   });
 

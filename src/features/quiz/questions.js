@@ -447,9 +447,9 @@ export const QUESTIONS = [
   {
     topic: "numbers",
     question: "How do you say '0' when reading a phone or room number?",
-    answers: ["oh"],
-    hint: "No se dice 'zero' en estos casos",
-    explanation: "En números de teléfono o habitación, el 0 se dice 'OH' [oʊ].",
+    answers: ["oh", "zero"],
+    hint: "Puedes usar el nombre del número o el sonido de la letra O.",
+    explanation: "En números de teléfono o habitación, el 0 puede decirse 'oh' [oʊ] o 'zero'.",
   },
 
   // ── Letras (mismo tema que Numbers & Letters) ────────────────

@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Legend from "../../components/Legend";
 import OverviewPanel from "./panels/OverviewPanel";
@@ -63,7 +64,7 @@ export default function TopicsExamSection({ highlightTerm, highlightSeq }) {
   return (
     <div className="topics-exam" ref={topRef}>
       <header className="exam-header">
-        <h2>📝 Topics Exam — Repaso por temas</h2>
+        <TopicHeading topicId="topicsExam" />
         <p>Todo lo que viene en el examen, dividido por tema y explicado en español: fórmulas, ejemplos traducidos, errores típicos y práctica.</p>
         <div className="exam-header-meta">
           <span>🗓️ Examen: jueves 10 de septiembre de 2026</span>

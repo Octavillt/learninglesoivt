@@ -151,3 +151,58 @@ body {
     display: none;
   }
 }
+
+/* La ruta, los objetivos y la práctica comparten una jerarquía en todos los niveles. */
+.module-guide {
+  margin-bottom: 24px;
+  border: 1px solid #475569;
+  border-radius: 14px;
+  background: #172234;
+  color: #cbd5e1;
+}
+.module-guide > summary { cursor: pointer; padding: 16px 18px; }
+.module-guide-label { font-size: 12px; color: #cbd5e1; }
+.module-guide summary strong { display: block; color: #f8fafc; font-size: 17px; margin: 6px 0; }
+.module-guide-hint { font-size: 12px; color: #93c5fd; }
+.module-guide-body { padding: 0 18px 18px; font-size: 14px; line-height: 1.7; }
+.module-guide-body p + p { margin-top: 8px; }
+.module-stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px; margin: 18px 0; }
+.module-stages h3 { color: #f8fafc; font-size: 14px; margin-bottom: 8px; }
+.module-stages ol { padding-left: 24px; }
+.module-stages li { padding: 3px 0; }
+.module-stages button { border: 0; background: transparent; color: #cbd5e1; text-align: left; font: inherit; cursor: pointer; padding: 4px; }
+.module-stages button[aria-current] { color: #93c5fd; text-decoration: underline; text-underline-offset: 4px; }
+.lesson-heading { border-left: 3px solid var(--lesson-accent); padding-left: 14px; margin-bottom: 18px; }
+.lesson-stage { color: #94a3b8; font-size: 12px; margin-bottom: 6px; }
+.lesson-heading h2 { color: #f8fafc; font-size: clamp(20px, 4.5vw, 24px); line-height: 1.4; margin: 0 0 10px; overflow-wrap: anywhere; }
+.lesson-goal { font-size: 14px; color: #cbd5e1; line-height: 1.65; }
+.lesson-recall { font-size: 13px; margin-top: 10px; color: #cbd5e1; }
+.lesson-recall summary, .lesson-check summary { cursor: pointer; color: #93c5fd; }
+.lesson-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.lesson-extension { background: #172234; border: 1px solid #475569; border-radius: 10px; padding: 14px; margin: 18px 0; color: #cbd5e1; font-size: 14px; line-height: 1.7; }
+.lesson-extension > summary { color: #93c5fd; font-weight: 600; cursor: pointer; }
+.lesson-extension p { margin: 10px 0; }
+.lesson-footer { margin-top: 32px; padding-top: 24px; border-top: 1px solid #475569; }
+.lesson-check { border: 1px solid #475569; border-radius: 14px; padding: 20px; background: #172234; }
+.lesson-check h3, .module-bridge h3 { color: #f8fafc; font-size: 16px; margin-bottom: 10px; }
+.lesson-check p, .module-bridge p { font-size: 14px; line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+.lesson-check details { font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+.lesson-check details p { margin: 10px 0; }
+.module-bridge { margin-top: 24px; }
+.lesson-pager { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.study-button { border: 1px solid #64748b; border-radius: 10px; padding: 12px 16px; background: #1e293b; color: #f8fafc; cursor: pointer; font: inherit; font-size: 14px; line-height: 1.5; text-align: left; }
+.study-button-primary { background: #1d4ed8; border-color: #60a5fa; }
+.study-button small { display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 4px; }
+.lesson-pager .study-button { flex: 1 1 230px; }
+button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+.study-button:hover, .module-stages button:hover { background: #334155; }
+.study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 10px; }
+@media (max-width: 480px) {
+  .app-theme-control { position: static !important; display: flex; justify-content: flex-end; margin-bottom: 8px; }
+  .lesson-check { padding: 16px; }
+  .study-button-primary { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section-transition, .search-highlight { animation: none; }
+}

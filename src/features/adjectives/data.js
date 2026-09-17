@@ -7,14 +7,14 @@ export const BEFORE_NOUN_SENTENCES = [
   { pts: ["I have a ", adj("red"), " car."],              esp: "Yo tengo un carro rojo." },
   { pts: ["She lives in a ", adj("big"), " house."],       esp: "Ella vive en una casa grande." },
   { pts: ["He is a ", adj("kind"), " person."],            esp: "Él es una persona amable." },
-  { pts: ["They saw an ", adj("expensive"), " watch."],    esp: "Ellos vieron un reloj caro." },
+  { pts: ["They have an ", adj("expensive"), " watch."],    esp: "Ellos tienen un reloj caro." },
 ];
 
 export const AFTER_VERB_SENTENCES = [
   { pts: [su("The car"), " ", vb("is"), " ", adj("red"), "."] ,           esp: "El carro es rojo." },
   { pts: [su("This soup"), " ", vb("is"), " ", adj("hot"), "."],          esp: "Esta sopa está caliente." },
   { pts: [su("My parents"), " ", vb("are"), " ", adj("happy"), "."],      esp: "Mis padres están felices." },
-  { pts: [su("The exam"), " ", vb("was"), " ", adj("difficult"), "."],    esp: "El examen fue difícil." },
+  { pts: [su("The exam"), " ", vb("is"), " ", adj("difficult"), "."],    esp: "El examen es difícil." },
 ];
 
 // Categorías de adjetivos — cada una con su color de acento

@@ -39,6 +39,8 @@ import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
+import ModuleGuide from "./components/ModuleGuide";
+import LessonFooter from "./components/LessonFooter";
 
 const SECTIONS = {
   verbs:          VerbsSection,
@@ -94,6 +96,7 @@ export default function App() {
   // con localStorage como bonus para sobrevivir a un reload de la página.
   const [activeMap, setActiveMap] = useState(() => loadActiveTopics());
   const [levelId, setLevelId] = useState(LEVELS[0].id);
+  const [quizSelection, setQuizSelection] = useState(null);
   const [active, setActive] = useState(() => activeFor(LEVELS[0], loadActiveTopics()));
   const level = LEVELS.find(l => l.id === levelId);
   const visibleTopics = getAvailableTopics(level.topics, now);
@@ -142,7 +145,7 @@ export default function App() {
   // de navegación (mismo nivel) como los enlaces <RelatedTopic> que pueden
   // saltar a otro nivel (ej. Articles en Básico II → Verb To Be en Básico I)
   // y el buscador global, que además puede pedir resaltar un término.
-  function goToTopic(targetLevelId, topicId, highlightTerm) {
+  function goToTopic(targetLevelId, topicId, highlightTerm, practiceSelection = null) {
     const targetLevel = LEVELS.find(l => l.id === targetLevelId);
     if (!targetLevel || !targetLevel.available) return;
     const availableTopics = getAvailableTopics(targetLevel.topics, now);
@@ -150,6 +153,7 @@ export default function App() {
       ? topicId
       : activeFor(targetLevel, activeMap, now);
     if (!resolved) return;
+    if (targetLevelId === "quiz") setQuizSelection(practiceSelection);
     // Volver a buscar algo dentro del tema abierto no es un salto: apilarlo
     // dejaría la flecha apuntando a la sección donde ya estamos.
     const isJump = targetLevel.id !== levelId || resolved !== active;
@@ -276,12 +280,12 @@ export default function App() {
     <NavigationContext.Provider value={{ goTo: goToTopic }}>
     <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: "100vh", background: theme.bg, color: theme.text }}>
       <div style={{ background: theme.headerGradient, padding: "18px 20px", textAlign: "center", position: "relative" }}>
-        <div style={{ position: "absolute", top: "14px", right: "16px" }}>
+        <div className="app-theme-control" style={{ position: "absolute", top: "14px", right: "16px" }}>
           <ThemePicker themeId={themeId} onSelect={selectTheme} />
         </div>
 
         <h1 style={{ margin: 0, fontSize: "22px", fontWeight: 800, color: "#fff" }}>🎓 English — {level.label}</h1>
-        <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>Cada ejemplo tiene su 🇲🇽 traducción y su 📐 fórmula</p>
+        <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "13px", color: "#fff" }}>{level.purpose ?? "Practica a tu ritmo y vuelve a la explicación cuando lo necesites"}</p>
 
         <div style={{ marginTop: "12px", display: "flex", justifyContent: "center", minWidth: 0, width: "100%" }}>
           <GlobalSearch onSelect={goToTopic} now={now} />
@@ -293,6 +297,7 @@ export default function App() {
               key={l.id}
               onClick={() => selectLevel(l)}
               disabled={!l.available}
+              aria-pressed={l.id === levelId}
               title={l.available ? l.label : "Próximamente"}
               style={{
                 padding: "6px 14px", borderRadius: "20px",
@@ -311,19 +316,20 @@ export default function App() {
 
       {visibleTopics.length > 0 && (
         <div ref={navWrapRef} className="nav-wrap" style={{ position: "sticky", top: 0, zIndex: 10, background: theme.surface, borderBottom: `1px solid ${theme.border}` }}>
-          <nav ref={navRef} className="nav-scroller" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
+          <nav ref={navRef} className="nav-scroller" aria-label="Temas del módulo" style={{ display: "flex", flexWrap: "nowrap", gap: "6px", padding: "10px 14px", overflowX: "auto" }}>
             {visibleTopics.map(t => (
               <button
                 key={t.id}
                 ref={el => { btnRefs.current[t.id] = el; }}
                 onClick={() => selectTopic(t.id)}
+                aria-current={resolvedActive === t.id ? "page" : undefined}
                 style={{
                   flex: "0 0 auto", scrollSnapAlign: "center",
                   padding: "7px 12px", borderRadius: "20px", border: "none", cursor: "pointer",
                   fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
-                  background: resolvedActive === t.id ? t.color : theme.navPillIdle,
+                  background: resolvedActive === t.id ? `${t.color}33` : theme.navPillIdle,
                   color: "#fff",
-                  boxShadow: resolvedActive === t.id ? `0 0 12px ${t.color}55` : "none",
+                  boxShadow: resolvedActive === t.id ? `inset 0 0 0 2px ${t.color}` : "none",
                   transform: resolvedActive === t.id ? "scale(1.04)" : "scale(1)",
                   transition: "all 0.15s",
                 }}
@@ -336,11 +342,13 @@ export default function App() {
       )}
 
       <main key={resolvedActive ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
+        {Section && level.id !== "quiz" && <ModuleGuide level={level} topics={visibleTopics} active={resolvedActive} />}
         {Section ? (
           <Section
-            key={resolvedActive === "quiz" ? LEVELS.flatMap(item => getAvailableTopics(item.topics, now)).map(item => item.id).join(",") : resolvedActive}
+            key={resolvedActive === "quiz" ? `${LEVELS.flatMap(item => getAvailableTopics(item.topics, now)).map(item => item.id).join(",")}:${quizSelection?.levelId ?? "all"}:${quizSelection?.topicId ?? "mixed"}` : resolvedActive}
             highlightTerm={highlightTerm}
             highlightSeq={navSeq}
+            initialSelection={quizSelection}
           />
         ) : (
           <div style={{ textAlign: "center", padding: "60px 20px" }}>
@@ -350,6 +358,15 @@ export default function App() {
               Muy pronto encontrarás aquí nuevos temas para seguir avanzando.
             </p>
           </div>
+        )}
+        {Section && level.id !== "quiz" && (
+          <LessonFooter
+            level={level}
+            topics={visibleTopics}
+            active={resolvedActive}
+            now={now}
+            onPractice={() => goToTopic("quiz", "quiz", null, { levelId: level.id, topicId: resolvedActive })}
+          />
         )}
       </main>
 

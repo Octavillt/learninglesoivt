@@ -13,7 +13,7 @@ export default function OverviewPanel({ onGo }) {
   return (
     <>
       <Callout icon="🗓️" title="Examen: jueves 10 de septiembre de 2026">
-        Estos son los <strong>cinco temas oficiales</strong> que la maestra escribió en el pizarrón. Cada uno tiene su propia pestaña aquí arriba, con explicación en español, fórmulas, ejemplos traducidos, errores típicos y práctica.
+        Esta guía reúne <strong>cinco temas de las notas de clase</strong>. Cada uno tiene su propia pestaña aquí arriba, con explicación en español, fórmulas, ejemplos traducidos, errores típicos y práctica.
       </Callout>
 
       <SectionTitle color={COLOR}>Los temas del examen</SectionTitle>
@@ -24,7 +24,7 @@ export default function OverviewPanel({ onGo }) {
             <span className="exam-plan-body">
               <span className="exam-plan-title">{title}</span>
               <span className="exam-plan-detail">{detail}</span>
-              <span className={`exam-priority exam-priority-${priority.toLowerCase()}`}>Prioridad {priority.toLowerCase()}</span>
+              <span className={`exam-priority exam-priority-${priority.toLowerCase()}`}>Prioridad sugerida: {priority.toLowerCase()}</span>
             </span>
             <span className="exam-plan-go" aria-hidden="true">→</span>
           </button>
@@ -37,12 +37,12 @@ export default function OverviewPanel({ onGo }) {
         <ol>
           <li>Abre el tema y lee la tarjeta <strong>🎯 Qué te van a pedir</strong>: así sabes qué buscar.</li>
           <li>Estudia las <strong>fórmulas de colores</strong> y di en voz alta los ejemplos con su traducción.</li>
-          <li>Revisa los <strong>errores típicos</strong>: ahí está la mitad de los puntos del examen.</li>
+          <li>Revisa los <strong>errores típicos</strong>: comprueba por qué cambia la estructura.</li>
           <li>Ve a <strong>🎯 Práctica</strong>, filtra por ese tema y responde sin ver los apuntes.</li>
         </ol>
       </Guide>
 
-      <Guide title="Las tres cosas que más se califican" icon="⭐">
+      <Guide title="Tres estructuras para comprobar" icon="⭐">
         <ol>
           <li><strong>Concordancia:</strong> is con singular, are con plural (there is a dog / there are three buses).</li>
           <li><strong>La tercera persona:</strong> he/she/it lleva -s o -es… salvo cuando ya está does/doesn't.</li>

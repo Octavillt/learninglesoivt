@@ -25,7 +25,7 @@ export const TIME_USES = [
       { title: "Momentos del reloj", items: ["at night", "at noon", "at midnight", "at dawn"] },
       { title: "Expresiones fijas",  items: ["at the moment", "at lunchtime", "at Christmas", "at the same time"] },
     ],
-    note: "at night es la rara del grupo: las demás partes del día van con IN (in the morning), pero la noche siempre lleva AT.",
+    note: "At night se usa para la noche en general. In the night existe para algo que sucede durante una noche concreta.",
   },
   {
     prep: "ON", icon: "📅", color: ON,
@@ -116,7 +116,7 @@ export const PLACE_USES = [
 
 export const TRANSPORT_NOTE = [
   { right: "in the car / in a taxi",           esp: "Vehículos pequeños en los que te metes: IN." },
-  { right: "on the bus / on the train / on the plane", esp: "Transporte donde puedes caminar de pie: ON." },
+  { right: "on the bus / on the train / on the plane", esp: "Se dice on para viajar a bordo de autobuses, trenes y aviones; son combinaciones habituales." },
 ];
 
 // Expresiones que se aprenden de memoria: no siguen ninguna lógica
@@ -126,7 +126,7 @@ export const FIXED = [
   { phrase: "at night",       esp: "en la noche" },
   { phrase: "at the moment",  esp: "en este momento" },
   { phrase: "on time",        esp: "puntual, a la hora exacta" },
-  { phrase: "in time",        esp: "con tiempo de sobra" },
+  { phrase: "in time",        esp: "a tiempo, antes de que sea demasiado tarde" },
   { phrase: "on TV",          esp: "en la tele" },
   { phrase: "on the phone",   esp: "al teléfono" },
   { phrase: "in the end",     esp: "al final (después de todo)" },
@@ -139,7 +139,7 @@ export const MISTAKES = [
   { wrong: "I wake up in 6 a.m.",            right: "I wake up at 6 a.m.",            esp: "Las horas exactas siempre van con AT." },
   { wrong: "She was born on 1995.",          right: "She was born in 1995.",          esp: "Los años son periodos largos: IN." },
   { wrong: "We have a class in Monday.",     right: "We have a class on Monday.",     esp: "Los días de la semana van con ON." },
-  { wrong: "I study English in the night.",  right: "I study English at night.",      esp: "La noche es la excepción: at night, nunca in the night." },
+  { wrong: "I study English on night.",  right: "I study English at night.",      esp: "Para un hábito nocturno usa at night. In the night puede referirse a una noche concreta." },
   { wrong: "My birthday is in July 5th.",    right: "My birthday is on July 5th.",    esp: "Con el día del mes ya es una fecha: ON." },
   { wrong: "He arrives at Monday morning.",  right: "He arrives on Monday morning.",  esp: "Si hay día de la semana, manda ON aunque diga morning." },
   { wrong: "I live at Mexico.",              right: "I live in Mexico.",              esp: "Países y ciudades van con IN." },
@@ -177,7 +177,7 @@ export const FREQUENCY_WORDS = [
 export const EVERY_WORDS = ["every day", "every week", "every month", "every year", "every Sunday"];
 
 export const FREQUENCY_EXAMPLES = [
-  { pts: [su("I"), " ", vb("take"), " the taxi once a week."],           esp: "Tomo el taxi una vez por semana." },
+  { pts: [su("I"), " ", vb("take"), " a taxi once a week."],           esp: "Tomo el taxi una vez por semana." },
   { pts: [su("He"), " ", vb("brushes"), " his teeth three times a day."], esp: "Él se lava los dientes tres veces al día." },
   { pts: [su("We"), " ", vb("visit"), " my grandma every Sunday."],       esp: "Visitamos a mi abuela todos los domingos." },
 ];
