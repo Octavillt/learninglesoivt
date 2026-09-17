@@ -1,6 +1,12 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  can: {
+    goal: "Expresar habilidades con can y can't, hacer preguntas y responderlas.",
+    recall: ["verbs", "whQuestions"],
+    task: "Di que ella sabe nadar, pregunta si sabe bailar y responde que no.",
+    answer: "She can swim. Can she dance? No, she can't. Después de can usa el verbo base, incluso con he/she/it.",
+  },
   numbers: {
     goal: "Contar, leer números y deletrear nombres con el abecedario inglés.",
     recall: [],
@@ -129,7 +135,7 @@ export const LEARNING_GUIDE = {
   },
   vocabulary: {
     goal: "Combinar saludos, presentaciones y vocabulario laboral en una conversación breve.",
-    recall: ["countries", "simplePresent"],
+    recall: ["tobe", "countries", "family", "jobs"],
     task: "Saluda, di tu nombre y tu profesión y despídete.",
     answer: "Hello. My name is Ana. I'm a teacher. Nice to meet you. See you later. Adapta el nombre y la profesión.",
   },

@@ -7,10 +7,10 @@ import { TOPIC_FORMULAS } from "./constants/topicFormulas";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
 
 const membership = {
-  basico1: "verbs fruits plural numbers time dates countries family jobs tobe demonstratives prepositions progressive",
-  basico2: "irregularVerbs adjectives whQuestions articles possessiveAdjectives possessiveNouns gerunds simplePresent vocabulary",
+  basico1: "verbs fruits plural numbers time dates countries family jobs tobe demonstratives prepositions progressive vocabulary",
+  basico2: "irregularVerbs adjectives whQuestions articles possessiveAdjectives possessiveNouns gerunds simplePresent",
   basico3: "inOnAt simplePresentAdvanced directions topicsExam examReview",
-  basico4: "bodyParts",
+  basico4: "bodyParts can",
 };
 
 beforeEach(() => localStorage.clear());
@@ -31,7 +31,7 @@ describe("Recorrido de aprendizaje", () => {
         seen.add(topic.id);
       }
     }
-    expect(seen.size).toBe(28);
+    expect(seen.size).toBe(29);
   });
 
   it.each(LEVELS.filter(level => level.id !== "quiz"))("abre cada sección y su autoevaluación en $label", level => {
@@ -57,11 +57,11 @@ describe("Recorrido de aprendizaje", () => {
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: /Siguiente tema.*Verbo to be/ }));
     expect(screen.getByRole("heading", { level: 2, name: /Verbo to be/ })).toBeInTheDocument();
-    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Oficios y profesiones/ }));
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Conversación y vocabulario/ }));
     fireEvent.click(screen.getByRole("button", { name: "Continuar con Básico II →" }));
     expect(screen.getByRole("heading", { level: 2, name: /Artículos/ })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Básico I", exact: true }));
-    expect(screen.getByRole("heading", { level: 2, name: /Oficios y profesiones/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /Conversación y vocabulario/ })).toBeInTheDocument();
   });
 
   it("abre el Quiz con el tema actual y permite volver a su explicación", () => {

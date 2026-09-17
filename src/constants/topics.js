@@ -16,6 +16,7 @@ export const TOPICS = [
   { id: "verbs", label: "🏃 Verbos de uso diario", english: "Everyday verbs", color: "#7C3AED", stage: "Describir acciones" },
   { id: "progressive", label: "🌀 Presente progresivo", english: "Present Progressive / Continuous", color: "#9333EA", stage: "Describir acciones" },
   { id: "jobs", label: "👷 Oficios y profesiones", english: "Jobs & Professions", color: "#16A34A", stage: "Describir acciones" },
+  { id: "vocabulary", label: "🗣️ Conversación y vocabulario", english: "Greetings, introductions & work", color: "#FB923C", stage: "Integrar lo aprendido" },
 ];
 
 export const TOPICS_BASICO2 = [
@@ -27,7 +28,6 @@ export const TOPICS_BASICO2 = [
   { id: "simplePresent", label: "⏰ Presente simple", english: "Simple Present", color: "#38BDF8", stage: "Preguntar y hablar de hábitos" },
   { id: "gerunds", label: "🔄 Gerundios e infinitivos", english: "-ing / To + verb", color: "#F472B6", stage: "Ampliar tus recursos" },
   { id: "irregularVerbs", label: "🏃 Verbos irregulares", english: "Base / Past / Past Participle", color: "#7C3AED", stage: "Ampliar tus recursos" },
-  { id: "vocabulary", label: "🗣️ Conversación y vocabulario", english: "Greetings, introductions & work", color: "#FB923C", stage: "Ampliar tus recursos" },
 ];
 
 export const TOPICS_BASICO3 = [
@@ -40,6 +40,7 @@ export const TOPICS_BASICO3 = [
 
 export const TOPICS_BASICO4 = [
   { id: "bodyParts", label: "🧍 Partes del cuerpo", english: "Body Parts", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
+  { id: "can", label: "💪 Uso de CAN", english: "Can / Can't — Abilities", color: "#38BDF8", stage: "Expresar habilidades" },
 ];
 
 export const TOPICS_QUIZ = [

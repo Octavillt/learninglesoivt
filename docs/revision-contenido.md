@@ -1,6 +1,6 @@
 # Revisión de contenido y recorrido de aprendizaje
 
-La revisión mantiene las 28 secciones originales en Básico I, II, III y IV, además del Quiz independiente. Cambia el orden dentro de cada módulo y conserva los identificadores, los temas guardados y las fechas de caducidad de los dos repasos temporales.
+La revisión conserva las 28 secciones originales y el Quiz independiente. Conversación y vocabulario pasa de Básico II al cierre de Básico I por petición del usuario: integra saludos, presentaciones, familia y profesiones sin depender de la gramática de Básico II. Las demás secciones conservan su módulo. Se mantienen los identificadores y las fechas de caducidad de los dos repasos temporales.
 
 ## Criterio de organización
 
@@ -29,6 +29,7 @@ Las ampliaciones que anticipan gramática posterior se identifican como tales: l
 | 11 | Verbos de uso diario | Distingue acciones y estados; anticipa explícitamente la tercera persona. |
 | 12 | Presente progresivo | Integra sujetos, to be y acciones; reglas -ing con excepciones e -ie → -y. |
 | 13 | Oficios y profesiones | Vocabulario antes de diálogos; diferencia profesión, trabajo habitual y acción actual. Corrige electrician y amplía lugares de trabajo. |
+| 14 | Conversación y vocabulario | Integra saludos, presentaciones, despedidas, familia y profesiones para cerrar Básico I. Sus bases remiten a temas de este módulo. |
 
 La transición a Básico II pasa de identificar y describir acciones actuales a describir, expresar pertenencia y hablar de hábitos.
 
@@ -44,7 +45,6 @@ La transición a Básico II pasa de identificar y describir acciones actuales a 
 | 6 | Presente simple | Hábitos, tercera persona y auxiliares; distingue el comportamiento de to be. |
 | 7 | Gerundios e infinitivos | Distingue progresivo, actividad y patrones verbales; explica formas alternativas válidas. |
 | 8 | Verbos irregulares | Lista de referencia primero; usos del pasado y participio en una ampliación plegable. |
-| 9 | Conversación y vocabulario | Integra saludos, presentaciones y trabajo; ajusta registro y referencias a otras secciones. |
 
 Básico III retoma esas estructuras para pedir información sobre rutinas, expresar frecuencia y desenvolverse en lugares concretos.
 

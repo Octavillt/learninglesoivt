@@ -12,6 +12,7 @@ const topicMeta = {};
 [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  can: ["can", "can't", "cannot", "habilidades", "abilities", "skills", "verbo modal", "poder", "saber", "sing", "dance", "bark", "meow", "purr", "climb", "swim", "Bad Bunny"],
   verbs: [
     "answer","ask","be","break","buy","carry","clean","close","cook","come","cry","cut",
     "dance","do","draw","drink","drive","eat","erase","find","fly","get up","give","go",

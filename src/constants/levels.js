@@ -7,9 +7,9 @@ export const LEVELS = [
   {
     id: "basico1", label: "Básico I", available: true, topics: TOPICS,
     purpose: "Presentarte y describir tu entorno",
-    description: "Empieza con letras, números y to be. Después nombra personas y objetos, ubícalos y describe lo que ocurre ahora.",
+    description: "Empieza con letras, números y to be. Después nombra personas y objetos, ubícalos y describe lo que ocurre ahora. Cierra con una conversación breve que reúna lo aprendido.",
     bridge: "Estas bases te preparan para describir con más detalle y hablar de hábitos en Básico II.",
-    outcome: "Puedes presentarte, identificar objetos, decir la hora y describir una acción en curso.",
+    outcome: "Puedes saludar, presentarte y despedirte, identificar objetos, decir la hora y describir una acción en curso.",
   },
   {
     id: "basico2", label: "Básico II", available: true, topics: TOPICS_BASICO2,
@@ -27,10 +27,10 @@ export const LEVELS = [
   },
   {
     id: "basico4", label: "Básico IV", available: true, topics: TOPICS_BASICO4,
-    purpose: "Describir el cuerpo y seguir instrucciones",
-    description: "Aplica los plurales de Básico I, los adjetivos y posesivos de Básico II y los imperativos de Básico III a las partes del cuerpo.",
-    bridge: "Actualmente este módulo contiene una sección. Al terminar, practica Básico IV o combina los cuatro módulos en el Quiz.",
-    outcome: "Puedes nombrar partes del cuerpo, usar sus plurales y entender instrucciones como Raise your arms.",
+    purpose: "Describir el cuerpo y expresar habilidades",
+    description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades y preguntar qué sabe hacer alguien.",
+    bridge: "Al terminar, practica Básico IV o combina los cuatro módulos en el Quiz.",
+    outcome: "Puedes nombrar partes del cuerpo, seguir instrucciones y expresar lo que puedes o no puedes hacer con can y can't.",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },
 ];

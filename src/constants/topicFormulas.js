@@ -29,6 +29,12 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  can: { note: "Can expresa habilidad: poder o saber hacer algo. Usa el verbo base sin to ni -s/-es. El complemento es opcional según el verbo.", rows: [
+    row("Afirmación", "Sujeto + can + verbo base + complemento", "He can produce music.", "Él puede producir música."),
+    row("Negación", "Sujeto + cannot / can't + verbo base + complemento", "Cats can't bark.", "Los gatos no pueden ladrar."),
+    row("Pregunta sí/no", "Can + sujeto + verbo base + complemento + ?", "Can you swim?", "¿Sabes nadar?"),
+    row("Pregunta de información", "WH + can + sujeto + verbo base + complemento + ?", "What can dogs do?", "¿Qué pueden hacer los perros?"),
+  ] },
   numbers: {
     note: "El guion une decenas y unidades del 21 al 99 cuando la unidad no es cero. Al deletrear, di el nombre de cada letra.",
     rows: [

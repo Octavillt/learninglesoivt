@@ -49,7 +49,7 @@ export default function VocabularySection() {
     <div>
       <TopicHeading topicId="vocabulary" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Frases clave para saludar, presentarte y despedirte, más vocabulario de negocios y un resumen rápido de oficios y familia.
+        💡 Cierra Básico I con una conversación: saluda, di tu nombre, presenta a alguien y despídete. Conecta estas frases con el vocabulario de oficios y familia que ya conoces. Aprende los saludos y las despedidas como expresiones completas.
       </div>
 
       <SectionTitle color="#fbbf24">👋 Greetings — Saludos</SectionTitle>
