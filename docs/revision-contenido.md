@@ -6,6 +6,8 @@ La revisión mantiene las 28 secciones originales en Básico I, II, III y IV, ad
 
 Cada módulo presenta una ruta sugerida y un resultado esperado. Cada sección tiene un nombre en español con su referencia en inglés, un objetivo, enlaces a bases anteriores y una autoevaluación con respuesta modelo. El cierre permite practicar ese tema en el Quiz, avanzar o volver al tema anterior. Los enlaces entre módulos explican la continuidad sin trasladar contenido.
 
+Cada una de las 28 secciones incluye además un bloque de fórmulas o patrones de uso, con ejemplos completos y traducciones. Las estructuras distinguen afirmación, negación y pregunta donde corresponde; las secciones de vocabulario muestran cómo usar las palabras en contexto. Las notas aclaran excepciones, partes opcionales y el significado del signo +. Los verbos irregulares se presentan como formas que se aprenden, sin atribuirles una regla única de transformación.
+
 Las ampliaciones que anticipan gramática posterior se identifican como tales: lugar de nacimiento en Países y nacionalidades, y uso del pasado y participio en Verbos irregulares. Oficios conserva sus preguntas con does, pero señala que su estructura se desarrolla en Básico II.
 
 ## Revisión por módulo

@@ -197,6 +197,13 @@ body {
 button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
 .study-button:hover, .module-stages button:hover { background: #334155; }
 .study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 10px; }
+.topic-formulas { margin: 0 0 22px; padding: 16px; background: #172234; border: 1px solid #475569; border-radius: 12px; color: #e2e8f0; overflow-wrap: anywhere; }
+.topic-formulas h3 { margin: 0 0 10px; font-size: 16px; color: #93c5fd; }
+.topic-formulas p { font-size: 13px; line-height: 1.7; margin: 6px 0; }
+.topic-formula { padding: 12px 0; border-top: 1px solid #334155; }
+.topic-formula h4 { margin: 0 0 6px; font-size: 13px; color: #cbd5e1; }
+.topic-formula .formula-pattern { font-weight: 700; color: #f8fafc; }
+.topic-formulas .formula-key, .topic-formulas .formula-translation, .topic-formulas .formula-note { color: #cbd5e1; }
 @media (max-width: 480px) {
   .app-theme-control { position: static !important; display: flex; justify-content: flex-end; margin-bottom: 8px; }
   .lesson-check { padding: 16px; }

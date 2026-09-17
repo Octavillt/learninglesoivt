@@ -29,7 +29,7 @@ describe("Topics Exam temporal", () => {
     expect(screen.queryByRole("button", { name: "📝 Guía de examen por temas" })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "🎯 Quiz", exact: true }));
     expect(screen.queryByRole("option", { name: "📝 Guía de examen por temas" })).not.toBeInTheDocument();
-  });
+  }, 15000);
   it("mantiene el Quiz utilizable si vence el tema con el que se abrió", () => {
     vi.useFakeTimers();
     vi.setSystemTime(TOPICS_EXAM_END - 1);

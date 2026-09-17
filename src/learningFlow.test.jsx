@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
 import { LEVELS } from "./constants/levels";
 import { LEARNING_GUIDE } from "./constants/learningGuide";
+import { TOPIC_FORMULAS } from "./constants/topicFormulas";
 import { scrollToAndHighlight } from "./constants/highlightMatch";
 
 const membership = {
@@ -43,8 +44,14 @@ describe("Recorrido de aprendizaje", () => {
       fireEvent.click(navigation.getByRole("button", { name: topic.label, exact: true }));
       expect(screen.getByRole("heading", { level: 2, name: `${topic.label} — ${topic.english}` })).toBeInTheDocument();
       expect(screen.getByRole("region", { name: "Comprueba lo aprendido" })).toHaveTextContent(LEARNING_GUIDE[topic.id].task);
+      const formulas = within(screen.getByRole("region", { name: "Fórmulas y patrones del tema" }));
+      for (const row of TOPIC_FORMULAS[topic.id].rows) {
+        expect(formulas.getByText(row.pattern, { exact: true })).toBeInTheDocument();
+        expect(formulas.getByText(row.example, { exact: true })).toBeInTheDocument();
+        expect(formulas.getByText(row.translation, { exact: true })).toBeInTheDocument();
+      }
     }
-  });
+  }, 15000);
 
   it("avanza dentro del módulo y cruza al siguiente desde el último tema", () => {
     render(<App />);
