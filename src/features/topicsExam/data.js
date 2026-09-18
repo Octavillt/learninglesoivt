@@ -85,16 +85,9 @@ export const VERB_FORMS = [
 ];
 export const TIME_EXPRESSIONS = [
   ["Simple present (t.e.)", "every day, every morning, on Mondays, twice a week", "todos los días, cada mañana, los lunes, dos veces por semana"],
-  ["Present progressive (t.e.)", "right now, now, at the moment, in this moment, today, Look!", "ahora mismo, ahora, en este momento, hoy, ¡Mira!"],
+  ["Present progressive (t.e.)", "right now, now, at the moment, today, Look!", "ahora mismo, ahora, en este momento, hoy, ¡Mira!"],
 ];
-export const FREQUENCY_ADVERBS = [
-  ["always", "siempre", "100%"],
-  ["usually", "normalmente", "80%"],
-  ["often", "a menudo", "60%"],
-  ["sometimes", "a veces", "40%"],
-  ["rarely / seldom", "rara vez", "20%"],
-  ["never", "nunca", "0%"],
-];
+export { FREQUENCY_ADVERBS } from "../simplePresentAdvanced/data";
 
 const q = (question, options, correct, explanation, topic = "there") => ({ question, options, correct, explanation, topic });
 export const PRACTICE = [
@@ -103,7 +96,7 @@ export const PRACTICE = [
   q("Pregunta: ¿Hay una farmacia cerca?", ["Is there a pharmacy nearby?", "Are there a pharmacy nearby?", "Does there a pharmacy nearby?"], 0, "Invierte is y there: Is there + a + sustantivo singular + lugar?", "there"),
   q("Negativa: No hay audífonos aquí.", ["There isn't headphones here.", "There aren't any headphones here.", "There not are headphones here."], 1, "Headphones tiene forma plural; usa There aren't any headphones here.", "there"),
   q("___ any water in the bottle?", ["Are there", "Is there", "Do there"], 1, "Water es incontable: Is there any water…? = ¿Hay agua…?", "there"),
-  q("___ a beautiful garden in front of the school where students like to sit during their free time.", ["There is", "There are", "There isn't"], 0, "El sujeto es a beautiful garden, singular: There is. Lo que sigue después (where students like to sit) no cambia la elección.", "there"),
+  q("___ a beautiful garden in front of the school where students like to sit during their free time.", ["There is", "There are", "There am"], 0, "El sujeto es a beautiful garden, singular: There is. Lo que sigue después (where students like to sit) no cambia la elección.", "there"),
   q("___ three buses that stop in front of the train station and take people to different parts of the city.", ["There is", "There are", "Is there"], 1, "Three buses es plural: There are. Fíjate siempre en el sustantivo que va justo después del espacio.", "there"),
   q("___ a friendly dog in my neighbor's yard that barks happily every time someone walks by.", ["There are", "There is", "There aren't"], 1, "A friendly dog es singular y lleva a: There is a friendly dog.", "there"),
   q("___ tall trees next to my house.", ["There is", "There are", "Is there"], 1, "Tall trees es plural y no lleva a/an: There are tall trees.", "there"),
@@ -215,83 +208,31 @@ export const TENSE_DECISION = [
   {
     icon: "⏱️", title: "Present progressive", subtitle: "Lo que está pasando en este momento",
     ask: "¿Está pasando justo ahora, mientras hablas?",
-    signals: ["now", "right now", "at the moment", "in this moment", "today", "Look!", "Listen!"],
-    example: "I am speaking to people in this moment.",
+    signals: ["now", "right now", "at the moment", "today", "Look!", "Listen!"],
+    example: "I am speaking to people at the moment.",
     esp: "Estoy hablando con la gente en este momento.",
   },
 ];
 
 export const SP_PERSONS = [
-  ["I", "I work.", "I don't work.", "Do I work?", "Yes, I do. / No, I don't."],
-  ["You", "You work.", "You don't work.", "Do you work?", "Yes, you do. / No, you don't."],
+  ["I", "I work.", "I don't work.", "Do I work?", "Yes, you do. / No, you don't."],
+  ["You", "You work.", "You don't work.", "Do you work?", "Yes, I do. / No, I don't."],
   ["He / She / It", "He works.", "He doesn't work.", "Does he work?", "Yes, he does. / No, he doesn't."],
   ["We", "We work.", "We don't work.", "Do we work?", "Yes, we do. / No, we don't."],
   ["They", "They work.", "They don't work.", "Do they work?", "Yes, they do. / No, they don't."],
 ];
 
 export const PP_PERSONS = [
-  ["I", "I am working.", "I am not working.", "Am I working?", "Yes, I am. / No, I'm not."],
-  ["You", "You are working.", "You aren't working.", "Are you working?", "Yes, you are. / No, you aren't."],
+  ["I", "I am working.", "I am not working.", "Am I working?", "Yes, you are. / No, you aren't."],
+  ["You", "You are working.", "You aren't working.", "Are you working?", "Yes, I am. / No, I'm not."],
   ["He / She / It", "He is working.", "He isn't working.", "Is he working?", "Yes, he is. / No, he isn't."],
   ["We", "We are working.", "We aren't working.", "Are we working?", "Yes, we are. / No, we aren't."],
   ["They", "They are working.", "They aren't working.", "Are they working?", "Yes, they are. / No, they aren't."],
 ];
 
-export const S_RULES = [
-  {
-    rule: "1. Regla general → + s", color: "#4ade80",
-    desc: "La mayoría de los verbos solo agregan una -s con he / she / it.",
-    words: [["speak", "s"], ["play", "s"], ["read", "s"], ["run", "s"], ["work", "s"]],
-  },
-  {
-    rule: "2. Termina en -s, -sh, -ch, -x, -z → + es", color: "#60a5fa",
-    desc: "Una -s sola no se podría pronunciar, por eso se agrega -es.",
-    words: [["kiss", "es"], ["push", "es"], ["watch", "es"], ["fix", "es"], ["buzz", "es"]],
-  },
-  {
-    rule: "3. Consonante + y → -ies", color: "#f472b6",
-    desc: "Quita la y y pon -ies. Igual que en los plurales.",
-    words: [["carr", "ies", "carry"], ["stud", "ies", "study"], ["fl", "ies", "fly"], ["cr", "ies", "cry"]],
-  },
-  {
-    rule: "4. Vocal + y → solo + s", color: "#fbbf24",
-    desc: "Si antes de la y hay una vocal, la y se queda.",
-    words: [["play", "s"], ["enjoy", "s"], ["say", "s"], ["buy", "s"]],
-  },
-  {
-    rule: "5. Termina en -o → + es", color: "#c084fc",
-    desc: "Los verbos terminados en -o también llevan -es.",
-    words: [["go", "es"], ["do", "es"]],
-  },
-  {
-    rule: "6. Irregular → have se vuelve has", color: "#fb7185",
-    desc: "Es la única excepción que debes memorizar aparte.",
-    words: [["ha", "s", "have"]],
-  },
-];
+export { THIRD_PERSON_RULES as S_RULES } from "../simplePresent/data";
 
-export const ING_RULES = [
-  {
-    rule: "1. Regla general → + ing", color: "#4ade80",
-    desc: "La mayoría de los verbos solo agregan -ing.",
-    words: [["speak", "ing"], ["study", "ing"], ["play", "ing"], ["watch", "ing"], ["go", "ing"]],
-  },
-  {
-    rule: "2. Termina en -e muda → quita la e", color: "#fbbf24",
-    desc: "Si la e final no se pronuncia, se cae antes de -ing.",
-    words: [["mak", "ing", "make"], ["writ", "ing", "write"], ["tak", "ing", "take"], ["us", "ing", "use"]],
-  },
-  {
-    rule: "3. CVC corto → dobla la consonante", color: "#f472b6",
-    desc: "Verbos cortos consonante-vocal-consonante duplican la última letra.",
-    words: [["runn", "ing", "run"], ["sitt", "ing", "sit"], ["stopp", "ing", "stop"], ["swimm", "ing", "swim"]],
-  },
-  {
-    rule: "4. Termina en -ie → cambia a y", color: "#c084fc",
-    desc: "Casos especiales muy poco frecuentes, pero conviene reconocerlos.",
-    words: [["ly", "ing", "lie"], ["dy", "ing", "die"]],
-  },
-];
+export { ING_RULES } from "../progressive/data";
 
 export const TENSE_PAIRS = [
   ["She uses a laptop every day.", "Ella usa una laptop todos los días.", "She is using a laptop right now.", "Ella está usando una laptop ahora mismo."],
@@ -304,7 +245,7 @@ export const WH_EXAMPLES = [
   ["What", "What do you do every day?", "¿Qué haces todos los días?", "What are you doing right now?", "¿Qué estás haciendo ahora mismo?"],
   ["Where", "Where does she work?", "¿Dónde trabaja ella?", "Where is she working today?", "¿Dónde está trabajando hoy?"],
   ["When", "When do they study?", "¿Cuándo estudian ellos?", "—", "Con when no se usa el progresivo para rutinas."],
-  ["How often", "How often do you use social media?", "¿Cada cuándo usas redes sociales?", "—", "How often siempre pide simple present."],
+  ["How often", "How often do you use social media?", "¿Cada cuándo usas redes sociales?", "—", "Para preguntar por rutinas generales usamos simple present."],
 ];
 
 export const TENSE_MISTAKES = [

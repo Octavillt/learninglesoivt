@@ -45,14 +45,14 @@ export default function TensesPanel() {
       <Pattern
         label="Present progressive — lo que pasa ahora"
         parts={[{ t: "S", r: "subject" }, { t: "am / is / are", r: "verb_be" }, { t: "verbo", r: "verb" }, { t: "-ing", r: "ing" }, { t: "C", r: "prep" }, { t: "t.e.", r: "wh" }]}
-        example="I am speaking to people in this moment." esp="Estoy hablando con la gente en este momento."
+        example="I am speaking to people at the moment." esp="Estoy hablando con la gente en este momento."
       />
       <Table headings={["Tiempo", "Expresiones de tiempo (t.e.)", "En español"]} rows={TIME_EXPRESSIONS} />
       <Guide title="Dónde va cada cosa en la oración" icon="📐">
         <p>La <strong>t.e.</strong> normalmente va <strong>al final</strong>: I study English <em>every day</em>. También puede ir al principio con coma: <em>Every day</em>, I study English.</p>
         <p>El <strong>adverbio de frecuencia</strong> va <strong>antes del verbo de acción</strong>: She <em>always</em> studies. Pero con el verbo <strong>be</strong> va <strong>después</strong>: She is <em>always</em> happy.</p>
       </Guide>
-      <Table headings={["Freq. Adv.", "En español", "Frecuencia"]} rows={FREQUENCY_ADVERBS} />
+      <Table headings={["Adverbio", "En español", "Frecuencia orientativa"]} rows={FREQUENCY_ADVERBS} />
 
       <SectionTitle color={COLOR}>Paso 3 — Conjuga persona por persona</SectionTitle>
       <p>Simple present con el verbo <strong>work</strong> (trabajar):</p>

@@ -1,3 +1,5 @@
+import TopicHeading from "../../components/TopicHeading";
+import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import { COUNTRIES, CITIES, ORIGIN_DIALOG, OTHERS_DIALOG, FORMULA_STEPS } from "./data";
@@ -11,8 +13,8 @@ const ChatBubble = ({ emoji, name, color, lines }) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       {lines.map(({ q, qEsp, a, aEsp }) => (
         <div key={q}>
-          <div style={{ color: "#64748b", fontSize: "12px", fontStyle: "italic" }}>{q}</div>
-          <div style={{ color: "#475569", fontSize: "11px", marginBottom: "4px" }}>🇲🇽 {qEsp}</div>
+          <div style={{ color: "#94a3b8", fontSize: "12px", fontStyle: "italic" }}>{q}</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}>🇲🇽 {qEsp}</div>
           <div style={{
             background: `${color}1a`, borderRadius: "10px", borderTopLeftRadius: "2px",
             padding: "7px 12px", color: "#f8fafc", fontWeight: 600, fontSize: "13px",
@@ -20,7 +22,7 @@ const ChatBubble = ({ emoji, name, color, lines }) => (
           }}>
             {a}
           </div>
-          <div style={{ color: "#64748b", fontSize: "11px", marginTop: "3px" }}>🇲🇽 {aEsp}</div>
+          <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "3px" }}>🇲🇽 {aEsp}</div>
         </div>
       ))}
     </div>
@@ -39,7 +41,7 @@ const FormulaRow = ({ step, label, color, esp, children }) => (
     <div>
       <div style={{ color, fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "2px" }}>{label}</div>
       <div style={{ color: "#e2e8f0", fontSize: "13px", lineHeight: 1.6 }}>{children}</div>
-      <div style={{ color: "#64748b", fontSize: "11px", marginTop: "2px" }}>🇲🇽 {esp}</div>
+      <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "2px" }}>🇲🇽 {esp}</div>
     </div>
   </div>
 );
@@ -47,7 +49,7 @@ const FormulaRow = ({ step, label, color, esp, children }) => (
 export default function CountriesSection() {
   return (
     <div>
-      <h2 style={{ color: "#38bdf8", marginTop: 0 }}>🌎 Countries & Nationalities</h2>
+      <TopicHeading topicId="countries" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Para hablar de <strong style={{ color: "#f8fafc" }}>origen</strong> y <strong style={{ color: "#f8fafc" }}>nacionalidad</strong> se usa el Verb To Be: <strong style={{ color: "#f8fafc" }}>I'm from</strong> + país, o <strong style={{ color: "#f8fafc" }}>I'm</strong> + nacionalidad.
       </div>
@@ -62,7 +64,8 @@ export default function CountriesSection() {
         </div>
       </RuleBox>
 
-      <SectionTitle color="#38bdf8">🌍 Países más comunes</SectionTitle>
+      <SectionTitle color="#38bdf8">🌍 Países y nacionalidades</SectionTitle>
+      <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "10px" }}>Países y nacionalidades llevan mayúscula. En una oración se dice the United States, the United Kingdom y the Netherlands: I’m from the United States.</p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "6px", marginBottom: "16px" }}>
         {COUNTRIES.map(c => (
           <div key={c.en} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -70,30 +73,37 @@ export default function CountriesSection() {
             <div style={{ minWidth: 0, flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: "8px" }}>
                 <span style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "13px" }}>{c.en}</span>
-                <span style={{ color: "#64748b", fontSize: "11px" }}>{c.es}</span>
+                <span style={{ color: "#94a3b8", fontSize: "11px" }}>{c.es}</span>
               </div>
               <div style={{ color: "#38bdf8", fontSize: "11px", marginTop: "2px", opacity: 0.9 }}>
-                {c.nationalityEn} <span style={{ color: "#64748b" }}>· {c.nationalityEs}</span>
+                {c.nationalityEn} <span style={{ color: "#94a3b8" }}>· {c.nationalityEs}</span>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <SectionTitle color="#34d399">🏙️ Ciudades — Where do you live?</SectionTitle>
+      <SectionTitle color="#34d399">🏙️ Ciudades de residencia — Where do you live?</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "6px", marginBottom: "16px" }}>
         {CITIES.map(([en, es]) => (
           <div key={en} style={{ background: "#052e16", borderRadius: "8px", padding: "8px 12px", textAlign: "center" }}>
             <div style={{ color: "#4ade80", fontWeight: 700, fontSize: "13px" }}>{en}</div>
-            <div style={{ color: "#64748b", fontSize: "11px", marginTop: "2px" }}>{es}</div>
+            <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "2px" }}>{es}</div>
           </div>
         ))}
       </div>
 
       <SectionTitle color="#c084fc">💬 Preguntas y respuestas — Sobre ti</SectionTitle>
+      <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7 }}>Practica Where do you live? como una frase para conversar. En Básico II estudiarás su estructura con do.</p>
       <RuleBox icon="🙋" rule="I / You" color="#c084fc">
-        <ChatBubble emoji="🙋" name="I — Yo" color="#c084fc" lines={ORIGIN_DIALOG} />
+        <ChatBubble emoji="🙋" name="I — Yo" color="#c084fc" lines={ORIGIN_DIALOG.slice(0, 3)} />
       </RuleBox>
+      <details className="lesson-extension">
+        <summary>Frase adicional: lugar de nacimiento</summary>
+        <p>Was/were son formas de pasado de be. Por ahora puedes aprender esta pregunta como expresión completa.</p>
+        <ChatBubble emoji="🙋" name="Lugar de nacimiento" color="#c084fc" lines={ORIGIN_DIALOG.slice(3)} />
+      </details>
+      <RelatedTopic levelId="basico2" topicId="simplePresent" label="Más adelante: presente simple" />
 
       <SectionTitle color="#f472b6">💬 Preguntas y respuestas — Sobre otras personas</SectionTitle>
       <RuleBox icon="👥" rule="He / She / They" color="#f472b6">

@@ -1,14 +1,14 @@
 // [frase, español, "formal" | "informal" | "neutral"]
 export const GREETINGS = [
-  ["Hello.", "Hola.", "formal"],
-  ["Hi.", "Hola.", "neutral"],
+  ["Hello.", "Hola.", "neutral"],
+  ["Hi.", "Hola.", "informal"],
   ["Good morning.", "Buenos días.", "formal"],
   ["Good afternoon.", "Buenas tardes.", "formal"],
   ["Good evening.", "Buenas noches (al llegar).", "formal"],
   ["How are you?", "¿Cómo estás?", "neutral"],
   ["How's it going?", "¿Cómo te va?", "neutral"],
   ["What's up?", "¿Qué onda?", "informal"],
-  ["How you doing?", "¿Cómo andas?", "informal"],
+  ["How are you doing?", "¿Cómo andas?", "informal"],
   ["What's new?", "¿Qué hay de nuevo?", "informal"],
   ["Hey!", "¡Oye! / ¡Hola!", "informal"],
 ];
@@ -84,7 +84,7 @@ export const BUSINESS_CATEGORIES = [
     ],
   },
   {
-    label: "Lugares y documentos", icon: "🏢", color: "#c084fc",
+    label: "Organización del trabajo", icon: "🏢", color: "#c084fc",
     words: [
       ["Office", "Oficina"],
       ["Warehouse", "Almacén"],

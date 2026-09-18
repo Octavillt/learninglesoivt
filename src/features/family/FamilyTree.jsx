@@ -19,7 +19,7 @@ const Connector = () => (
 export default function FamilyTree() {
   return (
     <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px 12px", marginBottom: "14px", overflowX: "auto" }}>
-      <div style={{ color: "#64748b", fontSize: "12px", fontWeight: 700, textAlign: "center", marginBottom: "14px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, textAlign: "center", marginBottom: "14px" }}>
         🌳 Árbol genealógico — de arriba (mayores) a abajo (menores)
       </div>
       <div style={{ minWidth: "640px" }}>

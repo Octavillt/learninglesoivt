@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../../App";
 import TopicsExamSection from "./TopicsExamSection";
@@ -22,13 +22,26 @@ describe("Topics Exam temporal", () => {
     vi.setSystemTime(TOPICS_EXAM_END - 1);
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: "Básico III" }));
-    fireEvent.click(screen.getByRole("button", { name: "📝 Topics Exam" }));
-    expect(screen.getByRole("heading", { name: /Topics Exam —/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "📝 Guía de examen por temas" }));
+    expect(screen.getByRole("heading", { name: /Guía de examen por temas —/ })).toBeInTheDocument();
     act(() => vi.advanceTimersByTime(1));
-    expect(screen.queryByRole("heading", { name: /Topics Exam —/ })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "📝 Topics Exam" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Guía de examen por temas —/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "📝 Guía de examen por temas" })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "🎯 Quiz", exact: true }));
-    expect(screen.queryByRole("option", { name: "📝 Topics Exam" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: "📝 Guía de examen por temas" })).not.toBeInTheDocument();
+  }, 15000);
+  it("mantiene el Quiz utilizable si vence el tema con el que se abrió", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(TOPICS_EXAM_END - 1);
+    render(<App />);
+    fireEvent.click(screen.getByRole("button", { name: "Básico III", exact: true }));
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "📝 Guía de examen por temas" }));
+    fireEvent.click(screen.getByRole("button", { name: "Practicar este tema en el Quiz" }));
+    expect(screen.getByLabelText("Sección")).toHaveValue("topicsExam");
+    act(() => vi.advanceTimersByTime(1));
+    expect(screen.getByLabelText("Módulo")).toHaveValue("basico3");
+    expect(screen.getByLabelText("Sección")).toHaveValue("mixed");
+    expect(screen.getByRole("button", { name: /Empezar Quiz/ })).toBeEnabled();
   });
   it("muestra un tema a la vez y navega entre pestañas", () => {
     render(<TopicsExamSection />);

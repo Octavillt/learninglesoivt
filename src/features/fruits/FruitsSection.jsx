@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import ExampleCard from "../../components/ExampleCard";
 import SectionTitle from "../../components/SectionTitle";
 import { FRUITS, FRUIT_SENTENCES, VEGETABLES, VEGETABLE_SENTENCES } from "./data";
@@ -7,9 +8,9 @@ const GREEN = "#22c55e";
 export default function FruitsSection() {
   return (
     <div>
-      <h2 style={{ color: "#f97316", marginTop: 0 }}>🍎🥕 Fruits &amp; Vegetables — Frutas y Verduras</h2>
+      <TopicHeading topicId="fruits" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Aprende el nombre de cada fruta y verdura en inglés y en español. Toca cada tarjeta para practicar.
+        💡 Aprende el nombre de cada fruta y verdura en inglés y en español. Lee las tarjetas en voz alta y usa los ejemplos para nombrar uno o varios alimentos.
       </div>
 
       <SectionTitle color="#f97316">🍎 Fruits — Las Frutas</SectionTitle>
@@ -32,17 +33,17 @@ export default function FruitsSection() {
 
       <SectionTitle color="#f97316">🔤 A / AN con frutas y verduras</SectionTitle>
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        Recuerda: usa <strong style={{ color: "#fbbf24" }}>A</strong> antes de consonante y <strong style={{ color: "#34d399" }}>AN</strong> antes de vocal.
+        Recuerda: usa <strong style={{ color: "#fbbf24" }}>A</strong> antes de sonido consonante y <strong style={{ color: "#34d399" }}>AN</strong> antes de sonido vocal.
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
         <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px" }}>
-          <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>A + consonante</div>
+          <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>A + sonido consonante</div>
           {["a banana 🍌","a mango 🥭","a pear 🍐","a grape 🍇","a coconut 🥥","a watermelon 🍉","a carrot 🥕","a potato 🥔","a cucumber 🥒","a mushroom 🍄","a tomato 🍅","a tomatillo 🍏"].map(ex => (
             <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
           ))}
         </div>
         <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px" }}>
-          <div style={{ color: "#34d399", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>AN + vocal</div>
+          <div style={{ color: "#34d399", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>AN + sonido vocal</div>
           {["an apple 🍎","an orange 🍊","an avocado 🥑","an onion 🧅","an eggplant 🍆","an olive 🫒"].map(ex => (
             <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
           ))}
@@ -87,7 +88,7 @@ function FoodCard({ item }) {
     >
       <span style={{ fontSize: "52px", lineHeight: 1 }}>{item.emoji}</span>
       <span style={{ color: item.color, fontWeight: 800, fontSize: "14px" }}>{item.name}</span>
-      <span style={{ color: "#64748b", fontSize: "12px" }}>{item.esp}</span>
+      <span style={{ color: "#94a3b8", fontSize: "12px" }}>{item.esp}</span>
     </div>
   );
 }

@@ -23,6 +23,7 @@ function findTextNode(root, term) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      if (node.parentElement?.closest(".module-guide, .lesson-recall, .lesson-footer")) return NodeFilter.FILTER_REJECT;
       return normalize(node.nodeValue).includes(target)
         ? NodeFilter.FILTER_ACCEPT
         : NodeFilter.FILTER_REJECT;
@@ -72,6 +73,12 @@ export function scrollToAndHighlight(term, { root = document.querySelector("main
   pendingTimers.push(window.setTimeout(() => {
     const textNode = findTextNode(root, term);
     if (!textNode) return;
+
+    // Las ampliaciones de una lección pueden estar plegadas. La coincidencia
+    // debe quedar visible antes de desplazar y resaltar su texto.
+    for (let parent = textNode.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === "DETAILS") parent.open = true;
+    }
 
     const mark = wrapAndHighlight(textNode);
     if (!mark) return;

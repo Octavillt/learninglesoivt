@@ -9,6 +9,15 @@ import QuizSection from "./QuizSection";
 afterEach(() => vi.restoreAllMocks());
 
 describe("Quiz general", () => {
+  it("busca y practica Conversación y vocabulario en Básico I", () => {
+    expect(searchTopics("greetings").find(topic => topic.topicId === "vocabulary")?.levelId).toBe("basico1");
+    expect(getByTopic("vocabulary", "basico1").length).toBeGreaterThan(0);
+    expect(getByTopic("vocabulary", "basico2")).toHaveLength(0);
+    render(<QuizSection initialSelection={{ levelId: "basico1", topicId: "vocabulary" }} />);
+    expect(screen.getByLabelText("Módulo")).toHaveValue("basico1");
+    expect(screen.getByLabelText("Sección")).toHaveValue("vocabulary");
+    expect(screen.getByRole("button", { name: /Empezar Quiz/ })).toBeEnabled();
+  });
   it("vive fuera de Básico I y el buscador lleva al módulo Quiz", () => {
     expect(LEVELS[0].topics.some(t => t.id === "quiz")).toBe(false);
     expect(LEVELS.find(l => l.id === "quiz").topics[0].id).toBe("quiz");

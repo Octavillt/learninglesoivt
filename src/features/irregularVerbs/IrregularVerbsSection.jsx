@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import { useState } from "react";
 import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
@@ -85,7 +86,7 @@ export default function IrregularVerbsSection() {
 
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>🏃 Verbos Irregulares</h2>
+      <TopicHeading topicId="irregularVerbs" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los verbos irregulares no siguen la regla de agregar <strong style={{ color: "#f8fafc" }}>-ed</strong> en pasado. Cada uno tiene su propia forma en <Token t="Simple Past" r="past" /> y en <Token t="Past Participle" r="participle" />, así que hay que memorizarlos.
       </div>
@@ -99,6 +100,18 @@ export default function IrregularVerbsSection() {
         </div>
       </RuleBox>
 
+      <SectionTitle color={COLOR}>📋 Lista de verbos irregulares</SectionTitle>
+      <FilterableList
+        placeholder="🔍 Busca: go, went, gone, ir..."
+        value={filter}
+        onChange={setFilter}
+      >
+        <VerbTable rows={filtered} />
+      </FilterableList>
+
+      <details className="lesson-extension">
+        <summary>Ampliación: cómo se usan el pasado y el participio</summary>
+        <p>Empieza por reconocer las tres columnas de la lista. Estos ejemplos muestran para qué sirven; no necesitas dominar todavía todos los usos del pasado y del presente perfecto.</p>
       <SectionTitle color={COLOR}>🔍 Simple Past — hablar del pasado</SectionTitle>
       <Formula
         parts={[{ t: "Sujeto", r: "subject" }, { t: "Simple Past", r: "past" }, { t: "Complemento", color: "#e2e8f0" }]}
@@ -113,17 +126,10 @@ export default function IrregularVerbsSection() {
       />
       {PERFECT_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
-      <SectionTitle color={COLOR}>📋 Lista de verbos irregulares</SectionTitle>
-      <FilterableList
-        placeholder="🔍 Busca: go, went, gone, ir..."
-        value={filter}
-        onChange={setFilter}
-      >
-        <VerbTable rows={filtered} />
-      </FilterableList>
+      </details>
 
       <SectionTitle color={COLOR}>🔤 Símbolos de pronunciación (IPA)</SectionTitle>
-      <div style={{ color: "#64748b", fontSize: "13px", marginBottom: "10px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
         Agrupados por tipo de sonido — vocales, diptongos y consonantes según su forma de pronunciarse.
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "10px" }}>

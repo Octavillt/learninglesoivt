@@ -79,7 +79,7 @@ export default function AnalogClock() {
 
   return (
     <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center", touchAction: "none" }}>
-      <div style={{ color: "#64748b", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🖱️ Arrastra las manecillas
       </div>
       <svg
@@ -135,7 +135,7 @@ export default function AnalogClock() {
       </div>
 
       <div style={{ marginTop: "14px", background: "#0f172a", borderRadius: "10px", padding: "12px" }}>
-        <div style={{ color: "#475569", fontWeight: 800, fontSize: "16px", marginBottom: "6px" }}>
+        <div style={{ color: "#94a3b8", fontWeight: 800, fontSize: "16px", marginBottom: "6px" }}>
           {formatDigitalClock(hour, minute)}
         </div>
         <div style={{ color: "#f8fafc", fontWeight: 700, fontSize: "17px" }}>

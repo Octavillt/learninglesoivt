@@ -20,24 +20,7 @@ export const TWO_USES = [
   },
 ];
 
-// Repaso rápido de cómo se escribe el -ING (mismas 3 reglas de Básico I).
-export const SPELLING_RULES = [
-  {
-    rule: "Regla 1 — Solo agrega ING", color: "#4ade80",
-    desc: "La mayoría de verbos: solo pones -ING al final 😊",
-    words: [["work", "ing"], ["study", "ing"], ["read", "ing"], ["play", "ing"], ["talk", "ing"]],
-  },
-  {
-    rule: "Regla 2 — Termina en E: quita la E y pon ING", color: "#fbbf24",
-    desc: "Si el verbo termina en E (que no se pronuncia), quítala y pon -ING",
-    words: [["danc", "ing", "dance"], ["writ", "ing", "write"], ["mak", "ing", "make"], ["driv", "ing", "drive"], ["tak", "ing", "take"]],
-  },
-  {
-    rule: "Regla 3 — CVC: dobla la última letra y pon ING", color: "#f472b6",
-    desc: "Verbos cortos con patrón consonante-vocal-consonante: duplica la última letra",
-    words: [["runn", "ing", "run"], ["swimm", "ing", "swim"], ["sitt", "ing", "sit"], ["stopp", "ing", "stop"], ["shopp", "ing", "shop"]],
-  },
-];
+export { ING_RULES as SPELLING_RULES } from "../progressive/data";
 
 // Uso 1 del gerundio: como SUJETO de la oración.
 export const AS_SUBJECT = [
@@ -94,7 +77,7 @@ export const AFTER_PREP = [
 // Gerundio (-ING) vs Infinitivo (to + verbo).
 export const ING_VS_TO = {
   ing: {
-    icon: "🔄", title: "Piden -ING",
+    icon: "🔄", title: "Patrones frecuentes con -ING",
     subtitle: "Gustos, y empezar / terminar / evitar una actividad",
     verbs: ["like", "love", "enjoy", "hate", "finish", "stop", "keep", "avoid", "practice", "suggest"],
     examples: [
@@ -104,7 +87,7 @@ export const ING_VS_TO = {
   },
   to: {
     icon: "➡️", title: "Piden to + verbo",
-    subtitle: "Planes, deseos e intenciones — lo que todavía no pasa",
+    subtitle: "Aprende cada patrón: want to, need to, decide to…",
     verbs: ["want", "need", "decide", "hope", "plan", "learn", "would like"],
     examples: [
       { pts: [su("I"), " ", vv("want"), " ", inf("to eat"), " pizza."],      esp: "Quiero comer pizza." },
@@ -119,9 +102,9 @@ export const ING_VS_TO = {
 
 // Errores típicos de hispanohablantes con el -ING.
 export const COMMON_MISTAKES = [
-  { wrong: "She likes cook.", right: "She likes cooking.", esp: "Después de like, love, enjoy o hate, el segundo verbo lleva -ING." },
+  { wrong: "She likes cook.", right: "She likes cooking.", esp: "Like admite cooking o to cook; cook solo no funciona aquí. Enjoy pide -ing." },
   { wrong: "She is good at draw.", right: "She is good at drawing.", esp: "Después de una preposición (at, in, for, without...) SIEMPRE va -ING." },
-  { wrong: "To read is my favorite hobby.", right: "Reading is my favorite hobby.", esp: "Cuando el verbo es el sujeto de la oración, se usa -ING." },
+  { wrong: "Read is my favorite hobby.", right: "Reading is my favorite hobby.", esp: "Reading nombra la actividad. Un infinitivo con to también puede ser sujeto; no uses la forma base sola." },
   { wrong: "I want going to the party.", right: "I want to go to the party.", esp: "want, need, decide y hope piden 'to + verbo', no -ING." },
   { wrong: "He is study right now.", right: "He is studying right now.", esp: "En el progresivo, el verbo principal siempre lleva -ING." },
 ];
@@ -130,7 +113,7 @@ export const COMMON_MISTAKES = [
 export const EXERCISE = [
   { q: "I enjoy ______ (listen) to music.",          pts: [su("I"), " enjoy ", vv("listen"), ig("ing"), " to music."],        esp: "Disfruto escuchar música." },
   { q: "She is afraid of ______ (fly).",             pts: [su("She"), " is afraid ", pr("of"), " ", vv("fly"), ig("ing"), "."], esp: "Ella tiene miedo de volar." },
-  { q: "______ (dance) is fun.",                     pts: [su("Danc"), ig("ing"), " is fun."],                                 esp: "Bailar es divertido." },
+  { q: "Usa -ing: ______ (dance) is fun.",                     pts: [su("Danc"), ig("ing"), " is fun."],                                 esp: "Bailar es divertido." },
   { q: "They want ______ (buy) a new car.",          pts: [su("They"), " want ", inf("to buy"), " a new car."], esp: "Ellos quieren comprar un carro nuevo." },
   { q: "We finished ______ (clean) the house.",      pts: [su("We"), " finished ", vv("clean"), ig("ing"), " the house."],      esp: "Terminamos de limpiar la casa." },
   { q: "He went to work without ______ (eat).",      pts: [su("He"), " went to work ", pr("without"), " ", vv("eat"), ig("ing"), "."], esp: "Él se fue a trabajar sin comer." },

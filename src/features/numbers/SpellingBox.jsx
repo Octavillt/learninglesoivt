@@ -7,7 +7,7 @@ export default function SpellingBox() {
 
   return (
     <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
-      <label htmlFor="spelling-word" style={{ display: "block", color: "#64748b", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
+      <label htmlFor="spelling-word" style={{ display: "block", color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🔤 Escribe una palabra o tu nombre y mira cómo se deletrea en inglés
       </label>
 
@@ -30,7 +30,7 @@ export default function SpellingBox() {
       />
 
       {spelled.length === 0 ? (
-        <div style={{ color: "#475569", fontSize: "13px" }}>Escribe letras de la A a la Z 🙂</div>
+        <div style={{ color: "#94a3b8", fontSize: "13px" }}>Escribe letras de la A a la Z 🙂</div>
       ) : (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
           {spelled.map(({ letter, say }, i) => (
@@ -42,7 +42,7 @@ export default function SpellingBox() {
         </div>
       )}
 
-      <div style={{ color: "#64748b", fontSize: "12px", marginTop: "12px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "12px" }}>
         Se dicen una por una, separadas por un pequeño silencio.
       </div>
     </div>

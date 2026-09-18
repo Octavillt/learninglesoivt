@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import { useState } from "react";
 import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
@@ -78,7 +79,7 @@ export default function AdjectivesSection() {
 
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>🎨 Adjetivos Calificativos</h2>
+      <TopicHeading topicId="adjectives" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los <Token t="Adjetivos Calificativos" r="adj" /> describen cualidades del sustantivo — tamaño, apariencia, personalidad, sentimientos, etc. A diferencia del español, en inglés <strong style={{ color: "#f8fafc" }}>no cambian</strong> de forma: no llevan -s en plural ni varían por género (<Token t="a happy boy" r="adj" /> / <Token t="happy girls" r="adj" />).
       </div>
@@ -87,7 +88,7 @@ export default function AdjectivesSection() {
       <RuleBox icon="📐" rule="Dos posiciones para el adjetivo" color={COLOR}>
         <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 2.2 }}>
           <Token t="Antes del sustantivo" r="adj" /> → a/an/the + <Token t="adjetivo" r="adj" /> + sustantivo (a red car).<br />
-          <Token t="Después de to be" r="verb_be" /> → sujeto + <Token t="am/is/are/was/were" r="verb_be" /> + <Token t="adjetivo" r="adj" /> (The car is red).
+          <Token t="Después de to be" r="verb_be" /> → sujeto + <Token t="am/is/are" r="verb_be" /> + <Token t="adjetivo" r="adj" /> (The car is red).
         </div>
       </RuleBox>
 
@@ -100,7 +101,7 @@ export default function AdjectivesSection() {
 
       <SectionTitle color={COLOR}>✅ Adjetivo después de To Be</SectionTitle>
       <Formula
-        parts={[{ t: "Sujeto", r: "subject" }, { t: "am / is / are / was / were", r: "verb_be" }, { t: "Adjetivo", r: "adj" }]}
+        parts={[{ t: "Sujeto", r: "subject" }, { t: "am / is / are", r: "verb_be" }, { t: "Adjetivo", r: "adj" }]}
         example={[{ t: "The car", r: "subject" }, { t: "is", r: "verb_be" }, { t: "red.", r: "adj" }]}
       />
       {AFTER_VERB_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}

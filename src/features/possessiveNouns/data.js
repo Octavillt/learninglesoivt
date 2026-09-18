@@ -26,7 +26,7 @@ export const OF_VS_GEN = [
     ],
   },
   {
-    icon: "📦", title: `Usa "of" — objetos y cosas sin vida`,
+    icon: "📦", title: `"Of" — ejemplos con partes de objetos`,
     examples: [
       { pts: ["the color ", { t: "of", r: "gen" }, " the car"], esp: "el color del carro" },
       { pts: ["the name ", { t: "of", r: "gen" }, " the book"], esp: "el nombre del libro" },
@@ -49,7 +49,7 @@ export const JOIN_EXERCISE = [
   {
     a: "The student has a pen. The pen is on the table.",
     pts: [gen("The student's"), " pen is on the table."],
-    esp: "El lápiz del estudiante está en la mesa.",
+    esp: "La pluma del estudiante está en la mesa.",
   },
   {
     a: "The man has a car. The car is in the garage.",

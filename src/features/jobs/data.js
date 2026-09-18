@@ -16,7 +16,7 @@ export const JOB_CATEGORIES = [
       ["Maid", "Sirvienta / empleada doméstica", "house"],
       ["Housewife", "Ama de casa", "house"],
       ["Delivery man", "Repartidor", "-"],
-      ["Mail man", "Cartero", "post office"],
+      ["Mail carrier", "Cartero", "post office"],
       ["Barber / Hairdresser", "Barbero / Estilista", "salon"],
       ["Cashier", "Cajero/a", "store"],
     ],
@@ -27,7 +27,7 @@ export const JOB_CATEGORIES = [
       ["Director", "Director/a", "studio"],
       ["Producer", "Productor/a", "studio"],
       ["Singer", "Cantante", "studio"],
-      ["Ballerina", "Bailarina", "stadium"],
+      ["Ballerina", "Bailarina de ballet", "theater"],
       ["Clown", "Payaso", "-"],
       ["Drummer", "Baterista", "studio"],
       ["Photographer", "Fotógrafo/a", "studio"],
@@ -41,7 +41,7 @@ export const JOB_CATEGORIES = [
       ["Carpenter", "Carpintero/a", "workshop"],
       ["Builder", "Constructor/a", "construction site"],
       ["Civil engineer", "Ingeniero/a civil", "construction site"],
-      ["Electricist", "Electricista", "-"],
+      ["Electrician", "Electricista", "-"],
       ["Engineer", "Ingeniero/a", "office"],
       ["Technician", "Técnico/a", "-"],
       ["Mechanic", "Mecánico/a", "workshop"],
@@ -91,6 +91,8 @@ export const WORKPLACES = [
   ["Police station", "Estación de policía"],
   ["Fire station", "Estación de bomberos"],
   ["Airport", "Aeropuerto"],
+  ["Workshop", "Taller"],
+  ["Theater", "Teatro"],
   ["Farm", "Granja"],
 ];
 
@@ -108,11 +110,11 @@ export const JOB_ACTIONS = [
 export const DIALOG_HE = [
   { q: "What's his profession?", qEsp: "¿Cuál es su profesión?", a: "He is a doctor.", aEsp: "Él es doctor." },
   { q: "Where does he work?", qEsp: "¿Dónde trabaja?", a: "He works in the hospital.", aEsp: "Él trabaja en el hospital." },
-  { q: "What is he doing in this moment?", qEsp: "¿Qué está haciendo en este momento?", a: "He is examining a patient.", aEsp: "Él está examinando a un paciente." },
+  { q: "What is he doing at the moment?", qEsp: "¿Qué está haciendo en este momento?", a: "He is examining a patient.", aEsp: "Él está examinando a un paciente." },
 ];
 
 export const DIALOG_SHE = [
   { q: "What's her profession?", qEsp: "¿Cuál es su profesión?", a: "She is a nurse.", aEsp: "Ella es enfermera." },
   { q: "Where does she work?", qEsp: "¿Dónde trabaja?", a: "She works in the hospital.", aEsp: "Ella trabaja en el hospital." },
-  { q: "What is she doing in this moment?", qEsp: "¿Qué está haciendo en este momento?", a: "She is assisting people.", aEsp: "Ella está asistiendo a personas." },
+  { q: "What is she doing at the moment?", qEsp: "¿Qué está haciendo en este momento?", a: "She is assisting people.", aEsp: "Ella está asistiendo a personas." },
 ];

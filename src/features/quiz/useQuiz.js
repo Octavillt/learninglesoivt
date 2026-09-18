@@ -6,9 +6,9 @@ function checkAnswer(userAnswer, acceptedAnswers) {
   return acceptedAnswers.some(a => normalize(a) === normalize(userAnswer));
 }
 
-export function useQuiz() {
-  const [levelId, updateLevel] = useState("all");
-  const [topic, updateTopic] = useState("mixed");
+export function useQuiz(initialSelection) {
+  const [levelId, updateLevel] = useState(initialSelection?.levelId ?? "all");
+  const [topic, updateTopic] = useState(initialSelection?.topicId ?? "mixed");
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer]     = useState("");
   const [feedback, setFeedback] = useState(null);

@@ -1,3 +1,5 @@
+import TopicHeading from "../../components/TopicHeading";
+import { Fragment } from "react";
 import Token from "../../components/Token";
 import Legend from "../../components/Legend";
 import RelatedTopic from "../../components/RelatedTopic";
@@ -11,9 +13,9 @@ const COLOR = "#a3e635";
 export default function ArticlesSection() {
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>📖 Articles — a / an / Ø</h2>
+      <TopicHeading topicId="articles" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
-        💡 Un artículo (a / an / the) siempre va pegado a un <strong style={{ color: "#f8fafc" }}>sustantivo</strong> — nunca aparece solo. En español ese sustantivo casi siempre lleva artículo (un, una, el, la...). En inglés hay tres opciones: <Token t="a" r="art" /> / <Token t="an" r="art" /> (un/una) o <Token t="Ø" r="zero" /> — que significa que <strong style={{ color: "#f8fafc" }}>ahí no va ninguna palabra</strong>, el espacio queda vacío.
+        💡 Un artículo acompaña a un <strong style={{ color: "#f8fafc" }}>sustantivo</strong>, a veces con un adjetivo entre ambos: a red car. Usa <Token t="a / an" r="art" /> para un contable singular sin identificar; <Token t="the" r="art" /> para algo que puedes identificar en el contexto; y <Token t="Ø" r="zero" /> para indicar que no se escribe artículo.
       </div>
       <Legend roles={["art", "zero"]} />
 
@@ -28,7 +30,7 @@ export default function ArticlesSection() {
               {words.map(([en, es]) => (
                 <div key={en} style={{ fontSize: "12px", padding: "1px 0" }}>
                   <span style={{ color: "#e2e8f0", fontWeight: 700 }}>{en}</span>
-                  <span style={{ color: "#64748b" }}> — {es}</span>
+                  <span style={{ color: "#94a3b8" }}> — {es}</span>
                 </div>
               ))}
             </div>
@@ -53,7 +55,7 @@ export default function ArticlesSection() {
             ))}
           </div>
         </div>
-        <div style={{ color: "#64748b", fontSize: "12px", marginTop: "10px" }}>
+        <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "10px" }}>
           💡 Ya viste una primera versión de esta regla en Verb To Be de Básico I — aquí la repasamos junto con sus excepciones.
         </div>
         <RelatedTopic levelId="basico1" topicId="tobe" />
@@ -64,10 +66,18 @@ export default function ArticlesSection() {
           {SOUND_EXCEPTIONS.map(({ word, why, icon }) => (
             <div key={word} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px 12px" }}>
               <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "14px" }}>{icon} {word}</div>
-              <div style={{ color: "#64748b", fontSize: "12px", marginTop: "2px" }}>{why}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>{why}</div>
             </div>
           ))}
         </div>
+      </RuleBox>
+
+      <RuleBox icon="📍" rule="The — cuando sabemos de qué hablas" color={COLOR}>
+        <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 }}>
+          <strong>The</strong> puede acompañar singulares, plurales e incontables cuando el contexto los identifica.
+          Compara: <strong>I have a book. The book is on the table.</strong> (Tengo un libro. El libro está sobre la mesa).
+          También: <strong>the apples in this bag</strong> (las manzanas de esta bolsa) y <strong>the water in this bottle</strong> (el agua de esta botella).
+        </p>
       </RuleBox>
 
       <RuleBox icon="🚫" rule="Ø — cuándo NO se usa artículo" color="#64748b">
@@ -78,7 +88,7 @@ export default function ArticlesSection() {
           {ZERO_RULES.map(({ icon, title, why, examples }) => (
             <div key={title} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px 12px", borderLeft: "3px solid #64748b" }}>
               <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "13px", marginBottom: "5px" }}>{icon} {title}</div>
-              <div style={{ color: "#64748b", fontSize: "12px", lineHeight: 1.6, marginBottom: "6px" }}>{why}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px", lineHeight: 1.6, marginBottom: "6px" }}>{why}</div>
               {examples.map(ex => (
                 <div key={ex} style={{ color: "#94a3b8", fontSize: "12px", padding: "1px 0" }}>✅ {ex}</div>
               ))}
@@ -87,22 +97,22 @@ export default function ArticlesSection() {
         </div>
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📋 Ejercicio resuelto — A, An or Nothing</SectionTitle>
+      <SectionTitle color={COLOR}>📋 Ejercicio resuelto — a, an, the o sin artículo</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "34px 1fr", gap: "0" }}>
         <div style={{ background: "#0f172a", borderBottom: "2px solid #475569" }} />
         <div style={{ background: "#0f172a", borderBottom: "2px solid #475569", color: "#94a3b8", fontWeight: 800, fontSize: "13px", padding: "9px 12px" }}>
           Oración
         </div>
         {ARTICLE_EXERCISE.map((ex, i) => (
-          <>
-            <div key={`n${i}`} style={{ display: "flex", alignItems: "center", justifyContent: "center", background: i % 2 === 0 ? "#1e293b" : "#172033", color: "#475569", fontSize: "12px", fontWeight: 700 }}>
+          <Fragment key={i}>
+            <div key={`n${i}`} style={{ display: "flex", alignItems: "center", justifyContent: "center", background: i % 2 === 0 ? "#1e293b" : "#172033", color: "#94a3b8", fontSize: "12px", fontWeight: 700 }}>
               {i + 1}
             </div>
             <div key={`s${i}`} style={{ background: i % 2 === 0 ? "#1e293b" : "#172033", padding: "9px 12px" }}>
               <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.pts} /></div>
-              <div style={{ color: "#64748b", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {ex.esp}</div>
+              <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {ex.esp}</div>
             </div>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

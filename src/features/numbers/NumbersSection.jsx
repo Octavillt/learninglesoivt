@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import NumberStepper from "./NumberStepper";
@@ -29,36 +30,36 @@ const NumberChip = ({ n, word, color, wide }) => (
 export default function NumbersSection() {
   return (
     <div>
-      <h2 style={{ color: "#f472b6", marginTop: 0 }}>🔢 Numbers &amp; Letters</h2>
+      <TopicHeading topicId="numbers" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los dos cimientos del inglés hablado: los <strong style={{ color: "#f8fafc" }}>numbers</strong> para contar, dar precios, horas o teléfonos, y las{" "}
         <strong style={{ color: "#f8fafc" }}>letters</strong> para deletrear tu nombre o cualquier palabra que no te entiendan.
       </div>
 
       <SectionTitle color="#f472b6">🔢 Cardinal Numbers — números para contar</SectionTitle>
-      <div style={{ color: "#64748b", fontSize: "13px", marginBottom: "10px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
         Los <strong style={{ color: "#e2e8f0" }}>cardinal numbers</strong> son los que usamos para contar (0, 1, 2, 3...). Del 13 al 19 comparten la terminación <strong style={{ color: "#fbbf24" }}>-teen</strong>.
       </div>
 
       <SectionTitle color="#f472b6">0 – 20</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "16px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))", gap: "6px", marginBottom: "16px" }}>
         {NUMBERS_0_20.map(([n, word]) => (
           <NumberChip key={n} n={n} word={word} color="#f472b6" />
         ))}
       </div>
 
       <SectionTitle color="#60a5fa">21 – 29 (decena + unidad, con guion)</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "10px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))", gap: "6px", marginBottom: "10px" }}>
         {NUMBERS_21_29.map(([n, word]) => (
           <NumberChip key={n} n={n} word={word} color="#60a5fa" />
         ))}
       </div>
-      <div style={{ color: "#64748b", fontSize: "13px", marginBottom: "16px" }}>
+      <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "16px" }}>
         La misma lógica aplica del 31 al 99: <strong style={{ color: "#e2e8f0" }}>thirty-one, forty-five, ninety-nine…</strong>
       </div>
 
       <SectionTitle color="#34d399">Decenas (30 – 90)</SectionTitle>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "16px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))", gap: "6px", marginBottom: "16px" }}>
         {TENS.map(([n, word]) => (
           <NumberChip key={n} n={n} word={word} color="#34d399" />
         ))}
@@ -71,7 +72,8 @@ export default function NumbersSection() {
         ))}
       </div>
 
-      <RuleBox icon="📐" rule="Números compuestos — hundred + resto (sin 'and')" color="#fbbf24">
+      <RuleBox icon="📐" rule="Números compuestos — hundred + resto" color="#fbbf24">
+        <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.7 }}>Aquí usamos la lectura habitual estadounidense, sin and: two hundred fifty-two. En inglés británico es común two hundred and fifty-two; ambas formas son válidas.</p>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           {COMPOUND_EXAMPLES.map(([n, word]) => (
             <div key={n} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px" }}>
@@ -86,19 +88,19 @@ export default function NumbersSection() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", marginTop: "6px", flexWrap: "wrap" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "4px" }}>⬅️ Before</div>
-            <div style={{ color: "#64748b", fontSize: "13px" }}>número anterior</div>
+            <div style={{ color: "#94a3b8", fontSize: "13px" }}>78 · seventy-eight</div>
           </div>
           <div style={{ background: "#0f172a", borderRadius: "10px", padding: "10px 18px", textAlign: "center" }}>
             <div style={{ color: "#e2e8f0", fontWeight: 800, fontSize: "18px" }}>79</div>
-            <div style={{ color: "#fb923c", fontSize: "13px", fontWeight: 700, marginTop: "2px" }}>→ it's eighty</div>
-            <div style={{ color: "#64748b", fontSize: "11px", marginTop: "2px" }}>🇲🇽 es ochenta</div>
+            <div style={{ color: "#fb923c", fontSize: "13px", fontWeight: 700, marginTop: "2px" }}>seventy-nine</div>
+            <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "2px" }}>🇲🇽 setenta y nueve</div>
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "4px" }}>After ➡️</div>
-            <div style={{ color: "#64748b", fontSize: "13px" }}>número siguiente</div>
+            <div style={{ color: "#94a3b8", fontSize: "13px" }}>80 · eighty</div>
           </div>
         </div>
-        <div style={{ color: "#64748b", fontSize: "13px", marginTop: "10px", textAlign: "center" }}>
+        <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "10px", textAlign: "center" }}>
           Ej: el <strong style={{ color: "#e2e8f0" }}>after</strong> de 79 es 80 → <strong style={{ color: "#fb923c" }}>"it's eighty"</strong>
         </div>
       </RuleBox>
@@ -106,12 +108,12 @@ export default function NumbersSection() {
       <SectionTitle color="#94a3b8">📞 Cell Numbers / Room Numbers</SectionTitle>
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "10px" }}>
         <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
-          Los números de teléfono, celular o habitación se dicen <strong style={{ color: "#f8fafc" }}>dígito por dígito</strong> (no como cantidad completa). El <strong style={{ color: "#f8fafc" }}>0</strong> se dice <strong style={{ color: "#fbbf24" }}>"oh"</strong> [oʊ].
+          Para practicar, lee estos teléfonos y habitaciones <strong style={{ color: "#f8fafc" }}>dígito por dígito</strong> (las habitaciones también admiten otras lecturas). El <strong style={{ color: "#f8fafc" }}>0</strong> puede decirse <strong style={{ color: "#fbbf24" }}>"zero" u "oh"</strong> [oʊ].
         </div>
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           {ROOM_NUMBERS.map((r, i) => (
             <div key={i} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px 16px", textAlign: "center" }}>
-              <div style={{ color: "#475569", fontSize: "11px", marginBottom: "3px" }}>{r.label}</div>
+              <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "3px" }}>{r.label}</div>
               <div style={{ color: "#f472b6", fontWeight: 800, fontSize: "18px", letterSpacing: "2px" }}>{r.value}</div>
             </div>
           ))}

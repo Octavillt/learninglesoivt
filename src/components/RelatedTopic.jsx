@@ -18,7 +18,7 @@ export default function RelatedTopic({ levelId, topicId, label }) {
       style={{
         display: "inline-flex", alignItems: "center", gap: "5px",
         background: `${topic.color}22`, border: `1px solid ${topic.color}66`,
-        color: topic.color, fontWeight: 700, fontSize: "12px",
+        color: "#e2e8f0", fontWeight: 700, fontSize: "12px",
         borderRadius: "20px", padding: "4px 11px", marginTop: "6px",
         cursor: "pointer",
       }}

@@ -7,14 +7,7 @@ export const WH_QUESTIONS = [
   { word: "How", use: "manera; How often = frecuencia", example: "How often does she exercise?" },
 ];
 
-export const FREQUENCY_ADVERBS = [
-  ["always", "siempre", "100%"],
-  ["usually", "normalmente", "80%"],
-  ["often", "a menudo", "60%"],
-  ["sometimes", "a veces", "40%"],
-  ["rarely", "rara vez", "10%"],
-  ["never", "nunca", "0%"],
-];
+export { FREQUENCY_ADVERBS } from "../simplePresentAdvanced/data";
 
 export const ED_ING_PAIRS = [
   ["amazed", "amazing", "The game is amazing. I am amazed."],
@@ -78,7 +71,7 @@ export const PRACTICE = [
   },
   {
     question: "She ___ drinks coffee in the morning.",
-    options: ["always", "is always", "always is"],
+    options: ["always", "is always", "are always"],
     correct: 0,
     explanation: "El adverbio va antes del verbo principal: always drinks.",
   },
@@ -89,7 +82,7 @@ export const PRACTICE = [
     explanation: "-ing describe la cosa que causa la sensación; -ed describe cómo se siente la persona.",
   },
   {
-    question: "Before work, Jerry ___ coffee.",
+    question: "Before work, Jerry ___ coffee. (tomar café)",
     options: ["has", "does", "makes"],
     correct: 0,
     explanation: "La expresión del blog es have coffee; con Jerry cambia a has coffee.",
@@ -132,7 +125,7 @@ export const PRACTICE = [
   },
   {
     question: "My parents ___ late on Sundays because they relax at home.",
-    options: ["never are", "are never", "never is"],
+    options: ["never be", "are never", "never is"],
     correct: 1,
     explanation: "Con el verbo to be, el adverbio va después: They are never late.",
   },

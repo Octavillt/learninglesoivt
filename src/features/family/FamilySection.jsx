@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
 import FamilyTree from "./FamilyTree";
@@ -6,7 +7,7 @@ import { FAMILY_GROUPS, FAMILY_OTHER } from "./data";
 export default function FamilySection() {
   return (
     <div>
-      <h2 style={{ color: "#fbbf24", marginTop: 0 }}>👪 Family Members</h2>
+      <TopicHeading topicId="family" />
       <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los <strong style={{ color: "#f8fafc" }}>Family Members</strong> son los integrantes de la familia. Muchas palabras cambian según el género: <strong style={{ color: "#fbbf24" }}>-o</strong> (masculino) vs <strong style={{ color: "#fbbf24" }}>-a</strong> (femenino) en español, pero en inglés cada una tiene su propia palabra.
       </div>
@@ -27,6 +28,15 @@ export default function FamilySection() {
       <SectionTitle color="#fbbf24">🌳 Árbol genealógico</SectionTitle>
       <FamilyTree />
 
+      <RuleBox icon="💬" rule="Presenta a tu familia con to be" color="#34d399">
+        <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 }}>
+          <strong>She is my sister.</strong> — Ella es mi hermana.<br />
+          <strong>They are my parents.</strong> — Ellos son mis padres.<br />
+          <strong>My</strong> significa mi o mis. En Básico II ampliarás los posesivos.
+          Recuerda: <strong>parents</strong> = padres; <strong>relatives</strong> = parientes.
+        </p>
+      </RuleBox>
+
       <RuleBox icon="✨" rule="Otras palabras importantes" color="#c084fc">
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "6px" }}>
           {FAMILY_OTHER.map(([es, en]) => (
@@ -36,7 +46,7 @@ export default function FamilySection() {
             </div>
           ))}
         </div>
-        <div style={{ color: "#64748b", fontSize: "13px", marginTop: "10px" }}>
+        <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "10px" }}>
           <strong style={{ color: "#e2e8f0" }}>Godfather / Godmother</strong> (Padrino / Madrina) y <strong style={{ color: "#e2e8f0" }}>Novio / Novia</strong> (Boyfriend / Girlfriend) no son parientes de sangre, pero se consideran parte de la familia.
         </div>
       </RuleBox>

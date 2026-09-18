@@ -1,3 +1,4 @@
+import TopicHeading from "../../components/TopicHeading";
 import { useMemo, useState } from "react";
 import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
@@ -24,7 +25,7 @@ export function VocabGrid({ entries, columns = 2 }) {
         <div key={word} style={{ background: "#1e293b", borderRadius: "10px", padding: "11px 13px" }}>
           <div style={{ color: "#f8fafc", fontWeight: 800, fontSize: "14px" }}>{word}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "3px" }}>🇲🇽 {esp}</div>
-          {example && <div style={{ color: "#64748b", fontSize: "12px", marginTop: "7px", paddingTop: "7px", borderTop: "1px solid #334155", fontStyle: "italic" }}>{example}</div>}
+          {example && <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "7px", paddingTop: "7px", borderTop: "1px solid #334155", fontStyle: "italic" }}>{example}</div>}
         </div>
       ))}
     </div>
@@ -111,7 +112,7 @@ export function Practice({ questions = PRACTICE }) {
 export default function ExamReviewSection() {
   return (
     <div>
-      <h2 style={{ color: COLOR, marginTop: 0 }}>📝 Repaso para el examen — Básico III</h2>
+      <TopicHeading topicId="examReview" />
       <div style={{ background: "linear-gradient(135deg, #3b0764, #1e293b)", border: "1px solid #ec489955", borderRadius: "12px", padding: "15px 16px", color: "#e2e8f0", fontSize: "14px", lineHeight: 1.8, marginBottom: "14px" }}>
         <strong style={{ color: "#f9a8d4" }}>Tu ruta rápida de estudio:</strong> repasa las fórmulas, memoriza el vocabulario de <em>The Daily Blog</em> (p. 38) y <em>Places We Live</em> (p. 49), y termina con el mini simulador.
         <br />
@@ -145,11 +146,11 @@ export default function ExamReviewSection() {
 
       <SectionTitle color={COLOR}>2. 🔁 Frequency adverbs</SectionTitle>
       <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8, marginBottom: "10px" }}>
-        Los adverbios de frecuencia expresan <strong style={{ color: "#f8fafc" }}>qué tan habitual</strong> es una acción: no dicen la hora, sino la regularidad. Son muy comunes al hablar de la rutina diaria: <em>I usually have coffee</em>, <em>She never takes the subway</em>. En el examen fíjate primero en el verbo: si es un verbo de acción, el adverbio va antes; si es <em>am / is / are</em>, va después.
+        Los adverbios de frecuencia expresan <strong style={{ color: "#f8fafc" }}>qué tan habitual</strong> es una acción: no dicen la hora, sino la regularidad. Son muy comunes al hablar de la rutina diaria: <em>I usually have coffee</em>, <em>She never takes the subway</em>. En el orden más habitual, fíjate primero en el verbo: si es un verbo de acción, el adverbio va antes; si es <em>am / is / are</em>, va después.
       </div>
       <RuleBox icon="📍" rule="Posición: antes del verbo principal; después de am / is / are" color="#38bdf8">
         <div style={{ color: "#4ade80", fontSize: "13px" }}>✅ She <strong>always drinks</strong> coffee. &nbsp; ✅ She <strong>is always</strong> late.</div>
-        <div style={{ color: "#f87171", fontSize: "13px", marginTop: "3px" }}>❌ She drinks always coffee. &nbsp; ❌ She always is late.</div>
+        <div style={{ color: "#f87171", fontSize: "13px", marginTop: "3px" }}>❌ She drinks always coffee. &nbsp; ❌ She are always late.</div>
       </RuleBox>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "8px", marginBottom: "10px" }}>
         {FREQUENCY_ADVERBS.map(([word, esp, percent]) => (
@@ -161,6 +162,7 @@ export default function ExamReviewSection() {
         ))}
       </div>
 
+      <p style={{ color: "#94a3b8", fontSize: "13px" }}>Los porcentajes son orientativos, no equivalencias exactas. El orden puede cambiar para dar énfasis.</p>
       <SectionTitle color={COLOR}>3. 🎭 Adjectives: -ed / -ing</SectionTitle>
       <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8, marginBottom: "10px" }}>
         Estas dos terminaciones usan palabras parecidas, pero cuentan dos partes diferentes de la misma situación. El adjetivo <strong style={{ color: "#f9a8d4" }}>-ed</strong> describe la reacción o el sentimiento de una persona; el adjetivo <strong style={{ color: "#67e8f9" }}>-ing</strong> describe la cosa, persona o situación que produce esa reacción. Pregúntate: <em>¿quién siente algo?</em> → <strong>-ed</strong>; <em>¿qué lo provoca?</em> → <strong>-ing</strong>.

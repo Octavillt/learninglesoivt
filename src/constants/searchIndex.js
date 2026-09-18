@@ -12,6 +12,7 @@ const topicMeta = {};
 [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  can: ["can", "can't", "cannot", "habilidades", "abilities", "skills", "verbo modal", "poder", "saber", "sing", "dance", "bark", "meow", "purr", "climb", "swim", "Bad Bunny"],
   verbs: [
     "answer","ask","be","break","buy","carry","clean","close","cook","come","cry","cut",
     "dance","do","draw","drink","drive","eat","erase","find","fly","get up","give","go",
@@ -93,9 +94,9 @@ const SEARCH_KEYWORDS = {
   ],
   jobs: [
     "jobs","profession","doctor","nurse","dentist","surgeon","veterinarian","cleaner",
-    "maid","housewife","delivery man","mail man","barber","hairdresser","cashier",
+    "maid","housewife","delivery man","mail man","mail carrier","barber","hairdresser","cashier",
     "director","producer","singer","ballerina","clown","drummer","photographer","musician",
-    "actor","actress","carpenter","builder","civil engineer","electricist","engineer",
+    "actor","actress","carpenter","builder","civil engineer","electrician","electricista","engineer",
     "technician","mechanic","firefighter","police officer","pilot","lawyer","judge",
     "accountant","programmer","journalist","teacher","athlete","chef","cook","waiter",
     "waitress","farmer","hospital","court","stadium","school","office","restaurant",
@@ -259,9 +260,10 @@ function buildIndex() {
         levelId,
         topicId: t.id,
         label: t.label,
+        english: t.english,
         color: t.color,
         availableUntil: t.availableUntil,
-        keywords: SEARCH_KEYWORDS[t.id] ?? [],
+        keywords: [t.english, ...(SEARCH_KEYWORDS[t.id] ?? [])].filter(Boolean),
       });
     });
   });
@@ -287,7 +289,7 @@ export function searchTopics(query, now = Date.now()) {
   for (const entry of SEARCH_INDEX) {
     if (!isTopicAvailable(entry, now)) continue;
     const label = normalize(entry.label);
-    const labelMatch = label.includes(q);
+    const labelMatch = label.includes(q) || normalize(entry.english ?? "").includes(q);
     const matchedKeyword = !labelMatch
       ? entry.keywords.find(k => normalize(k).includes(q))
       : null;

@@ -37,7 +37,7 @@ export default function ExtrasPanel() {
       </Callout>
 
       <SectionTitle color={COLOR}>Orden de adjetivos — la cinta verde</SectionTitle>
-      <p>Cuando pones <strong>varios adjetivos antes de un sustantivo</strong>, el inglés sigue siempre este orden. Además, en inglés el adjetivo va <strong>antes</strong> del sustantivo: en español “un carro rojo”, en inglés <strong>a red car</strong>.</p>
+      <p>Cuando pones <strong>varios adjetivos antes de un sustantivo</strong>, el inglés suele seguir este orden. Además, en inglés el adjetivo va <strong>antes</strong> del sustantivo: en español “un carro rojo”, en inglés <strong>a red car</strong>.</p>
       <div className="exam-order">
         {ADJECTIVE_ORDER.map(([label, what]) => (
           <span key={label} className="exam-order-chip"><b>{label.replace(/^\d+\.\s/, "")}</b><span>{what}</span></span>
@@ -51,7 +51,7 @@ export default function ExtrasPanel() {
           <li>Acomódalos en el orden de la cinta: <strong>a nice big new car</strong> — un carro bonito, grande y nuevo.</li>
         </ol>
         <p><strong>a small old Mexican wooden box</strong> — Size → Age → Origin → Material.<br /><strong>a beautiful round black Italian table</strong> — Opinion → Shape → Color → Origin.</p>
-        <p>Entre estos adjetivos <strong>no van comas ni and</strong>: ❌ a big, new car / ❌ a big and new car → ✅ a big new car. Con dos o tres basta; nadie usa los siete juntos.</p>
+        <p>Los adjetivos de categorías distintas suelen acumularse sin comas: <strong>a big new car</strong>. Los que describen cualidades del mismo tipo pueden unirse con and: <strong>a kind and patient teacher</strong>. Practica primero con dos o tres adjetivos.</p>
       </Guide>
       <Mistakes items={[
         { wrong: "a red big car", right: "a big red car", note: "Size va antes que Color." },

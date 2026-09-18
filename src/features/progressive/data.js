@@ -37,12 +37,17 @@ export const ING_RULES = [
   },
   {
     rule: "Regla 2 — Termina en E: quita la E y pon ING", color: "#fbbf24",
-    desc: "Si el verbo termina en E (que no se pronuncia), quítala y pon -ING",
+    desc: "Normalmente se elimina la -e final muda. En -ee se conserva: see → seeing. También se conserva en be → being.",
     words: [["com","ing","come"],["hav","ing","have"],["tak","ing","take"],["danc","ing","dance"],["smil","ing","smile"],["writ","ing","write"]],
   },
   {
-    rule: "Regla 3 — CVC: dobla la última letra y pon ING", color: "#f472b6",
-    desc: "Verbos cortos con patrón consonante-vocal-consonante: duplica la última letra",
+    rule: "Regla 3 — Consonante final después de vocal corta", color: "#f472b6",
+    desc: "En verbos de una sílaba como run, duplica la consonante final. No dupliques w, x ni y: snowing, fixing, playing. Con varias sílabas, importa el acento: begin → beginning, visit → visiting.",
     words: [["runn","ing","run"],["cutt","ing","cut"],["swimm","ing","swim"],["sitt","ing","sit"],["stopp","ing","stop"]],
+  },
+  {
+    rule: "Regla 4 — IE cambia a Y antes de ING", color: "#c084fc",
+    desc: "En verbos terminados en -ie, cambia esas dos letras por y: lie → lying.",
+    words: [["ly", "ing", "lie"], ["dy", "ing", "die"], ["ty", "ing", "tie"]],
   },
 ];

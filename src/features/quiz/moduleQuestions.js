@@ -13,6 +13,7 @@ import { BEFORE_NOUN_SENTENCES, AFTER_VERB_SENTENCES } from "../adjectives/data"
 import { WH_WORDS } from "../whQuestions/data";
 import { GREETINGS, GOODBYES } from "../vocabulary/data";
 import { BODY_WORDS } from "../bodyParts/data";
+import { PRACTICE as CAN } from "../can/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -38,6 +39,7 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...CAN.map(row => ({ ...row, topic: "can" })),
   ...BODY_WORDS.map(([en, es]) => ({
     topic: "bodyParts",
     question: `Traduce al inglés: ${es}`,
@@ -57,7 +59,7 @@ export const MODULE_QUESTIONS = [
   ...completeSentences("gerunds", GERUNDS),
   ...completeSentences("simplePresent", SIMPLE_PRESENT),
   ...completeSentences("inOnAt", IN_ON_AT),
-  ...completeSentences("simplePresentAdvanced", SP_ADV_EXERCISE.map(row => row.q.includes("Be quiet") ? { ...row, q: "(sleep) The baby ___ now." } : row)),
+  ...completeSentences("simplePresentAdvanced", SP_ADV_EXERCISE),
   ...completeSentences("adjectives", [...BEFORE_NOUN_SENTENCES, ...AFTER_VERB_SENTENCES]),
   ...IRREGULAR_VERBS.flatMap(([verb, past, participle]) => [
     { topic: "irregularVerbs", question: `Escribe el pasado simple de ${verb}.`, answers: [past, ...past.split("/")], explanation: `${verb} → ${past}` },

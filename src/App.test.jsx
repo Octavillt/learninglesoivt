@@ -63,14 +63,14 @@ describe("App — selector de color y niveles", () => {
     expect(screen.getByText("dedo del pie")).toBeInTheDocument();
   });
 
-  it("entrar a Básico II muestra la sección de Verbos Irregulares", async () => {
+  it("entrar a Básico II muestra la sección de Artículos", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico II" }));
 
     expect(screen.getByRole("heading", { name: "🎓 English — Básico II" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "🏃 Verbos Irregulares" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "📖 Artículos — A / An / The / Ø" })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
@@ -79,24 +79,24 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico II" }));
-    await user.click(screen.getByRole("button", { name: /⏰ Simple Present/ }));
+    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /⏰ Presente simple/ }));
 
-    expect(screen.getByRole("heading", { name: /Simple Present — Presente Simple/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Presente simple — Simple Present/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Interrogativo/ })).toBeInTheDocument();
     // El contenido avanzado ya no vive en Básico II
     expect(screen.queryByRole("heading", { name: /WH Questions con do \/ does/ })).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /Adverbios de frecuencia/ })).not.toBeInTheDocument();
   });
 
-  it("entrar a Básico III muestra la sección de In / On / At", async () => {
+  it("entrar a Básico III muestra rutinas, preguntas y frecuencia", async () => {
     const user = userEvent.setup();
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico III" }));
 
     expect(screen.getByRole("heading", { name: "🎓 English — Básico III" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /In \/ On \/ At — Tiempo y lugar/ })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Expresiones de tiempo/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Rutinas, preguntas y frecuencia — Simple Present in context/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
@@ -105,9 +105,9 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico III" }));
-    await user.click(screen.getByRole("button", { name: /🔁 Simple Present Avanzado/ }));
+    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /🔁 Rutinas, preguntas y frecuencia/ }));
 
-    expect(screen.getByRole("heading", { name: /Simple Present Avanzado/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Rutinas, preguntas y frecuencia/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /WH Questions con do \/ does/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Adverbios de frecuencia/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Simple Present vs\. Present Progressive/ })).toBeInTheDocument();
@@ -118,9 +118,9 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico III" }));
-    await user.click(screen.getByRole("button", { name: /Giving Directions/ }));
+    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /Pedir y dar indicaciones/ }));
 
-    expect(screen.getByRole("heading", { name: /Giving Directions — Dar indicaciones/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Pedir y dar indicaciones — Asking for & Giving Directions/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Movimientos esenciales/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Practica con el mapa/ })).toBeInTheDocument();
     expect(screen.getByText("Go straight ahead", { selector: "div" })).toBeInTheDocument();
@@ -132,14 +132,14 @@ describe("App — selector de color y niveles", () => {
     render(<App />);
 
     fireEvent.click(screen.getByRole("button", { name: "Básico III" }));
-    fireEvent.click(screen.getByRole("button", { name: "📝 Repaso para examen" }));
-    expect(screen.getByRole("heading", { name: /Repaso para el examen/ })).toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "📝 Repaso: rutinas y descripciones" }));
+    expect(screen.getByRole("heading", { name: /Repaso: rutinas y descripciones/ })).toBeInTheDocument();
 
     act(() => vi.advanceTimersByTime(1));
 
-    expect(screen.queryByRole("button", { name: "📝 Repaso para examen" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /Repaso para el examen/ })).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /In \/ On \/ At — Tiempo y lugar/ })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "📝 Repaso: rutinas y descripciones" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Repaso: rutinas y descripciones/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Rutinas, preguntas y frecuencia — Simple Present in context/ })).toBeInTheDocument();
   });
 
   it("volver de Básico II a Básico I restaura los temas", async () => {
@@ -150,13 +150,13 @@ describe("App — selector de color y niveles", () => {
     await user.click(screen.getByRole("button", { name: "Básico I" }));
 
     // Nombre exacto: la flecha de regreso también menciona el tema anterior
-    expect(screen.getByRole("button", { name: "🏃 Verbos" })).toBeInTheDocument();
+    expect(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "🏃 Verbos de uso diario" })).toBeInTheDocument();
     expect(screen.queryByText(/estamos preparando/i)).not.toBeInTheDocument();
   });
 
   it("la barra de temas muestra los temas del nivel activo", () => {
     render(<App />);
-    const topics = within(screen.getByRole("navigation"));
+    const topics = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
     expect(topics.getByRole("button", { name: /🏃 Verbos/ })).toBeInTheDocument();
     expect(topics.queryByRole("button", { name: /Quiz/ })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "🎯 Quiz" })).toBeInTheDocument();
@@ -166,9 +166,9 @@ describe("App — selector de color y niveles", () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole("button", { name: /🔢 Numbers & Letters/ }));
+    await user.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: /🔢 Números y abecedario/ }));
 
-    expect(screen.getByRole("heading", { name: "🔢 Numbers & Letters" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Cardinal Numbers/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Vowels/ })).toBeInTheDocument();
@@ -192,9 +192,9 @@ describe("App — flecha para volver a la sección anterior", () => {
     await user.click(screen.getByRole("button", { name: /🎯 Quiz/ }));
     expect(screen.getByRole("heading", { name: "🎯 Quiz" })).toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "Volver a 🏃 Verbos · Básico I" }));
+    await user.click(screen.getByRole("button", { name: "Volver a 🔢 Números y abecedario · Básico I" }));
 
-    expect(screen.getByRole("heading", { name: "📝 Verbos" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
     // Consumida la pila, la flecha deja de ofrecerse
     expect(flecha()).not.toBeInTheDocument();
   });
@@ -204,12 +204,12 @@ describe("App — flecha para volver a la sección anterior", () => {
     render(<App />);
 
     await user.click(screen.getByRole("button", { name: "Básico II" }));
-    expect(screen.getByRole("heading", { name: "🏃 Verbos Irregulares" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "📖 Artículos — A / An / The / Ø" })).toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "Volver a 🏃 Verbos · Básico I" }));
+    await user.click(screen.getByRole("button", { name: "Volver a 🔢 Números y abecedario · Básico I" }));
 
     expect(screen.getByRole("heading", { name: "🎓 English — Básico I" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "📝 Verbos" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
   });
 });
 
@@ -255,9 +255,9 @@ describe("App — buscador global y resaltado", () => {
     render(<App />);
 
     await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "abecedario");
-    await user.click(await screen.findByRole("option", { name: /Numbers & Letters/ }));
+    await user.click(await screen.findByRole("option", { name: /Números y abecedario/ }));
 
-    expect(screen.getByRole("heading", { name: "🔢 Numbers & Letters" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "🔢 Números y abecedario — Numbers & Letters" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /The Alphabet/ })).toBeInTheDocument();
   });
 });
