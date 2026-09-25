@@ -12,7 +12,7 @@ describe("theme catalog", () => {
   it("cada paleta define los tokens necesarios para pintar la UI completa", () => {
     THEME_ORDER.forEach(id => {
       const t = THEMES[id];
-      for (const key of ["headerGradient", "buttonGradient", "accent", "bg", "surface", "surfaceAlt", "border", "text", "textMuted", "navPillIdle"]) {
+      for (const key of ["headerGradient", "buttonGradient", "accent", "bg", "surface", "surfaceAlt", "border", "text", "textMuted", "navPillIdle", "glowA", "glowB", "highlight"]) {
         expect(t[key], `${id}.${key}`).toBeTruthy();
       }
     });

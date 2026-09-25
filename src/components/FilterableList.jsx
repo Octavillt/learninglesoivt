@@ -66,7 +66,7 @@ export default function FilterableList({ value, onChange, placeholder, children 
           onChange={e => onChange(e.target.value)}
           style={{
             width: "100%", padding: "11px 15px", borderRadius: "10px", border: "none",
-            background: "#1e293b", color: "#fff", boxSizing: "border-box",
+            background: "var(--surface, #1e293b)", color: "#fff", boxSizing: "border-box",
           }}
         />
       </div>

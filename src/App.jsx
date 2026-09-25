@@ -44,6 +44,7 @@ import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection"
 import ModuleIVExamSection from "./features/moduleIVExam/ModuleIVExamSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
+import BackToBottom        from "./components/BackToBottom";
 import BackToPrevious      from "./components/BackToPrevious";
 import ModuleGuide from "./components/ModuleGuide";
 import LessonFooter from "./components/LessonFooter";
@@ -272,6 +273,16 @@ export default function App() {
   useEffect(() => {
     const root = document.documentElement;
     root.style.setProperty("--page-bg", theme.bg);
+    // Las tarjetas de cada sección toman estas superficies para que el tema
+    // elegido tiña también el contenido, no solo el header y la navegación.
+    root.style.setProperty("--surface", theme.surface);
+    root.style.setProperty("--surface-deep", theme.bg);
+    root.style.setProperty("--surface-alt", theme.surfaceAlt);
+    root.style.setProperty("--border", theme.border);
+    root.style.setProperty("--text-muted", theme.textMuted);
+    root.style.setProperty("--glow-a", theme.glowA);
+    root.style.setProperty("--glow-b", theme.glowB);
+    root.style.setProperty("--highlight", theme.highlight);
 
     const wrap = navWrapRef.current;
     if (!wrap) {
@@ -286,7 +297,7 @@ export default function App() {
     const observer = new ResizeObserver(measure);
     observer.observe(wrap);
     return () => observer.disconnect();
-  }, [theme.bg, levelId]);
+  }, [theme, levelId]);
 
   return (
     <NavigationContext.Provider value={{ goTo: goToTopic }}>
@@ -388,7 +399,10 @@ export default function App() {
         label={previous ? topicLabel(previous.levelId, previous.topicId, now) : null}
         onClick={goBack}
       />
-      <BackToTop theme={theme} />
+      <div className="scroll-arrows">
+        <BackToTop theme={theme} />
+        <BackToBottom theme={theme} />
+      </div>
     </div>
     </NavigationContext.Provider>
   );

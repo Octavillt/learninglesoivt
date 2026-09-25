@@ -12,7 +12,7 @@ export default function DemosSection() {
   return (
     <div>
       <TopicHeading topicId="demonstratives" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Se usan para <strong style={{ color: "#f8fafc" }}>señalar cosas</strong>. Dependen de dos preguntas:<br />
         1️⃣ ¿<strong style={{ color: "#f8fafc" }}>Cuántas</strong> cosas? (1 o 2+) &nbsp;&nbsp; 2️⃣ ¿<strong style={{ color: "#f8fafc" }}>Dónde</strong> está? (cerca o lejos)
       </div>
@@ -20,7 +20,7 @@ export default function DemosSection() {
 
       <RuleBox icon="📐" rule="Tabla de referencia rápida — ¿cuál usar?" color="#c084fc">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "6px", marginTop: "6px" }}>
-          <div style={{ background: "#0f172a", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
             <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px", fontWeight: 700 }}>SITUACIÓN</div>
           </div>
           <div style={{ background: "#3d2000", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
@@ -34,7 +34,7 @@ export default function DemosSection() {
             { label: "2+ cosas", near: "THESE + are", far: "THOSE + are" },
           ].map((row, i) => (
             <Fragment key={i}>
-              <div key={`l${i}`} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
+              <div key={`l${i}`} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
                 <div style={{ color: "#94a3b8", fontSize: "13px", fontWeight: 700 }}>{row.label}</div>
               </div>
               <div key={`n${i}`} style={{ background: "#2e1065", borderRadius: "8px", padding: "10px", textAlign: "center" }}>
@@ -67,7 +67,7 @@ export default function DemosSection() {
 
       <SectionTitle color="#fbbf24">❓ Preguntas con demonstratives</SectionTitle>
       {DEMO_QA.map(({ q, a, esp }, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", lineHeight: 2 }}>
             <Sentence pts={q} /> <span style={{ color: "#94a3b8" }}>→</span> <Sentence pts={a} />
           </div>
@@ -77,7 +77,7 @@ export default function DemosSection() {
 
       <SectionTitle color="#fbbf24">🔄 Singular → Plural (transformaciones)</SectionTitle>
       {DEMO_TRANSFORM.map((t, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", lineHeight: 2 }}>
             <Sentence pts={t.s} /> <span style={{ color: "#94a3b8", fontSize: "18px" }}>→</span> <Sentence pts={t.p} />
           </div>

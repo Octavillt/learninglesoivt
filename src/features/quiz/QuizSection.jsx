@@ -26,7 +26,7 @@ export default function QuizSection({ initialSelection }) {
       <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a IV. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
 
       {/* Puntuación */}
-      <div style={{ background: "#1e293b", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ color: "#94a3b8" }}>
           Puntuación: <strong style={{ color: "#34d399", fontSize: "20px" }}>{score.correct}</strong>
           <span style={{ color: "#94a3b8" }}> / {score.total}</span>
@@ -39,7 +39,7 @@ export default function QuizSection({ initialSelection }) {
       </div>
 
       <label htmlFor="quiz-level" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Módulo</label>
-      <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "#1e293b", color: "#fff", fontSize: 16, marginBottom: 12 }}>
+      <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "var(--surface, #1e293b)", color: "#fff", fontSize: 16, marginBottom: 12 }}>
         <option value="all">Todos los módulos</option>
         {STUDY_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
       </select>
@@ -48,7 +48,7 @@ export default function QuizSection({ initialSelection }) {
         id="quiz-topic"
         value={topic}
         onChange={e => setTopic(e.target.value)}
-        style={{ width: "100%", padding: "11px", borderRadius: "10px", border: "none", background: "#1e293b", color: "#fff", fontSize: "14px", marginBottom: "12px" }}
+        style={{ width: "100%", padding: "11px", borderRadius: "10px", border: "none", background: "var(--surface, #1e293b)", color: "#fff", fontSize: "14px", marginBottom: "12px" }}
       >
         <option value="mixed">🎲 {levelId === "all" ? "Mezcla de todos los temas" : "Todos los temas de este módulo"}</option>
         {STUDY_LEVELS.filter(level => levelId === "all" || level.id === levelId).map(level => (
@@ -73,7 +73,7 @@ export default function QuizSection({ initialSelection }) {
 
       {/* Tarjeta de pregunta */}
       {started && question && (
-        <div style={{ background: "#1e293b", borderRadius: "14px", padding: "22px" }}>
+        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "22px" }}>
           <div style={{ fontSize: "19px", fontWeight: 700, color: "#f8fafc", lineHeight: 1.6, marginBottom: "10px" }}>
             {question.question}
           </div>
@@ -81,7 +81,7 @@ export default function QuizSection({ initialSelection }) {
           <p style={{ color: "#94a3b8", fontSize: 13 }}>{STUDY_LEVELS.flatMap(level => level.topics.map(item => ({ ...item, levelLabel: level.label }))).filter(item => item.id === question.topic).map(item => item.levelLabel + " · " + item.label).join("")}</p>
           {question.options && <p style={{ color: "#cbd5e1" }}>Escribe una opción: {question.options.join(" | ")}</p>}
           {question.hint && (
-            <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "14px", padding: "8px 12px", background: "#0f172a", borderRadius: "8px" }}>
+            <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "14px", padding: "8px 12px", background: "var(--surface-deep, #0f172a)", borderRadius: "8px" }}>
               💡 {question.hint}
             </div>
           )}
@@ -95,7 +95,7 @@ export default function QuizSection({ initialSelection }) {
                 onChange={e => setAnswer(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && answer.trim() && submitAnswer()}
                 autoFocus
-                style={{ width: "100%", padding: "13px 16px", borderRadius: "10px", border: "2px solid #334155", background: "#0f172a", color: "#fff", fontSize: "16px", boxSizing: "border-box", marginBottom: "10px", outline: "none" }}
+                style={{ width: "100%", padding: "13px 16px", borderRadius: "10px", border: "2px solid #334155", background: "var(--surface-deep, #0f172a)", color: "#fff", fontSize: "16px", boxSizing: "border-box", marginBottom: "10px", outline: "none" }}
               />
               <button
                 onClick={submitAnswer}

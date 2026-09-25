@@ -7,7 +7,7 @@ const VOWEL_COLOR = "#fbbf24";
 const CONSONANT_COLOR = "#38bdf8";
 
 const LetterChip = ({ letter, ipa, say, word, color }) => (
-  <div style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 10px", borderLeft: `3px solid ${color}` }}>
+  <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 10px", borderLeft: `3px solid ${color}` }}>
     <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
       <span style={{ color, fontWeight: 800, fontSize: "16px" }}>{letter}</span>
       <span style={{ color: "#e2e8f0", fontSize: "13px", fontWeight: 600 }}>{say}</span>
@@ -54,7 +54,7 @@ export default function LettersPanel() {
       <RuleBox icon="🔊" rule="Sonidos frecuentes: vocal larga y corta" color={VOWEL_COLOR}>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           {VOWEL_SOUNDS.map(({ letter, long, short }) => (
-            <div key={letter} style={{ background: "#0f172a", borderRadius: "8px", padding: "9px 12px", display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+            <div key={letter} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "9px 12px", display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
               <span style={{ color: VOWEL_COLOR, fontWeight: 800, fontSize: "16px", minWidth: "18px" }}>{letter}</span>
               <span style={{ color: "#e2e8f0", fontSize: "13px" }}>
                 <strong style={{ color: "#4ade80" }}>largo</strong> {long.ipa} — {long.word}
@@ -75,7 +75,7 @@ export default function LettersPanel() {
       <RuleBox icon="✍️" rule="Spelling — deletrear en voz alta" color={CONSONANT_COLOR}>
         <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px" }}>
           {SPELLING_EXAMPLES.map(ex => (
-            <div key={ex.q} style={{ background: "#0f172a", borderRadius: "8px", padding: "9px 12px" }}>
+            <div key={ex.q} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "9px 12px" }}>
               <div style={{ color: "#e2e8f0", fontSize: "14px", fontWeight: 600 }}>{ex.q}</div>
               <div style={{ color: CONSONANT_COLOR, fontSize: "14px", fontWeight: 700, letterSpacing: "1px", marginTop: "3px" }}>{ex.a}</div>
               <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>🇲🇽 {ex.esp}</div>

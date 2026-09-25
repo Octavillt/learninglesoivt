@@ -5,7 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { JOB_CATEGORIES, WORKPLACES, JOB_ACTIONS, DIALOG_HE, DIALOG_SHE } from "./data";
 
 const ChatBubble = ({ emoji, name, color, lines }) => (
-  <div style={{ background: "#0f172a", borderRadius: "12px", padding: "14px", border: `1px solid ${color}33` }}>
+  <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "12px", padding: "14px", border: `1px solid ${color}33` }}>
     <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
       <span style={{ fontSize: "20px" }}>{emoji}</span>
       <span style={{ color, fontWeight: 800, fontSize: "13px" }}>{name}</span>
@@ -30,7 +30,7 @@ const ChatBubble = ({ emoji, name, color, lines }) => (
 );
 
 const FormulaRow = ({ step, label, color, esp, children }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: "12px", background: "#0f172a", borderRadius: "10px", padding: "10px 14px" }}>
+  <div style={{ display: "flex", alignItems: "center", gap: "12px", background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "10px 14px" }}>
     <div style={{
       width: "26px", height: "26px", borderRadius: "50%", background: color, color: "#0f172a",
       display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "13px",
@@ -50,7 +50,7 @@ export default function JobsSection() {
   return (
     <div>
       <TopicHeading topicId="jobs" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Para hablar de oficios y profesiones se usan 3 preguntas clave: <strong style={{ color: "#f8fafc" }}>profesión</strong> (Verb To Be), <strong style={{ color: "#f8fafc" }}>lugar de trabajo</strong> (Simple Present) y <strong style={{ color: "#f8fafc" }}>qué hace ahora</strong> (Present Progressive).
       </div>
 
@@ -63,7 +63,7 @@ export default function JobsSection() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "6px" }}>
             {cat.jobs.map(([en, es, place]) => (
-              <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", borderLeft: `3px solid ${cat.color}` }}>
+              <div key={en} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", borderLeft: `3px solid ${cat.color}` }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "8px" }}>
                   <span style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "13px" }}>{en}</span>
                 </div>
@@ -116,7 +116,7 @@ export default function JobsSection() {
         {JOB_ACTIONS.map(([job, verb, obj, esp]) => (
           <div key={job} style={{ background: "#3b0764", borderRadius: "10px", padding: "12px 14px" }}>
             <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
-              <span style={{ background: "#1e293b", borderRadius: "6px", padding: "3px 10px", color: "#4ade80", fontWeight: 700, fontSize: "12px", whiteSpace: "nowrap" }}>The {job.toLowerCase()}</span>
+              <span style={{ background: "var(--surface, #1e293b)", borderRadius: "6px", padding: "3px 10px", color: "#4ade80", fontWeight: 700, fontSize: "12px", whiteSpace: "nowrap" }}>The {job.toLowerCase()}</span>
               <span style={{ color: "#f8fafc", fontSize: "13px" }}>
                 is <strong style={{ color: "#f472b6" }}>{verb}</strong> {obj}.
               </span>

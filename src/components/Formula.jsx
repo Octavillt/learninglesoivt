@@ -2,11 +2,7 @@ import Token from "./Token";
 
 export default function Formula({ label, parts, color, example }) {
   return (
-    <div style={{
-      background: "#0f172a",
-      border: `1px solid ${color || "#334155"}`,
-      borderRadius: "10px", padding: "14px 16px", marginBottom: "10px",
-    }}>
+    <div className="formula-card" style={{ "--formula-accent": color || "#475569" }}>
       {label && (
         <div style={{
           color: color || "#94a3b8", fontWeight: 700, fontSize: "12px",
@@ -28,7 +24,7 @@ export default function Formula({ label, parts, color, example }) {
       </div>
       {example && (
         <div style={{
-          marginTop: "8px", paddingTop: "8px", borderTop: "1px solid #1e293b",
+          marginTop: "8px", paddingTop: "8px", borderTop: "1px dashed var(--border, #334155)",
           display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap", lineHeight: 2,
         }}>
           <span style={{ color: "#475569", fontSize: "12px", fontWeight: 700 }}>Ej:</span>

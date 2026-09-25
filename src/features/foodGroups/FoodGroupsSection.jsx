@@ -5,7 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS, CONVERSATION } from "./data";
 
 const COLOR = "#22C55E";
-const card = { background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
+const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
 
@@ -21,7 +21,7 @@ export default function FoodGroupsSection() {
         <RuleBox key={group.name} icon={group.icon} rule={`${group.name} — ${group.translation}`} color={COLOR}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "8px", margin: "12px 0" }}>
             {group.foods.map(([en, es]) => (
-              <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "10px" }}>
+              <div key={en} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "10px" }}>
                 <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
                 <div style={translation}>🇲🇽 {es}</div>
               </div>

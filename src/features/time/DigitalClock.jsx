@@ -24,7 +24,7 @@ export default function DigitalClock() {
   const phrase = timeToDigital(hour, minute);
 
   return (
-    <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
       <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🔢 Ajusta la hora y los minutos
       </div>
@@ -51,7 +51,7 @@ export default function DigitalClock() {
         </div>
       </div>
 
-      <div style={{ background: "#0f172a", borderRadius: "10px", padding: "12px" }}>
+      <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "12px" }}>
         <div style={{ color: "#f8fafc", fontWeight: 700, fontSize: "17px" }}>{phrase}</div>
       </div>
     </div>

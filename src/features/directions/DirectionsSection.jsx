@@ -57,7 +57,7 @@ export default function DirectionsSection() {
   return (
     <div>
       <TopicHeading topicId="directions" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Para dar indicaciones usamos el verbo en forma base: <strong style={{ color: "#f8fafc" }}>go, turn, take</strong>. No hace falta agregar un sujeto: estas instrucciones son imperativos.<br />
         🇲🇽 <em>Sigue derecho y da vuelta a la izquierda.</em> → 🇺🇸 <em>Go straight ahead and turn left.</em>
       </div>
@@ -74,7 +74,7 @@ export default function DirectionsSection() {
       <SectionTitle color={COLOR}>🧭 Movimientos esenciales</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))", gap: "8px", marginBottom: "16px" }}>
         {DIRECTION_PHRASES.map(item => (
-          <div key={item.phrase} style={{ display: "flex", gap: "10px", alignItems: "center", background: "#1e293b", borderRadius: "10px", padding: "11px 12px", borderLeft: `3px solid ${COLOR}` }}>
+          <div key={item.phrase} style={{ display: "flex", gap: "10px", alignItems: "center", background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "11px 12px", borderLeft: `3px solid ${COLOR}` }}>
             <span style={{ fontSize: "25px", minWidth: "34px", textAlign: "center" }}>{item.icon}</span>
             <div>
               <div style={{ color: "#e2e8f0", fontSize: "14px", fontWeight: 800 }}>{item.phrase}</div>
@@ -87,7 +87,7 @@ export default function DirectionsSection() {
       <SectionTitle color={COLOR}>📍 Para ubicar el destino</SectionTitle>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "10px" }}>
         {PLACE_PHRASES.map(item => (
-          <div key={item.phrase} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: "20px", padding: "7px 12px" }}>
+          <div key={item.phrase} style={{ background: "var(--surface, #1e293b)", border: "1px solid #334155", borderRadius: "20px", padding: "7px 12px" }}>
             <span style={{ color: COLOR, fontWeight: 800, fontSize: "13px" }}>{item.phrase}</span>
             <span style={{ color: "#94a3b8", fontSize: "12px" }}> · {item.esp}</span>
           </div>
@@ -106,7 +106,7 @@ export default function DirectionsSection() {
       <SectionTitle color={COLOR}>🏙️ Practica con el mapa</SectionTitle>
       <CityMap />
       {ROUTES.map(route => (
-        <div key={route.title} style={{ background: "#1e293b", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px", borderTop: `3px solid ${route.color}` }}>
+        <div key={route.title} style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px", borderTop: `3px solid ${route.color}` }}>
           <div style={{ color: route.color, fontWeight: 800, fontSize: "14px" }}>{route.title}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>🇲🇽 {route.esp}</div>
           <p style={{ color: "#cbd5e1", fontSize: "13px", lineHeight: 1.6 }}>Punto de partida: {route.start}</p>
@@ -121,7 +121,7 @@ export default function DirectionsSection() {
 
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {MISTAKES.map(item => (
-        <div key={item.wrong} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={item.wrong} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#f87171", fontSize: "14px" }}>❌ {item.wrong}</div>
           <div style={{ color: "#4ade80", fontSize: "14px", marginTop: "2px" }}>✅ {item.right}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "6px", paddingTop: "6px", borderTop: "1px solid #334155" }}>💡 {item.note}</div>
@@ -130,7 +130,7 @@ export default function DirectionsSection() {
 
       <SectionTitle color={COLOR}>✅ Ejercicio resuelto — traduce la indicación</SectionTitle>
       {PRACTICE.map((item, index) => (
-        <div key={item.q} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={item.q} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#94a3b8", fontSize: "13px" }}>{index + 1}. 🇲🇽 {item.q}</div>
           <div style={{ color: "#4ade80", fontSize: "14px", fontWeight: 700, marginTop: "5px" }}>→ {item.answer}</div>
         </div>

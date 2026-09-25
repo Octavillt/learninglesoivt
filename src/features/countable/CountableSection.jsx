@@ -5,7 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { NOUN_GROUPS, QUESTIONS, QUANTIFIERS, UNITS } from "./data";
 
 const COLOR = "#F59E0B";
-const card = { background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
+const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
 

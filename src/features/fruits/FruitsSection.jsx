@@ -9,7 +9,7 @@ export default function FruitsSection() {
   return (
     <div>
       <TopicHeading topicId="fruits" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "18px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Aprende el nombre de cada fruta y verdura en inglés y en español. Lee las tarjetas en voz alta y usa los ejemplos para nombrar uno o varios alimentos.
       </div>
 
@@ -19,7 +19,7 @@ export default function FruitsSection() {
       <SectionTitle color={GREEN}>🥕 Vegetables — Las Verduras</SectionTitle>
       <ItemGrid items={VEGETABLES} />
 
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         🧐 <strong style={{ color: "#fbbf24" }}>Ojo:</strong> en inglés el jitomate rojo es <em>tomato</em> y el tomate verde es <em>tomatillo</em>.
         Además, el jitomate y el aguacate (<em>avocado</em>) son frutas para la botánica aunque en la cocina se usen como verduras:
         por eso el jitomate aparece en las dos listas.
@@ -32,17 +32,17 @@ export default function FruitsSection() {
       {VEGETABLE_SENTENCES.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
       <SectionTitle color="#f97316">🔤 A / AN con frutas y verduras</SectionTitle>
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "8px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         Recuerda: usa <strong style={{ color: "#fbbf24" }}>A</strong> antes de sonido consonante y <strong style={{ color: "#34d399" }}>AN</strong> antes de sonido vocal.
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
-        <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px" }}>
+        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px" }}>
           <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>A + sonido consonante</div>
           {["a banana 🍌","a mango 🥭","a pear 🍐","a grape 🍇","a coconut 🥥","a watermelon 🍉","a carrot 🥕","a potato 🥔","a cucumber 🥒","a mushroom 🍄","a tomato 🍅","a tomatillo 🍏"].map(ex => (
             <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
           ))}
         </div>
-        <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px" }}>
+        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px" }}>
           <div style={{ color: "#34d399", fontWeight: 800, fontSize: "15px", marginBottom: "10px" }}>AN + sonido vocal</div>
           {["an apple 🍎","an orange 🍊","an avocado 🥑","an onion 🧅","an eggplant 🍆","an olive 🫒"].map(ex => (
             <div key={ex} style={{ color: "#e2e8f0", fontSize: "13px", padding: "4px 0", borderBottom: "1px solid #334155" }}>{ex}</div>
@@ -71,7 +71,7 @@ function ItemGrid({ items }) {
 function FoodCard({ item }) {
   return (
     <div style={{
-      background: "#1e293b",
+      background: "var(--surface, #1e293b)",
       borderRadius: "14px",
       padding: "18px 10px 14px",
       textAlign: "center",

@@ -5,7 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { EXERCISE_WORDS, MOVEMENT_PHRASES, EXAMPLES } from "./data";
 
 const COLOR = "#A78BFA";
-const card = { background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
+const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
 

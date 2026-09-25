@@ -12,7 +12,7 @@ const COLOR = "#22d3ee";
 
 function WhWordCard({ word, translation, use, example, esp, relatedTopic }) {
   return (
-    <div style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${COLOR}` }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${COLOR}` }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "2px" }}>
         <span style={{ color: COLOR, fontWeight: 900, fontSize: "18px" }}>{word}?</span>
         <span style={{ color: "#94a3b8", fontSize: "13px", fontWeight: 600 }}>{translation}</span>
@@ -33,7 +33,7 @@ export default function WhQuestionsSection() {
   return (
     <div>
       <TopicHeading topicId="whQuestions" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Las <Token t="WH Questions" r="wh" /> se usan para pedir información específica (no se responden con sí/no). Casi todas empiezan con <strong style={{ color: "#f8fafc" }}>W</strong> o <strong style={{ color: "#f8fafc" }}>H</strong>: what, where, why, how, when, who, which, whose.
       </div>
       <Legend roles={["wh", "verb_be", "subject"]} />
@@ -67,7 +67,7 @@ export default function WhQuestionsSection() {
         const whWord = q[0]?.t;
         const translation = WH_TRANSLATIONS[whWord];
         return (
-          <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
             <div style={{ lineHeight: 2, display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
               <Sentence pts={q} />
               {translation && <span style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 600 }}>({translation})</span>}

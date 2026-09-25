@@ -20,7 +20,7 @@ const CONJUGATIONS = [
 
 function QaCard({ q, a, esp }) {
   return (
-    <div style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
       <div style={{ lineHeight: 2 }}><Sentence pts={q} /></div>
       <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
       <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
@@ -32,7 +32,7 @@ export default function SimplePresentSection() {
   return (
     <div>
       <TopicHeading topicId="simplePresent" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Es el tiempo de lo que haces <strong style={{ color: "#f8fafc" }}>siempre, todos los días o en general</strong> — no de lo que estás haciendo justo ahora. Tiene dos particularidades: con <Token t="he / she / it" r="subject" /> el verbo lleva <Token t="s" r="s3" />, y para negar o preguntar aparece el auxiliar <Token t="do" r="aux" /> / <Token t="does" r="aux" />.<br />
         🇲🇽 <em>Ella trabaja aquí.</em> → 🇺🇸 <em>She works here.</em>
       </div>
@@ -44,7 +44,7 @@ export default function SimplePresentSection() {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "18px" }}>
         {CONJUGATIONS.map(r => (
-          <div key={r.subj} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
+          <div key={r.subj} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
             <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "13px" }}>{r.subj}</div>
             <div style={{ fontSize: "24px", fontWeight: 900, color: r.color, margin: "6px 0" }}>{r.form}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px" }}>{r.esp}</div>
@@ -55,7 +55,7 @@ export default function SimplePresentSection() {
       <SectionTitle color={COLOR}>🎬 ¿Cuándo se usa?</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "10px", marginBottom: "10px" }}>
         {SP_USES.map(({ icon, title, subtitle, example }) => (
-          <div key={title} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", borderLeft: `4px solid ${COLOR}` }}>
+          <div key={title} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", borderLeft: `4px solid ${COLOR}` }}>
             <div style={{ color: COLOR, fontWeight: 800, fontSize: "14px" }}>{icon} {title}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{subtitle}</div>
             <div style={{ lineHeight: 2 }}><Sentence pts={example.pts} /></div>
@@ -87,12 +87,12 @@ export default function SimplePresentSection() {
       </div>
       <RelatedTopic levelId="basico1" topicId="plural" label="Repasar las reglas del plural" />
       {THIRD_PERSON_RULES.map(rule => (
-        <div key={rule.rule} style={{ background: "#1e293b", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
+        <div key={rule.rule} style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
           <div style={{ fontWeight: 700, color: rule.color, marginBottom: "4px", fontSize: "14px" }}>{rule.rule}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>{rule.desc}</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {rule.words.map(([base, suf, orig]) => (
-              <div key={base + suf} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
+              <div key={base + suf} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
                 {orig && <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "2px" }}>{orig} →</div>}
                 <span style={{ color: "#4ade80", fontWeight: 700, fontSize: "16px" }}>{base}</span>
                 <span style={{ color: "#f472b6", fontWeight: 800, background: "#3b0764", borderRadius: "4px", padding: "1px 5px", fontSize: "16px" }}>{suf}</span>
@@ -142,7 +142,7 @@ export default function SimplePresentSection() {
 
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {COMMON_MISTAKES.map((m, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#f87171", fontSize: "14px" }}>❌ {m.wrong}</div>
           <div style={{ color: "#4ade80", fontSize: "14px", marginTop: "2px" }}>✅ {m.right}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "6px", paddingTop: "6px", borderTop: "1px solid #334155" }}>💡 {m.esp}</div>
@@ -151,7 +151,7 @@ export default function SimplePresentSection() {
 
       <SectionTitle color={COLOR}>✅ Ejercicio resuelto — afirmativo, negativo e interrogativo</SectionTitle>
       {EXERCISE.map((ex, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "6px" }}>{ex.q}</div>
           <div style={{ lineHeight: 2 }}><Sentence pts={ex.pts} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>

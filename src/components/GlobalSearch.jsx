@@ -98,7 +98,7 @@ export default function GlobalSearch({ onSelect, now }) {
           role="listbox"
           style={{
             position: "absolute", top: "calc(100% + 6px)", left: 0, right: 0, zIndex: 50,
-            background: "#1e293b", border: "1px solid #334155", borderRadius: "12px",
+            background: "var(--surface, #1e293b)", border: "1px solid #334155", borderRadius: "12px",
             padding: "6px", maxHeight: "320px", overflowY: "auto",
             boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
           }}

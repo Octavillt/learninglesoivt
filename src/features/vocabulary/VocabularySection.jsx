@@ -14,7 +14,7 @@ function PhraseGrid({ items }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "8px", marginBottom: "16px" }}>
       {items.map(([phrase, esp, tag]) => (
-        <div key={phrase} style={{ background: "#1e293b", borderRadius: "10px", padding: "10px 12px" }}>
+        <div key={phrase} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 12px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "6px" }}>
             <span style={{ color: "#f8fafc", fontWeight: 700, fontSize: "13px" }}>{phrase}</span>
             <span style={{
@@ -35,7 +35,7 @@ function MiniWordGrid({ items, color }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: "6px" }}>
       {items.map(([en, es]) => (
-        <div key={en} style={{ background: "#0f172a", borderRadius: "8px", padding: "9px 10px", borderLeft: `3px solid ${color}` }}>
+        <div key={en} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "9px 10px", borderLeft: `3px solid ${color}` }}>
           <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "13px" }}>{en}</div>
           <div style={{ color: "#94a3b8", fontSize: "11px", marginTop: "1px" }}>{es}</div>
         </div>
@@ -48,7 +48,7 @@ export default function VocabularySection() {
   return (
     <div>
       <TopicHeading topicId="vocabulary" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Cierra Básico I con una conversación: saluda, di tu nombre, presenta a alguien y despídete. Conecta estas frases con el vocabulario de oficios y familia que ya conoces. Aprende los saludos y las despedidas como expresiones completas.
       </div>
 

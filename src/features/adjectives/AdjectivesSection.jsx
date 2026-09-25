@@ -25,7 +25,7 @@ function AdjectiveTable({ rows }) {
   return (
     <div style={{ overflowX: "auto", borderRadius: "10px" }}>
       <div style={{ minWidth: "620px" }}>
-        <div style={{ maxHeight: "60vh", overflowY: "auto", background: "#1e293b", borderRadius: "10px" }}>
+        <div style={{ maxHeight: "60vh", overflowY: "auto", background: "var(--surface, #1e293b)", borderRadius: "10px" }}>
           <div style={{ display: "grid", gridTemplateColumns: GRID, gap: "8px", position: "sticky", top: 0, zIndex: 1 }}>
             {COLUMNS.map(col => (
               <div key={col.title} style={{
@@ -80,7 +80,7 @@ export default function AdjectivesSection() {
   return (
     <div>
       <TopicHeading topicId="adjectives" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los <Token t="Adjetivos Calificativos" r="adj" /> describen cualidades del sustantivo — tamaño, apariencia, personalidad, sentimientos, etc. A diferencia del español, en inglés <strong style={{ color: "#f8fafc" }}>no cambian</strong> de forma: no llevan -s en plural ni varían por género (<Token t="a happy boy" r="adj" /> / <Token t="happy girls" r="adj" />).
       </div>
       <Legend roles={["adj", "adjOpp", "subject", "verb_be"]} />

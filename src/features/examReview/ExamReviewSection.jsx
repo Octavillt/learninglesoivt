@@ -22,7 +22,7 @@ export function VocabGrid({ entries, columns = 2 }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(${columns === 3 ? "170px" : "230px"}, 1fr))`, gap: "8px", marginBottom: "10px" }}>
       {entries.map(([word, esp, example]) => (
-        <div key={word} style={{ background: "#1e293b", borderRadius: "10px", padding: "11px 13px" }}>
+        <div key={word} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "11px 13px" }}>
           <div style={{ color: "#f8fafc", fontWeight: 800, fontSize: "14px" }}>{word}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "3px" }}>🇲🇽 {esp}</div>
           {example && <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "7px", paddingTop: "7px", borderTop: "1px solid #334155", fontStyle: "italic" }}>{example}</div>}
@@ -49,7 +49,7 @@ export function Practice({ questions = PRACTICE }) {
   }
 
   return (
-    <div style={{ background: "#1e293b", borderRadius: "12px", padding: "15px", marginBottom: "10px" }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "15px", marginBottom: "10px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "12px" }}>
         <div>
           <div style={{ color: COLOR, fontWeight: 800 }}>🎯 Mini simulador — {questions.length} preguntas</div>
@@ -69,7 +69,7 @@ export function Practice({ questions = PRACTICE }) {
         const answered = answer !== null;
         const isCorrect = answer === item.correct;
         return (
-          <div key={item.question} style={{ background: "#0f172a", borderRadius: "10px", padding: "13px", marginBottom: "9px", border: answered ? `1px solid ${isCorrect ? "#22c55e66" : "#ef444466"}` : "1px solid #334155" }}>
+          <div key={item.question} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "13px", marginBottom: "9px", border: answered ? `1px solid ${isCorrect ? "#22c55e66" : "#ef444466"}` : "1px solid #334155" }}>
             <div style={{ color: "#f8fafc", fontWeight: 700, fontSize: "14px", lineHeight: 1.55, marginBottom: "9px" }}>{index + 1}. {item.question}</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
               {item.options.map((option, optionIndex) => {
@@ -154,7 +154,7 @@ export default function ExamReviewSection() {
       </RuleBox>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "8px", marginBottom: "10px" }}>
         {FREQUENCY_ADVERBS.map(([word, esp, percent]) => (
-          <div key={word} style={{ background: "#1e293b", borderRadius: "10px", padding: "10px 12px" }}>
+          <div key={word} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 12px" }}>
             <div style={{ color: "#f8fafc", fontWeight: 800 }}>{word}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px" }}>{esp}</div>
             <div style={{ color: COLOR, fontSize: "12px", fontWeight: 800, marginTop: "4px" }}>{percent}</div>
@@ -179,7 +179,7 @@ export default function ExamReviewSection() {
           </thead>
           <tbody>
             {ED_ING_PAIRS.map(([ed, ing, example]) => (
-              <tr key={ed} style={{ background: "#1e293b" }}>
+              <tr key={ed} style={{ background: "var(--surface, #1e293b)" }}>
                 <td style={{ color: "#f9a8d4", fontWeight: 800, padding: "10px" }}>{ed}</td>
                 <td style={{ color: "#67e8f9", fontWeight: 800, padding: "10px" }}>{ing}</td>
                 <td style={{ color: "#94a3b8", fontSize: "12px", padding: "10px" }}>{example}</td>
