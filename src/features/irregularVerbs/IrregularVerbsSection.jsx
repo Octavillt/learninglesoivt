@@ -23,7 +23,7 @@ function VerbTable({ rows }) {
   return (
     <div style={{ overflowX: "auto", borderRadius: "10px" }}>
       <div style={{ minWidth: "560px" }}>
-        <div style={{ maxHeight: "60vh", overflowY: "auto", background: "#1e293b", borderRadius: "10px" }}>
+        <div style={{ maxHeight: "60vh", overflowY: "auto", background: "var(--surface, #1e293b)", borderRadius: "10px" }}>
           <div style={{ display: "grid", gridTemplateColumns: GRID, gap: "8px", position: "sticky", top: 0, zIndex: 1 }}>
             {COLUMNS.map(col => (
               <div key={col.title} style={{
@@ -56,7 +56,7 @@ function VerbTable({ rows }) {
 
 function IpaGroup({ icon, title, color, rows }) {
   return (
-    <div style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${color}` }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${color}` }}>
       <div style={{ color, fontWeight: 800, fontSize: "13px", marginBottom: "10px" }}>
         {icon} {title}
       </div>
@@ -87,7 +87,7 @@ export default function IrregularVerbsSection() {
   return (
     <div>
       <TopicHeading topicId="irregularVerbs" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los verbos irregulares no siguen la regla de agregar <strong style={{ color: "#f8fafc" }}>-ed</strong> en pasado. Cada uno tiene su propia forma en <Token t="Simple Past" r="past" /> y en <Token t="Past Participle" r="participle" />, así que hay que memorizarlos.
       </div>
       <Legend roles={["verb", "past", "participle"]} />

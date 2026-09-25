@@ -11,7 +11,7 @@ export default function ProgressiveSection() {
   return (
     <div>
       <TopicHeading topicId="progressive" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Se usa para decir lo que <strong style={{ color: "#f8fafc" }}>estás haciendo AHORA MISMO</strong>.<br />
         🇲🇽 <em>Ella está comiendo.</em> → 🇺🇸 <em>She is eating.</em>
       </div>
@@ -45,7 +45,7 @@ export default function ProgressiveSection() {
         <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "6px" }}>🇲🇽 ¿Está ella comiendo?</div>
       </RuleBox>
       {PROG_INT.map(({ q, a, esp }, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ lineHeight: 2 }}><Sentence pts={q} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
@@ -66,12 +66,12 @@ export default function ProgressiveSection() {
         </div>
       </RuleBox>
       {ING_RULES.map((rule, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
           <div style={{ fontWeight: 700, color: rule.color, marginBottom: "4px", fontSize: "14px" }}>{rule.rule}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>{rule.desc}</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {rule.words.map(([base, suf, orig], j) => (
-              <div key={j} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
+              <div key={j} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
                 {orig && <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "2px" }}>{orig} →</div>}
                 <span style={{ color: "#4ade80", fontWeight: 700, fontSize: "16px" }}>{base}</span>
                 <span style={{ color: "#f472b6", fontWeight: 800, background: "#3b0764", borderRadius: "4px", padding: "1px 5px", fontSize: "16px" }}>{suf}</span>

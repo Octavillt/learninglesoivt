@@ -14,6 +14,11 @@ import { WH_WORDS } from "../whQuestions/data";
 import { GREETINGS, GOODBYES } from "../vocabulary/data";
 import { BODY_WORDS } from "../bodyParts/data";
 import { PRACTICE as CAN } from "../can/data";
+import { PRACTICE as COUNTABLE } from "../countable/data";
+import { PRACTICE as FOOD_GROUPS } from "../foodGroups/data";
+import { PRACTICE as EXERCISE_WORDS } from "../exerciseWords/data";
+import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
+import { PRACTICE as MODULE_IV_EXAM } from "../moduleIVExam/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -39,6 +44,11 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...MODULE_IV_EXAM.map(row => ({ topic: "moduleIVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
+  ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
+  ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
+  ...FOOD_GROUPS.map(row => ({ ...row, topic: "foodGroups" })),
+  ...COUNTABLE.map(row => ({ ...row, topic: "countable" })),
   ...CAN.map(row => ({ ...row, topic: "can" })),
   ...BODY_WORDS.map(([en, es]) => ({
     topic: "bodyParts",

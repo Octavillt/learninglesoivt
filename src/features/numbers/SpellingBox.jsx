@@ -6,7 +6,7 @@ export default function SpellingBox() {
   const spelled = useMemo(() => spellWord(word), [word]);
 
   return (
-    <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center" }}>
       <label htmlFor="spelling-word" style={{ display: "block", color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🔤 Escribe una palabra o tu nombre y mira cómo se deletrea en inglés
       </label>
@@ -34,7 +34,7 @@ export default function SpellingBox() {
       ) : (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
           {spelled.map(({ letter, say }, i) => (
-            <div key={`${letter}-${i}`} style={{ background: "#0f172a", borderRadius: "8px", padding: "7px 10px", minWidth: "48px" }}>
+            <div key={`${letter}-${i}`} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "7px 10px", minWidth: "48px" }}>
               <div style={{ color: "#f472b6", fontWeight: 800, fontSize: "16px" }}>{letter}</div>
               <div style={{ color: "#94a3b8", fontSize: "11px" }}>{say}</div>
             </div>

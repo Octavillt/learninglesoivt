@@ -78,7 +78,7 @@ export default function AnalogClock() {
   const phrase = timeToWords(hour, minute);
 
   return (
-    <div style={{ background: "#1e293b", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center", touchAction: "none" }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "18px", marginBottom: "14px", textAlign: "center", touchAction: "none" }}>
       <div style={{ color: "#94a3b8", fontSize: "12px", fontWeight: 700, marginBottom: "10px" }}>
         🖱️ Arrastra las manecillas
       </div>
@@ -134,7 +134,7 @@ export default function AnalogClock() {
         <span style={{ color: "#fb923c", fontWeight: 700 }}>● minute hand</span>
       </div>
 
-      <div style={{ marginTop: "14px", background: "#0f172a", borderRadius: "10px", padding: "12px" }}>
+      <div style={{ marginTop: "14px", background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "12px" }}>
         <div style={{ color: "#94a3b8", fontWeight: 800, fontSize: "16px", marginBottom: "6px" }}>
           {formatDigitalClock(hour, minute)}
         </div>

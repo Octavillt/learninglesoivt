@@ -1,4 +1,4 @@
-import { EXAM_REVIEW_END, TOPICS_EXAM_END } from "./topicAvailability";
+import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END } from "./topicAvailability";
 
 // El orden define la ruta sugerida dentro de cada módulo. Los ids conservan
 // su módulo original y se comparten con navegación, búsqueda, enlaces y Quiz.
@@ -41,6 +41,11 @@ export const TOPICS_BASICO3 = [
 export const TOPICS_BASICO4 = [
   { id: "bodyParts", label: "🧍 Partes del cuerpo", english: "Body Parts", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
   { id: "can", label: "💪 Uso de CAN", english: "Can / Can't — Abilities", color: "#38BDF8", stage: "Expresar habilidades" },
+  { id: "countable", label: "🧺 Contables e incontables", english: "Countable & Uncountable", color: "#F59E0B", stage: "Hablar de alimentos y cantidades" },
+  { id: "foodGroups", label: "🍽️ Grupos de alimentos", english: "Food Groups", color: "#22C55E", stage: "Hablar de alimentos y cantidades" },
+  { id: "exerciseWords", label: "🏋️ Vocabulario de ejercicio", english: "Exercise Words", color: "#A78BFA", stage: "Describir movimientos y dar instrucciones" },
+  { id: "adverbsManner", label: "🎶 Adverbios de modo", english: "Adverbs of Manner", color: "#F472B6", stage: "Explicar cómo se realiza una acción" },
+  { id: "moduleIVExam", label: "📝 Guía de examen — Módulo IV", english: "Exam Study Guide", color: "#EC4899", stage: "Repaso de los seis temas del examen", availableUntil: MODULE_IV_EXAM_END },
 ];
 
 export const TOPICS_QUIZ = [

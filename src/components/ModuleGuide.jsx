@@ -10,6 +10,9 @@ export default function ModuleGuide({ level, topics, active }) {
       <summary>
         <span className="module-guide-label">Ruta de {level.label} · Tema {position} de {topics.length}</span>
         <strong>{level.purpose}</strong>
+        <span className="module-guide-progress" aria-hidden="true">
+          <span style={{ width: `${(position / topics.length) * 100}%` }} />
+        </span>
         <span className="module-guide-hint">Ver orden sugerido y objetivos</span>
       </summary>
       <div className="module-guide-body">

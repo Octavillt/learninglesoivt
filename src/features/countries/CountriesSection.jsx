@@ -5,7 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { COUNTRIES, CITIES, ORIGIN_DIALOG, OTHERS_DIALOG, FORMULA_STEPS } from "./data";
 
 const ChatBubble = ({ emoji, name, color, lines }) => (
-  <div style={{ background: "#0f172a", borderRadius: "12px", padding: "14px", border: `1px solid ${color}33` }}>
+  <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "12px", padding: "14px", border: `1px solid ${color}33` }}>
     <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
       <span style={{ fontSize: "20px" }}>{emoji}</span>
       <span style={{ color, fontWeight: 800, fontSize: "13px" }}>{name}</span>
@@ -30,7 +30,7 @@ const ChatBubble = ({ emoji, name, color, lines }) => (
 );
 
 const FormulaRow = ({ step, label, color, esp, children }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: "12px", background: "#0f172a", borderRadius: "10px", padding: "10px 14px" }}>
+  <div style={{ display: "flex", alignItems: "center", gap: "12px", background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "10px 14px" }}>
     <div style={{
       width: "26px", height: "26px", borderRadius: "50%", background: color, color: "#0f172a",
       display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "13px",
@@ -50,7 +50,7 @@ export default function CountriesSection() {
   return (
     <div>
       <TopicHeading topicId="countries" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Para hablar de <strong style={{ color: "#f8fafc" }}>origen</strong> y <strong style={{ color: "#f8fafc" }}>nacionalidad</strong> se usa el Verb To Be: <strong style={{ color: "#f8fafc" }}>I'm from</strong> + país, o <strong style={{ color: "#f8fafc" }}>I'm</strong> + nacionalidad.
       </div>
 
@@ -68,7 +68,7 @@ export default function CountriesSection() {
       <p style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "10px" }}>Países y nacionalidades llevan mayúscula. En una oración se dice the United States, the United Kingdom y the Netherlands: I’m from the United States.</p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "6px", marginBottom: "16px" }}>
         {COUNTRIES.map(c => (
-          <div key={c.en} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 12px", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div key={c.en} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 12px", display: "flex", alignItems: "center", gap: "10px" }}>
             <span style={{ fontSize: "22px", flexShrink: 0 }}>{c.flag}</span>
             <div style={{ minWidth: 0, flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: "8px" }}>

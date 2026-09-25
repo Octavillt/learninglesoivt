@@ -19,14 +19,14 @@ export default function PossessiveAdjectivesSection() {
   return (
     <div>
       <TopicHeading topicId="possessiveAdjectives" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Los <Token t="Possessive Adjectives" r="poss" /> se colocan <strong style={{ color: "#f8fafc" }}>antes de un sustantivo</strong> para mostrar de quién es algo: <Token t="my" r="poss" />, <Token t="your" r="poss" />, <Token t="his" r="poss" />, <Token t="her" r="poss" />, <Token t="its" r="poss" />, <Token t="our" r="poss" />, <Token t="their" r="poss" />.
       </div>
       <Legend roles={["poss", "subject"]} />
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "8px", marginBottom: "18px" }}>
         {PRONOUN_TO_POSSESSIVE.map((r, i) => (
-          <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px", textAlign: "center" }}>
+          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px", textAlign: "center" }}>
             <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "12px" }}>{r.subj}</div>
             <div style={{ fontSize: "22px", fontWeight: 900, color: r.color, margin: "4px 0" }}>{r.form}</div>
             <div style={{ color: "#94a3b8", fontSize: "11px" }}>{r.esp}</div>
@@ -52,14 +52,14 @@ export default function PossessiveAdjectivesSection() {
       {POSSESSIVE_EXERCISE.map((ex, i) => <ExampleCard key={i} pts={ex.pts} esp={ex.esp} />)}
 
       <SectionTitle color={COLOR}>🪞 Possessive Pronouns — cuando el sustantivo ya no hace falta</SectionTitle>
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 Un <Token t="Possessive Pronoun" r="poss" /> significa lo mismo que "possessive adjective + sustantivo", pero <strong style={{ color: "#f8fafc" }}>reemplaza al sustantivo por completo</strong> para no repetirlo. Por eso nunca va seguido de un sustantivo — puede ir al final (This is mine) o como sujeto (Mine is blue).
       </div>
 
       <div style={{ overflowX: "auto", marginBottom: "14px" }}>
         <div style={{ minWidth: "480px", display: "grid", gridTemplateColumns: "0.8fr 1fr 1fr 1.3fr", gap: "6px" }}>
           {["Pronombre", "Possessive Adjective", "Possessive Pronoun", "Español"].map(h => (
-            <div key={h} style={{ background: "#0f172a", borderBottom: "2px solid #475569", color: "#94a3b8", fontWeight: 800, fontSize: "12px", padding: "8px 10px" }}>{h}</div>
+            <div key={h} style={{ background: "var(--surface-deep, #0f172a)", borderBottom: "2px solid #475569", color: "#94a3b8", fontWeight: 800, fontSize: "12px", padding: "8px 10px" }}>{h}</div>
           ))}
           {POSSESSIVE_PRONOUNS.map((r, i) => (
             <Fragment key={i}>
@@ -82,7 +82,7 @@ export default function PossessiveAdjectivesSection() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "14px" }}>
         {PRONOUN_CONTRAST.map((ex, i) => (
-          <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px" }}>
+          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px" }}>
             <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.before} /></div>
             <div style={{ color: "#94a3b8", fontSize: "12px", margin: "2px 0" }}>↓</div>
             <div style={{ lineHeight: 1.9 }}><Sentence pts={ex.after} /></div>
@@ -94,7 +94,7 @@ export default function PossessiveAdjectivesSection() {
       <RuleBox icon="⚠️" rule={`Cuidado — "its" vs "it's" (el error más común)`} color="#f87171">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
           {ITS_VS_ITS.map(({ form, why, examples }) => (
-            <div key={form} style={{ background: "#0f172a", borderRadius: "8px", padding: "12px" }}>
+            <div key={form} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "12px" }}>
               <div style={{ color: form === "its" ? COLOR : "#f87171", fontWeight: 900, fontSize: "18px" }}>{form}</div>
               <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{why}</div>
               {examples.map((ex, i) => (

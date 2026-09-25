@@ -5,10 +5,10 @@ export default function Legend({ roles }) {
     <div style={{
       display: "flex", flexWrap: "wrap", gap: "5px",
       marginBottom: "14px", padding: "10px 14px",
-      background: "#0f172a", borderRadius: "10px",
-      border: "1px solid #1e293b",
+      background: "var(--surface-deep, #0f172a)", borderRadius: "12px",
+      border: "1px solid var(--border, #1e293b)",
     }}>
-      <span style={{ color: "#475569", fontSize: "11px", fontWeight: 700, alignSelf: "center", marginRight: "4px" }}>
+      <span style={{ color: "var(--text-muted, #94a3b8)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.6px", alignSelf: "center", marginRight: "4px" }}>
         COLORES
       </span>
       {roles.map(r => (

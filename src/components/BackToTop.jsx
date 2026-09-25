@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { floatingArrowStyle } from "./floatingArrowStyle";
 
 // A partir de cuántos píxeles de scroll aparece la flecha. Un umbral bajo la
 // haría parpadear con desplazamientos mínimos dentro de la barra de temas.
@@ -24,29 +25,7 @@ export default function BackToTop({ theme }) {
       title="Volver arriba"
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
-      style={{
-        position: "fixed",
-        right: "max(18px, env(safe-area-inset-right))",
-        bottom: "calc(18px + env(safe-area-inset-bottom))",
-        zIndex: 60,
-        width: "46px",
-        height: "46px",
-        borderRadius: "50%",
-        border: `1px solid ${theme?.border ?? "#334155"}`,
-        background: theme?.buttonGradient ?? "linear-gradient(135deg,#334155,#475569)",
-        color: "#fff",
-        fontSize: "20px",
-        lineHeight: 1,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        boxShadow: "0 6px 18px rgba(0,0,0,0.45)",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(12px) scale(0.8)",
-        pointerEvents: visible ? "auto" : "none",
-        transition: "opacity 0.2s ease, transform 0.2s ease",
-      }}
+      style={floatingArrowStyle(theme, visible)}
     >
       <span aria-hidden="true">↑</span>
     </button>

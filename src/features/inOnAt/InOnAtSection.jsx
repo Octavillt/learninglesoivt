@@ -17,7 +17,7 @@ const COLOR = "#fb923c";
 
 function PrepCard({ prep, icon, color, tagline, idea, children }) {
   return (
-    <div style={{ background: "#1e293b", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px", borderLeft: `4px solid ${color}` }}>
+    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px", borderLeft: `4px solid ${color}` }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap" }}>
         <span style={{ fontSize: "22px", fontWeight: 900, color }}>{icon} {prep}</span>
         <span style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "14px" }}>{tagline}</span>
@@ -30,7 +30,7 @@ function PrepCard({ prep, icon, color, tagline, idea, children }) {
 
 function Chip({ text, color }) {
   return (
-    <span style={{ background: "#0f172a", border: `1px solid ${color}44`, borderRadius: "20px", padding: "4px 11px", color: "#e2e8f0", fontSize: "13px", fontWeight: 600 }}>
+    <span style={{ background: "var(--surface-deep, #0f172a)", border: `1px solid ${color}44`, borderRadius: "20px", padding: "4px 11px", color: "#e2e8f0", fontSize: "13px", fontWeight: 600 }}>
       {text}
     </span>
   );
@@ -40,7 +40,7 @@ export default function InOnAtSection() {
   return (
     <div>
       <TopicHeading topicId="inOnAt" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 En español casi todo se dice con <strong style={{ color: "#f8fafc" }}>&quot;en&quot;</strong>: en la mañana, en lunes, en 1995, en la mesa. El inglés reparte ese mismo &quot;en&quot; entre tres preposiciones —{" "}
         <Token t="at" r="prep" />, <Token t="on" r="prep" /> e <Token t="in" r="prep" /> — y la que elijas depende de{" "}
         <strong style={{ color: "#f8fafc" }}>qué tan específico eres</strong>.<br />
@@ -51,7 +51,7 @@ export default function InOnAtSection() {
       <RuleBox icon="🔍" rule="Primera orientación: hora, día y periodo" color={COLOR}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "8px" }}>
           {ZOOM.map(z => (
-            <div key={z.prep} style={{ background: "#0f172a", borderRadius: "10px", padding: "12px", textAlign: "center", border: `1px solid ${z.color}33` }}>
+            <div key={z.prep} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "10px", padding: "12px", textAlign: "center", border: `1px solid ${z.color}33` }}>
               <div style={{ fontSize: "20px" }}>{z.icon}</div>
               <div style={{ fontSize: "22px", fontWeight: 900, color: z.color, margin: "2px 0" }}>{z.prep}</div>
               <div style={{ color: "#e2e8f0", fontSize: "13px", fontWeight: 700 }}>{z.size}</div>
@@ -99,7 +99,7 @@ export default function InOnAtSection() {
         Aquí es donde se ve claro que no se trata de memorizar palabras sueltas, sino de qué tan preciso estás siendo.
       </div>
       {SAME_WORD.map(block => (
-        <div key={block.word} style={{ background: "#1e293b", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px" }}>
+        <div key={block.word} style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 16px", marginBottom: "10px" }}>
           <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "13px", marginBottom: "8px" }}>{block.word}</div>
           {block.rows.map(r => (
             <div key={r.phrase} style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", padding: "6px 0", borderTop: "1px solid #334155" }}>
@@ -139,7 +139,7 @@ export default function InOnAtSection() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "8px", marginBottom: "10px" }}>
         {FIXED.map(f => (
-          <div key={f.phrase} style={{ background: "#1e293b", borderRadius: "10px", padding: "10px 12px" }}>
+          <div key={f.phrase} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 12px" }}>
             <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: "14px" }}>{f.phrase}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px" }}>{f.esp}</div>
           </div>
@@ -152,7 +152,7 @@ export default function InOnAtSection() {
         <strong style={{ color: "#f8fafc" }}>una cantidad de veces + a + periodo</strong>.
       </div>
       {HOW_OFTEN.map((ex, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ lineHeight: 2 }}><Sentence pts={ex.q} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {ex.a}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>
@@ -165,7 +165,7 @@ export default function InOnAtSection() {
       />
       <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "10px" }}>
         {FREQUENCY_WORDS.map(f => (
-          <div key={f.word} style={{ background: "#1e293b", borderRadius: "10px", padding: "10px 14px" }}>
+          <div key={f.word} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "10px 14px" }}>
             <div style={{ color: COLOR, fontWeight: 800, fontSize: "14px" }}>{f.word}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px" }}>{f.esp}</div>
           </div>
@@ -183,7 +183,7 @@ export default function InOnAtSection() {
 
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {MISTAKES.map((m, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#f87171", fontSize: "14px" }}>❌ {m.wrong}</div>
           <div style={{ color: "#4ade80", fontSize: "14px", marginTop: "2px" }}>✅ {m.right}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "6px", paddingTop: "6px", borderTop: "1px solid #334155" }}>💡 {m.esp}</div>
@@ -192,7 +192,7 @@ export default function InOnAtSection() {
 
       <SectionTitle color={COLOR}>✅ Ejercicio resuelto — completa con in, on o at</SectionTitle>
       {EXERCISE.map((ex, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "6px" }}>{ex.q}</div>
           <div style={{ lineHeight: 2 }}><Sentence pts={ex.pts} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>

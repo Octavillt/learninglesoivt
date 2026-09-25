@@ -18,7 +18,7 @@ export default function GerundsSection() {
   return (
     <div>
       <TopicHeading topicId="gerunds" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 El <Token t="-ING" r="ing" /> no solo sirve para decir "estoy haciendo algo". También convierte un verbo en <strong style={{ color: "#f8fafc" }}>sustantivo</strong>: eso se llama <strong style={{ color: "#f8fafc" }}>gerundio</strong>, y en español lo traduces con el verbo en infinitivo — no con "-ando / -iendo".<br />
         🇲🇽 <em>Nadar es bueno para tu salud.</em> → 🇺🇸 <em>Swimming is good for your health.</em>
       </div>
@@ -27,7 +27,7 @@ export default function GerundsSection() {
       <SectionTitle color={COLOR}>🎬 Dos usos frecuentes del -ING</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "10px", marginBottom: "10px" }}>
         {TWO_USES.map(({ icon, title, subtitle, example }) => (
-          <div key={title} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", borderLeft: `4px solid ${COLOR}` }}>
+          <div key={title} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", borderLeft: `4px solid ${COLOR}` }}>
             <div style={{ color: COLOR, fontWeight: 800, fontSize: "14px" }}>{icon} {title}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{subtitle}</div>
             <div style={{ lineHeight: 2 }}><Sentence pts={example.pts} /></div>
@@ -58,12 +58,12 @@ export default function GerundsSection() {
       </div>
       <RelatedTopic levelId="basico1" topicId="progressive" label="Repasar el Presente Progresivo" />
       {SPELLING_RULES.map(rule => (
-        <div key={rule.rule} style={{ background: "#1e293b", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
+        <div key={rule.rule} style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px", marginBottom: "10px", borderLeft: `4px solid ${rule.color}` }}>
           <div style={{ fontWeight: 700, color: rule.color, marginBottom: "4px", fontSize: "14px" }}>{rule.rule}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>{rule.desc}</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {rule.words.map(([base, suf, orig]) => (
-              <div key={base + suf} style={{ background: "#0f172a", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
+              <div key={base + suf} style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "8px 14px", textAlign: "center" }}>
                 {orig && <div style={{ color: "#94a3b8", fontSize: "11px", marginBottom: "2px" }}>{orig} →</div>}
                 <span style={{ color: "#4ade80", fontWeight: 700, fontSize: "16px" }}>{base}</span>
                 <span style={{ color: "#f472b6", fontWeight: 800, background: "#3b0764", borderRadius: "4px", padding: "1px 5px", fontSize: "16px" }}>{suf}</span>
@@ -87,7 +87,7 @@ export default function GerundsSection() {
         <RuleBox key={title} icon={icon} rule={title} color={COLOR}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "10px" }}>
             {verbs.map(v => (
-              <span key={v} style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: "20px", padding: "3px 10px", color: "#e2e8f0", fontSize: "12px", fontWeight: 700 }}>
+              <span key={v} style={{ background: "var(--surface-deep, #0f172a)", border: "1px solid #334155", borderRadius: "20px", padding: "3px 10px", color: "#e2e8f0", fontSize: "12px", fontWeight: 700 }}>
                 {v} + <span style={{ color: COLOR }}>-ing</span>
               </span>
             ))}
@@ -111,12 +111,12 @@ export default function GerundsSection() {
       <SectionTitle color={COLOR}>🆚 -ING vs. to + verbo</SectionTitle>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "10px" }}>
         {[ING_VS_TO.ing, ING_VS_TO.to].map(({ icon, title, subtitle, verbs, examples }) => (
-          <div key={title} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px" }}>
+          <div key={title} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px" }}>
             <div style={{ color: COLOR, fontWeight: 800, fontSize: "14px" }}>{icon} {title}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "8px" }}>{subtitle}</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "8px" }}>
               {verbs.map(v => (
-                <span key={v} style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: "20px", padding: "3px 10px", color: "#e2e8f0", fontSize: "12px", fontWeight: 700 }}>{v}</span>
+                <span key={v} style={{ background: "var(--surface-deep, #0f172a)", border: "1px solid #334155", borderRadius: "20px", padding: "3px 10px", color: "#e2e8f0", fontSize: "12px", fontWeight: 700 }}>{v}</span>
               ))}
             </div>
             {examples.map((ex, i) => (
@@ -139,7 +139,7 @@ export default function GerundsSection() {
 
       <SectionTitle color={COLOR}>⚠️ Errores típicos</SectionTitle>
       {COMMON_MISTAKES.map((m, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#f87171", fontSize: "14px" }}>❌ {m.wrong}</div>
           <div style={{ color: "#4ade80", fontSize: "14px", marginTop: "2px" }}>✅ {m.right}</div>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "6px", paddingTop: "6px", borderTop: "1px solid #334155" }}>💡 {m.esp}</div>
@@ -148,7 +148,7 @@ export default function GerundsSection() {
 
       <SectionTitle color={COLOR}>✅ Ejercicio resuelto — completa con -ING o to + verbo</SectionTitle>
       {EXERCISE.map((ex, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "6px" }}>{ex.q}</div>
           <div style={{ lineHeight: 2 }}><Sentence pts={ex.pts} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {ex.esp}</div>

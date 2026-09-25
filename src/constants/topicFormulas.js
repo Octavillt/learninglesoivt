@@ -29,6 +29,44 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  moduleIVExam: { title: "Fórmulas clave del examen", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye cuatro preguntas por tema.", rows: [
+    row("Habilidad", "Sujeto + can/can't + verbo base", "She can swim.", "Ella sabe nadar."),
+    row("Cantidad contable", "How many + contable plural + do/does + sujeto + verbo base + ?", "How many eggs do you need?", "¿Cuántos huevos necesitas?"),
+    row("Cantidad incontable", "How much + incontable + do/does + sujeto + verbo base + ?", "How much milk do you need?", "¿Cuánta leche necesitas?"),
+    row("Gustos y comida", "Sujeto + like/likes + alimento", "I like vegetables.", "Me gustan las verduras."),
+    row("Movimiento", "Verbo base + parte del cuerpo u objeto", "Bend your knees.", "Flexiona las rodillas."),
+    row("Frecuencia", "Sujeto + adverbio de frecuencia + verbo principal", "I usually exercise.", "Normalmente hago ejercicio."),
+    row("Modo", "Sujeto + verbo + (objeto) + adverbio de modo", "She lifts the weights carefully.", "Ella levanta las pesas con cuidado."),
+  ] },
+  adverbsManner: { note: "El adverbio de modo responde a how (¿cómo?). En estos patrones va después del verbo o de su objeto. Con can usa el verbo base; con he/she/it en presente simple afirmativo, conjuga el verbo.", rows: [
+    row("Describir una acción", "Sujeto + verbo + adverbio de modo", "He sings beautifully.", "Él canta maravillosamente."),
+    row("Con objeto", "Sujeto + verbo + objeto + adverbio de modo", "She lifts the weights carefully.", "Ella levanta las pesas con cuidado."),
+    row("Habilidad y modo", "Sujeto + can + verbo base + (objeto) + adverbio de modo", "Octavio can play soccer well.", "Octavio puede jugar fútbol bien."),
+    row("Preguntar cómo", "How + do/does + sujeto + verbo base + (objeto) + ?", "How does he play soccer?", "¿Cómo juega él al fútbol?"),
+    row("Instrucción con modo", "Verbo base + (objeto) + adverbio de modo", "Bend your knees slowly.", "Flexiona las rodillas despacio."),
+  ] },
+  exerciseWords: { note: "Las instrucciones usan el verbo base y normalmente omiten you. En el progresivo usa am/is/are + verbo-ing; después de can conserva el verbo base.", rows: [
+    row("Dar una instrucción", "Verbo base + (complemento)", "Bend your knees.", "Flexiona las rodillas."),
+    row("Indicar qué no hacer", "Don't + verbo base + (complemento)", "Don't pull the door.", "No jales la puerta."),
+    row("Describir una acción en curso", "Sujeto + am/is/are + verbo-ing + (complemento)", "She is lifting a weight.", "Ella está levantando una pesa."),
+    row("Expresar una habilidad", "Sujeto + can/can't + verbo base + (complemento)", "I can bend my knees.", "Puedo flexionar las rodillas."),
+    row("Preguntar por una habilidad", "Can + sujeto + verbo base + (complemento) + ?", "Can you lift this weight?", "¿Puedes levantar esta pesa?"),
+  ] },
+  foodGroups: { title: "Patrones para hablar de comida", note: "Para hablar de gustos generales usa plurales contables o incontables sin a/an: I like apples. I like rice. Con he/she/it usa likes; después de does, like.", rows: [
+    row("Identificar un grupo", "Alimento + is/are + clasificación", "Milk is a dairy product.", "La leche es un producto lácteo."),
+    row("Describir", "Alimento + is/are + adjetivo", "These apples are sweet.", "Estas manzanas son dulces."),
+    row("Expresar gustos", "Sujeto + like/likes + alimento", "I like spicy food.", "Me gusta la comida picante."),
+    row("Expresar desagrado", "Sujeto + don't/doesn't + like + alimento", "She doesn't like fish.", "A ella no le gusta el pescado."),
+    row("Preguntar por gustos", "Do/Does + sujeto + like + alimento + ?", "Do you like vegetables?", "¿Te gustan las verduras?"),
+    row("Pedir comida", "Can I have + alimento o cantidad + please + ?", "Can I have some rice, please?", "¿Me das un poco de arroz, por favor?"),
+  ] },
+  countable: { note: "How many acompaña a contables plurales; how much, a incontables. Usa do con I/you/we/they y does con he/she/it; el verbo principal queda en forma base.", rows: [
+    row("Contable singular", "A/An + sustantivo contable singular", "I want an egg.", "Quiero un huevo."),
+    row("Contable plural", "Número + sustantivo contable plural", "I need three apples.", "Necesito tres manzanas."),
+    row("Cantidad no exacta", "Some + contable plural o incontable", "I need some water.", "Necesito un poco de agua."),
+    row("Preguntar: contables", "How many + sustantivo plural + do/does + sujeto + verbo base + (complemento) + ?", "How many tacos do you usually eat?", "¿Cuántos tacos comes normalmente?"),
+    row("Preguntar: incontables", "How much + sustantivo incontable + do/does + sujeto + verbo base + (complemento) + ?", "How much rice does she need?", "¿Cuánto arroz necesita ella?"),
+  ] },
   can: { note: "Can expresa habilidad: poder o saber hacer algo. Usa el verbo base sin to ni -s/-es. El complemento es opcional según el verbo.", rows: [
     row("Afirmación", "Sujeto + can + verbo base + complemento", "He can produce music.", "Él puede producir música."),
     row("Negación", "Sujeto + cannot / can't + verbo base + complemento", "Cats can't bark.", "Los gatos no pueden ladrar."),

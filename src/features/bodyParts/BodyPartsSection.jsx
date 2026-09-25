@@ -6,7 +6,7 @@ import { BODY_GROUPS, EXAMPLES } from "./data";
 import BodyPartIcon from "./BodyPartIcon";
 
 const COLOR = "#14b8a6";
-const card = { background: "#1e293b", borderRadius: "10px", padding: "12px 16px" };
+const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px" };
 
 export default function BodyPartsSection() {
   return (

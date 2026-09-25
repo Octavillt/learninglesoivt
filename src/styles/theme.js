@@ -3,6 +3,9 @@
 // Cada paleta tiñe TODA la app (fondo, superficies, navegación y header)
 // con el mismo matiz, siempre en tonos oscuros para que los 14 colores de
 // las pills de temas y los tokens del contenido sigan contrastando bien.
+// glowA/glowB son el par de colores de los degradados de las lecciones
+// (elegidos para armonizar con cada paleta) y highlight, el tono de los
+// textos interactivos: resúmenes desplegables, pistas y marcadores.
 
 export const THEMES = {
   pizarra: {
@@ -19,6 +22,9 @@ export const THEMES = {
     text: "#f8fafc",
     textMuted: "#94a3b8",
     navPillIdle: "#334155",
+    glowA: "#60a5fa",
+    glowB: "#a78bfa",
+    highlight: "#93c5fd",
   },
   grafito: {
     id: "grafito",
@@ -34,6 +40,9 @@ export const THEMES = {
     text: "#f8fafc",
     textMuted: "#9ca3af",
     navPillIdle: "#374151",
+    glowA: "#22d3ee",
+    glowB: "#818cf8",
+    highlight: "#a5f3fc",
   },
   carbon: {
     id: "carbon",
@@ -49,6 +58,9 @@ export const THEMES = {
     text: "#fafaf9",
     textMuted: "#a8a29e",
     navPillIdle: "#44403c",
+    glowA: "#f59e0b",
+    glowB: "#f97316",
+    highlight: "#fcd34d",
   },
   berenjena: {
     id: "berenjena",
@@ -64,6 +76,9 @@ export const THEMES = {
     text: "#f8fafc",
     textMuted: "#a09cb8",
     navPillIdle: "#443d63",
+    glowA: "#c084fc",
+    glowB: "#f472b6",
+    highlight: "#e9d5ff",
   },
   marino: {
     id: "marino",
@@ -79,6 +94,9 @@ export const THEMES = {
     text: "#f8fafc",
     textMuted: "#93a8c4",
     navPillIdle: "#2d5075",
+    glowA: "#38bdf8",
+    glowB: "#2dd4bf",
+    highlight: "#7dd3fc",
   },
   esmeralda: {
     id: "esmeralda",
@@ -94,6 +112,9 @@ export const THEMES = {
     text: "#f0fdf4",
     textMuted: "#86b8a5",
     navPillIdle: "#0f5c49",
+    glowA: "#34d399",
+    glowB: "#a3e635",
+    highlight: "#6ee7b7",
   },
   vino: {
     id: "vino",
@@ -109,6 +130,9 @@ export const THEMES = {
     text: "#fff1f2",
     textMuted: "#c9919e",
     navPillIdle: "#5f0a23",
+    glowA: "#fb7185",
+    glowB: "#fbbf24",
+    highlight: "#fecdd3",
   },
   indigo: {
     id: "indigo",
@@ -124,6 +148,9 @@ export const THEMES = {
     text: "#eef2ff",
     textMuted: "#9ca3d4",
     navPillIdle: "#3730a3",
+    glowA: "#818cf8",
+    glowB: "#22d3ee",
+    highlight: "#c7d2fe",
   },
 };
 

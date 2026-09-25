@@ -11,7 +11,7 @@ export default function TopicHeading({ topicId }) {
   return (
     <>
     <header className="lesson-heading" style={{ "--lesson-accent": topic.color }}>
-      <p className="lesson-stage">{topic.stage}</p>
+      <p className="lesson-stage"><span>{topic.stage}</span></p>
       <h2>{topic.label} — <span lang="en">{topic.english}</span></h2>
       <p className="lesson-goal"><strong>Objetivo:</strong> {guide.goal}</p>
       {guide.recall.length > 0 && (

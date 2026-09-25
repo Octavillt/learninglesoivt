@@ -1,5 +1,9 @@
 import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_QUIZ } from "./topics";
 import { BODY_WORDS } from "../features/bodyParts/data";
+import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS } from "../features/foodGroups/data";
+import { EXERCISE_WORDS } from "../features/exerciseWords/data";
+import { FORMATION_RULES } from "../features/adverbsManner/data";
+import { STUDY_TOPICS } from "../features/moduleIVExam/data";
 import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
@@ -12,6 +16,11 @@ const topicMeta = {};
 [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  moduleIVExam: ["guía de examen", "examen módulo iv", "exam study guide", "simulador", ...STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
+  adverbsManner: ["adverbs of manner", "adverbios de modo", "adjetivos", "cómo", "how", "good", "well", "fast", "hard", "hardly", "little", "lately", "friendly", "beautifully", "quickly", "carefully", "slowly", "happily", "easily", "gently", "can", ...FORMATION_RULES.flatMap(rule => [rule.title, rule.description, ...rule.examples.flat()])],
+  exerciseWords: ["exercise words", "exercising", "ejercicio", "movimientos", "instrucciones", "imperativo", "pesas", "warm up", "cool down", "work out", "stand up", "stand still", ...EXERCISE_WORDS.flatMap(word => [word.en, word.es, word.ing, word.instruction, word.meaning, word.note])],
+  foodGroups: ["food groups", "food grups", "grupos de alimentos", "comida", "sabores", "gustos", "contables", "incontables", ...FOOD_GROUPS.flatMap(group => [group.name, group.translation, ...group.foods.flat()]), ...FOOD_ADJECTIVES.flat(), ...EXTRA_WORDS.flat()],
+  countable: ["countable", "uncountable", "uncontable", "contables", "incontables", "sustantivos", "noun", "how many", "how much", "some", "any", "many", "much", "a few", "a little", "a lot of", "cuantificadores", "cantidades", "water", "juice", "rice", "spaghetti", "lentils", "noodles", "money", "bills", "coins", "cake", "slice", "bottle", "broccoli", "tacos", "guavas"],
   can: ["can", "can't", "cannot", "habilidades", "abilities", "skills", "verbo modal", "poder", "saber", "sing", "dance", "bark", "meow", "purr", "climb", "swim", "Bad Bunny"],
   verbs: [
     "answer","ask","be","break","buy","carry","clean","close","cook","come","cry","cut",

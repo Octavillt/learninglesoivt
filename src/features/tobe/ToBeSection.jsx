@@ -21,14 +21,14 @@ export default function ToBeSection() {
   return (
     <div>
       <TopicHeading topicId="tobe" />
-      <div style={{ background: "#1e293b", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
+      <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", marginBottom: "14px", fontSize: "14px", color: "#94a3b8", lineHeight: 1.8 }}>
         💡 En español usamos <strong style={{ color: "#f8fafc" }}>ser</strong> y <strong style={{ color: "#f8fafc" }}>estar</strong>. En inglés ambos se dicen con <Token t="am" r="verb_be" /> / <Token t="is" r="verb_be" /> / <Token t="are" r="verb_be" />
       </div>
       <Legend roles={["subject", "verb_be", "neg"]} />
 
       <div className="study-grid" style={{ marginBottom: "18px" }}>
         {CONJUGATIONS.map((r, i) => (
-          <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
+          <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
             <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "13px" }}>{r.subj}</div>
             <div style={{ fontSize: "28px", fontWeight: 900, color: r.color, margin: "6px 0" }}>{r.form}</div>
             <div style={{ color: "#94a3b8", fontSize: "12px" }}>{r.esp}</div>
@@ -50,14 +50,14 @@ export default function ToBeSection() {
           Usa <strong style={{ color: "#fbbf24" }}>a</strong> o <strong style={{ color: "#34d399" }}>an</strong> con un sustantivo contable singular, como una profesión. Elige según el <strong style={{ color: "#f8fafc" }}>sonido inicial de la palabra que sigue</strong>: a teacher, an engineer, a university student, an honest person.
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-          <div style={{ background: "#0f172a", borderRadius: "8px", padding: "12px" }}>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "12px" }}>
             <div style={{ color: "#fbbf24", fontWeight: 900, fontSize: "28px", marginBottom: "2px" }}>A</div>
             <div style={{ color: "#fbbf24", fontWeight: 700, fontSize: "13px", marginBottom: "6px" }}>Antes de SONIDO consonante</div>
             {["a student → (s = consonante)","a teacher → (t = consonante)","a book → (b = consonante)","a car → (c = consonante)","a house → (h = consonante)"].map((ex, i) => (
               <div key={i} style={{ color: "#e2e8f0", fontSize: "13px", padding: "2px 0" }}>✅ {ex}</div>
             ))}
           </div>
-          <div style={{ background: "#0f172a", borderRadius: "8px", padding: "12px" }}>
+          <div style={{ background: "var(--surface-deep, #0f172a)", borderRadius: "8px", padding: "12px" }}>
             <div style={{ color: "#34d399", fontWeight: 900, fontSize: "28px", marginBottom: "2px" }}>AN</div>
             <div style={{ color: "#34d399", fontWeight: 700, fontSize: "13px", marginBottom: "6px" }}>Antes de SONIDO vocal</div>
             {["an apple → (a = vocal)","an orange → (o = vocal)","an umbrella → (u = vocal)","an egg → (e = vocal)","an ice cream → (i = vocal)"].map((ex, i) => (
@@ -86,7 +86,7 @@ export default function ToBeSection() {
         <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "6px" }}>🇲🇽 ¿Está ella feliz?</div>
       </RuleBox>
       {TOBE_INT.map(({ q, a, esp }, i) => (
-        <div key={i} style={{ background: "#1e293b", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
+        <div key={i} style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" }}>
           <div style={{ lineHeight: 2 }}><Sentence pts={q} /></div>
           <div style={{ color: "#94a3b8", fontSize: "13px", marginTop: "2px" }}>→ {a}</div>
           <div style={{ color: "#94a3b8", fontSize: "13px", paddingTop: "4px", borderTop: "1px solid #334155", marginTop: "4px" }}>🇲🇽 {esp}</div>
