@@ -28,9 +28,9 @@ export const LEVELS = [
   {
     id: "basico4", label: "Básico IV", available: true, topics: TOPICS_BASICO4,
     purpose: "Describir el cuerpo, expresar habilidades y hablar de cantidades",
-    description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades y distingue sustantivos contables e incontables para preguntar por cantidades.",
+    description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades, distingue contables e incontables y aprende los grupos de alimentos para hablar de cantidades, sabores y gustos. Combina verbos de ejercicio con adverbios de modo para dar instrucciones y explicar cómo se realiza una acción.",
     bridge: "Al terminar, practica Básico IV o combina los cuatro módulos en el Quiz.",
-    outcome: "Puedes nombrar partes del cuerpo, seguir instrucciones, expresar habilidades con can y can't y preguntar por cantidades con how many y how much.",
+    outcome: "Puedes nombrar partes del cuerpo, dar y seguir instrucciones de movimiento, expresar habilidades, preguntar por cantidades, describir alimentos y explicar cómo se realiza una acción.",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },
 ];

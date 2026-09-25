@@ -38,6 +38,10 @@ import DirectionsSection from "./features/directions/DirectionsSection";
 import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
 import CanSection from "./features/can/CanSection";
 import CountableSection from "./features/countable/CountableSection";
+import FoodGroupsSection from "./features/foodGroups/FoodGroupsSection";
+import ExerciseWordsSection from "./features/exerciseWords/ExerciseWordsSection";
+import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection";
+import ModuleIVExamSection from "./features/moduleIVExam/ModuleIVExamSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -63,6 +67,10 @@ const SECTIONS = {
   bodyParts: BodyPartsSection,
   can: CanSection,
   countable: CountableSection,
+  foodGroups: FoodGroupsSection,
+  exerciseWords: ExerciseWordsSection,
+  adverbsManner: AdverbsMannerSection,
+  moduleIVExam: ModuleIVExamSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

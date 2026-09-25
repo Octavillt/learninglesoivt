@@ -10,7 +10,7 @@ const membership = {
   basico1: "verbs fruits plural numbers time dates countries family jobs tobe demonstratives prepositions progressive vocabulary",
   basico2: "irregularVerbs adjectives whQuestions articles possessiveAdjectives possessiveNouns gerunds simplePresent",
   basico3: "inOnAt simplePresentAdvanced directions topicsExam examReview",
-  basico4: "bodyParts can countable",
+  basico4: "bodyParts can countable foodGroups exerciseWords adverbsManner moduleIVExam",
 };
 
 beforeEach(() => localStorage.clear());
@@ -31,7 +31,7 @@ describe("Recorrido de aprendizaje", () => {
         seen.add(topic.id);
       }
     }
-    expect(seen.size).toBe(30);
+    expect(seen.size).toBe(34);
   });
 
   it.each(LEVELS.filter(level => level.id !== "quiz"))("abre cada sección y su autoevaluación en $label", level => {

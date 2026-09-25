@@ -1,6 +1,30 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  moduleIVExam: {
+    goal: "Integrar can/can't, contables e incontables, alimentos, movimientos, frecuencia y modo para preparar el examen.",
+    recall: ["can", "countable", "foodGroups", "exerciseWords", "simplePresentAdvanced", "adverbsManner"],
+    task: "Di que puedes cocinar bien, que normalmente comes verduras y que necesitas dos huevos y un poco de leche. Después da una instrucción de ejercicio con un adverbio de modo.",
+    answer: "I can cook well. I usually eat vegetables. I need two eggs and some milk. Stretch your arms slowly. Can lleva verbo base; usually expresa frecuencia, well y slowly expresan modo; eggs es contable y milk es incontable.",
+  },
+  adverbsManner: {
+    goal: "Distinguir adjetivos y adverbios de modo, formar adverbios frecuentes y explicar cómo se realiza una acción.",
+    recall: ["adjectives", "simplePresent", "can", "exerciseWords"],
+    task: "Di que él es un buen cantante y que canta maravillosamente. Después di que Octavio puede jugar fútbol bien y pregunta cómo juega.",
+    answer: "He is a good singer. He sings beautifully. Octavio can play soccer well. How does he play? Good describe al cantante; beautifully y well describen cómo se realiza la acción.",
+  },
+  exerciseWords: {
+    goal: "Reconocer los ocho verbos de la imagen, dar instrucciones y describir movimientos con partes del cuerpo.",
+    recall: ["progressive", "bodyParts", "can"],
+    task: "Pide a alguien que flexione las rodillas y estire los brazos. Después di que ella está levantando una pesa y pregunta si puede levantarla.",
+    answer: "Bend your knees. Stretch your arms. She is lifting a weight. Can she lift it? En las instrucciones usa el verbo base; para una acción en curso, is + lifting; después de can, lift.",
+  },
+  foodGroups: {
+    goal: "Nombrar los alimentos y grupos del pizarrón, describir sabores y expresar gustos y cantidades.",
+    recall: ["fruits", "adjectives", "simplePresent", "countable"],
+    task: "Di que la leche es un producto lácteo, que te gusta la comida picante y que necesitas dos huevos y un poco de arroz.",
+    answer: "Milk is a dairy product. I like spicy food. I need two eggs and some rice. Eggs es contable plural; rice es incontable. El adjetivo spicy va antes de food.",
+  },
   countable: {
     goal: "Distinguir sustantivos contables e incontables y expresar o preguntar cantidades con a/an, some, any, how many y how much.",
     recall: ["plural", "fruits", "articles", "simplePresent"],
