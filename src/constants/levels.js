@@ -27,10 +27,10 @@ export const LEVELS = [
   },
   {
     id: "basico4", label: "Básico IV", available: true, topics: TOPICS_BASICO4,
-    purpose: "Describir el cuerpo y expresar habilidades",
-    description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades y preguntar qué sabe hacer alguien.",
+    purpose: "Describir el cuerpo, expresar habilidades y hablar de cantidades",
+    description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades y distingue sustantivos contables e incontables para preguntar por cantidades.",
     bridge: "Al terminar, practica Básico IV o combina los cuatro módulos en el Quiz.",
-    outcome: "Puedes nombrar partes del cuerpo, seguir instrucciones y expresar lo que puedes o no puedes hacer con can y can't.",
+    outcome: "Puedes nombrar partes del cuerpo, seguir instrucciones, expresar habilidades con can y can't y preguntar por cantidades con how many y how much.",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },
 ];

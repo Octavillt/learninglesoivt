@@ -14,6 +14,7 @@ import { WH_WORDS } from "../whQuestions/data";
 import { GREETINGS, GOODBYES } from "../vocabulary/data";
 import { BODY_WORDS } from "../bodyParts/data";
 import { PRACTICE as CAN } from "../can/data";
+import { PRACTICE as COUNTABLE } from "../countable/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -39,6 +40,7 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...COUNTABLE.map(row => ({ ...row, topic: "countable" })),
   ...CAN.map(row => ({ ...row, topic: "can" })),
   ...BODY_WORDS.map(([en, es]) => ({
     topic: "bodyParts",

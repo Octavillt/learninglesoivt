@@ -41,6 +41,7 @@ export const TOPICS_BASICO3 = [
 export const TOPICS_BASICO4 = [
   { id: "bodyParts", label: "🧍 Partes del cuerpo", english: "Body Parts", color: "#14B8A6", stage: "Describir el cuerpo y sus movimientos" },
   { id: "can", label: "💪 Uso de CAN", english: "Can / Can't — Abilities", color: "#38BDF8", stage: "Expresar habilidades" },
+  { id: "countable", label: "🧺 Contables e incontables", english: "Countable & Uncountable", color: "#F59E0B", stage: "Hablar de alimentos y cantidades" },
 ];
 
 export const TOPICS_QUIZ = [

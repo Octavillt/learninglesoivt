@@ -29,6 +29,13 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  countable: { note: "How many acompaña a contables plurales; how much, a incontables. Usa do con I/you/we/they y does con he/she/it; el verbo principal queda en forma base.", rows: [
+    row("Contable singular", "A/An + sustantivo contable singular", "I want an egg.", "Quiero un huevo."),
+    row("Contable plural", "Número + sustantivo contable plural", "I need three apples.", "Necesito tres manzanas."),
+    row("Cantidad no exacta", "Some + contable plural o incontable", "I need some water.", "Necesito un poco de agua."),
+    row("Preguntar: contables", "How many + sustantivo plural + do/does + sujeto + verbo base + (complemento) + ?", "How many tacos do you usually eat?", "¿Cuántos tacos comes normalmente?"),
+    row("Preguntar: incontables", "How much + sustantivo incontable + do/does + sujeto + verbo base + (complemento) + ?", "How much rice does she need?", "¿Cuánto arroz necesita ella?"),
+  ] },
   can: { note: "Can expresa habilidad: poder o saber hacer algo. Usa el verbo base sin to ni -s/-es. El complemento es opcional según el verbo.", rows: [
     row("Afirmación", "Sujeto + can + verbo base + complemento", "He can produce music.", "Él puede producir música."),
     row("Negación", "Sujeto + cannot / can't + verbo base + complemento", "Cats can't bark.", "Los gatos no pueden ladrar."),

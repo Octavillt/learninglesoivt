@@ -37,6 +37,7 @@ import ExamReviewSection from "./features/examReview/ExamReviewSection";
 import DirectionsSection from "./features/directions/DirectionsSection";
 import BodyPartsSection from "./features/bodyParts/BodyPartsSection";
 import CanSection from "./features/can/CanSection";
+import CountableSection from "./features/countable/CountableSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToPrevious      from "./components/BackToPrevious";
@@ -61,6 +62,7 @@ const SECTIONS = {
   directions: DirectionsSection,
   bodyParts: BodyPartsSection,
   can: CanSection,
+  countable: CountableSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

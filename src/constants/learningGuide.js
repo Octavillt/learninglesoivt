@@ -1,6 +1,12 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  countable: {
+    goal: "Distinguir sustantivos contables e incontables y expresar o preguntar cantidades con a/an, some, any, how many y how much.",
+    recall: ["plural", "fruits", "articles", "simplePresent"],
+    task: "Di que necesitas tres manzanas y un poco de agua. Después pregunta cuántos tacos come ella normalmente y cuánta agua quiere.",
+    answer: "I need three apples and some water. How many tacos does she usually eat? How much water does she want? Tacos es contable plural; water es incontable. Después de does, usa el verbo base.",
+  },
   can: {
     goal: "Expresar habilidades con can y can't, hacer preguntas y responderlas.",
     recall: ["verbs", "whQuestions"],
