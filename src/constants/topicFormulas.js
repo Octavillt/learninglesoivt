@@ -29,6 +29,16 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  octoberExam: { title: "Fórmulas clave del examen de octubre", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye cuatro preguntas por tema.", rows: [
+    row("Cocina", "Verbo de cocina + el alimento", "She is boiling two hundred grams of rice.", "Ella está hirviendo doscientos gramos de arroz."),
+    row("Colocaciones de turismo", "Verbo fijo + sustantivo", "We always take photos when we travel abroad.", "Siempre tomamos fotos cuando viajamos al extranjero."),
+    row("Ropa", "Sujeto + wear/put on/take off/try on + prenda", "Put on your coat; it's cold outside.", "Ponte el abrigo; hace frío afuera."),
+    row("Demostrativos: singular", "This/That + is + complemento singular", "This is my bag.", "Esta es mi bolsa."),
+    row("Demostrativos: plural", "These/Those + are + complemento plural", "Those are my keys.", "Esas son mis llaves."),
+    row("Posibilidad y consejo", "Sujeto + could/should + verbo base", "You should stay hydrated.", "Deberías mantenerte hidratado."),
+    row("Gerundio", "Sujeto + enjoy/avoid/suggest + verbo-ing", "I enjoy cooking.", "Disfruto cocinar."),
+    row("Infinitivo", "Sujeto + want/need/plan/would like + to + verbo base", "I want to cook rice.", "Quiero cocinar arroz."),
+  ] },
   moduleIVExam: { title: "Fórmulas clave del examen", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye cuatro preguntas por tema.", rows: [
     row("Habilidad", "Sujeto + can/can't + verbo base", "She can swim.", "Ella sabe nadar."),
     row("Cantidad contable", "How many + contable plural + do/does + sujeto + verbo base + ?", "How many eggs do you need?", "¿Cuántos huevos necesitas?"),

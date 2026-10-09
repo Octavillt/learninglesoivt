@@ -19,6 +19,7 @@ import { PRACTICE as FOOD_GROUPS } from "../foodGroups/data";
 import { PRACTICE as EXERCISE_WORDS } from "../exerciseWords/data";
 import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
 import { PRACTICE as MODULE_IV_EXAM } from "../moduleIVExam/data";
+import { PRACTICE as OCTOBER_EXAM } from "../octoberExam/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -44,6 +45,7 @@ function missingToken(topic, rows) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...OCTOBER_EXAM.map(row => ({ topic: "octoberExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_IV_EXAM.map(row => ({ topic: "moduleIVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
   ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
