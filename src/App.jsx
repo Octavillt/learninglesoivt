@@ -42,6 +42,7 @@ import FoodGroupsSection from "./features/foodGroups/FoodGroupsSection";
 import ExerciseWordsSection from "./features/exerciseWords/ExerciseWordsSection";
 import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection";
 import ModuleIVExamSection from "./features/moduleIVExam/ModuleIVExamSection";
+import OctoberExamSection from "./features/octoberExam/OctoberExamSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToBottom        from "./components/BackToBottom";
@@ -72,6 +73,7 @@ const SECTIONS = {
   exerciseWords: ExerciseWordsSection,
   adverbsManner: AdverbsMannerSection,
   moduleIVExam: ModuleIVExamSection,
+  octoberExam: OctoberExamSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

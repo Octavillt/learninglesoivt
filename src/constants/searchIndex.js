@@ -4,6 +4,7 @@ import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS } from "../features/foodGroup
 import { EXERCISE_WORDS } from "../features/exerciseWords/data";
 import { FORMATION_RULES } from "../features/adverbsManner/data";
 import { STUDY_TOPICS } from "../features/moduleIVExam/data";
+import { STUDY_TOPICS as OCTOBER_STUDY_TOPICS } from "../features/octoberExam/data";
 import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
@@ -16,6 +17,7 @@ const topicMeta = {};
 [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  octoberExam: ["guía de examen de octubre", "examen octubre", "october exam", "cooking", "clothes", "tourism", "collocations", "could", "should", "gerund", "infinitive", ...OCTOBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   moduleIVExam: ["guía de examen", "examen módulo iv", "exam study guide", "simulador", ...STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   adverbsManner: ["adverbs of manner", "adverbios de modo", "adjetivos", "cómo", "how", "good", "well", "fast", "hard", "hardly", "little", "lately", "friendly", "beautifully", "quickly", "carefully", "slowly", "happily", "easily", "gently", "can", ...FORMATION_RULES.flatMap(rule => [rule.title, rule.description, ...rule.examples.flat()])],
   exerciseWords: ["exercise words", "exercising", "ejercicio", "movimientos", "instrucciones", "imperativo", "pesas", "warm up", "cool down", "work out", "stand up", "stand still", ...EXERCISE_WORDS.flatMap(word => [word.en, word.es, word.ing, word.instruction, word.meaning, word.note])],

@@ -52,7 +52,7 @@ export function Practice({ questions = PRACTICE }) {
     <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "15px", marginBottom: "10px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "12px" }}>
         <div>
-          <div style={{ color: COLOR, fontWeight: 800 }}>🎯 Mini simulador — {questions.length} preguntas</div>
+          <div style={{ color: "var(--exam-accent, #ec4899)", fontWeight: 800 }}>🎯 Mini simulador — {questions.length} preguntas</div>
           <div aria-live="polite" style={{ color: "#94a3b8", fontSize: "13px", marginTop: "3px" }}>{message}</div>
         </div>
         <button
