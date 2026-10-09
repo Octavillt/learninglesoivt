@@ -14,7 +14,7 @@ function ExamPractice() {
   const questions = filter === "all" ? PRACTICE : PRACTICE.filter(item => item.topic === filter);
   return (
     <>
-      <p>Responde sin mirar los apuntes. Cada respuesta muestra la solución y su explicación. Practica los 24 reactivos o elige uno de los seis temas.</p>
+      <p>Responde sin mirar los apuntes. Cada respuesta muestra la solución y su explicación. Practica los 36 reactivos o elige uno de los seis temas.</p>
       <div className="exam-filters" role="group" aria-label="Filtrar preguntas por tema">
         {[{ id: "all", title: "Todos" }, ...STUDY_TOPICS].map(topic => (
           <button key={topic.id} type="button" className={`exam-chip${filter === topic.id ? " is-active" : ""}`} aria-pressed={filter === topic.id} onClick={() => setFilter(topic.id)}>{topic.title}</button>
@@ -81,10 +81,10 @@ export default function OctoberExamSection({ highlightTerm, highlightSeq }) {
               <p>Could imagina posibilidades, should recomienda acciones; el gerundio generaliza y el infinitivo precisa la acción.</p>
             </RuleBox>
             <RuleBox icon="✅" rule="Antes de terminar" color={COLOR}>
-              <p>Comprueba que puedes: nombrar diez verbos de cocina, usar cinco colocaciones de turismo, contar prendas con a pair of, elegir this/that/these/those, distinguir could de should y completar frases con gerundio o infinitivo.</p>
+              <p>Comprueba que puedes: nombrar más de veinte verbos de cocina, usar cinco colocaciones de turismo, contar prendas con a pair of, elegir this/that/these/those, distinguir could de should y completar frases con gerundio o infinitivo.</p>
               <p>Después responde el simulador, revisa los errores y repite solo los temas que necesites reforzar.</p>
             </RuleBox>
-            <button type="button" className="exam-chip" onClick={() => setActive("practice")}>Abrir simulador de 24 preguntas</button>
+            <button type="button" className="exam-chip" onClick={() => setActive("practice")}>Abrir simulador de 36 preguntas</button>
           </>
         ) : active === "practice" ? <ExamPractice /> : (
           <>

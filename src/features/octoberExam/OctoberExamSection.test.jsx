@@ -26,11 +26,11 @@ describe("Guía temporal de examen de octubre", () => {
       const available = now < OCTOBER_EXAM_END;
       expect(getAvailableTopics(TOPICS_BASICO4, now).some(t => t.id === "octoberExam")).toBe(available);
       expect(searchTopics("examen octubre", now).some(t => t.topicId === "octoberExam")).toBe(available);
-      expect(getByTopic("octoberExam", "basico4", now)).toHaveLength(available ? 24 : 0);
+      expect(getByTopic("octoberExam", "basico4", now)).toHaveLength(available ? 36 : 0);
       expect(getByTopic("mixed", "all", now).some(q => q.topic === "octoberExam")).toBe(available);
       expect(getAvailableTopics(TOPICS_BASICO4, now).some(t => t.id === "adverbsManner")).toBe(true);
     }
-    for (const topic of STUDY_TOPICS) expect(PRACTICE.filter(q => q.topic === topic.id)).toHaveLength(4);
+    for (const topic of STUDY_TOPICS) expect(PRACTICE.filter(q => q.topic === topic.id)).toHaveLength(6);
   });
 
   it("oculta la guía abierta sin recargar al llegar la hora y regresa a un tema permanente", () => {
@@ -67,12 +67,12 @@ describe("Guía temporal de examen de octubre", () => {
     expect(screen.getByRole("tab", { name: "Vocabulary: Tourism collocations" })).toHaveAttribute("aria-selected", "true");
   });
 
-  it("filtra los cuatro reactivos de un tema, explica respuestas y reinicia", () => {
+  it("filtra los seis reactivos de un tema, explica respuestas y reinicia", () => {
     render(<OctoberExamSection />);
     fireEvent.click(screen.getByRole("tab", { name: "Práctica" }));
-    expect(screen.getByText("🎯 Mini simulador — 24 preguntas")).toBeInTheDocument();
+    expect(screen.getByText("🎯 Mini simulador — 36 preguntas")).toBeInTheDocument();
     fireEvent.click(within(screen.getByRole("group", { name: "Filtrar preguntas por tema" })).getByRole("button", { name: "Could / Should" }));
-    expect(screen.getByText("🎯 Mini simulador — 4 preguntas")).toBeInTheDocument();
+    expect(screen.getByText("🎯 Mini simulador — 6 preguntas")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "obligación", exact: true }));
     expect(screen.getByText(/Llevas 0 de 1 correctas/)).toBeInTheDocument();
     expect(screen.getByText(/Could = possibility/)).toBeInTheDocument();
