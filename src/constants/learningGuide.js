@@ -1,6 +1,12 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  octoberExam: {
+    goal: "Integrar vocabulario de cocina, colocaciones de turismo, ropa, demostrativos, could/should y gerundio/infinitivo para preparar el examen de octubre.",
+    recall: ["demonstratives", "gerunds", "adjectives", "directions", "foodGroups", "can"],
+    task: "Di que disfrutas cocinar, que deberías reservar un hotel y que te gustan esos zapatos para el viaje.",
+    answer: "I enjoy cooking. We should book a hotel. I like those shoes. Enjoy lleva gerundio; should da consejo y va con verbo base; those señala plural lejos.",
+  },
   moduleIVExam: {
     goal: "Integrar can/can't, contables e incontables, alimentos, movimientos, frecuencia y modo para preparar el examen.",
     recall: ["can", "countable", "foodGroups", "exerciseWords", "simplePresentAdvanced", "adverbsManner"],

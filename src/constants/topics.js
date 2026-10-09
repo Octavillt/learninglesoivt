@@ -1,4 +1,4 @@
-import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END } from "./topicAvailability";
+import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END, OCTOBER_EXAM_END } from "./topicAvailability";
 
 // El orden define la ruta sugerida dentro de cada módulo. Los ids conservan
 // su módulo original y se comparten con navegación, búsqueda, enlaces y Quiz.
@@ -46,6 +46,7 @@ export const TOPICS_BASICO4 = [
   { id: "exerciseWords", label: "🏋️ Vocabulario de ejercicio", english: "Exercise Words", color: "#A78BFA", stage: "Describir movimientos y dar instrucciones" },
   { id: "adverbsManner", label: "🎶 Adverbios de modo", english: "Adverbs of Manner", color: "#F472B6", stage: "Explicar cómo se realiza una acción" },
   { id: "moduleIVExam", label: "📝 Guía de examen — Módulo IV", english: "Exam Study Guide", color: "#EC4899", stage: "Repaso de los seis temas del examen", availableUntil: MODULE_IV_EXAM_END },
+  { id: "octoberExam", label: "📝 Guía de examen — Octubre", english: "October Exam Study Guide", color: "#F97316", stage: "Repaso de los seis temas del examen", availableUntil: OCTOBER_EXAM_END },
 ];
 
 export const TOPICS_QUIZ = [
