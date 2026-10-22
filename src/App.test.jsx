@@ -47,12 +47,13 @@ describe("App — selector de color y niveles", () => {
     expect(berenjena).toHaveAttribute("aria-checked", "true");
   });
 
-  it("muestra los cuatro niveles en romano habilitados", () => {
+  it("muestra los cinco niveles en romano habilitados", () => {
     render(<App />);
     expect(screen.getByRole("button", { name: "Básico I" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico II" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico III" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Básico IV" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Básico V" })).toBeEnabled();
   });
 
   it("abre Partes del cuerpo al entrar a Básico IV", () => {
