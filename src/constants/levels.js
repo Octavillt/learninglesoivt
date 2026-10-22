@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_QUIZ } from "./topics";
 
 // Cuando exista contenido de un nuevo nivel: crear su lista de topics,
 // asignarla aquí y marcar available: true. Un nivel disponible sin topics
@@ -29,8 +29,15 @@ export const LEVELS = [
     id: "basico4", label: "Básico IV", available: true, topics: TOPICS_BASICO4,
     purpose: "Describir el cuerpo, expresar habilidades y hablar de cantidades",
     description: "Aplica los plurales, los adjetivos, los posesivos y los imperativos a las partes del cuerpo. Después usa can para expresar habilidades, distingue contables e incontables y aprende los grupos de alimentos para hablar de cantidades, sabores y gustos. Combina verbos de ejercicio con adverbios de modo para dar instrucciones y explicar cómo se realiza una acción.",
-    bridge: "Al terminar, practica Básico IV o combina los cuatro módulos en el Quiz.",
+    bridge: "En Básico V usarás el pasado simple para contar lo que hiciste y going to para hablar de tus planes.",
     outcome: "Puedes nombrar partes del cuerpo, dar y seguir instrucciones de movimiento, expresar habilidades, preguntar por cantidades, describir alimentos y explicar cómo se realiza una acción.",
+  },
+  {
+    id: "basico5", label: "Básico V", available: true, topics: TOPICS_BASICO5,
+    purpose: "Contar experiencias pasadas y hacer planes",
+    description: "Retoma los verbos irregulares de Básico II y el presente simple para contar lo que pasó. Usa el pasado simple en afirmación, negación y preguntas, repasa la escritura de los verbos con -ed y practica going to para planes y predicciones. Cierra con colocaciones de vida social y con get, have y make.",
+    bridge: "Al terminar, practica Básico V o combina los cinco módulos en el Quiz.",
+    outcome: "Puedes contar lo que hiciste, preguntar por el pasado, hablar de tus planes y describir experiencias sociales con colocaciones.",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },
 ];

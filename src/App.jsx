@@ -43,6 +43,9 @@ import ExerciseWordsSection from "./features/exerciseWords/ExerciseWordsSection"
 import AdverbsMannerSection from "./features/adverbsManner/AdverbsMannerSection";
 import ModuleIVExamSection from "./features/moduleIVExam/ModuleIVExamSection";
 import OctoberExamSection from "./features/octoberExam/OctoberExamSection";
+import SimplePastSection from "./features/simplePast/SimplePastSection";
+import GoingToSection from "./features/goingTo/GoingToSection";
+import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToBottom        from "./components/BackToBottom";
@@ -74,6 +77,9 @@ const SECTIONS = {
   adverbsManner: AdverbsMannerSection,
   moduleIVExam: ModuleIVExamSection,
   octoberExam: OctoberExamSection,
+  simplePast: SimplePastSection,
+  goingTo: GoingToSection,
+  socialCollocations: SocialCollocationsSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
