@@ -49,10 +49,16 @@ export const TOPICS_BASICO4 = [
   { id: "octoberExam", label: "📝 Guía de examen — Octubre", english: "October Exam Study Guide", color: "#F97316", stage: "Repaso de los seis temas del examen", availableUntil: OCTOBER_EXAM_END },
 ];
 
+export const TOPICS_BASICO5 = [
+  { id: "simplePast", label: "⏪ Pasado simple", english: "Simple Past", color: "#FB7185", stage: "Contar lo que pasó" },
+  { id: "goingTo", label: "🗓️ Futuro con going to", english: "Going to — Future plans", color: "#34D399", stage: "Hacer planes" },
+  { id: "socialCollocations", label: "🎉 Vida social y colocaciones", english: "Social Life & get / have / make Collocations", color: "#FBBF24", stage: "Contar experiencias y planes" },
+];
+
 export const TOPICS_QUIZ = [
   { id: "quiz", label: "🎯 Práctica general", english: "Quiz", color: "#EAB308" },
 ];
 
 export const TOPIC_BY_ID = Object.fromEntries(
-  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
+  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
 );

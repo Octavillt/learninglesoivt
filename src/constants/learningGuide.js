@@ -211,4 +211,22 @@ export const LEARNING_GUIDE = {
     task: "Di «Estos son mis pies» y da la instrucción «Levanta los brazos».",
     answer: "These are my feet. Raise your arms. Foot cambia a feet; my y your expresan pertenencia.",
   },
+  simplePast: {
+    goal: "Contar actividades, rutinas y acciones terminadas en pasado simple: afirmar, negar y preguntar con did.",
+    recall: ["verbs", "simplePresent", "irregularVerbs"],
+    task: "Di que ayer cocinaste pasta, que no fuiste a Puebla y pregunta qué hizo ella anoche.",
+    answer: "I cooked pasta yesterday. I didn't go to Puebla. What did she do last night? Did ya marca el pasado, así que el verbo principal queda en forma base; cooked es un verbo regular con -ed.",
+  },
+  goingTo: {
+    goal: "Hablar de planes e intenciones futuras y hacer predicciones con am/is/are + going to + verbo base.",
+    recall: ["tobe", "progressive", "simplePast"],
+    task: "Di que vas a ir a Acapulco en diciembre, que no vas a trabajar mañana y pregunta dónde va a estudiar ella.",
+    answer: "I'm going to go to Acapulco in December. I'm not going to work tomorrow. Where is she going to study? Elige am/is/are según el sujeto y conserva el verbo en forma base después de going to.",
+  },
+  socialCollocations: {
+    goal: "Describir experiencias sociales con colocaciones fijas de la vida social y con get, have y make.",
+    recall: ["irregularVerbs", "simplePast", "goingTo"],
+    task: "Cuenta que el viernes pasado saliste con amigos, cometiste un error y te perdiste, pero te divertiste. Después di que vas a hacer una fiesta.",
+    answer: "Last Friday I hung out with friends. I made a mistake and we got lost, but we had fun. I'm going to have a party. Las colocaciones se conjúgan: hang → hung, make → made, get → got, have → had.",
+  },
 };

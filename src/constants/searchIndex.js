@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_QUIZ } from "./topics";
 import { BODY_WORDS } from "../features/bodyParts/data";
 import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS } from "../features/foodGroups/data";
 import { EXERCISE_WORDS } from "../features/exerciseWords/data";
@@ -14,7 +14,7 @@ import { isTopicAvailable } from "./topicAvailability";
 // palabras más relevantes (no hace falta ser exhaustivo).
 
 const topicMeta = {};
-[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
+[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
   octoberExam: ["guía de examen de octubre", "examen octubre", "october exam", "cooking", "clothes", "tourism", "collocations", "could", "should", "gerund", "infinitive", ...OCTOBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
@@ -135,6 +135,33 @@ const SEARCH_KEYWORDS = {
     "está jugando","está comiendo",
   ],
   bodyParts: ["body parts", "partes del cuerpo", "little finger", ...BODY_WORDS.flat().filter(Boolean)],
+  simplePast: [
+    "simple past", "pasado simple", "past activities", "past routines", "past habits", "short actions",
+    "did", "didn't", "did not", "respuestas cortas", "short answers", "yes i did", "no he didn't",
+    "went", "ate", "drank", "woke up", "slept", "grew up", "cooked", "worked", "regular verbs",
+    "verbos regulares", "verbos en pasado", "-ed", "pronunciación de -ed", "ed pronunciation",
+    "yesterday", "last night", "last week", "last weekend", "in 1990", "two years later", "three days ago",
+    "ayer", "anoche", "la semana pasada", "el fin de semana pasado", "hace tres días",
+    "what did you do", "where did he grow up", "qué hiciste",
+  ],
+  goingTo: [
+    "going to", "gonna", "going to go", "futuro", "future", "future plans", "plans", "intentions",
+    "planes", "intenciones", "predictions", "predicciones", "voy a", "va a",
+    "tomorrow", "tonight", "after the class", "this weekend", "this summer", "next week", "next winter",
+    "in december", "later on", "mañana", "esta noche", "este fin de semana", "este verano",
+    "la próxima semana", "el próximo invierno", "en diciembre", "más tarde",
+    "seafood", "mariscos", "visit", "visitar", "take a nap", "tomar una siesta",
+  ],
+  socialCollocations: [
+    "collocations", "colocaciones", "social life", "vida social",
+    "go out dancing", "visit family", "have a party", "go on a date", "hang out", "hang out with friends",
+    "go to a concert", "see a movie", "eat out", "eat out at a restaurant",
+    "get upset", "get lost", "get married", "have an argument", "have fun",
+    "make a mistake", "make a new friend", "make a decision",
+    "salir a bailar", "visitar a la familia", "hacer una fiesta", "salir en una cita", "pasar el rato",
+    "ir a un concierto", "ver una película", "comer fuera", "enojarse", "perderse", "casarse",
+    "discutir", "divertirse", "cometer un error", "hacer un nuevo amigo", "tomar una decisión",
+  ],
   quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
 
   irregularVerbs: [
@@ -264,6 +291,7 @@ function buildIndex() {
     { levelId: "basico2", topics: TOPICS_BASICO2 },
     { levelId: "basico3", topics: TOPICS_BASICO3 },
     { levelId: "basico4", topics: TOPICS_BASICO4 },
+    { levelId: "basico5", topics: TOPICS_BASICO5 },
     { levelId: "quiz", topics: TOPICS_QUIZ },
   ].forEach(({ levelId, topics }) => {
     topics.forEach(t => {

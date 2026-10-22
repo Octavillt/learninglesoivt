@@ -203,4 +203,27 @@ export const TOPIC_FORMULAS = {
     row("Describir", "Parte(s) del cuerpo + is/are + adjetivo", "My eyes are brown.", "Mis ojos son cafés."),
     row("Dar una instrucción", "Verbo base + your + parte(s) del cuerpo", "Raise your arms.", "Levanta los brazos."),
   ] },
+  simplePast: { note: "Did y didn't ya marcan el pasado: el verbo principal vuelve a su forma base. La expresión de tiempo es opcional. Verbos regulares: agrega -ed; irregulares: memoriza su forma.", rows: [
+    row("Afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
+    row("Negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't drink mezcal yesterday.", "Ella no tomó mezcal ayer."),
+    row("Pregunta sí/no", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Octa eat cemitas?", "¿Octa comió cemitas?"),
+    row("Pregunta negativa", "Didn't + sujeto + verbo base + complemento + ?", "Didn't Miguel eat a sandwich?", "¿Miguel no comió un sándwich?"),
+    row("Pregunta de información", "Palabra WH + did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "What did you do yesterday?", "¿Qué hiciste ayer?"),
+    row("Respuesta corta", "Yes, + sujeto + did. / No, + sujeto + didn't.", "Yes, she did. / No, she didn't.", "Sí, lo hizo. / No, no lo hizo."),
+  ] },
+  goingTo: { note: "Elige am/is/are según el sujeto y conserva el verbo en forma base después de going to. Gonna es la forma informal y oral de going to, solo antes de un verbo.", rows: [
+    row("Afirmación", "Sujeto + am/is/are + going to + verbo base + complemento + (expresión de tiempo)", "I'm going to eat seafood.", "Voy a comer mariscos."),
+    row("Afirmación con go", "Sujeto + am/is/are + going to + go + complemento + (expresión de tiempo)", "I am going to go to Acapulco in December.", "Voy a ir a Acapulco en diciembre."),
+    row("Negación", "Sujeto + am/is/are + not + going to + verbo base + complemento + (expresión de tiempo)", "We aren't going to arrive late to class tomorrow.", "No vamos a llegar tarde a la clase de mañana."),
+    row("Pregunta sí/no", "Am/Is/Are + sujeto + going to + verbo base + complemento + ?", "Are you going to study your verbs in simple past?", "¿Vas a estudiar tus verbos en pasado simple?"),
+    row("Pregunta de información", "WH + am/is/are + sujeto + going to + verbo base + complemento + ?", "Where are you going to study?", "¿Dónde vas a estudiar?"),
+    row("Respuesta corta", "Yes, + sujeto + am/is/are. / No, + sujeto + am/is/are + not.", "Yes, he is. / No, he isn't.", "Sí. / No."),
+  ] },
+  socialCollocations: { title: "Patrones para usar las colocaciones", note: "Las colocaciones son combinaciones fijas: aprende cada una como una sola unidad y no las traduzcas palabra por palabra.", rows: [
+    row("Vida social", "Go out + verbo-ing / go on + a + sustantivo", "Let's go out dancing.", "Salgamos a bailar."),
+    row("Plan a futuro", "Sujeto + am/is/are + going to + colocación de vida social", "We're going to eat out at a restaurant tonight.", "Vamos a comer fuera en un restaurante esta noche."),
+    row("Experiencia pasada", "Sujeto + colocación en pasado simple + complemento", "We got lost on the way to the club.", "Nos perdimos en el camino al club."),
+    row("Cambio o estado con get", "Sujeto + get + adjetivo o participio + complemento", "They got married two years later.", "Se casaron dos años después."),
+    row("Acción con have o make", "Sujeto + have/make + sustantivo de la colocación", "She made a decision.", "Ella tomó una decisión."),
+  ] },
 };
