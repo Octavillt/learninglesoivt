@@ -5,6 +5,7 @@ import { EXERCISE_WORDS } from "../features/exerciseWords/data";
 import { FORMATION_RULES } from "../features/adverbsManner/data";
 import { STUDY_TOPICS } from "../features/moduleIVExam/data";
 import { STUDY_TOPICS as OCTOBER_STUDY_TOPICS } from "../features/octoberExam/data";
+import { STUDY_TOPICS as MODULE_V_STUDY_TOPICS } from "../features/moduleVExam/data";
 import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
@@ -18,6 +19,7 @@ const topicMeta = {};
 
 const SEARCH_KEYWORDS = {
   octoberExam: ["guía de examen de octubre", "examen octubre", "october exam", "cooking", "clothes", "tourism", "collocations", "could", "should", "gerund", "infinitive", ...OCTOBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
+  moduleVExam: ["guía de examen módulo v", "examen módulo v", "examen basico v", "examen básico v", "simple past", "pasado simple", "going to", "collocations", "social life", "vida social", "simulador", ...MODULE_V_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   moduleIVExam: ["guía de examen", "examen módulo iv", "exam study guide", "simulador", ...STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   adverbsManner: ["adverbs of manner", "adverbios de modo", "adjetivos", "cómo", "how", "good", "well", "fast", "hard", "hardly", "little", "lately", "friendly", "beautifully", "quickly", "carefully", "slowly", "happily", "easily", "gently", "can", ...FORMATION_RULES.flatMap(rule => [rule.title, rule.description, ...rule.examples.flat()])],
   exerciseWords: ["exercise words", "exercising", "ejercicio", "movimientos", "instrucciones", "imperativo", "pesas", "warm up", "cool down", "work out", "stand up", "stand still", ...EXERCISE_WORDS.flatMap(word => [word.en, word.es, word.ing, word.instruction, word.meaning, word.note])],

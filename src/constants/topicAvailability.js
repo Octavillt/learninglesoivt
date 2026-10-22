@@ -19,3 +19,6 @@ export const MODULE_IV_EXAM_END = Date.parse("2026-09-27T23:59:00-06:00");
 
 // Domingo 11 de octubre de 2026, 23:59 en Ciudad de México (UTC-6).
 export const OCTOBER_EXAM_END = Date.parse("2026-10-11T23:59:00-06:00");
+
+// Domingo 25 de octubre de 2026, 23:59 en Ciudad de México (UTC-6).
+export const MODULE_V_EXAM_END = Date.parse("2026-10-25T23:59:00-06:00");

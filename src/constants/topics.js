@@ -1,4 +1,4 @@
-import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END, OCTOBER_EXAM_END } from "./topicAvailability";
+import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END, OCTOBER_EXAM_END, MODULE_V_EXAM_END } from "./topicAvailability";
 
 // El orden define la ruta sugerida dentro de cada módulo. Los ids conservan
 // su módulo original y se comparten con navegación, búsqueda, enlaces y Quiz.
@@ -53,6 +53,7 @@ export const TOPICS_BASICO5 = [
   { id: "simplePast", label: "⏪ Pasado simple", english: "Simple Past", color: "#FB7185", stage: "Contar lo que pasó" },
   { id: "goingTo", label: "🗓️ Futuro con going to", english: "Going to — Future plans", color: "#34D399", stage: "Hacer planes" },
   { id: "socialCollocations", label: "🎉 Vida social y colocaciones", english: "Social Life & get / have / make Collocations", color: "#FBBF24", stage: "Contar experiencias y planes" },
+  { id: "moduleVExam", label: "📝 Guía de examen — Módulo V", english: "Module V Exam Study Guide", color: "#A855F7", stage: "Repaso de los tres temas del examen", availableUntil: MODULE_V_EXAM_END },
 ];
 
 export const TOPICS_QUIZ = [

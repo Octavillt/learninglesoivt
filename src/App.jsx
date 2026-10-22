@@ -46,6 +46,7 @@ import OctoberExamSection from "./features/octoberExam/OctoberExamSection";
 import SimplePastSection from "./features/simplePast/SimplePastSection";
 import GoingToSection from "./features/goingTo/GoingToSection";
 import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
+import ModuleVExamSection from "./features/moduleVExam/ModuleVExamSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToBottom        from "./components/BackToBottom";
@@ -80,6 +81,7 @@ const SECTIONS = {
   simplePast: SimplePastSection,
   goingTo: GoingToSection,
   socialCollocations: SocialCollocationsSection,
+  moduleVExam: ModuleVExamSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,

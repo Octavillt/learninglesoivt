@@ -1,6 +1,12 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  moduleVExam: {
+    goal: "Integrar pasado simple, futuro con going to y colocaciones de vida social para preparar el examen del módulo V.",
+    recall: ["simplePast", "goingTo", "socialCollocations"],
+    task: "Di que ayer saliste con amigos y te divertiste, que vas a hacer una fiesta el próximo fin de semana y que vas a tomar fotos.",
+    answer: "Last night I hung out with friends and I had fun. I'm going to have a party next weekend and I'm going to take photos. Hung out y had fun están en pasado; con going to las colocaciones conservan su forma base: have a party y take photos.",
+  },
   octoberExam: {
     goal: "Integrar vocabulario de cocina, colocaciones de turismo, ropa, demostrativos, could/should y gerundio/infinitivo para preparar el examen de octubre.",
     recall: ["demonstratives", "gerunds", "adjectives", "directions", "foodGroups", "can"],
