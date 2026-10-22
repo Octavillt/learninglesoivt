@@ -8,8 +8,9 @@ import { MODULE_QUESTIONS } from "./features/quiz/moduleQuestions";
 import { PRACTICE as SIMPLE_PAST } from "./features/simplePast/data";
 import { PRACTICE as GOING_TO } from "./features/goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "./features/socialCollocations/data";
+import { getAvailableTopics } from "./constants/topicAvailability";
 
-const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations"];
+const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations", "moduleVExam"];
 
 function openTopic(label) {
   const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
@@ -55,7 +56,7 @@ describe("Básico V — contenido visible", () => {
     expect(screen.getByRole("heading", { level: 1, name: "🎓 English — Básico V" })).toBeInTheDocument();
     const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
     expect(navigation.getAllByRole("button").map(button => button.textContent))
-      .toEqual(TOPICS_BASICO5.map(topic => topic.label));
+      .toEqual(getAvailableTopics(TOPICS_BASICO5).map(topic => topic.label));
     expect(screen.getByRole("heading", { level: 2, name: "⏪ Pasado simple — Simple Past" })).toBeInTheDocument();
   });
 

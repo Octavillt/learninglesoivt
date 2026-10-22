@@ -29,6 +29,18 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  moduleVExam: { title: "Fórmulas clave del examen del Módulo V", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye diez preguntas por tema.", rows: [
+    row("Pasado: afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
+    row("Pasado: negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't do her homework.", "Ella no hizo su tarea."),
+    row("Pasado: pregunta", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Karen drink mezcal?", "¿Karen tomó mezcal?"),
+    row("Pasado: información", "Palabra WH + did + sujeto + verbo base + complemento + ?", "What did you do yesterday?", "¿Qué hiciste ayer?"),
+    row("Futuro: afirmación", "Sujeto + am/is/are + going to + verbo base + complemento + (expresión de tiempo)", "I'm going to eat seafood.", "Voy a comer mariscos."),
+    row("Futuro: going to go", "Sujeto + am/is/are + going to + go + complemento + (expresión de tiempo)", "I'm going to go to Acapulco in December.", "Voy a ir a Acapulco en diciembre."),
+    row("Futuro: negación", "Sujeto + am/is/are + not + going to + verbo base + complemento", "We aren't going to arrive late.", "No vamos a llegar tarde."),
+    row("Futuro: pregunta", "Am/Is/Are + sujeto + going to + verbo base + complemento + ?", "Where are you going to study?", "¿Dónde vas a estudiar?"),
+    row("Colocaciones: pasado", "Sujeto + colocación en pasado simple + complemento", "We got lost on the way to the club.", "Nos perdimos en el camino al club."),
+    row("Colocaciones: futuro", "Sujeto + am/is/are + going to + colocación de vida social + complemento", "We're going to eat out at a restaurant tonight.", "Vamos a comer fuera en un restaurante esta noche."),
+  ] },
   octoberExam: { title: "Fórmulas clave del examen de octubre", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye seis preguntas por tema.", rows: [
     row("Cocina", "Verbo de cocina + el alimento", "She is boiling two hundred grams of rice.", "Ella está hirviendo doscientos gramos de arroz."),
     row("Colocaciones de turismo", "Verbo fijo + sustantivo", "We always take photos when we travel abroad.", "Siempre tomamos fotos cuando viajamos al extranjero."),
