@@ -59,9 +59,9 @@ export const IRREGULARS = [
 ];
 
 export const ED_PRONUNCIATION = [
-  { sound: "/t/", after: "Después de los sonidos p, k, f, sh, ch, s (ss o c con sonido s) y x.", examples: "helped, worked, laughed, watched, kissed, washed, danced, fixed" },
-  { sound: "/d/", after: "Después de los sonidos l, n, r, g, v, z, m, b y de las vocales.", examples: "called, cleaned, loved, climbed, answered, hugged, used, seemed" },
-  { sound: "/ɪd/", after: "Después de los sonidos t y d; se agrega una sílaba.", examples: "visited, wanted, needed" },
+  { sound: "/t/", after: "Después de los sonidos p, k, f, sh, ch, s (ss o c con sonido s) y x.", examples: ["helped", "worked", "laughed", "watched", "kissed", "washed", "danced", "fixed"] },
+  { sound: "/d/", after: "Después de los sonidos l, n, r, g, v, z, m, b y de las vocales.", examples: ["called", "cleaned", "loved", "climbed", "answered", "hugged", "used", "seemed"] },
+  { sound: "/ɪd/", after: "Después de los sonidos t y d; se agrega una sílaba.", examples: ["visited", "wanted", "needed"] },
 ];
 
 export const TIME_EXPRESSIONS = [
@@ -74,6 +74,47 @@ export const TIME_EXPRESSIONS = [
   ["three days ago", "hace tres días"],
 ];
 
+export const BOOK_STORY = {
+  prompt: "Escribe el pasado simple del verbo entre paréntesis (Grammar Reference, p. 156).",
+  text: "Look at this picture of my parents. My father was born in Mexico. He ___ (come) to the US in 1990. He ___ (work) in Texas for many years. He ___ (meet) my mother in 1995. They ___ (get) married two years later. They ___ (start) a family and ___ (have) me in 1999. Later they ___ (move) to California and ___ (open) a small restaurant. They ___ (buy) their first home in 2007.",
+  solution: "Look at this picture of my parents. My father was born in Mexico. He came to the US in 1990. He worked in Texas for many years. He met my mother in 1995. They got married two years later. They started a family and had me in 1999. Later they moved to California and opened a small restaurant. They bought their first home in 2007.",
+  answers: [["come", "came"], ["work", "worked"], ["meet", "met"], ["get", "got"], ["start", "started"], ["have", "had"], ["move", "moved"], ["open", "opened"], ["buy", "bought"]],
+};
+
+export const BOOK_NEGATIVES = {
+  prompt: "Reescribe cada oración en negativo con el adjetivo opuesto (Unit 10 A).",
+  rows: [
+    ["They woke up early.", "They didn't wake up late."],
+    ["We felt very cold.", "We didn't feel very hot."],
+    ["She had a big family.", "She didn't have a small family."],
+    ["It seemed like a good idea.", "It didn't seem like a bad idea."],
+    ["I lived in a noisy neighborhood.", "I didn't live in a quiet neighborhood."],
+    ["He gave a short speech.", "He didn't give a long speech."],
+    ["We bought an old house.", "We didn't buy a new house."],
+    ["I read an interesting book.", "I didn't read a boring book."],
+  ],
+};
+
+export const BOOK_CONVERSATION = {
+  prompt: "Completa la conversación entre Diego y José con el pasado simple (Unit 10 B).",
+  blanks: [
+    "Diego: ___ your family ___ (come) to visit you last weekend?",
+    "José: Yes, they ___. I ___ (show) them around the city.",
+    "Diego: Where ___ you ___ (go)?",
+    "José: To the beach. But they ___ (not enjoy) it much.",
+    "Diego: ___ you ___ (take) them to eat out?",
+    "José: No, I ___. They ___ (want) to cook for me. I ___ (not mind)!",
+  ],
+  answers: [
+    "Diego: Did your family come to visit you last weekend?",
+    "José: Yes, they did. I showed them around the city.",
+    "Diego: Where did you go?",
+    "José: To the beach. But they didn't enjoy it much.",
+    "Diego: Did you take them to eat out?",
+    "José: No, I didn't. They wanted to cook for me. I didn't mind!",
+  ],
+};
+
 export const PRACTICE = [
   { question: "Escribe el pasado simple de work.", answers: ["worked"], explanation: "work → worked. Verbo regular: solo agrega -ed." },
   { question: "Escribe el pasado simple de study.", answers: ["studied"], explanation: "study → studied. Consonante + y: cambia la y por -ied." },
@@ -85,4 +126,7 @@ export const PRACTICE = [
   { question: "Ordena: did / What / do / you / yesterday / ?", answers: ["What did you do yesterday?"], explanation: "What + did + sujeto + verbo base + expresión de tiempo: What did you do yesterday?" },
   { question: "Corrige: He didn't went to Acapulco.", answers: ["He didn't go to Acapulco.", "He did not go to Acapulco."], explanation: "He didn't go to Acapulco. Después de didn't el verbo va en forma base, no went." },
   { question: "Traduce: ¿Dónde creció él?", answers: ["Where did he grow up?"], explanation: "Where did he grow up? Grow up es irregular: su pasado es grew up." },
+  { question: "Completa la historia: He ___ (come) to the US in 1990.", answers: ["came"], explanation: "He came to the US in 1990. Come es irregular: come → came." },
+  { question: "Completa la historia: They ___ (buy) their first home in 2007.", answers: ["bought"], explanation: "They bought their first home in 2007. Buy es irregular: buy → bought." },
+  { question: "Completa con la negación y el opuesto: They woke up early. → They didn't wake up ___.", answers: ["late"], explanation: "They didn't wake up late. Después de didn't el verbo vuelve a su forma base: wake up." },
 ];

@@ -2,7 +2,7 @@ import TopicHeading from "../../components/TopicHeading";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import { EXAMPLES, QUESTIONS, TIME_EXPRESSIONS, VOCABULARY } from "./data";
+import { EXAMPLES, QUESTIONS, TIME_EXPRESSIONS, VOCABULARY, BOOK_DIALOGS } from "./data";
 
 const COLOR = "#34D399";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
@@ -73,6 +73,22 @@ export default function GoingToSection() {
         <div key={en} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
           <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
           <div style={translation}>🇲🇽 {es}</div>
+        </div>
+      ))}
+
+      <SectionTitle color={COLOR}>📘 Práctica del libro</SectionTitle>
+      <div style={{ ...card, ...text }}>📝 {BOOK_DIALOGS.prompt}</div>
+      {BOOK_DIALOGS.items.map(dialog => (
+        <div key={dialog.blanks[0]} style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
+          <div lang="en" style={text}>
+            {dialog.blanks.map(line => <div key={line}>{line}</div>)}
+          </div>
+          <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
+            <summary>Ver la respuesta</summary>
+            <div lang="en" style={text}>
+              {dialog.answers.map(line => <div key={line}>{line}</div>)}
+            </div>
+          </details>
         </div>
       ))}
 

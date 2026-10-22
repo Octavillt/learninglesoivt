@@ -5,6 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { SOCIAL_LIFE, COLLOCATION_GROUPS, TIME_EXAMPLES, CONVERSATION } from "./data";
 
 const COLOR = "#FBBF24";
+const EXPERIENCE_COLORS = { positiva: "#4ade80", negativa: "#f87171", "positiva o negativa": "#fbbf24" };
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
 const text = { color: "#cbd5e1", fontSize: "14px", lineHeight: 1.8 };
 const translation = { color: "#94a3b8", fontSize: "13px", marginTop: "4px" };
@@ -36,15 +37,16 @@ export default function SocialCollocationsSection() {
         <RuleBox key={verb} icon="🧩" rule={`Colocaciones con ${verb}`} color={COLOR}>
           {items.map(([en, es, experience]) => (
             <div key={en} style={{ marginBottom: "10px" }}>
-              <div lang="en" style={{ ...text, fontWeight: 700 }}>{en} <span style={{ color: COLOR, fontWeight: 500 }}>({experience})</span></div>
+              <div lang="en" style={{ ...text, fontWeight: 700 }}>{en}</div>
               <div style={translation}>🇲🇽 {es}</div>
+              <div style={{ ...translation, marginTop: "2px" }}>Experiencia: <strong style={{ color: EXPERIENCE_COLORS[experience] }}>{experience}</strong></div>
             </div>
           ))}
         </RuleBox>
       ))}
 
       <SectionTitle color={COLOR}>⏪⏩ Úsalas en pasado y futuro</SectionTitle>
-      <RuleBox icon="🔗" rule="Las colocaciones también se conjúgan" color={COLOR}>
+      <RuleBox icon="🔗" rule="Las colocaciones también se conjugan" color={COLOR}>
         <p style={text}>En pasado simple cambia el verbo de la colocación: make → made, get → got, have → had, hang → hung, see → saw, go → went. Con going to, la colocación se conserva en su forma base.</p>
         <RelatedTopic levelId="basico5" topicId="simplePast" label="Repasar el pasado simple" />
         <RelatedTopic levelId="basico5" topicId="goingTo" label="Repasar los planes con going to" />

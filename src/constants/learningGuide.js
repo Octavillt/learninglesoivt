@@ -227,6 +227,6 @@ export const LEARNING_GUIDE = {
     goal: "Describir experiencias sociales con colocaciones fijas de la vida social y con get, have y make.",
     recall: ["irregularVerbs", "simplePast", "goingTo"],
     task: "Cuenta que el viernes pasado saliste con amigos, cometiste un error y te perdiste, pero te divertiste. Después di que vas a hacer una fiesta.",
-    answer: "Last Friday I hung out with friends. I made a mistake and we got lost, but we had fun. I'm going to have a party. Las colocaciones se conjúgan: hang → hung, make → made, get → got, have → had.",
+    answer: "Last Friday I hung out with friends. I made a mistake and I got lost, but I had fun. I'm going to have a party. Las colocaciones se conjugan: hang → hung, make → made, get → got, have → had.",
   },
 };

@@ -2,7 +2,7 @@ import TopicHeading from "../../components/TopicHeading";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
-import { EXAMPLES, QUESTIONS, REGULAR_RULES, IRREGULARS, ED_PRONUNCIATION, TIME_EXPRESSIONS } from "./data";
+import { EXAMPLES, QUESTIONS, REGULAR_RULES, IRREGULARS, ED_PRONUNCIATION, TIME_EXPRESSIONS, BOOK_STORY, BOOK_NEGATIVES, BOOK_CONVERSATION } from "./data";
 
 const COLOR = "#FB7185";
 const card = { background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 16px", marginBottom: "8px" };
@@ -38,9 +38,12 @@ export default function SimplePastSection() {
 
       <RuleBox icon="🏃" rule="Los verbos irregulares se aprenden de memoria" color={COLOR}>
         <p style={text}>No siguen la regla de -ed; repasa su lista completa y apréndelos en pares:</p>
-        <ul style={{ ...text, paddingLeft: "20px", columnCount: 2 }}>
+        <ul style={{ ...text, listStyle: "none", paddingLeft: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "10px 18px" }}>
           {IRREGULARS.map(([forms, meaning]) => (
-            <li key={forms}><span lang="en">{forms}</span> — {meaning}</li>
+            <li key={forms}>
+              <div lang="en" style={{ color: "#f8fafc", fontWeight: 700, fontSize: "14px" }}>{forms}</div>
+              <div style={translation}>{meaning}</div>
+            </li>
           ))}
         </ul>
         <RelatedTopic levelId="basico2" topicId="irregularVerbs" label="Repasar la lista de verbos irregulares" />
@@ -52,9 +55,19 @@ export default function SimplePastSection() {
       </RuleBox>
       {ED_PRONUNCIATION.map(({ sound, after, examples }) => (
         <div key={sound} style={{ ...card, borderLeft: `3px solid ${COLOR}` }}>
-          <div lang="en" style={{ color: COLOR, fontSize: "15px", fontWeight: 700 }}>{sound}</div>
+          <div style={{ color: COLOR, fontSize: "15px", fontWeight: 700 }}>{sound}</div>
           <div style={text}>{after}</div>
-          <div lang="en" style={translation}>🇲🇽 Ejemplos: {examples}</div>
+          <div style={{ ...text, marginTop: "4px" }}>
+            Ejemplos:{" "}
+            {examples.map((word, i) => (
+              <span key={word}>
+                {i > 0 && ", "}
+                <span lang="en" style={{ color: "#f8fafc", fontWeight: 700 }}>
+                  {word.slice(0, -2)}<strong style={{ color: COLOR }}>{word.slice(-2)}</strong>
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
       ))}
 
@@ -89,6 +102,41 @@ export default function SimplePastSection() {
         </ul>
         <p style={text}>Ojo: se dice <span lang="en">last week</span>, sin «the»; y <span lang="en">in December</span>, con la preposición in.</p>
       </RuleBox>
+
+      <SectionTitle color={COLOR}>📘 Práctica del libro</SectionTitle>
+      <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
+        <div style={text}>📝 {BOOK_STORY.prompt}</div>
+        <p lang="en" style={{ ...text, marginTop: "6px" }}>{BOOK_STORY.text}</p>
+        <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
+          <summary>Ver la historia completa</summary>
+          <p lang="en" style={text}>{BOOK_STORY.solution}</p>
+          <div style={translation}>Repaso: {BOOK_STORY.answers.map(([base, past]) => `${base} → ${past}`).join(", ")}</div>
+        </details>
+      </div>
+      <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
+        <div style={text}>✏️ {BOOK_NEGATIVES.prompt}</div>
+        <ol style={{ ...text, paddingLeft: "20px", marginTop: "6px" }}>
+          {BOOK_NEGATIVES.rows.map(([prompt]) => <li key={prompt} lang="en">{prompt}</li>)}
+        </ol>
+        <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
+          <summary>Ver las negaciones</summary>
+          <ol style={{ ...text, paddingLeft: "20px" }}>
+            {BOOK_NEGATIVES.rows.map(([, answer]) => <li key={answer} lang="en">{answer}</li>)}
+          </ol>
+        </details>
+      </div>
+      <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
+        <div style={text}>💬 {BOOK_CONVERSATION.prompt}</div>
+        <div lang="en" style={{ ...text, marginTop: "6px" }}>
+          {BOOK_CONVERSATION.blanks.map(line => <div key={line}>{line}</div>)}
+        </div>
+        <details className="lesson-extension" style={{ margin: "10px 0 0" }}>
+          <summary>Ver la conversación completa</summary>
+          <div lang="en" style={text}>
+            {BOOK_CONVERSATION.answers.map(line => <div key={line}>{line}</div>)}
+          </div>
+        </details>
+      </div>
 
       <SectionTitle color={COLOR}>🎯 Practica lo aprendido</SectionTitle>
       <p style={text}>Escribe dos cosas que hiciste ayer y una que no hiciste. Después pregunta a otra persona «What did you do yesterday?» y responde con respuestas cortas. Usa el Quiz para practicar afirmaciones, negaciones y preguntas.</p>

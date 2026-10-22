@@ -39,6 +39,32 @@ export const VOCABULARY = [
   ["take a nap", "tomar una siesta"],
 ];
 
+export const BOOK_DIALOGS = {
+  prompt: "Completa los diálogos con la forma correcta de going to (Unit 11 A, p. 157).",
+  items: [
+    {
+      blanks: ["A: What ___ you ___ (do) this weekend?", "B: I'm not sure. I think I ___ (clean) the house."],
+      answers: ["A: What are you going to do this weekend?", "B: I'm not sure. I think I'm going to clean the house."],
+    },
+    {
+      blanks: ["A: ___ the weather ___ (be) nice tomorrow?", "B: No, it isn't. It ___ (rain) all day."],
+      answers: ["A: Is the weather going to be nice tomorrow?", "B: No, it isn't. It's going to rain all day."],
+    },
+    {
+      blanks: ["A: Gina ___ (not work) on the project with me.", "B: Oh, no! ___ anyone ___ (help) you?"],
+      answers: ["A: Gina isn't going to work on the project with me.", "B: Oh, no! Is anyone going to help you?"],
+    },
+    {
+      blanks: ["A: When ___ your parents ___ (visit)?", "B: On Friday. They ___ (spend) the weekend with me."],
+      answers: ["A: When are your parents going to visit?", "B: On Friday. They're going to spend the weekend with me."],
+    },
+    {
+      blanks: ["A: ___ you and Rex ___ (get) married?", "B: Yes, we are, but we ___ (not have) a big wedding."],
+      answers: ["A: Are you and Rex going to get married?", "B: Yes, we are, but we aren't going to have a big wedding."],
+    },
+  ],
+};
+
 export const PRACTICE = [
   { question: "Completa: I ___ going to eat seafood. (am / is / are)", answers: ["am"], explanation: "I am going to eat seafood. Con I usa am." },
   { question: "Completa: She ___ going to visit her family. (am / is / are)", answers: ["is"], explanation: "She is going to visit her family. Con she usa is." },
@@ -50,4 +76,7 @@ export const PRACTICE = [
   { question: "Ordena: you / What / going to / are / do / this weekend / ?", answers: ["What are you going to do this weekend?"], explanation: "WH + am/is/are + sujeto + going to + verbo base: What are you going to do this weekend?" },
   { question: "¿Cuál es la contracción informal y oral de going to?", answers: ["gonna"], explanation: "Gonna es la forma oral e informal de going to; úsala solo antes de un verbo y evítala en textos formales." },
   { question: "Corrige: I'm going to went to the beach.", answers: ["I'm going to go to the beach.", "I am going to go to the beach."], explanation: "I'm going to go to the beach. Después de going to el verbo va en forma base, no went." },
+  { question: "Completa el diálogo: What ___ you going to do this weekend?", answers: ["are"], explanation: "What are you going to do this weekend? Con you usa are." },
+  { question: "Completa el diálogo: I think I'm going to ___ the house. (clean)", answers: ["clean"], explanation: "I'm going to clean the house. Después de going to el verbo va en forma base: clean." },
+  { question: "Completa el diálogo: It's going to ___ all day. (rain)", answers: ["rain"], explanation: "It's going to rain all day. Es una predicción con going to; rain queda en forma base." },
 ];
