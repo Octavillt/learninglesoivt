@@ -28,7 +28,7 @@ function stickyOffset() {
 //    campo (en móvil quedaba a media pantalla, tapado por el teclado).
 // 3. El campo va pegado (sticky) debajo de la barra de temas, así sigue a la
 //    vista aunque se recorra una lista filtrada larga.
-export default function FilterableList({ value, onChange, placeholder, children }) {
+export default function FilterableList({ value, onChange, placeholder, label, children }) {
   const inputRef = useRef(null);
   // El campo pegado miente sobre su posición (reporta la de la pantalla, no
   // la del documento); este ancla de alto cero se queda en el flujo normal.
@@ -62,6 +62,7 @@ export default function FilterableList({ value, onChange, placeholder, children 
           autoCorrect="off"
           spellCheck={false}
           placeholder={placeholder}
+          aria-label={label}
           value={value}
           onChange={e => onChange(e.target.value)}
           style={{

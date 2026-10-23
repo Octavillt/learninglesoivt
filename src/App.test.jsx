@@ -220,7 +220,9 @@ describe("App — buscador global y resaltado", () => {
   async function buscarYElegir(user, termino) {
     await user.clear(screen.getByPlaceholderText("Buscar tema o palabra..."));
     await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), termino);
-    await user.click(await screen.findByRole("option", { name: /Verbos/ }));
+    // «dance» también abre una ficha en Verbos a la mano; esta prueba sigue
+    // eligiendo la lección, cuyo nombre ya no es el único que contiene «Verbos».
+    await user.click(await screen.findByRole("option", { name: /Verbos de uso diario/ }));
   }
 
   function resaltado() {
