@@ -148,8 +148,8 @@ export default function GlobalSearch({ onSelect, now }) {
                     {" · "}
                     <span style={{ color: C.participle.fg }}>{item.hit.verb.participle.join(" / ")}</span>
                   </span>
-                  <span style={{ display: "block", fontWeight: 400, color: "var(--text-muted, #94a3b8)", fontSize: "11px" }}>
-                    {item.hit.verb.es}
+                  <span lang="es" style={{ display: "block", fontWeight: 400, color: "var(--text-muted, #94a3b8)", fontSize: "11px", overflowWrap: "anywhere" }}>
+                    {item.hit.verb.es} → {item.hit.verb.esPast}
                   </span>
                 </span>
                 <span style={{ fontSize: "11px", fontWeight: 500, color: "#94a3b8", flex: "0 0 auto" }}>
