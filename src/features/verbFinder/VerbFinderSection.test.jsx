@@ -221,25 +221,34 @@ describe("Verbos a la mano — Mis verbos, práctica y audio", () => {
     expect(within(card("go")).queryByRole("button", { name: /Mostrar/ })).not.toBeInTheDocument();
   });
 
-  it("pronuncia las tres formas en inglés americano", () => {
+  it("no ofrece audio aunque el navegador pueda hablar", () => {
     const speak = vi.fn();
-    const cancel = vi.fn();
-    window.speechSynthesis = { speak, cancel };
+    window.speechSynthesis = { speak, cancel: vi.fn() };
     window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
     render(<App />);
     openVerbFinder();
-    fireEvent.click(within(card("go")).getByRole("button", { name: "Escuchar go, went, gone" }));
-    expect(cancel).toHaveBeenCalled();
-    expect(speak).toHaveBeenCalledTimes(1);
-    const utterance = speak.mock.calls[0][0];
-    expect(utterance.text).toMatch(/go.*went.*gone/);
-    expect(utterance.lang).toBe("en-US");
+    expect(screen.queryByRole("button", { name: /Escuchar/ })).not.toBeInTheDocument();
+    expect(screen.queryByText("🔊")).not.toBeInTheDocument();
+    expect(speak).not.toHaveBeenCalled();
   });
 
-  it("no muestra el botón de audio si el navegador no puede hablar", () => {
+  it("señala con «Nota» los verbos que tienen una y la abre al tocarla", () => {
     render(<App />);
     openVerbFinder();
-    expect(within(card("go")).queryByRole("button", { name: /Escuchar/ })).not.toBeInTheDocument();
+    expect(screen.queryByText("ⓘ")).not.toBeInTheDocument();
+    expect(within(card("ask")).queryByRole("button", { name: /nota/i })).not.toBeInTheDocument();
+
+    const be = within(card("be"));
+    const note = be.getByRole("button", { name: "Ver la nota de be" });
+    expect(note).toHaveTextContent("Nota");
+    expect(note).toHaveAttribute("aria-expanded", "false");
+    expect(be.queryByText(/Was va con I\/he\/she\/it/)).not.toBeInTheDocument();
+    fireEvent.click(note);
+    expect(note).toHaveAttribute("aria-expanded", "true");
+    expect(be.getByRole("button", { name: /Más/ })).toHaveAttribute("aria-expanded", "true");
+    expect(be.getByText(/Was va con I\/he\/she\/it/)).toBeInTheDocument();
+    fireEvent.click(note);
+    expect(be.queryByText(/Was va con I\/he\/she\/it/)).not.toBeInTheDocument();
   });
 });
 

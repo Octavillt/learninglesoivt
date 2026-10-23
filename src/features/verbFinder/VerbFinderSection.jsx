@@ -73,30 +73,6 @@ function groupByLetter(items) {
   return groups;
 }
 
-function spokenList(verb) {
-  return [verb.base, verb.past.join(", "), verb.participle.join(", ")].join(", ");
-}
-
-function speakVerb(verb) {
-  const synth = window.speechSynthesis;
-  if (!synth) return;
-  try {
-    synth.cancel();
-    const utterance = new SpeechSynthesisUtterance(
-      `${verb.base}. ${verb.past.join(", ")}. ${verb.participle.join(", ")}.`,
-    );
-    utterance.lang = "en-US";
-    utterance.rate = 0.85;
-    synth.speak(utterance);
-  } catch {
-    // El navegador rechazó el audio; la ficha sigue siendo usable
-  }
-}
-
-function browserCanSpeak() {
-  return typeof window.speechSynthesis?.speak === "function";
-}
-
 function MatchHint({ verb, matchedForm, matchedField }) {
   if (matchedField === "past") {
     return (
@@ -145,7 +121,7 @@ function PracticeCell({ hidden, label, base, onReveal, children }) {
 
 function VerbCard({
   verb, matchedForm, matchedField, hide, revealed, onReveal,
-  open, onToggle, favorite, onFavorite, canSpeak,
+  open, onToggle, favorite, onFavorite,
 }) {
   const moreId = `vf-more-${verb.base.replaceAll(" ", "-")}`;
   const pattern = PATTERN_BY_ID[verbPattern(verb)];
@@ -162,7 +138,16 @@ function VerbCard({
           <div className="vf-base">
             <Token t={verb.base} r="verb" />
             {verb.note && (
-              <span className="vf-note" title={verb.note} aria-label="Tiene una nota">ⓘ</span>
+              <button
+                type="button"
+                className="vf-note"
+                aria-label={`Ver la nota de ${verb.base}`}
+                aria-expanded={open}
+                aria-controls={moreId}
+                onClick={onToggle}
+              >
+                Nota
+              </button>
             )}
           </div>
           <PracticeCell
@@ -221,16 +206,6 @@ function VerbCard({
           >
             {favorite ? "★" : "☆"}
           </button>
-          {canSpeak && (
-            <button
-              type="button"
-              className="vf-icon"
-              aria-label={`Escuchar ${spokenList(verb)}`}
-              onClick={() => speakVerb(verb)}
-            >
-              🔊
-            </button>
-          )}
           <button
             type="button"
             className="vf-icon"
@@ -250,7 +225,7 @@ function VerbCard({
               ? <>{pattern.label} · <span className="vf-en" lang="en">{pattern.example}</span></>
               : <>Regular · <span className="vf-en" lang="en">{verb.base} → {verb.past[0]}</span></>}
           </p>
-          {verb.note && <p>{verb.note}</p>}
+          {verb.note && <p><strong>Nota:</strong> {verb.note}</p>}
           {verb.ed && (
             <p>-ed se pronuncia <span className="vf-en" lang="en">{verb.ed}</span></p>
           )}
@@ -282,7 +257,6 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
   const [expanded, setExpanded] = useState(() => exactBase(highlightTerm));
   const [favorites, setFavorites] = useState(loadFavorites);
   const [appliedSeq, setAppliedSeq] = useState(highlightSeq);
-  const canSpeak = browserCanSpeak();
 
   // El resaltado del buscador global corre en un efecto del padre, a veces sin
   // espera. Aplicar el término durante el render deja la tarjeta en el DOM
@@ -383,7 +357,6 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
         onToggle={() => setExpanded(current => (current === item.verb.base ? null : item.verb.base))}
         favorite={favoriteSet.has(item.verb.base)}
         onFavorite={toggleFavorite}
-        canSpeak={canSpeak}
       />
     );
   }
