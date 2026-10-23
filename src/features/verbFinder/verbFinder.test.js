@@ -71,6 +71,233 @@ const PHRASAL_ROWS = [
   "stand up|stood up|stood up|irregular", "wake up|woke up|woken up|irregular",
 ];
 
+// Traducción en pasado (3.ª persona del pretérito) de cada verbo.
+const ES_PAST = {
+  answer: "contestó, respondió",
+  arise: "surgió, se levantó",
+  ask: "preguntó, pidió",
+  avoid: "evitó",
+  awake: "se despertó",
+  bark: "ladró",
+  be: "fue, estuvo",
+  bear: "soportó, dio a luz",
+  beat: "golpeó, venció",
+  become: "llegó a ser, se convirtió en",
+  begin: "empezó, comenzó",
+  bend: "dobló, flexionó",
+  bet: "apostó",
+  bid: "ofertó, pujó",
+  bind: "ató, encuadernó",
+  bite: "mordió",
+  bleed: "sangró",
+  blow: "sopló",
+  break: "rompió",
+  breed: "crio",
+  bring: "trajo, llevó",
+  broadcast: "transmitió",
+  build: "construyó",
+  burn: "quemó",
+  burst: "reventó",
+  buy: "compró",
+  call: "llamó",
+  carry: "cargó, llevó",
+  cast: "arrojó, lanzó",
+  catch: "atrapó, agarró",
+  choose: "eligió",
+  clean: "limpió",
+  climb: "escaló, trepó",
+  cling: "se agarró, se aferró",
+  close: "cerró",
+  come: "vino",
+  continue: "continuó",
+  cook: "cocinó",
+  cost: "costó",
+  creep: "se arrastró",
+  cry: "lloró",
+  cut: "cortó",
+  dance: "bailó",
+  deal: "trató",
+  decide: "decidió",
+  dig: "cavó",
+  do: "hizo",
+  draw: "dibujó",
+  dream: "soñó",
+  drink: "bebió",
+  drive: "manejó, condujo",
+  eat: "comió",
+  "eat out": "comió fuera",
+  enjoy: "disfrutó",
+  erase: "borró",
+  fall: "cayó",
+  feed: "alimentó",
+  feel: "sintió",
+  fight: "luchó, peleó",
+  find: "encontró",
+  finish: "terminó",
+  fix: "arregló",
+  flee: "huyó",
+  fly: "voló",
+  forbid: "prohibió",
+  forget: "olvidó",
+  forgive: "perdonó",
+  freeze: "congeló",
+  get: "obtuvo, consiguió",
+  "get up": "se levantó",
+  give: "dio",
+  go: "fue",
+  "go out": "salió",
+  grind: "molió, trituró",
+  grow: "creció",
+  "grow up": "creció (hacerse adulto)",
+  hang: "colgó",
+  "hang out": "pasó el rato",
+  hate: "odió",
+  have: "tuvo, hubo",
+  hear: "oyó",
+  help: "ayudó",
+  hide: "escondió, ocultó",
+  hit: "golpeó",
+  hold: "sostuvo, agarró, celebró (una reunión)",
+  hope: "esperó (tener esperanza)",
+  hug: "abrazó",
+  hurt: "lastimó, hirió",
+  jump: "saltó",
+  keep: "guardó, mantuvo, conservó",
+  kiss: "besó",
+  kneel: "se arrodilló",
+  knit: "tejió",
+  know: "supo, conoció",
+  laugh: "rio, se rio",
+  lay: "puso, colocó, extendió",
+  lead: "guio, dirigió, condujo",
+  lean: "se apoyó, se inclinó",
+  leap: "brincó, saltó",
+  learn: "aprendió",
+  leave: "salió, se fue, dejó",
+  lend: "prestó",
+  let: "dejó, permitió",
+  lie: "se acostó, se recostó",
+  lift: "levantó, elevó",
+  light: "encendió, iluminó",
+  like: "gustó",
+  "listen to": "escuchó",
+  live: "vivió",
+  "look up": "buscó (información)",
+  lose: "perdió",
+  love: "amó, encantó",
+  make: "hizo, fabricó",
+  mean: "significó, quiso decir",
+  meet: "conoció (a alguien), se encontró con",
+  meow: "maulló",
+  mind: "importó, molestó",
+  mistake: "confundió, malinterpretó",
+  move: "movió, se mudó",
+  need: "necesitó",
+  open: "abrió",
+  overcome: "superó, venció",
+  paint: "pintó",
+  pay: "pagó",
+  plan: "planeó",
+  play: "jugó, tocó (un instrumento)",
+  practice: "practicó",
+  prefer: "prefirió",
+  pull: "jaló, tiró de",
+  purr: "ronroneó",
+  push: "empujó",
+  put: "puso",
+  read: "leyó",
+  ride: "montó, anduvo en (bici, caballo)",
+  ring: "sonó, llamó (por teléfono)",
+  rise: "se levantó, subió, salió (el sol)",
+  run: "corrió",
+  say: "dijo",
+  see: "vio",
+  seek: "buscó",
+  seem: "pareció",
+  sell: "vendió",
+  send: "envió",
+  set: "puso, colocó, fijó",
+  sew: "cosió",
+  shake: "sacudió, agitó",
+  shear: "esquiló, podó",
+  shine: "brilló",
+  shoot: "disparó",
+  show: "mostró",
+  shrink: "encogió, se encogió",
+  shut: "cerró",
+  sing: "cantó",
+  sink: "hundió, se hundió",
+  sit: "se sentó",
+  sleep: "durmió",
+  slide: "resbaló, se deslizó",
+  smell: "olió",
+  sow: "sembró",
+  speak: "habló",
+  speed: "aceleró, fue a toda velocidad",
+  spell: "deletreó",
+  spend: "gastó, pasó (tiempo)",
+  spill: "derramó",
+  spin: "giró, hiló",
+  spit: "escupió",
+  split: "partió, dividió",
+  spoil: "estropeó, echó a perder",
+  spread: "extendió, untó",
+  spring: "saltó, brotó",
+  stand: "estuvo de pie, se paró",
+  "stand up": "se puso de pie",
+  start: "empezó, comenzó",
+  steal: "robó",
+  stick: "pegó",
+  sting: "picó",
+  stink: "apestó",
+  stop: "paró, se detuvo",
+  stretch: "estiró",
+  stride: "dio zancadas",
+  strike: "golpeó",
+  study: "estudió",
+  suggest: "sugirió",
+  swear: "juró",
+  sweat: "sudó",
+  sweep: "barrió",
+  swell: "se hinchó, se inflamó",
+  swim: "nadó",
+  swing: "se columpió",
+  take: "tomó, agarró, llevó",
+  talk: "habló, platicó",
+  teach: "enseñó",
+  tear: "rasgó, rompió",
+  tell: "dijo, contó",
+  think: "pensó",
+  throw: "lanzó, arrojó, tiró",
+  thrust: "empujó, impulsó",
+  travel: "viajó",
+  tread: "pisó, pisoteó",
+  turn: "giró, dio vuelta",
+  twist: "torció, giró",
+  undergo: "se sometió a, pasó por",
+  understand: "entendió",
+  undertake: "emprendió",
+  use: "usó",
+  visit: "visitó",
+  wait: "esperó",
+  wake: "despertó, se despertó",
+  "wake up": "se despertó",
+  walk: "caminó",
+  want: "quiso",
+  wash: "lavó",
+  watch: "vio, miró",
+  wear: "llevó puesto, usó (ropa)",
+  weave: "tejió",
+  weep: "lloró",
+  wet: "mojó",
+  win: "ganó",
+  wind: "enrolló, dio cuerda",
+  withdraw: "retiró, se retiró",
+  work: "trabajó",
+  wring: "torció, escurrió",
+  write: "escribió",
+};
+
 const BY_BASE = Object.fromEntries(VERB_BANK.map(verb => [verb.base, verb]));
 const split = forms => forms.split(" / ");
 const firstResult = query => searchVerbs(query)[0];
@@ -126,6 +353,16 @@ describe("Verbos a la mano — datos", () => {
     expect(BY_BASE.bring.es).toMatch(/traer/);
     expect(BY_BASE.go.es).toMatch(/\bir\b/);
   });
+
+  it("traduce cada verbo también en pasado (3.ª persona del pretérito)", () => {
+    expect(Object.keys(ES_PAST)).toHaveLength(VERB_BANK.length);
+    for (const verb of VERB_BANK) expect(verb.esPast, verb.base).toBe(ES_PAST[verb.base]);
+  });
+
+  it("el pasado en español tiene un significado por cada significado del verbo base", () => {
+    const meanings = text => text.split(/,(?![^(]*\))/).length;
+    for (const verb of VERB_BANK) expect(meanings(verb.esPast), verb.base).toBe(meanings(verb.es));
+  });
 });
 
 describe("Verbos a la mano — coherencia con las lecciones", () => {
@@ -146,6 +383,14 @@ describe("Verbos a la mano — coherencia con las lecciones", () => {
     for (const [pair] of IRREGULARS) {
       const [base, past] = pair.split(" → ");
       expect(BY_BASE[base]?.past, base).toContain(past);
+    }
+  });
+
+  it("usa las mismas traducciones en pasado que la lección de Pasado simple", () => {
+    for (const [pair, spanish] of IRREGULARS) {
+      const base = pair.split(" → ")[0];
+      const past = spanish.split(" → ")[1].replace(/ \(.*\)$/, "");
+      expect(BY_BASE[base].esPast, base).toContain(past);
     }
   });
 
@@ -201,6 +446,16 @@ describe("Verbos a la mano — búsqueda", () => {
     expect(firstResult("oir").verb.base).toBe("hear");
     expect(firstResult("OÍR").verb.base).toBe("hear");
     expect(firstResult("Ir").verb.base).toBe("go");
+  });
+
+  it("encuentra el verbo desde su traducción en pasado", () => {
+    expect(firstResult("preguntó")).toMatchObject({ verb: { base: "ask" }, matchedField: "esPast", matchedForm: "preguntó" });
+    expect(firstResult("pregunto").verb.base).toBe("ask");
+    expect(firstResult("trajo").verb.base).toBe("bring");
+    expect(searchVerbs("hizo").slice(0, 2).map(result => result.verb.base)).toEqual(["do", "make"]);
+    expect(searchVerbs("fue").map(result => result.verb.base)).toEqual(expect.arrayContaining(["go", "be"]));
+    // El significado en presente gana al pasado cuando empatan.
+    expect(firstResult("salir")).toMatchObject({ verb: { base: "go out" }, matchedField: "es" });
   });
 
   it("no mezcla coincidencias a mitad de palabra en español", () => {

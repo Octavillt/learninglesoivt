@@ -48,6 +48,46 @@ function esWords(es) {
   return normalize(es).replace(/[(),]/g, " ").split(/\s+/).filter(Boolean);
 }
 
+// La comparación va sin acentos; la pista muestra la palabra como está escrita.
+function writtenWord(text, normalizedWord) {
+  const tokens = text.replace(/[(),]/g, " ").split(/\s+/).filter(Boolean);
+  return tokens.find(token => normalize(token) === normalizedWord) ?? normalizedWord;
+}
+
+// Mismas reglas para el infinitivo (es) y el pretérito (esPast): palabra exacta
+// en rango 4 y, desde 3 letras, palabra que empieza con la consulta en rango 5.
+function spanishHit(text, field, query) {
+  if (!text) return null;
+  const words = esWords(text);
+  const exact = words.find(item => item === query);
+  if (exact) {
+    return {
+      rank: 4,
+      matchedForm: field === "esPast" ? writtenWord(text, exact) : exact,
+      matchedField: field,
+    };
+  }
+  if (normalize(text) === query) return { rank: 4, matchedForm: text, matchedField: field };
+  if (query.length >= MIN_PARTIAL) {
+    const starts = words.find(item => item.startsWith(query));
+    if (starts) {
+      return {
+        rank: 5,
+        matchedForm: field === "esPast" ? writtenWord(text, starts) : starts,
+        matchedField: field,
+      };
+    }
+  }
+  return null;
+}
+
+// Si el infinitivo y el pretérito empatan en rango, gana el infinitivo.
+function preferSpanish(baseHit, pastHit) {
+  if (!baseHit) return pastHit;
+  if (!pastHit) return baseHit;
+  return pastHit.rank < baseHit.rank ? pastHit : baseHit;
+}
+
 // Mejor coincidencia de un verbo contra la query ya normalizada. El rango
 // ordena la relevancia: exacto en inglés > base empieza > pasado/participio
 // empieza > contiene en inglés > palabra exacta en español > palabra empieza.
@@ -75,15 +115,7 @@ function bestMatch(verb, query) {
       if (participle.includes(query)) return { rank: 3, matchedForm: participle, matchedField: "participle" };
     }
   }
-  const words = esWords(verb.es);
-  const word = words.find(item => item === query);
-  if (word) return { rank: 4, matchedForm: word, matchedField: "es" };
-  if (normalize(verb.es) === query) return { rank: 4, matchedForm: verb.es, matchedField: "es" };
-  if (query.length >= MIN_PARTIAL) {
-    const starts = words.find(item => item.startsWith(query));
-    if (starts) return { rank: 5, matchedForm: starts, matchedField: "es" };
-  }
-  return null;
+  return preferSpanish(spanishHit(verb.es, "es", query), spanishHit(verb.esPast, "esPast", query));
 }
 
 export function searchVerbs(query, { limit } = {}) {

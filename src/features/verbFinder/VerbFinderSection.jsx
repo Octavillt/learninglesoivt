@@ -119,6 +119,18 @@ function MatchHint({ verb, matchedForm, matchedField }) {
       </p>
     );
   }
+  if (matchedField === "esPast") {
+    return (
+      <p className="vf-hint">
+        <span lang="es">{matchedForm}</span>
+        {" → "}
+        <span lang="en">{verb.past[0]}</span>
+        {" (pasado de "}
+        <span lang="en">{verb.base}</span>
+        )
+      </p>
+    );
+  }
   return null;
 }
 
@@ -141,6 +153,7 @@ function VerbCard({
   const pastHidden = hide === "past" && !revealed.has(`${verb.base}:past`);
   const partHidden = hide === "participle" && !revealed.has(`${verb.base}:participle`);
   const esHidden = hide === "es" && !revealed.has(`${verb.base}:es`);
+  const esPastHidden = hide === "es" && !revealed.has(`${verb.base}:esPast`);
 
   return (
     <article className="vf-card" data-open={open ? "true" : "false"} aria-label={verb.base}>
@@ -172,7 +185,17 @@ function VerbCard({
               base={verb.base}
               onReveal={() => onReveal(`${verb.base}:past`)}
             >
-              <Token t={verb.past.join(" / ")} r="past" />
+              <>
+                <Token t={verb.past.join(" / ")} r="past" />
+                <PracticeCell
+                  hidden={esPastHidden}
+                  label="pasado en español"
+                  base={verb.base}
+                  onReveal={() => onReveal(`${verb.base}:esPast`)}
+                >
+                  <p className="vf-es" lang="es">{verb.esPast}</p>
+                </PracticeCell>
+              </>
             </PracticeCell>
           </div>
           <div className="vf-form vf-form--part">
@@ -453,6 +476,9 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
 
           <p className="vf-count" aria-live="polite">{countLabel(visible.length, query)}</p>
           <Legend roles={["verb", "past", "participle"]} />
+          <p className="vf-past-note" lang="es" data-search-skip>
+            El pasado en español va en 3.ª persona (él / ella): <span lang="en">asked</span> → preguntó. Según el contexto también puede traducirse como copretérito: <span lang="en">wanted</span> → quería, <span lang="en">was</span> → era / estaba.
+          </p>
         </div>
 
         {noFavoritesYet ? (

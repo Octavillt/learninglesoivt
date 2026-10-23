@@ -243,6 +243,56 @@ describe("Verbos a la mano — Mis verbos, práctica y audio", () => {
   });
 });
 
+describe("Verbos a la mano — traducción en pasado", () => {
+  it("muestra el pasado en español bajo la forma en pasado y explica la persona", () => {
+    render(<App />);
+    openVerbFinder();
+    expect(card("ask").querySelector(".vf-form--past")).toHaveTextContent(/asked\s*preguntó, pidió/);
+    expect(card("ask").querySelector(".vf-form--part")).not.toHaveTextContent(/preguntó/);
+    expect(within(card("be")).getByText("fue, estuvo")).toBeInTheDocument();
+    expect(screen.getByText(/El pasado en español va en 3\.ª persona/)).toBeInTheDocument();
+  });
+
+  it("encuentra el verbo desde su pasado en español y lo explica", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    openVerbFinder();
+    await user.type(moduleSearch(), "preguntó");
+    expect(cardBases()[0]).toBe("ask");
+    expect(card("ask")).toHaveTextContent("preguntó → asked (pasado de ask)");
+  });
+
+  it("modo práctica: Pasado oculta la forma y su traducción; Español oculta ambas traducciones por separado", () => {
+    render(<App />);
+    openVerbFinder();
+    const practice = within(screen.getByRole("group", { name: "Modo práctica: ocultar columna" }));
+
+    fireEvent.click(practice.getByRole("button", { name: "Pasado" }));
+    expect(within(card("go")).queryByText("fue")).not.toBeInTheDocument();
+    fireEvent.click(within(card("go")).getByRole("button", { name: "Mostrar pasado de go" }));
+    expect(within(card("go")).getByText("went")).toBeInTheDocument();
+    expect(within(card("go")).getByText("fue")).toBeInTheDocument();
+
+    fireEvent.click(practice.getByRole("button", { name: "Español" }));
+    const go = within(card("go"));
+    expect(go.getByText("went")).toBeInTheDocument();
+    expect(go.queryByText("fue")).not.toBeInTheDocument();
+    expect(go.queryByText("ir")).not.toBeInTheDocument();
+    fireEvent.click(go.getByRole("button", { name: "Mostrar pasado en español de go" }));
+    expect(go.getByText("fue")).toBeInTheDocument();
+    expect(go.getByRole("button", { name: "Mostrar significado de go" })).toBeInTheDocument();
+  });
+
+  it("el buscador global muestra el significado y su pasado", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByPlaceholderText("Buscar tema o palabra..."), "trajo");
+    const first = (await screen.findAllByRole("option"))[0];
+    expect(first).toHaveTextContent(/bring.*brought.*brought/);
+    expect(first).toHaveTextContent("traer, llevar → trajo, llevó");
+  });
+});
+
 describe("Verbos a la mano — buscador global y enlaces", () => {
   it("responde al instante con las tres formas y abre el verbo", async () => {
     const user = userEvent.setup();
