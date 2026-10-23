@@ -220,10 +220,26 @@
 }
 
 .vf-note {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--highlight, #93c5fd);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--highlight, #93c5fd) 16%, transparent);
   color: var(--highlight, #93c5fd);
-  font-size: 14px;
+  font: inherit;
+  font-size: 12px;
   font-weight: 800;
-  cursor: help;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.vf-note:focus-visible {
+  outline: 2px solid var(--highlight, #93c5fd);
+  outline-offset: 2px;
 }
 
 .vf-icon {
