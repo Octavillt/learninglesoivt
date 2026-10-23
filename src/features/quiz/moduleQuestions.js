@@ -41,8 +41,9 @@ function completeSentences(topic, rows) {
 function missingToken(topic, rows) {
   return rows.map(row => ({
     topic,
-    question: `Completa el espacio${topic === "articles" ? " (escribe Ø si no lleva artículo)" : ""}: ${row.pts.map(p => typeof p === "string" ? p : "___").join("")}`,
-    answers: row.pts.filter(p => typeof p !== "string").map(p => p.t),
+    question: `Completa el espacio${topic === "articles" ? " (escribe Ø o 0 si no lleva artículo)" : ""}: ${row.pts.map(p => typeof p === "string" ? p : "___").join("")}`,
+    // Ø no está en el teclado: el 0 cuenta como la misma respuesta.
+    answers: row.pts.filter(p => typeof p !== "string").flatMap(p => p.t === "Ø" ? ["Ø", "0"] : [p.t]),
     hint: row.esp,
     explanation: sentence(row.pts),
   }));

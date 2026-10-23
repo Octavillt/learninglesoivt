@@ -63,14 +63,14 @@ export const QUESTIONS = [
   },
   {
     topic: "tobe",
-    question: "Negative: She ___ not happy. (short form)",
+    question: "Negative (short form): She ___ happy.",
     answers: ["isn't", "is not"],
     hint: "is + not = ___",
     explanation: "She ISN'T happy. is + not = isn't.",
   },
   {
     topic: "tobe",
-    question: "Negative: They ___ not my friends. (short form)",
+    question: "Negative (short form): They ___ my friends.",
     answers: ["aren't", "are not"],
     hint: "are + not = ___",
     explanation: "They AREN'T my friends. are + not = aren't.",
@@ -1013,6 +1013,50 @@ export const QUESTIONS = [
   },
 ];
 
+// Compara lo que escribe el alumno sin castigar detalles de teclado: mayúsculas,
+// acentos (cómo = como), apóstrofos curvos o ´, comas, paréntesis, guiones y
+// diagonales. La ɪ de /ɪd/ se acepta escrita como i.
+export function normalize(value) {
+  return value
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[’‘´`]/g, "'")
+    .replace(/ɪ/g, "i")
+    .replace(/[.!?¿¡…]+/g, "")
+    .replace(/[,;:"“”«»()/-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function checkAnswer(userAnswer, acceptedAnswers) {
+  const given = normalize(userAnswer);
+  // Las aclaraciones entre paréntesis son opcionales: «Buenas noches (al llegar)».
+  return acceptedAnswers.some(a => normalize(a) === given || normalize(a.replace(/\s*\([^)]*\)/g, "")) === given);
+}
+
+// Las guías de examen reutilizan preguntas de las lecciones. La clave las
+// identifica para que, dentro de una misma mezcla, cuenten como una sola. Si
+// varias preguntas comparten el enunciado pero tienen opciones distintas
+// («Elige la oración correcta.»), las opciones forman parte de la clave.
+const QUESTION_KEYS = new Map();
+{
+  const optionSets = new Map();
+  for (const q of QUESTIONS) {
+    const text = normalize(q.question);
+    if (!optionSets.has(text)) optionSets.set(text, new Set());
+    if (q.options) optionSets.get(text).add(q.options.map(normalize).join("|"));
+  }
+  for (const q of QUESTIONS) {
+    const text = normalize(q.question);
+    const distinctOptions = optionSets.get(text).size > 1;
+    QUESTION_KEYS.set(q, distinctOptions && q.options ? `${text}|${q.options.map(normalize).join("|")}` : text);
+  }
+}
+
+export function questionKey(question) {
+  return QUESTION_KEYS.get(question);
+}
+
 export function getByTopic(topic, levelId = "all", now = Date.now()) {
   // El nivel de consulta (Verbos) no es una lección: no entra al banco del Quiz.
   const studyTopics = LEVELS
@@ -1022,8 +1066,11 @@ export function getByTopic(topic, levelId = "all", now = Date.now()) {
   const selected = levelId === "all" ? null : LEVELS.find(level => level.id === levelId);
   if (selected?.reference) return [];
   const topics = selected?.topics;
+  const seen = new Set();
   return QUESTIONS.filter(q => available.has(q.topic) && (topic === "mixed" || q.topic === topic) &&
-    (levelId === "all" || topics?.some(t => t.id === q.topic)));
+    (levelId === "all" || topics?.some(t => t.id === q.topic)))
+    // Se queda la primera aparición: la de la lección, que acepta más variantes.
+    .filter(q => !seen.has(questionKey(q)) && seen.add(questionKey(q)));
 }
 
 export function getRandom(pool) {
