@@ -12,13 +12,13 @@ export default function QuizSection({ initialSelection }) {
   const initialLevel = STUDY_LEVELS.find(level => level.id === initialSelection?.levelId);
   const initialTopic = initialLevel && getAvailableTopics(initialLevel.topics).find(item => item.id === initialSelection?.topicId);
   const {
-    levelId, setLevelId, questionCount,
+    levelId, setLevelId, questionCount, masteredCount, remainingCount,
     topic, setTopic,
     question, answer, setAnswer,
     feedback,
     score, percentage,
-    started,
-    nextQuestion, submitAnswer,
+    started, finished,
+    nextQuestion, submitAnswer, reset,
   } = useQuiz({ levelId: initialLevel?.id ?? "all", topicId: initialTopic?.id ?? "mixed" });
   const questionLevel = question && STUDY_LEVELS.find(level => level.topics.some(item => item.id === question.topic));
 
@@ -60,7 +60,9 @@ export default function QuizSection({ initialSelection }) {
         ))}
       </select>
 
-      <p style={{ color: "#94a3b8", fontSize: 13 }}>{questionCount} preguntas disponibles. Cambiar el módulo o la sección reinicia la puntuación.</p>
+      <p style={{ color: "#94a3b8", fontSize: 13 }}>
+        {questionCount} preguntas disponibles{started && ` · ${masteredCount} respondidas bien`}. Las que respondes bien ya no se repiten; las que fallas vuelven más adelante. Cambiar el módulo o la sección reinicia la puntuación.
+      </p>
 
       {/* Pantalla inicial */}
       {!started && (
@@ -129,10 +131,26 @@ export default function QuizSection({ initialSelection }) {
                 onClick={nextQuestion}
                 style={{ width: "100%", padding: "14px", borderRadius: "10px", border: "none", background: "linear-gradient(135deg,#7c3aed,#2563eb)", color: "#fff", fontSize: "16px", fontWeight: 700, cursor: "pointer" }}
               >
-                ➡️ Siguiente pregunta
+                {remainingCount === 0 ? "🏁 Ver resultado" : "➡️ Siguiente pregunta"}
               </button>
             </>
           )}
+        </div>
+      )}
+
+      {/* Resultado: todas las preguntas de la selección se respondieron bien */}
+      {finished && (
+        <div style={{ background: "var(--surface, #1e293b)", borderRadius: "14px", padding: "22px", textAlign: "center" }}>
+          <div style={{ fontSize: "22px", fontWeight: 800, color: "#4ade80", marginBottom: "8px" }}>🎉 ¡Completaste el Quiz!</div>
+          <p style={{ color: "#e2e8f0", lineHeight: 1.6, marginTop: 0 }}>
+            Respondiste bien las {questionCount} preguntas en {score.total} {score.total === 1 ? "intento" : "intentos"}.
+          </p>
+          <button
+            onClick={reset}
+            style={{ width: "100%", padding: "14px", borderRadius: "10px", border: "none", background: "linear-gradient(135deg,#7c3aed,#2563eb)", color: "#fff", fontSize: "16px", fontWeight: 700, cursor: "pointer" }}
+          >
+            🔄 Volver a empezar
+          </button>
         </div>
       )}
     </div>
