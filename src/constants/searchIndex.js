@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_VERBOS, TOPICS_QUIZ } from "./topics";
 import { BODY_WORDS } from "../features/bodyParts/data";
 import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS } from "../features/foodGroups/data";
 import { EXERCISE_WORDS } from "../features/exerciseWords/data";
@@ -15,7 +15,7 @@ import { isTopicAvailable } from "./topicAvailability";
 // palabras más relevantes (no hace falta ser exhaustivo).
 
 const topicMeta = {};
-[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
+[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_VERBOS, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
   octoberExam: ["guía de examen de octubre", "examen octubre", "october exam", "cooking", "clothes", "tourism", "collocations", "could", "should", "gerund", "infinitive", ...OCTOBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
@@ -166,6 +166,12 @@ const SEARCH_KEYWORDS = {
   ],
   quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
 
+  verbFinder: [
+    "verbos", "verbs", "lista de verbos", "verb list", "diccionario de verbos",
+    "buscador de verbos", "verbos irregulares", "verbos regulares",
+    "irregular verbs", "regular verbs", "mis verbos", "conjugar",
+  ],
+
   irregularVerbs: [
     "irregular verbs","past","participle","simple past","was","were","been","became",
     "began","broke","brought","built","bought","caught","chose","came","cost","cut","did",
@@ -294,6 +300,7 @@ function buildIndex() {
     { levelId: "basico3", topics: TOPICS_BASICO3 },
     { levelId: "basico4", topics: TOPICS_BASICO4 },
     { levelId: "basico5", topics: TOPICS_BASICO5 },
+    { levelId: "verbos", topics: TOPICS_VERBOS },
     { levelId: "quiz", topics: TOPICS_QUIZ },
   ].forEach(({ levelId, topics }) => {
     topics.forEach(t => {

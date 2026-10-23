@@ -20,7 +20,8 @@ afterEach(() => vi.useRealTimers());
 describe("Recorrido de aprendizaje", () => {
   it("conserva todas las secciones en su módulo y enlaza bases anteriores", () => {
     const seen = new Set();
-    for (const level of LEVELS.filter(level => level.id !== "quiz")) {
+    // Los niveles de referencia (Verbos) son consulta, no lecciones del recorrido.
+    for (const level of LEVELS.filter(level => level.id !== "quiz" && !level.reference)) {
       expect(level.topics.map(t => t.id).sort()).toEqual(membership[level.id].split(" ").sort());
       for (const topic of level.topics) {
         expect(seen.has(topic.id)).toBe(false);
@@ -35,7 +36,7 @@ describe("Recorrido de aprendizaje", () => {
     expect(seen.size).toBe(39);
   });
 
-  it.each(LEVELS.filter(level => level.id !== "quiz"))("abre cada sección y su autoevaluación en $label", level => {
+  it.each(LEVELS.filter(level => level.id !== "quiz" && !level.reference))("abre cada sección y su autoevaluación en $label", level => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-08-01T12:00:00Z"));
     render(<App />);

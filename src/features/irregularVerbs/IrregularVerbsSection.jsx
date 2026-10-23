@@ -4,11 +4,15 @@ import Token from "../../components/Token";
 import ExampleCard from "../../components/ExampleCard";
 import FilterableList from "../../components/FilterableList";
 import Formula from "../../components/Formula";
+import IpaGroups from "../../components/IpaGroups";
 import Legend from "../../components/Legend";
+import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
+import { useNavigation } from "../../navigation/NavigationContext";
 import { C } from "../../styles/colors";
-import { IRREGULAR_VERBS, IPA_GROUPS, PAST_SENTENCES, PERFECT_SENTENCES } from "./data";
+import { VERB_BANK } from "../verbFinder/data";
+import { IRREGULAR_VERBS, PAST_SENTENCES, PERFECT_SENTENCES } from "./data";
 
 const COLOR = "#7C3AED";
 
@@ -54,35 +58,14 @@ function VerbTable({ rows }) {
   );
 }
 
-function IpaGroup({ icon, title, color, rows }) {
-  return (
-    <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "12px 14px", borderLeft: `3px solid ${color}` }}>
-      <div style={{ color, fontWeight: 800, fontSize: "13px", marginBottom: "10px" }}>
-        {icon} {title}
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: "6px" }}>
-        {rows.map(([symbol, example]) => (
-          <div key={symbol} style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-            <span style={{
-              color, background: `${color}22`, fontWeight: 800,
-              padding: "2px 8px", borderRadius: "6px", fontSize: "14px", minWidth: "22px", textAlign: "center",
-            }}>
-              {symbol}
-            </span>
-            <span style={{ color: "#e2e8f0", fontSize: "13px" }}>{example}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function IrregularVerbsSection() {
+  const { goTo } = useNavigation();
   const [filter, setFilter] = useState("");
   const q = filter.toLowerCase();
   const filtered = IRREGULAR_VERBS.filter(([inf, past, part, esp]) =>
     inf.includes(q) || past.includes(q) || part.includes(q) || esp.toLowerCase().includes(q)
   );
+  const notHere = filter.trim() && filtered.length === 0;
 
   return (
     <div>
@@ -101,12 +84,28 @@ export default function IrregularVerbsSection() {
       </RuleBox>
 
       <SectionTitle color={COLOR}>📋 Lista de verbos irregulares</SectionTitle>
+      <RelatedTopic levelId="verbos" topicId="verbFinder" label={`📒 ¿Buscas otro verbo? Consulta los ${VERB_BANK.length} verbos`} />
       <FilterableList
         placeholder="🔍 Busca: go, went, gone, ir..."
         value={filter}
         onChange={setFilter}
       >
-        <VerbTable rows={filtered} />
+        {notHere && (
+          <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", color: "#94a3b8", fontSize: "14px", lineHeight: 1.7 }}>
+            No está en esta lista.
+            <div style={{ marginTop: "8px" }}>
+              <button
+                type="button"
+                className="study-button"
+                onClick={() => goTo("verbos", "verbFinder", filter.trim())}
+              >
+                <small>Consulta rápida</small>
+                Buscar «{filter.trim()}» en Verbos a la mano
+              </button>
+            </div>
+          </div>
+        )}
+        {!notHere && <VerbTable rows={filtered} />}
       </FilterableList>
 
       <details className="lesson-extension">
@@ -132,11 +131,7 @@ export default function IrregularVerbsSection() {
       <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "10px" }}>
         Agrupados por tipo de sonido — vocales, diptongos y consonantes según su forma de pronunciarse.
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "10px" }}>
-        {IPA_GROUPS.map(g => (
-          <IpaGroup key={g.title} icon={g.icon} title={g.title} color={g.color} rows={g.rows} />
-        ))}
-      </div>
+      <IpaGroups />
     </div>
   );
 }

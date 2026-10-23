@@ -47,6 +47,7 @@ import SimplePastSection from "./features/simplePast/SimplePastSection";
 import GoingToSection from "./features/goingTo/GoingToSection";
 import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
 import ModuleVExamSection from "./features/moduleVExam/ModuleVExamSection";
+import VerbFinderSection from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
 import BackToBottom        from "./components/BackToBottom";
@@ -82,6 +83,7 @@ const SECTIONS = {
   goingTo: GoingToSection,
   socialCollocations: SocialCollocationsSection,
   moduleVExam: ModuleVExamSection,
+  verbFinder: VerbFinderSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
   numbers:        NumbersSection,
@@ -129,6 +131,9 @@ export default function App() {
     ? active
     : activeFor(level, activeMap, now);
   const Section = SECTIONS[resolvedActive];
+  // Módulos de estudio: los niveles de referencia (Verbos) y el Quiz no son
+  // lecciones que se cursan, así que no llevan guía ni autoevaluación.
+  const isStudyLevel = level.id !== "quiz" && !level.reference;
   const navRef = useRef(null);
   const navWrapRef = useRef(null);
   const btnRefs = useRef({});
@@ -375,7 +380,7 @@ export default function App() {
       )}
 
       <main key={resolvedActive ?? level.id} className="section-transition" style={{ padding: "20px", maxWidth: "860px", margin: "0 auto" }}>
-        {Section && level.id !== "quiz" && <ModuleGuide level={level} topics={visibleTopics} active={resolvedActive} />}
+        {Section && isStudyLevel && <ModuleGuide level={level} topics={visibleTopics} active={resolvedActive} />}
         {Section ? (
           <Section
             key={resolvedActive === "quiz" ? `${LEVELS.flatMap(item => getAvailableTopics(item.topics, now)).map(item => item.id).join(",")}:${quizSelection?.levelId ?? "all"}:${quizSelection?.topicId ?? "mixed"}` : resolvedActive}
@@ -392,7 +397,7 @@ export default function App() {
             </p>
           </div>
         )}
-        {Section && level.id !== "quiz" && (
+        {Section && isStudyLevel && (
           <LessonFooter
             level={level}
             topics={visibleTopics}

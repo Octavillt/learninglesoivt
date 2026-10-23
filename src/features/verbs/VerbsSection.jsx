@@ -8,14 +8,18 @@ import Formula from "../../components/Formula";
 import Legend from "../../components/Legend";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
+import { useNavigation } from "../../navigation/NavigationContext";
 import { VERBS, VERB_SENTENCES } from "./data";
+import { VERB_BANK } from "../verbFinder/data";
 
 export default function VerbsSection() {
+  const { goTo } = useNavigation();
   const [filter, setFilter] = useState("");
   const filtered = VERBS.filter(([en, es]) =>
     en.toLowerCase().includes(filter.toLowerCase()) ||
     es.toLowerCase().includes(filter.toLowerCase())
   );
+  const notHere = filter.trim() && filtered.length === 0;
 
   return (
     <div>
@@ -42,11 +46,27 @@ export default function VerbsSection() {
       <RelatedTopic levelId="basico2" topicId="simplePresent" label="Más adelante: la terminación de he / she / it" />
 
       <SectionTitle color="#a78bfa">📋 Verbos frecuentes para consultar</SectionTitle>
+      <RelatedTopic levelId="verbos" topicId="verbFinder" label={`📒 ¿Buscas otro verbo? Consulta los ${VERB_BANK.length} verbos`} />
       <FilterableList
         placeholder="🔍 Busca: eat, comer, run..."
         value={filter}
         onChange={setFilter}
       >
+        {notHere && (
+          <div style={{ background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "14px 16px", color: "#94a3b8", fontSize: "14px", lineHeight: 1.7 }}>
+            No está en esta lista.
+            <div style={{ marginTop: "8px" }}>
+              <button
+                type="button"
+                className="study-button"
+                onClick={() => goTo("verbos", "verbFinder", filter.trim())}
+              >
+                <small>Consulta rápida</small>
+                Buscar «{filter.trim()}» en Verbos a la mano
+              </button>
+            </div>
+          </div>
+        )}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "5px" }}>
           {filtered.map(([en, es]) => (
             <div key={en} style={{ background: "var(--surface, #1e293b)", borderRadius: "7px", padding: "9px 13px", borderLeft: "3px solid #7c3aed", display: "flex", justifyContent: "space-between", alignItems: "center" }}>

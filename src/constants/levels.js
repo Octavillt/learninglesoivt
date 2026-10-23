@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_VERBOS, TOPICS_QUIZ } from "./topics";
 
 // Cuando exista contenido de un nuevo nivel: crear su lista de topics,
 // asignarla aquí y marcar available: true. Un nivel disponible sin topics
@@ -38,6 +38,11 @@ export const LEVELS = [
     description: "Retoma los verbos irregulares de Básico II y el presente simple para contar lo que pasó. Usa el pasado simple en afirmación, negación y preguntas, repasa la escritura de los verbos con -ed y practica going to para planes y predicciones. Cierra con colocaciones de vida social y con get, have y make.",
     bridge: "Al terminar, practica Básico V o combina los cinco módulos en el Quiz.",
     outcome: "Puedes contar lo que hiciste, preguntar por el pasado, hablar de tus planes y describir experiencias sociales con colocaciones.",
+  },
+  // Nivel de referencia: herramienta de consulta, no una lección que se cursa.
+  {
+    id: "verbos", label: "📒 Verbos", available: true, topics: TOPICS_VERBOS, reference: true,
+    purpose: "Consulta rápida de verbos: formas, significado y pronunciación",
   },
   { id: "quiz", label: "🎯 Quiz", available: true, topics: TOPICS_QUIZ },
 ];

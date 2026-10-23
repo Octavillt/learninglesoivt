@@ -4,7 +4,9 @@ import { getAvailableTopics } from "../../constants/topicAvailability";
 import { LEVELS } from "../../constants/levels";
 import RelatedTopic from "../../components/RelatedTopic";
 
-const STUDY_LEVELS = LEVELS.filter(level => level.id !== "quiz");
+// Solo los módulos que se estudian: el Quiz no se lista a sí mismo y los
+// niveles de referencia (Verbos) no son lecciones con preguntas.
+const STUDY_LEVELS = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
 
 export default function QuizSection({ initialSelection }) {
   const initialLevel = STUDY_LEVELS.find(level => level.id === initialSelection?.levelId);

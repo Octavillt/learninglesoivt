@@ -25,7 +25,7 @@ describe("Quiz general", () => {
   });
 
   it("cubre cada sección de todos los módulos y filtra sin mezclar niveles", () => {
-    for (const level of LEVELS.filter(l => l.id !== "quiz")) {
+    for (const level of LEVELS.filter(l => l.id !== "quiz" && !l.reference)) {
       const pool = getByTopic("mixed", level.id, 0);
       expect(pool.length).toBeGreaterThan(0);
       expect(pool.every(q => level.topics.some(t => t.id === q.topic))).toBe(true);

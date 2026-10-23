@@ -1,6 +1,8 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { searchTopics } from "../constants/searchIndex";
 import { LEVELS } from "../constants/levels";
+import { searchVerbs } from "../features/verbFinder/verbSearch";
+import { C } from "../styles/colors";
 
 // Derivado de LEVELS para que un nivel nuevo no quede sin etiqueta en los
 // resultados (Básico III se mostraba vacío con el mapa escrito a mano).
@@ -15,6 +17,16 @@ export default function GlobalSearch({ onSelect, now }) {
   const listboxId = useId();
 
   const results = useMemo(() => searchTopics(query, now), [query, now]);
+  // Con 2+ caracteres, las fichas de verbo van arriba de los temas y comparten
+  // el mismo índice de teclado (flechas y Enter).
+  const verbHits = useMemo(
+    () => (query.trim().length >= 2 ? searchVerbs(query, { limit: 4 }) : []),
+    [query],
+  );
+  const items = useMemo(() => [
+    ...verbHits.map(hit => ({ type: "verb", hit })),
+    ...results.map(result => ({ type: "topic", result })),
+  ], [verbHits, results]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -28,28 +40,32 @@ export default function GlobalSearch({ onSelect, now }) {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  function pick(result) {
-    if (!result) return;
-    // El término a resaltar en la sección: la keyword de contenido que hizo
-    // match, o si el match fue por título, lo que el usuario escribió.
-    const term = result.matchedKeyword ?? query.trim();
-    onSelect(result.levelId, result.topicId, term);
+  function pick(item) {
+    if (!item) return;
+    if (item.type === "verb") {
+      onSelect("verbos", "verbFinder", item.hit.verb.base);
+    } else {
+      // El término a resaltar en la sección: la keyword de contenido que hizo
+      // match, o si el match fue por título, lo que el usuario escribió.
+      const term = item.result.matchedKeyword ?? query.trim();
+      onSelect(item.result.levelId, item.result.topicId, term);
+    }
     setQuery("");
     setOpen(false);
     inputRef.current?.blur();
   }
 
   function onKeyDown(e) {
-    if (!open || results.length === 0) return;
+    if (!open || items.length === 0) return;
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      setActiveIndex(i => (i + 1) % results.length);
+      setActiveIndex(i => (i + 1) % items.length);
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      setActiveIndex(i => (i - 1 + results.length) % results.length);
+      setActiveIndex(i => (i - 1 + items.length) % items.length);
     } else if (e.key === "Enter") {
       e.preventDefault();
-      pick(results[activeIndex]);
+      pick(items[activeIndex]);
     } else if (e.key === "Escape") {
       setOpen(false);
       inputRef.current?.blur();
@@ -74,7 +90,7 @@ export default function GlobalSearch({ onSelect, now }) {
           autoCapitalize="none"
           autoCorrect="off"
           spellCheck={false}
-          aria-expanded={open && results.length > 0}
+          aria-expanded={open && items.length > 0}
           aria-controls={listboxId}
           aria-autocomplete="list"
           value={query}
@@ -103,18 +119,50 @@ export default function GlobalSearch({ onSelect, now }) {
             boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
           }}
         >
-          {results.length === 0 ? (
+          {items.length === 0 ? (
             <div style={{ padding: "10px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
               Sin resultados para "{query}"
             </div>
           ) : (
-            results.map((r, i) => (
+            items.map((item, i) => item.type === "verb" ? (
               <button
-                key={`${r.levelId}-${r.topicId}`}
+                key={`verb-${item.hit.verb.base}`}
+                type="button"
                 role="option"
                 aria-selected={i === activeIndex}
                 onMouseEnter={() => setActiveIndex(i)}
-                onClick={() => pick(r)}
+                onClick={() => pick(item)}
+                style={{
+                  width: "100%", display: "flex", alignItems: "center", gap: "10px",
+                  padding: "9px 10px", borderRadius: "8px", border: "none", cursor: "pointer",
+                  background: i === activeIndex ? "#334155" : "transparent",
+                  color: "#f8fafc", fontSize: "13px", fontWeight: 600, textAlign: "left",
+                }}
+              >
+                <span aria-hidden="true" style={{ flex: "0 0 auto" }}>📒</span>
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span lang="en" style={{ display: "block", overflowWrap: "anywhere" }}>
+                    <span style={{ color: C.verb.fg }}>{item.hit.verb.base}</span>
+                    {" · "}
+                    <span style={{ color: C.past.fg }}>{item.hit.verb.past.join(" / ")}</span>
+                    {" · "}
+                    <span style={{ color: C.participle.fg }}>{item.hit.verb.participle.join(" / ")}</span>
+                  </span>
+                  <span style={{ display: "block", fontWeight: 400, color: "var(--text-muted, #94a3b8)", fontSize: "11px" }}>
+                    {item.hit.verb.es}
+                  </span>
+                </span>
+                <span style={{ fontSize: "11px", fontWeight: 500, color: "#94a3b8", flex: "0 0 auto" }}>
+                  Verbos
+                </span>
+              </button>
+            ) : (
+              <button
+                key={`${item.result.levelId}-${item.result.topicId}`}
+                role="option"
+                aria-selected={i === activeIndex}
+                onMouseEnter={() => setActiveIndex(i)}
+                onClick={() => pick(item)}
                 style={{
                   width: "100%", display: "flex", alignItems: "center", gap: "10px",
                   padding: "9px 10px", borderRadius: "8px", border: "none", cursor: "pointer",
@@ -124,18 +172,18 @@ export default function GlobalSearch({ onSelect, now }) {
               >
                 <span aria-hidden="true" style={{
                   width: "8px", height: "8px", borderRadius: "50%", flex: "0 0 auto",
-                  background: r.color,
+                  background: item.result.color,
                 }} />
                 <span style={{ flex: 1 }}>
-                  {r.label}
-                  {r.matchedKeyword && (
+                  {item.result.label}
+                  {item.result.matchedKeyword && (
                     <span style={{ display: "block", fontWeight: 400, color: "#94a3b8", fontSize: "11px" }}>
-                      {r.matchedKeyword}
+                      {item.result.matchedKeyword}
                     </span>
                   )}
                 </span>
                 <span style={{ fontSize: "11px", fontWeight: 500, color: "#94a3b8" }}>
-                  {LEVEL_LABELS[r.levelId]}
+                  {LEVEL_LABELS[item.result.levelId]}
                 </span>
               </button>
             ))
