@@ -23,7 +23,7 @@ function findTextNode(root, term) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-      if (node.parentElement?.closest(".module-guide, .lesson-recall, .lesson-footer")) return NodeFilter.FILTER_REJECT;
+      if (node.parentElement?.closest(".module-guide, .lesson-recall, .lesson-footer, [data-search-skip]")) return NodeFilter.FILTER_REJECT;
       return normalize(node.nodeValue).includes(target)
         ? NodeFilter.FILTER_ACCEPT
         : NodeFilter.FILTER_REJECT;
@@ -71,7 +71,10 @@ export function scrollToAndHighlight(term, { root = document.querySelector("main
   if (!root || !term) return;
 
   pendingTimers.push(window.setTimeout(() => {
-    const textNode = findTextNode(root, term);
+    // En desarrollo React remonta el árbol y el <main> capturado al programar
+    // el resaltado ya no está en el documento. Se busca en el que sí se ve.
+    const liveRoot = root?.isConnected ? root : document.querySelector("main");
+    const textNode = liveRoot && findTextNode(liveRoot, term);
     if (!textNode) return;
 
     // Las ampliaciones de una lección pueden estar plegadas. La coincidencia

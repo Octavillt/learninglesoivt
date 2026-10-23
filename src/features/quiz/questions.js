@@ -1014,8 +1014,14 @@ export const QUESTIONS = [
 ];
 
 export function getByTopic(topic, levelId = "all", now = Date.now()) {
-  const available = new Set(getAvailableTopics(LEVELS.flatMap(level => level.topics), now).map(item => item.id));
-  const topics = LEVELS.find(level => level.id === levelId)?.topics;
+  // El nivel de consulta (Verbos) no es una lección: no entra al banco del Quiz.
+  const studyTopics = LEVELS
+    .filter(level => level.id !== "quiz" && !level.reference)
+    .flatMap(level => level.topics);
+  const available = new Set(getAvailableTopics(studyTopics, now).map(item => item.id));
+  const selected = levelId === "all" ? null : LEVELS.find(level => level.id === levelId);
+  if (selected?.reference) return [];
+  const topics = selected?.topics;
   return QUESTIONS.filter(q => available.has(q.topic) && (topic === "mixed" || q.topic === topic) &&
     (levelId === "all" || topics?.some(t => t.id === q.topic)));
 }

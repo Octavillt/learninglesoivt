@@ -2,6 +2,7 @@ import TopicHeading from "../../components/TopicHeading";
 import RelatedTopic from "../../components/RelatedTopic";
 import RuleBox from "../../components/RuleBox";
 import SectionTitle from "../../components/SectionTitle";
+import { VERB_BANK } from "../verbFinder/data";
 import { EXAMPLES, QUESTIONS, REGULAR_RULES, IRREGULARS, ED_PRONUNCIATION, TIME_EXPRESSIONS, BOOK_STORY, BOOK_NEGATIVES, BOOK_CONVERSATION } from "./data";
 
 const COLOR = "#FB7185";
@@ -47,6 +48,7 @@ export default function SimplePastSection() {
           ))}
         </ul>
         <RelatedTopic levelId="basico2" topicId="irregularVerbs" label="Repasar la lista de verbos irregulares" />
+        <RelatedTopic levelId="verbos" topicId="verbFinder" label={`📒 ¿Buscas otro verbo? Consulta los ${VERB_BANK.length} verbos`} />
       </RuleBox>
 
       <SectionTitle color={COLOR}>🗣️ Pronunciación de -ed</SectionTitle>

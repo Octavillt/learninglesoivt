@@ -56,10 +56,15 @@ export const TOPICS_BASICO5 = [
   { id: "moduleVExam", label: "📝 Guía de examen — Módulo V", english: "Module V Exam Study Guide", color: "#A855F7", stage: "Repaso de los tres temas del examen", availableUntil: MODULE_V_EXAM_END },
 ];
 
+// Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.
+export const TOPICS_VERBOS = [
+  { id: "verbFinder", label: "📒 Verbos a la mano", english: "Verb Finder", color: "#8B5CF6", stage: "Consulta rápida" },
+];
+
 export const TOPICS_QUIZ = [
   { id: "quiz", label: "🎯 Práctica general", english: "Quiz", color: "#EAB308" },
 ];
 
 export const TOPIC_BY_ID = Object.fromEntries(
-  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
+  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_VERBOS, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
 );

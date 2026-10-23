@@ -9,7 +9,9 @@ export default function LessonFooter({ level, topics, active, now, onPractice })
   const index = topics.findIndex(topic => topic.id === active);
   const previous = topics[index - 1];
   const next = topics[index + 1];
-  const nextLevel = LEVELS.slice(LEVELS.indexOf(level) + 1).find(item => item.available && item.id !== "quiz" && getAvailableTopics(item.topics, now).length);
+  // El «Continuar con…» salta al siguiente módulo que sí se estudia: los
+  // niveles de referencia (Verbos) no interrumpen la ruta de aprendizaje.
+  const nextLevel = LEVELS.slice(LEVELS.indexOf(level) + 1).find(item => item.available && item.id !== "quiz" && !item.reference && getAvailableTopics(item.topics, now).length);
 
   return (
     <footer className="lesson-footer">
