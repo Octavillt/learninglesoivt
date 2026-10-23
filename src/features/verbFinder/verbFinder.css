@@ -23,8 +23,26 @@
   min-width: 0;
   max-width: 100%;
   overflow-x: auto;
-  padding-bottom: 2px;
+  padding-bottom: 6px;
   scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vf-chips::-webkit-scrollbar,
+.vf-index::-webkit-scrollbar {
+  height: 4px;
+}
+
+.vf-chips::-webkit-scrollbar-thumb,
+.vf-index::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.vf-chips::-webkit-scrollbar-track,
+.vf-index::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .vf-chip {
@@ -60,6 +78,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
 .vf-letter-btn {
@@ -295,6 +318,12 @@
     min-height: 44px;
   }
 
+  .vf-index {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
   .vf-letter-btn {
     width: 44px;
     height: 44px;
@@ -302,13 +331,35 @@
 }
 
 @media (min-width: 700px) {
-  .vf-cols {
+  /* Una sola rejilla para el encabezado y todas las tarjetas: la columna
+     de acciones (auto) la define el contenido real, no un hueco vacío. */
+  .vf-list {
     display: grid;
     grid-template-columns: var(--vf-cols);
-    gap: 8px 12px;
+    column-gap: 12px;
+    align-items: start;
+  }
+
+  .vf-cols,
+  .vf-list > section,
+  .vf-card,
+  .vf-card-row {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+
+  .vf-letter,
+  .vf-more {
+    grid-column: 1 / -1;
+  }
+
+  .vf-cols {
     align-items: center;
     margin-bottom: 6px;
     padding: 0 14px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
     color: var(--text-muted, #94a3b8);
     font-size: 11px;
     font-weight: 800;
@@ -316,9 +367,9 @@
   }
 
   .vf-card-row {
-    grid-template-columns: var(--vf-cols);
     align-items: center;
     column-gap: 12px;
+    row-gap: 0;
   }
 
   .vf-identity {

@@ -144,9 +144,9 @@ export default function GlobalSearch({ onSelect, now }) {
                   <span lang="en" style={{ display: "block", overflowWrap: "anywhere" }}>
                     <span style={{ color: C.verb.fg }}>{item.hit.verb.base}</span>
                     {" · "}
-                    <span style={{ color: C.past.fg }}>{item.hit.verb.past[0]}</span>
+                    <span style={{ color: C.past.fg }}>{item.hit.verb.past.join(" / ")}</span>
                     {" · "}
-                    <span style={{ color: C.participle.fg }}>{item.hit.verb.participle[0]}</span>
+                    <span style={{ color: C.participle.fg }}>{item.hit.verb.participle.join(" / ")}</span>
                   </span>
                   <span style={{ display: "block", fontWeight: 400, color: "var(--text-muted, #94a3b8)", fontSize: "11px" }}>
                     {item.hit.verb.es}
