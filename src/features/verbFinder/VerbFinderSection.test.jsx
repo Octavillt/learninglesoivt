@@ -232,15 +232,19 @@ describe("Verbos a la mano — Mis verbos, práctica y audio", () => {
     expect(speak).not.toHaveBeenCalled();
   });
 
-  it("señala con «Nota» los verbos que tienen una y la abre al tocarla", () => {
+  it("señala con ⓘ los verbos que tienen nota, explica el símbolo en la leyenda y abre la nota al tocarlo", () => {
     render(<App />);
     openVerbFinder();
-    expect(screen.queryByText("ⓘ")).not.toBeInTheDocument();
+    const legend = screen.getByText("SÍMBOLOS").parentElement;
+    expect(legend).toHaveTextContent("ⓘ");
+    expect(legend).toHaveTextContent(/nota/i);
+    expect(screen.getByText("COLORES")).toBeInTheDocument();
     expect(within(card("ask")).queryByRole("button", { name: /nota/i })).not.toBeInTheDocument();
 
     const be = within(card("be"));
     const note = be.getByRole("button", { name: "Ver la nota de be" });
-    expect(note).toHaveTextContent("Nota");
+    expect(note).toHaveTextContent("ⓘ");
+    expect(note).not.toHaveTextContent("Nota");
     expect(note).toHaveAttribute("aria-expanded", "false");
     expect(be.queryByText(/Was va con I\/he\/she\/it/)).not.toBeInTheDocument();
     fireEvent.click(note);
@@ -249,6 +253,14 @@ describe("Verbos a la mano — Mis verbos, práctica y audio", () => {
     expect(be.getByText(/Was va con I\/he\/she\/it/)).toBeInTheDocument();
     fireEvent.click(note);
     expect(be.queryByText(/Was va con I\/he\/she\/it/)).not.toBeInTheDocument();
+  });
+
+  it("la leyenda de símbolos solo aparece en el módulo de verbos", () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole("button", { name: "Básico II", exact: true }));
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Temas del módulo" })).getByRole("button", { name: "🏃 Verbos irregulares" }));
+    expect(screen.getByText("COLORES")).toBeInTheDocument();
+    expect(screen.queryByText("SÍMBOLOS")).not.toBeInTheDocument();
   });
 });
 

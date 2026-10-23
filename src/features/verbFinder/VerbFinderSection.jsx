@@ -144,9 +144,10 @@ function VerbCard({
                 aria-label={`Ver la nota de ${verb.base}`}
                 aria-expanded={open}
                 aria-controls={moreId}
+                title="Tiene una nota: tócalo para leerla"
                 onClick={onToggle}
               >
-                Nota
+                ⓘ
               </button>
             )}
           </div>
@@ -448,7 +449,10 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
           )}
 
           <p className="vf-count" aria-live="polite">{countLabel(visible.length, query)}</p>
-          <Legend roles={["verb", "past", "participle"]} />
+          <Legend
+            roles={["verb", "past", "participle"]}
+            symbols={[{ icon: "ⓘ", label: "Nota: el verbo tiene una aclaración; tócalo para leerla" }]}
+          />
           <p className="vf-past-note" lang="es" data-search-skip>
             El pasado en español va en 3.ª persona (él / ella): <span lang="en">asked</span> → preguntó. Según el contexto también puede traducirse como copretérito: <span lang="en">wanted</span> → quería, <span lang="en">was</span> → era / estaba.
           </p>
