@@ -35,9 +35,9 @@ export const LEVELS = [
   {
     id: "basico5", label: "Básico V", available: true, topics: TOPICS_BASICO5,
     purpose: "Contar experiencias pasadas y hacer planes",
-    description: "Retoma los verbos irregulares de Básico II y el presente simple para contar lo que pasó. Usa el pasado simple en afirmación, negación y preguntas, repasa la escritura de los verbos con -ed y practica going to para planes y predicciones. Sigue con colocaciones de vida social y con get, have y make, y cierra hablando de dinero y de tus planes de carrera.",
+    description: "Retoma los verbos irregulares de Básico II y el presente simple para contar lo que pasó. Usa el pasado simple en afirmación, negación y preguntas, repasa la escritura de los verbos con -ed y practica going to para planes y predicciones. Sigue con colocaciones de vida social y con get, have y make, habla de dinero y de tus planes de carrera, y cierra comparando personas, animales y cosas.",
     bridge: "Al terminar, practica Básico V o combina los cinco módulos en el Quiz.",
-    outcome: "Puedes contar lo que hiciste, preguntar por el pasado, hablar de tus planes, describir experiencias sociales con colocaciones y hablar de dinero y de tus planes de trabajo.",
+    outcome: "Puedes contar lo que hiciste, preguntar por el pasado, hablar de tus planes, describir experiencias sociales con colocaciones, hablar de dinero y de tus planes de trabajo y comparar dos personas, animales o cosas.",
   },
   // Nivel de referencia: herramienta de consulta, no una lección que se cursa.
   {

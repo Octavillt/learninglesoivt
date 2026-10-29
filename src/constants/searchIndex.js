@@ -179,6 +179,14 @@ const SEARCH_KEYWORDS = {
     "dirigir personal", "oficina", "empresa", "medio tiempo", "tiempo completo", "conseguir un trabajo", "ascenso",
     "viajar por trabajo", "ganar un premio",
   ],
+  comparatives: [
+    "comparatives", "comparative", "comparativos", "comparativo", "comparar", "comparación", "than", "more than", "less than",
+    "as tall as", "as big as", "short adjectives", "long adjectives", "adjetivos cortos", "adjetivos largos", "syllables", "sílabas", "cvc",
+    "bigger", "smaller", "faster", "slower", "taller", "cuter", "wider", "wetter", "happier", "sunnier", "easier",
+    "better", "worse", "farther", "further", "more dangerous", "more expensive", "more poisonous", "much more", "a little",
+    "más que", "menos que", "tan como", "más grande", "más alto", "más rápido", "más lento", "mejor que", "peor que", "más lejos",
+    "comparativos irregulares", "cocodrilo", "pantera", "araña", "serpiente", "conejo", "hámster", "caracol", "hormiga",
+  ],
   quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
 
   verbFinder: [
