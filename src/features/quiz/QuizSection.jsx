@@ -1,16 +1,14 @@
 import { useQuiz } from "./useQuiz";
+import { QUIZ_LEVELS, quizTopicsOf } from "./questions";
 
 import { getAvailableTopics } from "../../constants/topicAvailability";
-import { LEVELS } from "../../constants/levels";
 import RelatedTopic from "../../components/RelatedTopic";
 
-// Solo los módulos que se estudian: el Quiz no se lista a sí mismo y los
-// niveles de referencia (Verbos) no son lecciones con preguntas.
-const STUDY_LEVELS = LEVELS.filter(level => level.id !== "quiz" && !level.reference);
-
+// Módulos que el Quiz practica. No se lista a sí mismo; un módulo de consulta
+// entra cuando trae secciones propias (Verbos).
 export default function QuizSection({ initialSelection }) {
-  const initialLevel = STUDY_LEVELS.find(level => level.id === initialSelection?.levelId);
-  const initialTopic = initialLevel && getAvailableTopics(initialLevel.topics).find(item => item.id === initialSelection?.topicId);
+  const initialLevel = QUIZ_LEVELS.find(level => level.id === initialSelection?.levelId);
+  const initialTopic = initialLevel && getAvailableTopics(quizTopicsOf(initialLevel)).find(item => item.id === initialSelection?.topicId);
   const {
     levelId, setLevelId, questionCount, masteredCount, remainingCount,
     topic, setTopic,
@@ -20,12 +18,12 @@ export default function QuizSection({ initialSelection }) {
     started, finished,
     nextQuestion, submitAnswer, reset,
   } = useQuiz({ levelId: initialLevel?.id ?? "all", topicId: initialTopic?.id ?? "mixed" });
-  const questionLevel = question && STUDY_LEVELS.find(level => level.topics.some(item => item.id === question.topic));
+  const questionLevel = question && QUIZ_LEVELS.find(level => quizTopicsOf(level).some(item => item.id === question.topic));
 
   return (
     <div>
       <h2 style={{ color: "#fff", marginTop: 0 }}>🎯 Quiz</h2>
-      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a V. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
+      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a V y los verbos de Verbos a la mano. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
 
       {/* Puntuación */}
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -42,8 +40,8 @@ export default function QuizSection({ initialSelection }) {
 
       <label htmlFor="quiz-level" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Módulo</label>
       <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "var(--surface, #1e293b)", color: "#fff", fontSize: 16, marginBottom: 12 }}>
-        <option value="all">Todos los módulos</option>
-        {STUDY_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
+        <option value="all">Todos los módulos (Básico I a V)</option>
+        {QUIZ_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
       </select>
       <label htmlFor="quiz-topic" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Sección</label>
       <select
@@ -53,9 +51,9 @@ export default function QuizSection({ initialSelection }) {
         style={{ width: "100%", padding: "11px", borderRadius: "10px", border: "none", background: "var(--surface, #1e293b)", color: "#fff", fontSize: "14px", marginBottom: "12px" }}
       >
         <option value="mixed">🎲 {levelId === "all" ? "Mezcla de todos los temas" : "Todos los temas de este módulo"}</option>
-        {STUDY_LEVELS.filter(level => levelId === "all" || level.id === levelId).map(level => (
+        {QUIZ_LEVELS.filter(level => levelId === "all" || level.id === levelId).map(level => (
           <optgroup key={level.id} label={level.label}>
-            {getAvailableTopics(level.topics).map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+            {getAvailableTopics(quizTopicsOf(level)).map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
           </optgroup>
         ))}
       </select>
@@ -82,7 +80,7 @@ export default function QuizSection({ initialSelection }) {
             {question.question}
           </div>
 
-          <p style={{ color: "#94a3b8", fontSize: 13 }}>{STUDY_LEVELS.flatMap(level => level.topics.map(item => ({ ...item, levelLabel: level.label }))).filter(item => item.id === question.topic).map(item => item.levelLabel + " · " + item.label).join("")}</p>
+          <p style={{ color: "#94a3b8", fontSize: 13 }}>{QUIZ_LEVELS.flatMap(level => quizTopicsOf(level).map(item => ({ ...item, levelLabel: level.label }))).filter(item => item.id === question.topic).map(item => item.levelLabel + " · " + item.label).join("")}</p>
           {question.options && <p style={{ color: "#cbd5e1" }}>Escribe una opción: {question.options.join(" | ")}</p>}
           {question.hint && (
             <div style={{ color: "#94a3b8", fontSize: "13px", marginBottom: "14px", padding: "8px 12px", background: "var(--surface-deep, #0f172a)", borderRadius: "8px" }}>
@@ -126,7 +124,9 @@ export default function QuizSection({ initialSelection }) {
                   {feedback.explanation}
                 </div>
               </div>
-              {questionLevel && <RelatedTopic levelId={questionLevel.id} topicId={question.topic} label="Repasar la explicación de este tema" />}
+              {questionLevel && (question.verb
+                ? <RelatedTopic levelId={questionLevel.id} topicId="verbFinder" highlightTerm={question.verb} label={`Ver «${question.verb}» en Verbos a la mano`} />
+                : <RelatedTopic levelId={questionLevel.id} topicId={quizTopicsOf(questionLevel).find(item => item.id === question.topic)?.lesson ?? question.topic} label="Repasar la explicación de este tema" />)}
               <button
                 onClick={nextQuestion}
                 style={{ width: "100%", padding: "14px", borderRadius: "10px", border: "none", background: "linear-gradient(135deg,#7c3aed,#2563eb)", color: "#fff", fontSize: "16px", fontWeight: 700, cursor: "pointer" }}

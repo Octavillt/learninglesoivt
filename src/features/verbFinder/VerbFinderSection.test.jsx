@@ -57,11 +57,11 @@ describe("Verbos a la mano — lugar en la plataforma", () => {
     expect(screen.getAllByRole("article")).toHaveLength(TOTAL);
   });
 
-  it("no se mezcla con el Quiz", () => {
+  it("entra al Quiz por sus secciones, no como la lección de consulta", () => {
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: "🎯 Quiz", exact: true }));
     const modules = within(screen.getByLabelText("Módulo")).getAllByRole("option").map(option => option.textContent);
-    expect(modules).not.toContain("📒 Verbos");
+    expect(modules).toContain("📒 Verbos");
     const sections = within(screen.getByLabelText("Sección")).getAllByRole("option").map(option => option.textContent);
     expect(sections.join(" ")).not.toMatch(/Verbos a la mano/);
   });
