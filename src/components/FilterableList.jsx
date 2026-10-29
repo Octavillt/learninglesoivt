@@ -28,7 +28,11 @@ function stickyOffset() {
 //    campo (en móvil quedaba a media pantalla, tapado por el teclado).
 // 3. El campo va pegado (sticky) debajo de la barra de temas, así sigue a la
 //    vista aunque se recorra una lista filtrada larga.
-export default function FilterableList({ value, onChange, placeholder, label, children }) {
+//
+// stickyExtra (opcional) pinta algo más dentro de la zona pegada, bajo el
+// campo: el encabezado de columnas de los verbos viaja ahí para no perderse
+// al recorrer la lista. Las demás listas no lo pasan y quedan igual.
+export default function FilterableList({ value, onChange, placeholder, label, children, stickyExtra = null }) {
   const inputRef = useRef(null);
   // El campo pegado miente sobre su posición (reporta la de la pantalla, no
   // la del documento); este ancla de alto cero se queda en el flujo normal.
@@ -70,6 +74,7 @@ export default function FilterableList({ value, onChange, placeholder, label, ch
             background: "var(--surface, #1e293b)", color: "#fff", boxSizing: "border-box",
           }}
         />
+        {stickyExtra}
       </div>
       <div className={value.trim() ? "filter-results filter-results--room" : "filter-results"}>
         {children}

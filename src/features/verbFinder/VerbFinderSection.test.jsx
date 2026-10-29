@@ -169,6 +169,48 @@ describe("Verbos a la mano — consulta", () => {
   });
 });
 
+describe("Verbos a la mano — filas de tres columnas con encabezado fijo", () => {
+  it("muestra el encabezado BASE / PASADO / PARTICIPIO pegado al buscador cuando hay resultados", () => {
+    render(<App />);
+    openVerbFinder();
+    const cols = document.querySelector(".filter-sticky .vf-cols");
+    expect(cols).not.toBeNull();
+    const labels = [...cols.querySelectorAll("span")].map(span => span.textContent).filter(Boolean);
+    expect(labels).toEqual(["BASE", "PASADO", "PARTICIPIO"]);
+  });
+
+  it("mantiene el encabezado con resultados de búsqueda", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    openVerbFinder();
+    await user.type(moduleSearch(), "went");
+    expect(document.querySelector(".filter-sticky .vf-cols")).not.toBeNull();
+  });
+
+  it("oculta el encabezado sin resultados y en Mis verbos vacío", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    openVerbFinder();
+    await user.type(moduleSearch(), "zzzz");
+    expect(document.querySelector(".vf-cols")).toBeNull();
+    await user.clear(moduleSearch());
+    fireEvent.click(chip(/^★ Mis verbos/));
+    expect(document.querySelector(".vf-cols")).toBeNull();
+  });
+
+  it("cada tarjeta conserva ☆, «Más» e ⓘ, con las etiquetas accesibles de las tres formas", () => {
+    render(<App />);
+    openVerbFinder();
+    const go = within(card("go"));
+    expect(go.getByRole("button", { name: "Guardar go en Mis verbos" })).toHaveTextContent("☆");
+    expect(go.getByRole("button", { name: "Más" })).toBeInTheDocument();
+    expect(go.getByText("BASE")).toBeInTheDocument();
+    expect(go.getByText("PASADO")).toBeInTheDocument();
+    expect(go.getByText("PARTICIPIO")).toBeInTheDocument();
+    expect(within(card("be")).getByRole("button", { name: "Ver la nota de be" })).toHaveTextContent("ⓘ");
+  });
+});
+
 describe("Verbos a la mano — Mis verbos, práctica y audio", () => {
   it("guarda verbos en Mis verbos y los recuerda al volver", async () => {
     const user = userEvent.setup();
