@@ -241,4 +241,10 @@ export const LEARNING_GUIDE = {
     task: "Di que vas a ahorrar dinero para un coche nuevo, que Leslie va a emprender un negocio y que probablemente vas a trabajar desde casa.",
     answer: "I'm going to save money for a new car. Leslie is going to start a business. I'm probably going to work from home. Save money for = ahorrar para; start a business = emprender un negocio; probably va entre am/is/are y going to.",
   },
+  comparatives: {
+    goal: "Comparar dos personas, animales o cosas con -er o more + than, escribir bien el comparativo y usar los irregulares good, bad y far.",
+    recall: ["adjectives", "tobe", "simplePast"],
+    task: "Di que un conejo es más grande que un hámster, que los cocodrilos son más peligrosos que las panteras y que ayer hizo más calor que hoy.",
+    answer: "A rabbit is bigger than a hamster. Crocodiles are more dangerous than panthers. Yesterday was hotter than today. Big y hot son CVC: duplican la consonante y agregan -er; dangerous es largo: more + dangerous; en pasado is cambia a was.",
+  },
 };
