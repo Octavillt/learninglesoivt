@@ -71,6 +71,16 @@ describe("Básico V — contenido visible", () => {
     expect(main).not.toHaveTextContent(/the last week/i);
   });
 
+  it("Pasado simple usa nombres del grupo con su pronombre en las preguntas con did", () => {
+    render(<App />);
+    openBasicoV();
+    const main = screen.getByRole("main");
+    expect(main).toHaveTextContent("Did Leslie drink mezcal?");
+    expect(main).toHaveTextContent("Did Leslie do yoga yesterday?");
+    expect(main).toHaveTextContent("Didn't Eduardo eat a sandwich?");
+    expect(main).not.toHaveTextContent(/\b(Karen|Miguel)\b/);
+  });
+
   it("Pasado simple incluye la práctica guiada con sus respuestas, sin referencias al libro", () => {
     render(<App />);
     openBasicoV();

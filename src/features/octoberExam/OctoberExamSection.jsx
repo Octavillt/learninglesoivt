@@ -56,7 +56,7 @@ export default function OctoberExamSection({ highlightTerm, highlightSeq }) {
     <div className="topics-exam" style={{ "--exam-accent": COLOR }}>
       <TopicHeading topicId="octoberExam" />
       <div className="exam-header">
-        <p>Repasa los seis temas del pizarrón: vocabulario de cocina, colocaciones de turismo (p. 90), ropa, this/that/these/those, could/should y verbo + gerundio/infinitivo.</p>
+        <p>Repasa los seis temas del pizarrón: vocabulario de cocina, colocaciones de turismo, ropa, this/that/these/those, could/should y verbo + gerundio/infinitivo.</p>
         <div className="exam-header-meta"><span>⏳ Disponible hasta el domingo 11 de octubre de 2026, 23:59 (Ciudad de México, UTC−6)</span></div>
       </div>
       <div className="exam-tabs" role="tablist" aria-label="Temas del examen de octubre" ref={tabsRef} onKeyDown={onTabKeyDown}>

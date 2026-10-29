@@ -52,8 +52,8 @@ export const LEARNING_GUIDE = {
   numbers: {
     goal: "Contar, leer números y deletrear nombres con el abecedario inglés.",
     recall: [],
-    task: "Escribe 25 en inglés y deletrea el nombre Ana en voz alta.",
-    answer: "Twenty-five. Ana: A–N–A (ei–en–ei).",
+    task: "Escribe 25 en inglés y deletrea el nombre Argelia en voz alta.",
+    answer: "Twenty-five. Argelia: A–R–G–E–L–I–A (ei–ar–yi–i–el–ai–ei).",
   },
   tobe: {
     goal: "Elegir am, is o are para presentarte, describir y hacer preguntas sencillas.",
@@ -154,8 +154,8 @@ export const LEARNING_GUIDE = {
   whQuestions: {
     goal: "Elegir la palabra WH y construir preguntas de información con to be.",
     recall: ["tobe", "possessiveNouns"],
-    task: "Pregunta dónde está Ana y de quién es una mochila.",
-    answer: "Where is Ana? Whose backpack is this? Where pide un lugar; whose pregunta por pertenencia.",
+    task: "Pregunta dónde está Argelia y de quién es una mochila.",
+    answer: "Where is Argelia? Whose backpack is this? Where pide un lugar; whose pregunta por pertenencia.",
   },
   simplePresent: {
     goal: "Afirmar, negar y preguntar sobre hábitos con la tercera persona y do/does.",
@@ -179,7 +179,7 @@ export const LEARNING_GUIDE = {
     goal: "Combinar saludos, presentaciones y vocabulario laboral en una conversación breve.",
     recall: ["tobe", "countries", "family", "jobs"],
     task: "Saluda, di tu nombre y tu profesión y despídete.",
-    answer: "Hello. My name is Ana. I'm a teacher. Nice to meet you. See you later. Adapta el nombre y la profesión.",
+    answer: "Hello. My name is Argelia. I'm a teacher. Nice to meet you. See you later. Adapta el nombre y la profesión.",
   },
   simplePresentAdvanced: {
     goal: "Pedir información sobre rutinas, expresar frecuencia y contrastar hábitos con acciones actuales.",
