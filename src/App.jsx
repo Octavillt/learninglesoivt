@@ -46,6 +46,7 @@ import OctoberExamSection from "./features/octoberExam/OctoberExamSection";
 import SimplePastSection from "./features/simplePast/SimplePastSection";
 import GoingToSection from "./features/goingTo/GoingToSection";
 import SocialCollocationsSection from "./features/socialCollocations/SocialCollocationsSection";
+import MoneyCareerSection from "./features/moneyCareer/MoneyCareerSection";
 import ModuleVExamSection from "./features/moduleVExam/ModuleVExamSection";
 import VerbFinderSection from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
@@ -82,6 +83,7 @@ const SECTIONS = {
   simplePast: SimplePastSection,
   goingTo: GoingToSection,
   socialCollocations: SocialCollocationsSection,
+  moneyCareer: MoneyCareerSection,
   moduleVExam: ModuleVExamSection,
   verbFinder: VerbFinderSection,
   fruits:         FruitsSection,

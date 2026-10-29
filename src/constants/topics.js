@@ -53,6 +53,7 @@ export const TOPICS_BASICO5 = [
   { id: "simplePast", label: "⏪ Pasado simple", english: "Simple Past", color: "#FB7185", stage: "Contar lo que pasó" },
   { id: "goingTo", label: "🗓️ Futuro con going to", english: "Going to — Future plans", color: "#34D399", stage: "Hacer planes" },
   { id: "socialCollocations", label: "🎉 Vida social y colocaciones", english: "Social Life & get / have / make Collocations", color: "#FBBF24", stage: "Contar experiencias y planes" },
+  { id: "moneyCareer", label: "💰 Dinero y planes de carrera", english: "Money & Career Plans", color: "#10B981", stage: "Hablar de dinero y de tu futuro" },
   { id: "moduleVExam", label: "📝 Guía de examen — Módulo V", english: "Module V Exam Study Guide", color: "#A855F7", stage: "Repaso de los tres temas del examen", availableUntil: MODULE_V_EXAM_END },
 ];
 
