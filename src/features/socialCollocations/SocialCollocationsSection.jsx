@@ -58,7 +58,7 @@ export default function SocialCollocationsSection() {
         </div>
       ))}
 
-      <SectionTitle color={COLOR}>💬 Conversación del libro</SectionTitle>
+      <SectionTitle color={COLOR}>💬 Conversación de ejemplo</SectionTitle>
       {CONVERSATION.map(([en, es]) => (
         <div key={en} style={card}>
           <div lang="en" style={{ color: COLOR, fontSize: "14px", fontWeight: 700 }}>{en}</div>

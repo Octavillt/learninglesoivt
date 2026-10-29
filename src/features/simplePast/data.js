@@ -75,14 +75,14 @@ export const TIME_EXPRESSIONS = [
 ];
 
 export const BOOK_STORY = {
-  prompt: "Escribe el pasado simple del verbo entre paréntesis (Grammar Reference, p. 156).",
+  prompt: "Escribe el pasado simple del verbo entre paréntesis.",
   text: "Look at this picture of my parents. My father was born in Mexico. He ___ (come) to the US in 1990. He ___ (work) in Texas for many years. He ___ (meet) my mother in 1995. They ___ (get) married two years later. They ___ (start) a family and ___ (have) me in 1999. Later they ___ (move) to California and ___ (open) a small restaurant. They ___ (buy) their first home in 2007.",
   solution: "Look at this picture of my parents. My father was born in Mexico. He came to the US in 1990. He worked in Texas for many years. He met my mother in 1995. They got married two years later. They started a family and had me in 1999. Later they moved to California and opened a small restaurant. They bought their first home in 2007.",
   answers: [["come", "came"], ["work", "worked"], ["meet", "met"], ["get", "got"], ["start", "started"], ["have", "had"], ["move", "moved"], ["open", "opened"], ["buy", "bought"]],
 };
 
 export const BOOK_NEGATIVES = {
-  prompt: "Reescribe cada oración en negativo con el adjetivo opuesto (Unit 10 A).",
+  prompt: "Reescribe cada oración en negativo con el adjetivo opuesto.",
   rows: [
     ["They woke up early.", "They didn't wake up late."],
     ["We felt very cold.", "We didn't feel very hot."],
@@ -96,22 +96,22 @@ export const BOOK_NEGATIVES = {
 };
 
 export const BOOK_CONVERSATION = {
-  prompt: "Completa la conversación entre Diego y José con el pasado simple (Unit 10 B).",
+  prompt: "Completa la conversación entre Israel y Eduardo con el pasado simple.",
   blanks: [
-    "Diego: ___ your family ___ (come) to visit you last weekend?",
-    "José: Yes, they ___. I ___ (show) them around the city.",
-    "Diego: Where ___ you ___ (go)?",
-    "José: To the beach. But they ___ (not enjoy) it much.",
-    "Diego: ___ you ___ (take) them to eat out?",
-    "José: No, I ___. They ___ (want) to cook for me. I ___ (not mind)!",
+    "Israel: ___ your family ___ (come) to visit you last weekend?",
+    "Eduardo: Yes, they ___. I ___ (show) them around the city.",
+    "Israel: Where ___ you ___ (go)?",
+    "Eduardo: To the beach. But they ___ (not enjoy) it much.",
+    "Israel: ___ you ___ (take) them to eat out?",
+    "Eduardo: No, I ___. They ___ (want) to cook for me. I ___ (not mind)!",
   ],
   answers: [
-    "Diego: Did your family come to visit you last weekend?",
-    "José: Yes, they did. I showed them around the city.",
-    "Diego: Where did you go?",
-    "José: To the beach. But they didn't enjoy it much.",
-    "Diego: Did you take them to eat out?",
-    "José: No, I didn't. They wanted to cook for me. I didn't mind!",
+    "Israel: Did your family come to visit you last weekend?",
+    "Eduardo: Yes, they did. I showed them around the city.",
+    "Israel: Where did you go?",
+    "Eduardo: To the beach. But they didn't enjoy it much.",
+    "Israel: Did you take them to eat out?",
+    "Eduardo: No, I didn't. They wanted to cook for me. I didn't mind!",
   ],
 };
 

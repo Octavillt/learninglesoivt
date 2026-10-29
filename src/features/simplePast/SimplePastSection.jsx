@@ -105,7 +105,7 @@ export default function SimplePastSection() {
         <p style={text}>Ojo: se dice <span lang="en">last week</span>, sin «the»; y <span lang="en">in December</span>, con la preposición in.</p>
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📘 Práctica del libro</SectionTitle>
+      <SectionTitle color={COLOR}>📘 Práctica guiada</SectionTitle>
       <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
         <div style={text}>📝 {BOOK_STORY.prompt}</div>
         <p lang="en" style={{ ...text, marginTop: "6px" }}>{BOOK_STORY.text}</p>
