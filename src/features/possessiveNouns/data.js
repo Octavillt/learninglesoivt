@@ -20,7 +20,7 @@ export const OF_VS_GEN = [
   {
     icon: "🧑", title: `Usa 's — personas, animales, tiempo`,
     examples: [
-      { pts: [gen("Maria's"), " car"], esp: "el carro de María" },
+      { pts: [gen("Leslie's"), " car"], esp: "el carro de Leslie" },
       { pts: [gen("the dog's"), " leg"], esp: "la pata del perro" },
       { pts: [gen("today's"), " newspaper"], esp: "el periódico de hoy" },
     ],

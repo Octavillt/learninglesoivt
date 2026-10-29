@@ -40,7 +40,7 @@ export const VOCABULARY = [
 ];
 
 export const BOOK_DIALOGS = {
-  prompt: "Completa los diálogos con la forma correcta de going to (Unit 11 A, p. 157).",
+  prompt: "Completa los diálogos con la forma correcta de going to.",
   items: [
     {
       blanks: ["A: What ___ you ___ (do) this weekend?", "B: I'm not sure. I think I ___ (clean) the house."],
@@ -51,16 +51,16 @@ export const BOOK_DIALOGS = {
       answers: ["A: Is the weather going to be nice tomorrow?", "B: No, it isn't. It's going to rain all day."],
     },
     {
-      blanks: ["A: Gina ___ (not work) on the project with me.", "B: Oh, no! ___ anyone ___ (help) you?"],
-      answers: ["A: Gina isn't going to work on the project with me.", "B: Oh, no! Is anyone going to help you?"],
+      blanks: ["A: Leslie ___ (not work) on the project with me.", "B: Oh, no! ___ anyone ___ (help) you?"],
+      answers: ["A: Leslie isn't going to work on the project with me.", "B: Oh, no! Is anyone going to help you?"],
     },
     {
       blanks: ["A: When ___ your parents ___ (visit)?", "B: On Friday. They ___ (spend) the weekend with me."],
       answers: ["A: When are your parents going to visit?", "B: On Friday. They're going to spend the weekend with me."],
     },
     {
-      blanks: ["A: ___ you and Rex ___ (get) married?", "B: Yes, we are, but we ___ (not have) a big wedding."],
-      answers: ["A: Are you and Rex going to get married?", "B: Yes, we are, but we aren't going to have a big wedding."],
+      blanks: ["A: ___ you and Argelia ___ (get) married?", "B: Yes, we are, but we ___ (not have) a big wedding."],
+      answers: ["A: Are you and Argelia going to get married?", "B: Yes, we are, but we aren't going to have a big wedding."],
     },
   ],
 };

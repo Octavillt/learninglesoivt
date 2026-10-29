@@ -104,7 +104,7 @@ export const EXERCISE = [
   { q: "(work) He ___ in a hospital.",           pts: [su("He"), " ", vb("work"), s3("s"), " in a hospital."],                 esp: "Él trabaja en un hospital." },
   { q: "(study) They ___ English on Mondays.",   pts: [su("They"), " ", vb("study"), " English on Mondays."],                  esp: "Ellos estudian inglés los lunes." },
   { q: "(watch) My sister ___ TV at night.",     pts: [su("My sister"), " ", vb("watch"), s3("es"), " TV at night."],          esp: "Mi hermana ve tele en la noche." },
-  { q: "(have) Carlos ___ two dogs.",            pts: [su("Carlos"), " ", vb("ha"), s3("s"), " two dogs."],                    esp: "Carlos tiene dos perros." },
+  { q: "(have) Israel ___ two dogs.",            pts: [su("Israel"), " ", vb("ha"), s3("s"), " two dogs."],                    esp: "Israel tiene dos perros." },
   { q: "(go) She ___ to the gym every day.",     pts: [su("She"), " ", vb("go"), s3("es"), " to the gym every day."],          esp: "Ella va al gimnasio todos los días." },
   { q: "(cry) The baby ___ at night.",           pts: [su("The baby"), " ", vb("cr"), s3("ies"), " at night."],                esp: "El bebé llora en la noche." },
   { q: "(not / like) I ___ horror movies.",      pts: [su("I"), " ", ax("do"), no("n't"), " ", vb("like"), " horror movies."], esp: "No me gustan las películas de terror." },

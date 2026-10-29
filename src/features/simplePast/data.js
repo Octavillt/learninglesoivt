@@ -15,9 +15,9 @@ export const EXAMPLES = [
 
 export const QUESTIONS = [
   ["Did Octa eat cemitas?", "No, he didn't.", "¿Octa comió cemitas? — No."],
-  ["Did Karen drink mezcal?", "Yes, she did.", "¿Karen tomó mezcal? — Sí."],
-  ["Did Karen do yoga yesterday?", "No, she didn't.", "¿Karen hizo yoga ayer? — No."],
-  ["Didn't Miguel eat a sandwich?", "No, he didn't. / Yes, he did.", "¿Miguel no comió un sándwich? — No. / Sí."],
+  ["Did Leslie drink mezcal?", "Yes, she did.", "¿Leslie tomó mezcal? — Sí."],
+  ["Did Leslie do yoga yesterday?", "No, she didn't.", "¿Leslie hizo yoga ayer? — No."],
+  ["Didn't Eduardo eat a sandwich?", "No, he didn't. / Yes, he did.", "¿Eduardo no comió un sándwich? — No. / Sí."],
   ["What did you do yesterday?", "I worked.", "¿Qué hiciste ayer? — Trabajé."],
   ["What did Octa do last week?", "He worked.", "¿Qué hizo Octa la semana pasada? — Trabajó."],
   ["Where did he grow up?", "He grew up in Germany.", "¿Dónde creció él? — Creció en Alemania."],
@@ -75,14 +75,14 @@ export const TIME_EXPRESSIONS = [
 ];
 
 export const BOOK_STORY = {
-  prompt: "Escribe el pasado simple del verbo entre paréntesis (Grammar Reference, p. 156).",
+  prompt: "Escribe el pasado simple del verbo entre paréntesis.",
   text: "Look at this picture of my parents. My father was born in Mexico. He ___ (come) to the US in 1990. He ___ (work) in Texas for many years. He ___ (meet) my mother in 1995. They ___ (get) married two years later. They ___ (start) a family and ___ (have) me in 1999. Later they ___ (move) to California and ___ (open) a small restaurant. They ___ (buy) their first home in 2007.",
   solution: "Look at this picture of my parents. My father was born in Mexico. He came to the US in 1990. He worked in Texas for many years. He met my mother in 1995. They got married two years later. They started a family and had me in 1999. Later they moved to California and opened a small restaurant. They bought their first home in 2007.",
   answers: [["come", "came"], ["work", "worked"], ["meet", "met"], ["get", "got"], ["start", "started"], ["have", "had"], ["move", "moved"], ["open", "opened"], ["buy", "bought"]],
 };
 
 export const BOOK_NEGATIVES = {
-  prompt: "Reescribe cada oración en negativo con el adjetivo opuesto (Unit 10 A).",
+  prompt: "Reescribe cada oración en negativo con el adjetivo opuesto.",
   rows: [
     ["They woke up early.", "They didn't wake up late."],
     ["We felt very cold.", "We didn't feel very hot."],
@@ -96,22 +96,22 @@ export const BOOK_NEGATIVES = {
 };
 
 export const BOOK_CONVERSATION = {
-  prompt: "Completa la conversación entre Diego y José con el pasado simple (Unit 10 B).",
+  prompt: "Completa la conversación entre Israel y Eduardo con el pasado simple.",
   blanks: [
-    "Diego: ___ your family ___ (come) to visit you last weekend?",
-    "José: Yes, they ___. I ___ (show) them around the city.",
-    "Diego: Where ___ you ___ (go)?",
-    "José: To the beach. But they ___ (not enjoy) it much.",
-    "Diego: ___ you ___ (take) them to eat out?",
-    "José: No, I ___. They ___ (want) to cook for me. I ___ (not mind)!",
+    "Israel: ___ your family ___ (come) to visit you last weekend?",
+    "Eduardo: Yes, they ___. I ___ (show) them around the city.",
+    "Israel: Where ___ you ___ (go)?",
+    "Eduardo: To the beach. But they ___ (not enjoy) it much.",
+    "Israel: ___ you ___ (take) them to eat out?",
+    "Eduardo: No, I ___. They ___ (want) to cook for me. I ___ (not mind)!",
   ],
   answers: [
-    "Diego: Did your family come to visit you last weekend?",
-    "José: Yes, they did. I showed them around the city.",
-    "Diego: Where did you go?",
-    "José: To the beach. But they didn't enjoy it much.",
-    "Diego: Did you take them to eat out?",
-    "José: No, I didn't. They wanted to cook for me. I didn't mind!",
+    "Israel: Did your family come to visit you last weekend?",
+    "Eduardo: Yes, they did. I showed them around the city.",
+    "Israel: Where did you go?",
+    "Eduardo: To the beach. But they didn't enjoy it much.",
+    "Israel: Did you take them to eat out?",
+    "Eduardo: No, I didn't. They wanted to cook for me. I didn't mind!",
   ],
 };
 
@@ -121,7 +121,7 @@ export const PRACTICE = [
   { question: "Escribe el pasado simple de stop.", answers: ["stopped"], explanation: "stop → stopped. Consonante-vocal-consonante: dobla la consonante final." },
   { question: "Completa: She ___ (drink) mezcal yesterday.", answers: ["drank"], explanation: "She drank mezcal yesterday. Drink es irregular: drink → drank." },
   { question: "Convierte en negativa: He went to Puebla.", answers: ["He didn't go to Puebla.", "He did not go to Puebla."], explanation: "He didn't go to Puebla. Didn't ya marca el pasado, así que el verbo vuelve a su forma base." },
-  { question: "Convierte en pregunta: Karen did yoga yesterday.", answers: ["Did Karen do yoga yesterday?"], explanation: "Did Karen do yoga yesterday? Usa did + sujeto + verbo base." },
+  { question: "Convierte en pregunta: Leslie did yoga yesterday.", answers: ["Did Leslie do yoga yesterday?"], explanation: "Did Leslie do yoga yesterday? Usa did + sujeto + verbo base." },
   { question: "Responde negativamente con una respuesta corta: Did Octa eat cemitas?", answers: ["No, he didn't.", "No, he did not."], explanation: "No, he didn't. Las respuestas cortas usan did o didn't, sin repetir el verbo principal." },
   { question: "Ordena: did / What / do / you / yesterday / ?", answers: ["What did you do yesterday?"], explanation: "What + did + sujeto + verbo base + expresión de tiempo: What did you do yesterday?" },
   { question: "Corrige: He didn't went to Acapulco.", answers: ["He didn't go to Acapulco.", "He did not go to Acapulco."], explanation: "He didn't go to Acapulco. Después de didn't el verbo va en forma base, no went." },

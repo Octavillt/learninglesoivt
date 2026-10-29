@@ -71,18 +71,33 @@ describe("Básico V — contenido visible", () => {
     expect(main).not.toHaveTextContent(/the last week/i);
   });
 
-  it("Pasado simple incluye la práctica del libro con sus respuestas", () => {
+  it("Pasado simple usa nombres del grupo con su pronombre en las preguntas con did", () => {
     render(<App />);
     openBasicoV();
     const main = screen.getByRole("main");
+    expect(main).toHaveTextContent("Did Leslie drink mezcal?");
+    expect(main).toHaveTextContent("Did Leslie do yoga yesterday?");
+    expect(main).toHaveTextContent("Didn't Eduardo eat a sandwich?");
+    expect(main).not.toHaveTextContent(/\b(Karen|Miguel)\b/);
+  });
+
+  it("Pasado simple incluye la práctica guiada con sus respuestas, sin referencias al libro", () => {
+    render(<App />);
+    openBasicoV();
+    const main = screen.getByRole("main");
+    expect(screen.getByRole("heading", { level: 3, name: "📘 Práctica guiada" })).toBeInTheDocument();
     expect(main).toHaveTextContent("Look at this picture of my parents");
     for (const answer of ["came", "met", "bought", "didn't wake up late", "didn't buy a new house"]) {
       expect(main).toHaveTextContent(answer);
     }
-    expect(main).toHaveTextContent("Did your family come to visit you last weekend?");
+    expect(main).toHaveTextContent("Completa la conversación entre Israel y Eduardo con el pasado simple.");
+    expect(main).toHaveTextContent("Israel: Did your family come to visit you last weekend?");
+    expect(main).toHaveTextContent("Eduardo: Yes, they did. I showed them around the city.");
+    expect(main).not.toHaveTextContent(/del libro|Grammar Reference|Unit \d+|\bp\. \d+/);
+    expect(main).not.toHaveTextContent(/Diego|José/);
   });
 
-  it("Going to separa going to de go, explica gonna e incluye la práctica del libro", () => {
+  it("Going to separa going to de go, explica gonna e incluye la práctica guiada sin referencias al libro", () => {
     render(<App />);
     openBasicoV();
     openTopic("🗓️ Futuro con going to");
@@ -94,6 +109,11 @@ describe("Básico V — contenido visible", () => {
     for (const answer of ["are you going to do", "'s going to rain", "isn't going to work", "aren't going to have"]) {
       expect(main).toHaveTextContent(answer);
     }
+    expect(screen.getByRole("heading", { level: 3, name: "📘 Práctica guiada" })).toBeInTheDocument();
+    expect(main).toHaveTextContent("Leslie isn't going to work on the project with me.");
+    expect(main).toHaveTextContent("Are you and Argelia going to get married?");
+    expect(main).not.toHaveTextContent(/del libro|Unit \d+|\bp\. \d+/);
+    expect(main).not.toHaveTextContent(/\b(Gina|Rex)\b/);
   });
 
   it("Vida social y colocaciones agrupa get, have y make y clasifica la experiencia", () => {
@@ -107,6 +127,18 @@ describe("Básico V — contenido visible", () => {
     for (const verb of ["get", "have", "make"]) expect(screen.getByText(`Colocaciones con ${verb}`)).toBeInTheDocument();
     expect(main).toHaveTextContent(/make a decision.*positiva o negativa/i);
     expect(main).not.toHaveTextContent(/conjúg/);
+  });
+
+  it("Vida social y colocaciones muestra la conversación de ejemplo con nombres del grupo", () => {
+    render(<App />);
+    openBasicoV();
+    openTopic("🎉 Vida social y colocaciones");
+    const main = screen.getByRole("main");
+    expect(screen.getByRole("heading", { level: 3, name: "💬 Conversación de ejemplo" })).toBeInTheDocument();
+    expect(main).toHaveTextContent("But at first Octavio and I went to the wrong place!");
+    expect(main).toHaveTextContent("¡Pero al principio Octavio y yo fuimos al lugar equivocado!");
+    expect(main).toHaveTextContent("I thought Octavio knew the location.");
+    expect(main).not.toHaveTextContent(/del libro|\bZac\b/);
   });
 });
 

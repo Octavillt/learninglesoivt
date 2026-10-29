@@ -84,7 +84,7 @@ export default function SimplePastSection() {
       <SectionTitle color={COLOR}>❓ Preguntas y respuestas</SectionTitle>
       <RuleBox icon="💬" rule="Preguntas con did y respuestas cortas" color={COLOR}>
         <p style={text}>Para preguntar, coloca <strong>did</strong> antes del sujeto y conserva el verbo en forma base: <span lang="en">Did Octa eat cemitas?</span>. Responde con <strong>Yes, sujeto + did</strong> o <strong>No, sujeto + didn't</strong>.</p>
-        <p style={text}>Para pedir información, coloca la palabra WH al principio: <span lang="en">What did you do yesterday?</span> (¿Qué hiciste ayer?). También existe la pregunta negativa: <span lang="en">Didn't Miguel eat a sandwich?</span></p>
+        <p style={text}>Para pedir información, coloca la palabra WH al principio: <span lang="en">What did you do yesterday?</span> (¿Qué hiciste ayer?). También existe la pregunta negativa: <span lang="en">Didn't Eduardo eat a sandwich?</span></p>
         <RelatedTopic levelId="basico2" topicId="whQuestions" label="Repasar el significado de las palabras WH" />
       </RuleBox>
       {QUESTIONS.map(([q, a, es]) => (
@@ -105,7 +105,7 @@ export default function SimplePastSection() {
         <p style={text}>Ojo: se dice <span lang="en">last week</span>, sin «the»; y <span lang="en">in December</span>, con la preposición in.</p>
       </RuleBox>
 
-      <SectionTitle color={COLOR}>📘 Práctica del libro</SectionTitle>
+      <SectionTitle color={COLOR}>📘 Práctica guiada</SectionTitle>
       <div style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
         <div style={text}>📝 {BOOK_STORY.prompt}</div>
         <p lang="en" style={{ ...text, marginTop: "6px" }}>{BOOK_STORY.text}</p>
