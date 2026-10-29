@@ -32,7 +32,7 @@ export const TOPIC_FORMULAS = {
   moduleVExam: { title: "Fórmulas clave del examen del Módulo V", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye diez preguntas por tema.", rows: [
     row("Pasado: afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
     row("Pasado: negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't do her homework.", "Ella no hizo su tarea."),
-    row("Pasado: pregunta", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Karen drink mezcal?", "¿Karen tomó mezcal?"),
+    row("Pasado: pregunta", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Leslie drink mezcal?", "¿Leslie tomó mezcal?"),
     row("Pasado: información", "Palabra WH + did + sujeto + verbo base + complemento + ?", "What did you do yesterday?", "¿Qué hiciste ayer?"),
     row("Futuro: afirmación", "Sujeto + am/is/are + going to + verbo base + complemento + (expresión de tiempo)", "I'm going to eat seafood.", "Voy a comer mariscos."),
     row("Futuro: going to go", "Sujeto + am/is/are + going to + go + complemento + (expresión de tiempo)", "I'm going to go to Acapulco in December.", "Voy a ir a Acapulco en diciembre."),
@@ -172,7 +172,7 @@ export const TOPIC_FORMULAS = {
     row("Plural irregular sin s", "Poseedores + 's + cosa poseída", "The children's toys", "Los juguetes de los niños"),
   ] },
   whQuestions: { note: "Modelo para preguntas con to be en las que el sujeto se expresa después del verbo. Who como sujeto tiene otro orden: Who is here?", rows: [
-    row("Información con to be", "WH + am/is/are + sujeto + (complemento) + ?", "Where is Ana?", "¿Dónde está Ana?"),
+    row("Información con to be", "WH + am/is/are + sujeto + (complemento) + ?", "Where is Argelia?", "¿Dónde está Argelia?"),
     row("Pertenencia", "Whose + sustantivo + is/are + this/that/these/those + ?", "Whose backpack is this?", "¿De quién es esta mochila?"),
   ] },
   simplePresent: { note: "Do: I/you/we/they. Does: he/she/it. Tras do/does el verbo vuelve a su forma base. To be usa am/is/are y no necesita do/does.", rows: simplePresent },
@@ -188,7 +188,7 @@ export const TOPIC_FORMULAS = {
     row("Presente perfecto afirmativo", "Sujeto + have/has + participio pasado + complemento", "She has gone home.", "Ella se ha ido a casa."),
   ] },
   vocabulary: { title: "Patrones para una conversación", note: "Los saludos y despedidas se aprenden como expresiones completas; estos patrones ayudan a enlazarlos con tu presentación.", rows: [
-    row("Decir tu nombre", "My name is + nombre", "My name is Ana.", "Me llamo Ana."),
+    row("Decir tu nombre", "My name is + nombre", "My name is Argelia.", "Me llamo Argelia."),
     row("Presentarte por profesión", "I'm + a/an + profesión", "I'm a teacher.", "Soy maestra."),
     row("Despedirte", "See you + momento", "See you tomorrow.", "Nos vemos mañana."),
   ] },
@@ -219,7 +219,7 @@ export const TOPIC_FORMULAS = {
     row("Afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
     row("Negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't drink mezcal yesterday.", "Ella no tomó mezcal ayer."),
     row("Pregunta sí/no", "Did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "Did Octa eat cemitas?", "¿Octa comió cemitas?"),
-    row("Pregunta negativa", "Didn't + sujeto + verbo base + complemento + ?", "Didn't Miguel eat a sandwich?", "¿Miguel no comió un sándwich?"),
+    row("Pregunta negativa", "Didn't + sujeto + verbo base + complemento + ?", "Didn't Eduardo eat a sandwich?", "¿Eduardo no comió un sándwich?"),
     row("Pregunta de información", "Palabra WH + did + sujeto + verbo base + complemento + (expresión de tiempo) + ?", "What did you do yesterday?", "¿Qué hiciste ayer?"),
     row("Respuesta corta", "Yes, + sujeto + did. / No, + sujeto + didn't.", "Yes, she did. / No, she didn't.", "Sí, lo hizo. / No, no lo hizo."),
   ] },

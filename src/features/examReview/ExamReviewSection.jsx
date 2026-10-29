@@ -114,7 +114,7 @@ export default function ExamReviewSection() {
     <div>
       <TopicHeading topicId="examReview" />
       <div style={{ background: "linear-gradient(135deg, #3b0764, #1e293b)", border: "1px solid #ec489955", borderRadius: "12px", padding: "15px 16px", color: "#e2e8f0", fontSize: "14px", lineHeight: 1.8, marginBottom: "14px" }}>
-        <strong style={{ color: "#f9a8d4" }}>Tu ruta rápida de estudio:</strong> repasa las fórmulas, memoriza el vocabulario de <em>The Daily Blog</em> (p. 38) y <em>Places We Live</em> (p. 49), y termina con el mini simulador.
+        <strong style={{ color: "#f9a8d4" }}>Tu ruta rápida de estudio:</strong> repasa las fórmulas, memoriza el vocabulario de la rutina diaria y de los lugares donde vivimos, y termina con el mini simulador.
         <br />
         <span style={{ color: "#fbcfe8", fontSize: "12px" }}>⏳ Esta sección estará disponible hasta el domingo 30 de agosto de 2026 a las 23:59 (hora de Ciudad de México).</span>
       </div>
@@ -133,7 +133,7 @@ export default function ExamReviewSection() {
       <Formula
         label="La fórmula que debes recordar"
         parts={[{ t: "WH word", r: "wh" }, { t: "do / does", r: "aux" }, { t: "sujeto", r: "subject" }, { t: "verbo base", r: "verb" }, { t: "?", color: COLOR }]}
-        example={[{ t: "Where", r: "wh" }, { t: "does", r: "aux" }, { t: "Jerry", r: "subject" }, { t: "work?", r: "verb" }]}
+        example={[{ t: "Where", r: "wh" }, { t: "does", r: "aux" }, { t: "Israel", r: "subject" }, { t: "work?", r: "verb" }]}
         color={COLOR}
       />
       <RuleBox icon="⚠️" rule="Does ya lleva la -s: el verbo vuelve a su forma base" color="#fbbf24">
@@ -190,9 +190,9 @@ export default function ExamReviewSection() {
       </div>
       <RelatedTopic levelId="basico2" topicId="adjectives" label="Repasar adjetivos" />
 
-      <SectionTitle color={COLOR}>4. 📰 Vocabulary — The Daily Blog (p. 38)</SectionTitle>
+      <SectionTitle color={COLOR}>4. 📰 Vocabulary — Daily routine</SectionTitle>
       <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.7, marginBottom: "10px" }}>
-        El blog trabaja con una <strong style={{ color: "#f8fafc" }}>secuencia de rutina</strong>: qué hace Jerry al comenzar el día, cómo llega al trabajo, qué hace durante la jornada y cómo termina la tarde. Aprende las expresiones completas — no solo <em>subway</em> o <em>dinner</em> — porque en inglés se usan como combinaciones: <em>take the subway</em>, <em>have dinner</em>, <em>make phone calls</em>. En el examen pueden pedir el significado, completar un verbo o ubicar la acción en el orden del día.
+        Esta rutina sigue una <strong style={{ color: "#f8fafc" }}>secuencia</strong>: qué hace Israel al comenzar el día, cómo llega al trabajo, qué hace durante la jornada y cómo termina la tarde. Aprende las expresiones completas — no solo <em>subway</em> o <em>dinner</em> — porque en inglés se usan como combinaciones: <em>take the subway</em>, <em>have dinner</em>, <em>make phone calls</em>. En el examen pueden pedir el significado, completar un verbo o ubicar la acción en el orden del día.
       </div>
       <VocabGrid entries={DAILY_BLOG_VOCAB} />
 
@@ -209,7 +209,7 @@ export default function ExamReviewSection() {
       <VocabGrid entries={FREQUENCY_AND_TIME} columns={3} />
       <RelatedTopic levelId="basico3" topicId="inOnAt" label="Repasar at / on / in" />
 
-      <SectionTitle color={COLOR}>6. 🏙️ Vocabulary — Places We Live (p. 49)</SectionTitle>
+      <SectionTitle color={COLOR}>6. 🏙️ Vocabulary — Where we live</SectionTitle>
       <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8, marginBottom: "10px" }}>
         Este vocabulario sirve para hablar de dónde vives y cómo es el lugar. Primero nombra el espacio — <em>house</em>, <em>apartment</em>, <em>neighborhood</em> o <em>city</em> — y luego agrega un adjetivo que lo describa. Recuerda que los adjetivos van después de <Token t="is / are" r="verb_be" />: <em>My apartment is expensive</em>; o antes del sustantivo: <em>an exciting neighborhood</em>. El objetivo es poder describir tu casa, colonia y lugares cercanos con oraciones completas.
       </div>

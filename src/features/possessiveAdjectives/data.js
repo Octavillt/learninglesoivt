@@ -13,7 +13,7 @@ export const PRONOUN_TO_POSSESSIVE = [
 
 export const EXAMPLE_SENTENCES = [
   { pts: ["This is ", poss("my"), " mom."],                esp: "Esta es mi mamá." },
-  { pts: [poss("Her"), " name is Maria."],                  esp: "Su nombre es María." },
+  { pts: [poss("Her"), " name is Leslie."],                  esp: "Su nombre es Leslie." },
   { pts: ["This is ", poss("his"), " helmet."],             esp: "Este es su casco (de él)." },
   { pts: ["The cat is eating ", poss("its"), " food."],     esp: "El gato está comiendo su comida." },
   { pts: ["We love ", poss("our"), " house."],              esp: "Nosotros amamos nuestra casa." },

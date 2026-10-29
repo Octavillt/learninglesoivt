@@ -113,7 +113,7 @@ export default function PossessiveAdjectivesSection() {
 
       <RuleBox icon="🔑" rule="Bonus — no confundir con Whose" color={COLOR}>
         <div style={{ color: "#94a3b8", fontSize: "13px", lineHeight: 1.8 }}>
-          <Token t="Whose" r="wh" /> pregunta de quién es algo; puedes responder con un nombre y <Token t="'s" r="gen" /> (It is Ana’s), un pronombre (It is mine) o un posesivo con sustantivo (It is my backpack).
+          <Token t="Whose" r="wh" /> pregunta de quién es algo; puedes responder con un nombre y <Token t="'s" r="gen" /> (It is Argelia’s), un pronombre (It is mine) o un posesivo con sustantivo (It is my backpack).
         </div>
         <div style={{ color: "#e2e8f0", fontSize: "13px", marginTop: "8px" }}>Whose is that backpack? → It's Israel's.</div>
         <div style={{ color: "#94a3b8", fontSize: "12px" }}>🇲🇽 ¿De quién es esa mochila? → Es de Israel.</div>

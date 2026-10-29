@@ -24,7 +24,7 @@ export const WH_QA = [
   { q: [wh("What"), " is this?"], a: "This is my new mobile phone.", esp: "¿Qué es esto? — Este es mi celular nuevo." },
   { q: [wh("When"), " is the party?"], a: "The party is tomorrow.", esp: "¿Cuándo es la fiesta? — La fiesta es mañana." },
   { q: [wh("Who"), " is he?"], a: "He is my brother.", esp: "¿Quién es él? — Él es mi hermano." },
-  { q: [wh("Where"), " is Maria?"], a: "She is in London.", esp: "¿Dónde está María? — Ella está en Londres." },
+  { q: [wh("Where"), " is Leslie?"], a: "She is in London.", esp: "¿Dónde está Leslie? — Ella está en Londres." },
   { q: [wh("Where"), " is the dog?"], a: "The dog is in the park.", esp: "¿Dónde está el perro? — El perro está en el parque." },
   { q: [wh("Who"), " is this?"], a: "This is my friend Marcos.", esp: "¿Quién es este? — Este es mi amigo Marcos." },
 ];

@@ -15,9 +15,9 @@ export const EXAMPLES = [
 
 export const QUESTIONS = [
   ["Did Octa eat cemitas?", "No, he didn't.", "¿Octa comió cemitas? — No."],
-  ["Did Karen drink mezcal?", "Yes, she did.", "¿Karen tomó mezcal? — Sí."],
-  ["Did Karen do yoga yesterday?", "No, she didn't.", "¿Karen hizo yoga ayer? — No."],
-  ["Didn't Miguel eat a sandwich?", "No, he didn't. / Yes, he did.", "¿Miguel no comió un sándwich? — No. / Sí."],
+  ["Did Leslie drink mezcal?", "Yes, she did.", "¿Leslie tomó mezcal? — Sí."],
+  ["Did Leslie do yoga yesterday?", "No, she didn't.", "¿Leslie hizo yoga ayer? — No."],
+  ["Didn't Eduardo eat a sandwich?", "No, he didn't. / Yes, he did.", "¿Eduardo no comió un sándwich? — No. / Sí."],
   ["What did you do yesterday?", "I worked.", "¿Qué hiciste ayer? — Trabajé."],
   ["What did Octa do last week?", "He worked.", "¿Qué hizo Octa la semana pasada? — Trabajó."],
   ["Where did he grow up?", "He grew up in Germany.", "¿Dónde creció él? — Creció en Alemania."],
@@ -121,7 +121,7 @@ export const PRACTICE = [
   { question: "Escribe el pasado simple de stop.", answers: ["stopped"], explanation: "stop → stopped. Consonante-vocal-consonante: dobla la consonante final." },
   { question: "Completa: She ___ (drink) mezcal yesterday.", answers: ["drank"], explanation: "She drank mezcal yesterday. Drink es irregular: drink → drank." },
   { question: "Convierte en negativa: He went to Puebla.", answers: ["He didn't go to Puebla.", "He did not go to Puebla."], explanation: "He didn't go to Puebla. Didn't ya marca el pasado, así que el verbo vuelve a su forma base." },
-  { question: "Convierte en pregunta: Karen did yoga yesterday.", answers: ["Did Karen do yoga yesterday?"], explanation: "Did Karen do yoga yesterday? Usa did + sujeto + verbo base." },
+  { question: "Convierte en pregunta: Leslie did yoga yesterday.", answers: ["Did Leslie do yoga yesterday?"], explanation: "Did Leslie do yoga yesterday? Usa did + sujeto + verbo base." },
   { question: "Responde negativamente con una respuesta corta: Did Octa eat cemitas?", answers: ["No, he didn't.", "No, he did not."], explanation: "No, he didn't. Las respuestas cortas usan did o didn't, sin repetir el verbo principal." },
   { question: "Ordena: did / What / do / you / yesterday / ?", answers: ["What did you do yesterday?"], explanation: "What + did + sujeto + verbo base + expresión de tiempo: What did you do yesterday?" },
   { question: "Corrige: He didn't went to Acapulco.", answers: ["He didn't go to Acapulco.", "He did not go to Acapulco."], explanation: "He didn't go to Acapulco. Después de didn't el verbo va en forma base, no went." },

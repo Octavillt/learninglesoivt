@@ -15,7 +15,7 @@ export const ZERO_RULES = [
   {
     icon: "🔵", title: "Adjetivo solo (sin sustantivo después)",
     why: "Con to be + adjetivo, sin un sustantivo, no usamos a/an: she is busy. Con un sustantivo sí: she is a busy student.",
-    examples: ["Are you Ø busy?", "Is Bob Ø thin?"],
+    examples: ["Are you Ø busy?", "Is Eduardo Ø thin?"],
   },
   {
     icon: "🔢", title: "Sustantivos plurales, en general",
@@ -51,10 +51,10 @@ export const SOUND_EXCEPTIONS = [
 export const ARTICLE_EXERCISE = [
   { pts: ["Look at ", art("the"), " moon."], esp: "Mira la luna." },
   { pts: ["This is a book. ", art("The"), " book is red."], esp: "Este es un libro. El libro es rojo." },
-  { pts: ["Sam is ", art("a"), " university student."], esp: "Sam es estudiante universitario." },
+  { pts: ["Israel is ", art("a"), " university student."], esp: "Israel es estudiante universitario." },
   { pts: ["This is ", art("a"), " car."], esp: "Esto es un carro." },
   { pts: ["Are you ", zero(), " busy?"], esp: "¿Estás ocupado?" },
-  { pts: ["Is Bob ", zero(), " thin?"], esp: "¿Bob es delgado?" },
+  { pts: ["Is Eduardo ", zero(), " thin?"], esp: "¿Eduardo es delgado?" },
   { pts: ["This is ", art("an"), " Italian sports car."], esp: "Este es un auto deportivo italiano." },
   { pts: ["Kenji is studying ", zero(), " English."], esp: "Kenji está estudiando inglés." },
   { pts: ["Are you carrying ", art("an"), " umbrella?"], esp: "¿Estás llevando un paraguas?" },
@@ -63,7 +63,7 @@ export const ARTICLE_EXERCISE = [
   { pts: ["This is ", art("a"), " pair of gloves."], esp: "Este es un par de guantes." },
   { pts: ["This is ", art("an"), " interesting movie."], esp: "Esta es una película interesante." },
   { pts: ["This is ", art("a"), " kangaroo."], esp: "Este es un canguro." },
-  { pts: ["Alice drives ", art("an"), " old car."], esp: "Alice maneja un carro viejo." },
+  { pts: ["Argelia drives ", art("an"), " old car."], esp: "Argelia maneja un carro viejo." },
   { pts: ["Do you like ", zero(), " apples?"], esp: "¿Te gustan las manzanas?" },
   { pts: ["He is ", art("an"), " artist."], esp: "Él es artista." },
   { pts: ["Is there ", art("a"), " big window in your kitchen?"], esp: "¿Hay una ventana grande en tu cocina?" },

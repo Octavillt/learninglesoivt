@@ -286,9 +286,9 @@ const SEARCH_KEYWORDS = {
     "repaso","examen","exam review","simple present wh questions","wh questions",
     "frequency adverbs","adverbios de frecuencia","always","usually","often","sometimes","never",
     "adjectives ed ing","adjetivos ed ing","bored boring","excited exciting","tired tiring",
-    "daily blog","the daily blog","start work","walk your dog","have coffee","get ready for work",
+    "daily routine","rutina diaria","start work","walk your dog","have coffee","get ready for work",
     "take the subway","make phone calls","go home","have dinner","frequency expressions",
-    "once twice","every day","places we live","places we live p 49","neighborhood","lively","noisy",
+    "once twice","every day","places we live","neighborhood","lively","noisy",
   ],
 };
 

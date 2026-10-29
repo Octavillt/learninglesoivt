@@ -1,7 +1,7 @@
 export const WH_QUESTIONS = [
   { word: "What", use: "cosas, acciones o información", example: "What do you do on weekends?" },
   { word: "Where", use: "lugares", example: "Where does your brother work?" },
-  { word: "When / What time", use: "día, momento u hora", example: "What time does Jerry get up?" },
+  { word: "When / What time", use: "día, momento u hora", example: "What time does Israel get up?" },
   { word: "Who", use: "personas", example: "Who do you see on weekends?" },
   { word: "Why", use: "razones", example: "Why do you study English?" },
   { word: "How", use: "manera; How often = frecuencia", example: "How often does she exercise?" },
@@ -23,7 +23,7 @@ export const DAILY_BLOG_VOCAB = [
   ["walk your dog", "pasear a tu perro", "I walk my dog in the morning."],
   ["have coffee", "tomar café", "She has coffee before work."],
   ["get ready for work", "prepararse para el trabajo", "He gets ready for work at 7:00."],
-  ["take the subway", "tomar el metro", "Jerry takes the subway to work."],
+  ["take the subway", "tomar el metro", "Israel takes the subway to work."],
   ["make phone calls", "hacer llamadas telefónicas", "I make phone calls at work."],
   ["go home", "ir a casa", "They go home in the evening."],
   ["have dinner", "cenar", "We have dinner at 8:00 p.m."],
@@ -58,7 +58,7 @@ export const PLACES_WE_LIVE = [
 
 export const PRACTICE = [
   {
-    question: "___ does Jerry get up? — At about 6:30 a.m.",
+    question: "___ does Israel get up? — At about 6:30 a.m.",
     options: ["What", "What time", "Who"],
     correct: 1,
     explanation: "Usa What time para preguntar la hora.",
@@ -82,13 +82,13 @@ export const PRACTICE = [
     explanation: "-ing describe la cosa que causa la sensación; -ed describe cómo se siente la persona.",
   },
   {
-    question: "Before work, Jerry ___ coffee. (tomar café)",
+    question: "Before work, Israel ___ coffee. (tomar café)",
     options: ["has", "does", "makes"],
     correct: 0,
-    explanation: "La expresión del blog es have coffee; con Jerry cambia a has coffee.",
+    explanation: "La expresión es have coffee; con Israel cambia a has coffee.",
   },
   {
-    question: "Jerry ___ the subway to work.",
+    question: "Israel ___ the subway to work.",
     options: ["takes", "goes", "does"],
     correct: 0,
     explanation: "Take the subway significa tomar el metro.",
@@ -136,10 +136,10 @@ export const PRACTICE = [
     explanation: "La tarea causa la confusión (confusing); los estudiantes sienten la confusión (confused).",
   },
   {
-    question: "After work, Jerry goes home, walks his dog again, and then ___.",
+    question: "After work, Israel goes home, walks his dog again, and then ___.",
     options: ["has dinner", "takes the subway", "gets ready for work"],
     correct: 0,
-    explanation: "En The Daily Blog, después de llegar a casa Jerry has dinner.",
+    explanation: "En la rutina, después de llegar a casa Israel has dinner.",
   },
   {
     question: "I study English ___ the evening and I have class ___ Thursday.",
