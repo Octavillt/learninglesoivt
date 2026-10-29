@@ -235,11 +235,23 @@
   clip: rect(0 0 0 0);
 }
 
+/* Bloque y no flex: el token de la base queda inline como los de pasado y
+   participio, así las tres columnas miden el renglón exactamente igual y
+   las traducciones caen a la misma altura. Ancla además el ⓘ (absolute). */
 .vf-base {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 6px;
+  position: relative;
+}
+
+/* Formas con dos variantes («borne / born») que se parten en dos renglones:
+   cada renglón repite su padding y sus esquinas (clone) con un pequeño aire
+   entre fondos. El margen que trae el Token se anula aquí para que todos
+   los renglones arranquen a la par del inicio de la celda. */
+.vf-base > span,
+.vf-form > span:not(.vf-mini) {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  line-height: 1.6;
+  margin: 0 !important;
 }
 
 .vf-es {
@@ -269,19 +281,21 @@
   line-height: 1.4;
 }
 
+/* El ⓘ acompaña a la base sin estirar su renglón: sale del flujo desde su
+   posición natural (justo tras el token) y su caja se queda compacta. El
+   área táctil la amplía el pseudo-elemento, no el botón. */
 .vf-note {
+  position: absolute;
+  top: 3px;
   display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
+  height: 18px;
   padding: 0;
+  margin-left: 5px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   background: transparent;
   color: var(--highlight, #93c5fd);
   font: inherit;
@@ -289,6 +303,13 @@
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+}
+
+/* Área táctil de 32×32 con mouse sin ocupar renglón: sobresale del botón. */
+.vf-note::before {
+  content: "";
+  position: absolute;
+  inset: -7px -11px;
 }
 
 .vf-note:focus-visible {
@@ -480,6 +501,11 @@
   .vf-letter-btn {
     width: 44px;
     height: 44px;
+  }
+
+  /* El área táctil del ⓘ también crece a 44×44 (el botón sigue compacto). */
+  .vf-note::before {
+    inset: -13px -17px;
   }
 }
 
