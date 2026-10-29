@@ -63,6 +63,14 @@ export const TOPICS_VERBOS = [
   { id: "verbFinder", label: "📒 Verbos a la mano", english: "Verb Finder", color: "#8B5CF6", stage: "Consulta rápida" },
 ];
 
+// Secciones con las que el Quiz practica ese módulo. No son lecciones: no
+// entran al buscador ni a la barra de temas.
+export const QUIZ_TOPICS_VERBOS = [
+  { id: "verbPast", label: "2️⃣ Pasado simple", english: "Simple Past", color: "#8B5CF6", lesson: "verbFinder" },
+  { id: "verbParticiple", label: "3️⃣ Participio pasado", english: "Past Participle", color: "#8B5CF6", lesson: "verbFinder" },
+  { id: "verbMeaning", label: "💬 Significado", english: "Meaning", color: "#8B5CF6", lesson: "verbFinder" },
+];
+
 export const TOPICS_QUIZ = [
   { id: "quiz", label: "🎯 Práctica general", english: "Quiz", color: "#EAB308" },
 ];
