@@ -73,8 +73,8 @@ describe("searchTopics", () => {
   });
 
   it("muestra el repaso temporal antes del límite y lo excluye después", () => {
-    const before = searchTopics("daily blog", EXAM_REVIEW_END - 1);
-    const after = searchTopics("daily blog", EXAM_REVIEW_END);
+    const before = searchTopics("daily routine", EXAM_REVIEW_END - 1);
+    const after = searchTopics("daily routine", EXAM_REVIEW_END);
     expect(before.some(r => r.topicId === "examReview")).toBe(true);
     expect(after.some(r => r.topicId === "examReview")).toBe(false);
   });
