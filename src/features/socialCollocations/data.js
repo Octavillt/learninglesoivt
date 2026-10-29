@@ -44,9 +44,9 @@ export const TIME_EXAMPLES = [
 
 export const CONVERSATION = [
   ["How was last night? Did you have fun at the club?", "¿Qué tal estuvo anoche? ¿Se divirtieron en el club?"],
-  ["Yes, we did. But at first Zac and I went to the wrong place! We got lost!", "Sí. ¡Pero al principio Zac y yo fuimos al lugar equivocado! ¡Nos perdimos!"],
+  ["Yes, we did. But at first Octavio and I went to the wrong place! We got lost!", "Sí. ¡Pero al principio Octavio y yo fuimos al lugar equivocado! ¡Nos perdimos!"],
   ["Oh, no! How did you make a mistake like that?", "¡Oh, no! ¿Cómo cometieron un error así?"],
-  ["I don't know! I thought Zac knew the location. But we didn't get upset or have an argument. We asked a woman and finally found the club. It's a great place!", "¡No sé! Pensé que Zac conocía la ubicación. Pero no nos enojamos ni discutimos. Le preguntamos a una mujer y finalmente encontramos el club. ¡Es un lugar increíble!"],
+  ["I don't know! I thought Octavio knew the location. But we didn't get upset or have an argument. We asked a woman and finally found the club. It's a great place!", "¡No sé! Pensé que Octavio conocía la ubicación. Pero no nos enojamos ni discutimos. Le preguntamos a una mujer y finalmente encontramos el club. ¡Es un lugar increíble!"],
 ];
 
 export const PRACTICE = [

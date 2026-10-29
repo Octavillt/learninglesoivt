@@ -76,7 +76,7 @@ export default function GoingToSection() {
         </div>
       ))}
 
-      <SectionTitle color={COLOR}>📘 Práctica del libro</SectionTitle>
+      <SectionTitle color={COLOR}>📘 Práctica guiada</SectionTitle>
       <div style={{ ...card, ...text }}>📝 {BOOK_DIALOGS.prompt}</div>
       {BOOK_DIALOGS.items.map(dialog => (
         <div key={dialog.blanks[0]} style={{ ...card, borderLeft: `3px solid ${COLOR}`, marginBottom: "12px" }}>
