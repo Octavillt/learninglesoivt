@@ -24,6 +24,7 @@ import { PRACTICE as MODULE_V_EXAM } from "../moduleVExam/data";
 import { PRACTICE as SIMPLE_PAST } from "../simplePast/data";
 import { PRACTICE as GOING_TO } from "../goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
+import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -53,6 +54,7 @@ export const MODULE_QUESTIONS = [
   ...SIMPLE_PAST.map(row => ({ ...row, topic: "simplePast" })),
   ...GOING_TO.map(row => ({ ...row, topic: "goingTo" })),
   ...SOCIAL_COLLOCATIONS.map(row => ({ ...row, topic: "socialCollocations" })),
+  ...MONEY_CAREER.map(row => ({ ...row, topic: "moneyCareer" })),
   ...OCTOBER_EXAM.map(row => ({ topic: "octoberExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_V_EXAM.map(row => ({ topic: "moduleVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_IV_EXAM.map(row => ({ topic: "moduleIVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),

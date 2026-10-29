@@ -8,9 +8,11 @@ import { MODULE_QUESTIONS } from "./features/quiz/moduleQuestions";
 import { PRACTICE as SIMPLE_PAST } from "./features/simplePast/data";
 import { PRACTICE as GOING_TO } from "./features/goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "./features/socialCollocations/data";
+import { PRACTICE as MONEY_CAREER } from "./features/moneyCareer/data";
+import { VERB_BANK } from "./features/verbFinder/data";
 import { getAvailableTopics } from "./constants/topicAvailability";
 
-const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations", "moduleVExam"];
+const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations", "moneyCareer", "moduleVExam"];
 
 function openTopic(label) {
   const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
@@ -25,7 +27,7 @@ beforeEach(() => localStorage.clear());
 afterEach(() => vi.useRealTimers());
 
 describe("Básico V — datos del módulo", () => {
-  it("ubica Básico V después de Básico IV y antes del Quiz, con sus tres secciones en orden", () => {
+  it("ubica Básico V después de Básico IV y antes del Quiz, con sus secciones en orden", () => {
     const ids = LEVELS.map(level => level.id);
     expect(ids.indexOf("basico5")).toBe(ids.indexOf("basico4") + 1);
     expect(ids.at(-1)).toBe("quiz");
@@ -37,6 +39,7 @@ describe("Básico V — datos del módulo", () => {
     ["simplePast", SIMPLE_PAST],
     ["goingTo", GOING_TO],
     ["socialCollocations", SOCIAL_COLLOCATIONS],
+    ["moneyCareer", MONEY_CAREER],
   ])("las preguntas de práctica de %s están completas y llegan al Quiz", (topic, practice) => {
     expect(practice.length).toBeGreaterThanOrEqual(8);
     for (const row of practice) {
@@ -140,6 +143,25 @@ describe("Básico V — contenido visible", () => {
     expect(main).toHaveTextContent("I thought Octavio knew the location.");
     expect(main).not.toHaveTextContent(/del libro|\bZac\b/);
   });
+
+  it("Dinero y planes de carrera muestra los opuestos, las colocaciones de carrera y sus preposiciones", () => {
+    render(<App />);
+    openBasicoV();
+    openTopic("💰 Dinero y planes de carrera");
+    const main = screen.getByRole("main");
+    expect(screen.getByRole("heading", { level: 2, name: /Dinero y planes de carrera/ })).toBeInTheDocument();
+    for (const word of ["buy", "sell", "spend", "save", "rich", "poor"]) {
+      expect(within(main).getAllByText(word, { exact: true }).length).toBeGreaterThan(0);
+    }
+    for (const phrase of ["work outdoors", "manage people", "work in an office", "start a business", "work from home", "work overseas"]) {
+      expect(main).toHaveTextContent(phrase);
+    }
+    expect(main).toHaveTextContent("spend money on clothes");
+    expect(main).toHaveTextContent(/earn money.*win/);
+    expect(main).toHaveTextContent("I'm probably going to manage people.");
+    expect(main).toHaveTextContent("Leslie is going to start a business next year.");
+    expect(main).not.toHaveTextContent(/Lesson|Unit|libro/);
+  });
 });
 
 describe("Básico V — navegación, búsqueda y Quiz", () => {
@@ -163,6 +185,8 @@ describe("Básico V — navegación, búsqueda y Quiz", () => {
 
   it.each([
     ["get lost", "🎉 Vida social y colocaciones"],
+    ["ahorrar", "💰 Dinero y planes de carrera"],
+    ["work from home", "💰 Dinero y planes de carrera"],
     ["gonna", "🗓️ Futuro con going to"],
     ["didn't", "⏪ Pasado simple"],
   ])("el buscador lleva de '%s' a su sección", async (term, label) => {
@@ -185,5 +209,16 @@ describe("Básico V — navegación, búsqueda y Quiz", () => {
     fireEvent.click(screen.getByRole("button", { name: /Verificar respuesta/ }));
     fireEvent.click(screen.getByRole("button", { name: /Repasar la explicación/ }));
     expect(screen.getByRole("heading", { level: 2, name: /Futuro con going to/ })).toBeInTheDocument();
+  });
+
+  it("Dinero y planes de carrera enlaza los opuestos con Adjetivos y los verbos nuevos llegan a Verbos a la mano", () => {
+    render(<App />);
+    openBasicoV();
+    openTopic("💰 Dinero y planes de carrera");
+    fireEvent.click(screen.getByRole("button", { name: /Repasar adjetivos y opuestos/ }));
+    expect(screen.getByRole("heading", { level: 1, name: "🎓 English — Básico II" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /Adjetivos y opuestos/ })).toBeInTheDocument();
+    const bases = VERB_BANK.map(verb => verb.base);
+    for (const verb of ["borrow", "buy", "earn", "manage", "save", "sell", "spend", "waste"]) expect(bases).toContain(verb);
   });
 });

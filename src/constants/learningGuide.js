@@ -235,4 +235,10 @@ export const LEARNING_GUIDE = {
     task: "Cuenta que el viernes pasado saliste con amigos, cometiste un error y te perdiste, pero te divertiste. Después di que vas a hacer una fiesta.",
     answer: "Last Friday I hung out with friends. I made a mistake and I got lost, but I had fun. I'm going to have a party. Las colocaciones se conjugan: hang → hung, make → made, get → got, have → had.",
   },
+  moneyCareer: {
+    goal: "Hablar de dinero con opuestos (buy/sell, spend/save, rich/poor) y describir tus planes de carrera con colocaciones y going to.",
+    recall: ["jobs", "adjectives", "goingTo"],
+    task: "Di que vas a ahorrar dinero para un coche nuevo, que Leslie va a emprender un negocio y que probablemente vas a trabajar desde casa.",
+    answer: "I'm going to save money for a new car. Leslie is going to start a business. I'm probably going to work from home. Save money for = ahorrar para; start a business = emprender un negocio; probably va entre am/is/are y going to.",
+  },
 };

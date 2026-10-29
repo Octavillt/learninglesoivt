@@ -164,6 +164,21 @@ const SEARCH_KEYWORDS = {
     "ir a un concierto", "ver una película", "comer fuera", "enojarse", "perderse", "casarse",
     "discutir", "divertirse", "cometer un error", "hacer un nuevo amigo", "tomar una decisión",
   ],
+  moneyCareer: [
+    "money", "dinero", "career", "career plans", "carrera", "planes de carrera", "planes de trabajo", "futuro",
+    "trabajo", "opposites", "opuestos", "buy", "sell", "spend", "save", "rich", "poor", "bought", "sold", "spent", "saved",
+    "earn money", "waste money", "borrow money", "borrow money from", "lend money", "lend money to", "pay for",
+    "how much does it cost", "cheap", "expensive", "for sale", "bank account", "savings", "salary", "win the lottery",
+    "spend money on", "save money for", "borrow from", "lend to", "spend time with",
+    "work outdoors", "manage people", "work in an office", "start a business", "work from home", "work overseas",
+    "work abroad", "work for a large company", "work part-time", "work full-time", "get a job", "get a promotion",
+    "earn a good salary", "travel for work", "probably", "want to",
+    "comprar", "vender", "gastar", "ahorrar", "rico", "pobre", "ganar dinero", "desperdiciar", "malgastar",
+    "pedir prestado", "prestar", "pagar", "cuánto cuesta", "barato", "caro", "en venta", "cuenta bancaria",
+    "ahorros", "salario", "sueldo", "emprender", "negocio", "desde casa", "en el extranjero", "al aire libre",
+    "dirigir personal", "oficina", "empresa", "medio tiempo", "tiempo completo", "conseguir un trabajo", "ascenso",
+    "viajar por trabajo", "ganar un premio",
+  ],
   quiz: ["quiz","test","questions","practice","examen","práctica","preguntas"],
 
   verbFinder: [
