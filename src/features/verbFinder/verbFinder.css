@@ -16,6 +16,41 @@
   margin-bottom: 12px;
 }
 
+/* Una sola plantilla de columnas para el encabezado pegado y para las
+   tarjetas: como el encabezado vive fuera de la lista (en la zona pegada
+   del buscador), la columna de acciones no puede salir del contenido de
+   cada tarjeta (subgrid/auto) — es fija y así ambas rejillas calculan
+   exactamente los mismos anchos. */
+.vf {
+  --vf-grid: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) var(--vf-actions-w);
+  --vf-gap: 12px;
+  --vf-pad-x: 14px;
+  --vf-actions-w: 116px;
+}
+
+@media (max-width: 699px) {
+  .vf {
+    /* Teléfono: tres columnas iguales. Con 8 px de padding lateral y 4 px
+       de separación, la tarjeta de 335 px de un 375 px deja columnas de
+       ~103 px: ahí caben las formas más largas («understood») sin partirse
+       a media palabra. */
+    --vf-grid: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    --vf-gap: 4px;
+    --vf-pad-x: 8px;
+  }
+}
+
+/* Móviles muy angostos (360–368 px): con 8 px de padding la columna cae a
+   98 px y las formas más largas («understood», «undertaken») se parten a
+   media palabra. Se estrechan padding y separación solo aquí para volver a
+   darles columna completa; el resto de teléfonos conserva 8 px / 4 px. */
+@media (max-width: 368px) {
+  .vf {
+    --vf-gap: 2px;
+    --vf-pad-x: 6px;
+  }
+}
+
 .vf-chips {
   display: flex;
   flex-wrap: nowrap;
@@ -112,25 +147,40 @@
   font-weight: 700;
 }
 
-.vf-list {
-  --vf-cols: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) auto;
-}
-
 .vf-letter {
-  scroll-margin-top: calc(var(--nav-h, 52px) + 84px);
+  /* Salta por encima de la barra de temas y de la zona pegada (buscador +
+     encabezado de columnas, ~75 px) para que la letra no aterrice tapada. */
+  scroll-margin-top: calc(var(--nav-h, 52px) + 92px);
   margin: 16px 0 8px;
   color: inherit;
   font-size: 15px;
   letter-spacing: 0.4px;
 }
 
+/* Encabezado BASE / PASADO / PARTICIPIO: la sección lo pasa como
+   stickyExtra del buscador, así queda pegado bajo el campo y no se pierde
+   al recorrer la lista. Los bordes laterales transparentes replican el
+   borde+padding de la tarjeta para que cada etiqueta arranque a la par de
+   la columna que nombra. */
 .vf-cols {
-  display: none;
+  display: grid;
+  grid-template-columns: var(--vf-grid);
+  column-gap: var(--vf-gap);
+  align-items: center;
+  margin-top: 6px;
+  padding: 0 var(--vf-pad-x);
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  color: var(--text-muted, #94a3b8);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .vf-card {
   margin-bottom: 8px;
-  padding: 12px 14px;
+  padding: 12px var(--vf-pad-x);
   border: 1px solid var(--border, #334155);
   border-radius: 12px;
   background: var(--surface, #1e293b);
@@ -141,34 +191,31 @@
   border-color: color-mix(in srgb, #8b5cf6 70%, var(--border, #334155));
 }
 
+/* Rejilla de la tarjeta: misma plantilla que el encabezado. Las tres formas
+   arrancan arriba (align-items: start): con centrado vertical el
+   participio —que no tiene traducción debajo— quedaba hundido. */
 .vf-card-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
+  grid-template-columns: var(--vf-grid);
+  column-gap: var(--vf-gap);
   align-items: start;
 }
 
 .vf-identity {
-  grid-column: 1;
-  grid-row: 1;
   min-width: 0;
 }
 
 .vf-actions {
-  grid-column: 2;
-  grid-row: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
   justify-content: flex-end;
 }
 
+/* El envoltorio solo agrupa a las dos formas: sus celdas participan
+   directo en la rejilla de la tarjeta en todos los anchos. */
 .vf-forms {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 8px;
+  display: contents;
 }
 
 .vf-form {
@@ -176,20 +223,35 @@
   overflow-wrap: anywhere;
 }
 
+/* La etiqueta de cada forma la da el encabezado pegado; en la tarjeta las
+   etiquetas quedan solo para el lector de pantalla, igual en todos los
+   anchos (BASE se acompaña de las de PASADO / PARTICIPIO). */
 .vf-mini {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--text-muted, #94a3b8);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
+/* Bloque y no flex: el token de la base queda inline como los de pasado y
+   participio, así las tres columnas miden el renglón exactamente igual y
+   las traducciones caen a la misma altura. Ancla además el ⓘ (absolute). */
 .vf-base {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+  position: relative;
+}
+
+/* Formas con dos variantes («borne / born») que se parten en dos renglones:
+   cada renglón repite su padding y sus esquinas (clone) con un pequeño aire
+   entre fondos. El margen que trae el Token se anula aquí para que todos
+   los renglones arranquen a la par del inicio de la celda. */
+.vf-base > span,
+.vf-form > span:not(.vf-mini) {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  line-height: 1.6;
+  margin: 0 !important;
 }
 
 .vf-es {
@@ -219,19 +281,21 @@
   line-height: 1.4;
 }
 
+/* El ⓘ acompaña a la base sin estirar su renglón: sale del flujo desde su
+   posición natural (justo tras el token) y su caja se queda compacta. El
+   área táctil la amplía el pseudo-elemento, no el botón. */
 .vf-note {
+  position: absolute;
+  top: 3px;
   display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
+  height: 18px;
   padding: 0;
+  margin-left: 5px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   background: transparent;
   color: var(--highlight, #93c5fd);
   font: inherit;
@@ -239,6 +303,13 @@
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+}
+
+/* Área táctil de 32×32 con mouse sin ocupar renglón: sobresale del botón. */
+.vf-note::before {
+  content: "";
+  position: absolute;
+  inset: -7px -11px;
 }
 
 .vf-note:focus-visible {
@@ -352,6 +423,57 @@
     min-height: 44px;
   }
 
+  /* En teléfono no hay columna de acciones en el encabezado: ☆ y «Más»
+     van bajo el participio, dentro de la tarjeta. */
+  .vf-cols-actions {
+    display: none;
+  }
+
+  /* Fila 1: las tres formas alineadas arriba. Fila 2: las traducciones
+     (cada una dentro de su celda) y, en la columna 3, las acciones en la
+     esquina inferior derecha — el participio es la única forma sin
+     traducción, así que ese rincón queda libre. */
+  .vf-card-row {
+    grid-template-rows: auto auto;
+    row-gap: 4px;
+  }
+
+  .vf-identity {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .vf-form--past {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  .vf-form--part {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .vf-actions {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+  }
+
+  .vf-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+
+  /* «Más» en dos renglones («Más» arriba, la flecha abajo) para caber en
+     44 px de ancho; en pantallas anchas vuelve a una sola línea. */
+  .vf-icon--more {
+    flex-direction: column;
+    gap: 0;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
   .vf-index {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -364,61 +486,33 @@
   }
 }
 
+/* Las tablets son táctiles aunque sean anchas: mismo objetivo de 44 px
+   que en teléfono. Con mouse (escritorio) basta el tamaño base de 36 px. */
+@media (pointer: coarse) {
+  .vf-chip,
+  .vf-letter-btn,
+  .vf-icon,
+  .vf-reveal,
+  .vf-more button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .vf-letter-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* El área táctil del ⓘ también crece a 44×44 (el botón sigue compacto). */
+  .vf-note::before {
+    inset: -13px -17px;
+  }
+}
+
 @media (min-width: 700px) {
-  /* Una sola rejilla para el encabezado y todas las tarjetas: la columna
-     de acciones (auto) la define el contenido real, no un hueco vacío. */
-  .vf-list {
-    display: grid;
-    grid-template-columns: var(--vf-cols);
-    column-gap: 12px;
-    align-items: start;
-  }
-
-  .vf-cols,
-  .vf-list > section,
-  .vf-card,
-  .vf-card-row {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: subgrid;
-  }
-
-  .vf-letter,
-  .vf-more {
-    grid-column: 1 / -1;
-  }
-
-  .vf-cols {
-    align-items: center;
-    margin-bottom: 6px;
-    padding: 0 14px;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    color: var(--text-muted, #94a3b8);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-  }
-
-  .vf-card-row {
-    align-items: center;
-    column-gap: 12px;
-    row-gap: 0;
-  }
-
   .vf-identity {
     grid-column: 1;
     grid-row: 1;
-  }
-
-  .vf-actions {
-    grid-column: 4;
-    grid-row: 1;
-    flex-wrap: nowrap;
-  }
-
-  .vf-forms {
-    display: contents;
   }
 
   .vf-form--past {
@@ -431,12 +525,9 @@
     grid-row: 1;
   }
 
-  .vf-mini {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
+  .vf-actions {
+    grid-column: 4;
+    grid-row: 1;
+    flex-wrap: nowrap;
   }
 }

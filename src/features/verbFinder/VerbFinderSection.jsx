@@ -135,6 +135,7 @@ function VerbCard({
     <article className="vf-card" data-open={open ? "true" : "false"} aria-label={verb.base}>
       <div className="vf-card-row">
         <div className="vf-identity">
+          <span className="vf-mini">BASE</span>
           <div className="vf-base">
             <Token t={verb.base} r="verb" />
             {verb.note && (
@@ -209,7 +210,7 @@ function VerbCard({
           </button>
           <button
             type="button"
-            className="vf-icon"
+            className="vf-icon vf-icon--more"
             aria-expanded={open}
             aria-controls={moreId}
             onClick={onToggle}
@@ -339,6 +340,9 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
 
   const noFavoritesYet = kind === "favorites" && favorites.length === 0;
   const groups = trimmed ? null : groupByLetter(visible);
+  // El encabezado de columnas acompaña al buscador en la zona pegada y solo
+  // tiene sentido con tarjetas a la vista (sin resultados no hay columnas).
+  const listShown = !noFavoritesYet && visible.length > 0;
 
   function renderCard(item) {
     return (
@@ -377,6 +381,14 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
         placeholder="🔍 Busca: bring, brought, traer…"
         value={query}
         onChange={setQuery}
+        stickyExtra={listShown ? (
+          <div className="vf-cols" data-search-skip aria-hidden="true">
+            <span style={{ color: C.verb.fg }}>BASE</span>
+            <span style={{ color: C.past.fg }}>PASADO</span>
+            <span style={{ color: C.participle.fg }}>PARTICIPIO</span>
+            <span className="vf-cols-actions" />
+          </div>
+        ) : null}
       >
         <div className="vf-controls" data-search-skip>
           <div className="vf-chips" role="group" aria-label="Tipo de verbo">
@@ -475,14 +487,8 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
               <p>Sin resultados.</p>
             )}
           </div>
-        ) : (
+        ) : listShown ? (
           <div className="vf-list">
-            <div className="vf-cols" data-search-skip aria-hidden="true">
-              <span style={{ color: C.verb.fg }}>Base</span>
-              <span style={{ color: C.past.fg }}>Pasado</span>
-              <span style={{ color: C.participle.fg }}>Participio</span>
-              <span />
-            </div>
             {groups
               ? groups.map(group => (
                 <section key={group.letter}>
@@ -492,7 +498,7 @@ function VerbFinderSection({ highlightTerm, highlightSeq }) {
               ))
               : visible.map(renderCard)}
           </div>
-        )}
+        ) : null}
 
         <div data-search-skip>
           <details className="lesson-extension">
