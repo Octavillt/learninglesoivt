@@ -49,18 +49,18 @@ const IRREGULAR_ROWS = [
 
 // base|pasado (= participio)|sonido de -ed
 const REGULAR_ROWS = [
-  "answer|answered|/d/", "ask|asked|/t/", "avoid|avoided|/ɪd/", "bark|barked|/t/", "call|called|/d/",
+  "answer|answered|/d/", "ask|asked|/t/", "avoid|avoided|/ɪd/", "bark|barked|/t/", "borrow|borrowed|/d/", "call|called|/d/",
   "carry|carried|/d/", "clean|cleaned|/d/", "climb|climbed|/d/", "close|closed|/d/", "continue|continued|/d/",
-  "cook|cooked|/t/", "cry|cried|/d/", "dance|danced|/t/", "decide|decided|/ɪd/", "enjoy|enjoyed|/d/",
+  "cook|cooked|/t/", "cry|cried|/d/", "dance|danced|/t/", "decide|decided|/ɪd/", "earn|earned|/d/", "enjoy|enjoyed|/d/",
   "erase|erased|/t/", "finish|finished|/t/", "fix|fixed|/t/", "hate|hated|/ɪd/", "help|helped|/t/",
   "hope|hoped|/t/", "hug|hugged|/d/", "jump|jumped|/t/", "kiss|kissed|/t/", "laugh|laughed|/t/",
-  "lift|lifted|/ɪd/", "like|liked|/t/", "live|lived|/d/", "love|loved|/d/", "meow|meowed|/d/", "mind|minded|/ɪd/",
+  "lift|lifted|/ɪd/", "like|liked|/t/", "live|lived|/d/", "love|loved|/d/", "manage|managed|/d/", "meow|meowed|/d/", "mind|minded|/ɪd/",
   "move|moved|/d/", "need|needed|/ɪd/", "open|opened|/d/", "paint|painted|/ɪd/", "plan|planned|/d/",
   "play|played|/d/", "practice|practiced|/t/", "prefer|preferred|/d/", "pull|pulled|/d/", "purr|purred|/d/",
-  "push|pushed|/t/", "seem|seemed|/d/", "start|started|/ɪd/", "stop|stopped|/t/", "stretch|stretched|/t/",
+  "push|pushed|/t/", "save|saved|/d/", "seem|seemed|/d/", "start|started|/ɪd/", "stop|stopped|/t/", "stretch|stretched|/t/",
   "study|studied|/d/", "suggest|suggested|/ɪd/", "talk|talked|/t/", "travel|traveled|/d/", "turn|turned|/d/",
   "twist|twisted|/ɪd/", "use|used|/d/", "visit|visited|/ɪd/", "wait|waited|/ɪd/", "walk|walked|/t/",
-  "want|wanted|/ɪd/", "wash|washed|/t/", "watch|watched|/t/", "work|worked|/t/",
+  "want|wanted|/ɪd/", "wash|washed|/t/", "waste|wasted|/ɪd/", "watch|watched|/t/", "work|worked|/t/",
 ];
 
 // base|pasado|participio|tipo
@@ -91,6 +91,7 @@ const ES_PAST = {
   bite: "mordió",
   bleed: "sangró",
   blow: "sopló",
+  borrow: "pidió prestado",
   break: "rompió",
   breed: "crio",
   bring: "trajo, llevó",
@@ -124,6 +125,7 @@ const ES_PAST = {
   dream: "soñó",
   drink: "bebió",
   drive: "manejó, condujo",
+  earn: "ganó (dinero)",
   eat: "comió",
   "eat out": "comió fuera",
   enjoy: "disfrutó",
@@ -186,6 +188,7 @@ const ES_PAST = {
   lose: "perdió",
   love: "amó, encantó",
   make: "hizo, fabricó",
+  manage: "dirigió, administró",
   mean: "significó, quiso decir",
   meet: "conoció (a alguien), se encontró con",
   meow: "maulló",
@@ -210,6 +213,7 @@ const ES_PAST = {
   ring: "sonó, llamó (por teléfono)",
   rise: "se levantó, subió, salió (el sol)",
   run: "corrió",
+  save: "ahorró, guardó",
   say: "dijo",
   see: "vio",
   seek: "buscó",
@@ -285,6 +289,7 @@ const ES_PAST = {
   walk: "caminó",
   want: "quiso",
   wash: "lavó",
+  waste: "desperdició, malgastó",
   watch: "vio, miró",
   wear: "llevó puesto, usó (ropa)",
   weave: "tejió",
@@ -303,8 +308,8 @@ const split = forms => forms.split(" / ");
 const firstResult = query => searchVerbs(query)[0];
 
 describe("Verbos a la mano — datos", () => {
-  it("reúne 223 verbos ordenados alfabéticamente y sin bases repetidas", () => {
-    expect(VERB_BANK).toHaveLength(223);
+  it("reúne 228 verbos ordenados alfabéticamente y sin bases repetidas", () => {
+    expect(VERB_BANK).toHaveLength(228);
     const bases = VERB_BANK.map(verb => verb.base);
     expect(new Set(bases).size).toBe(bases.length);
     expect(bases).toEqual([...bases].sort((a, b) => a.localeCompare(b)));
