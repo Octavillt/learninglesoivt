@@ -75,7 +75,12 @@ export default function DirectionsSection() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))", gap: "8px", marginBottom: "16px" }}>
         {DIRECTION_PHRASES.map(item => (
           <div key={item.phrase} style={{ display: "flex", gap: "10px", alignItems: "center", background: "var(--surface, #1e293b)", borderRadius: "10px", padding: "11px 12px", borderLeft: `3px solid ${COLOR}` }}>
-            <span style={{ fontSize: "25px", minWidth: "34px", textAlign: "center" }}>{item.icon}</span>
+            <span style={{ position: "relative", flexShrink: 0, width: "34px", fontSize: "25px", lineHeight: 1, textAlign: "center" }}>
+              {item.icon}
+              {item.step && (
+                <span style={{ position: "absolute", right: "-5px", bottom: "-5px", minWidth: "15px", height: "15px", borderRadius: "999px", background: COLOR, color: "#0f172a", fontSize: "10px", fontWeight: 800, lineHeight: "15px", textAlign: "center" }}>{item.step}</span>
+              )}
+            </span>
             <div>
               <div style={{ color: "#e2e8f0", fontSize: "14px", fontWeight: 800 }}>{item.phrase}</div>
               <div style={{ color: "#94a3b8", fontSize: "12px", marginTop: "2px" }}>{item.esp}</div>
