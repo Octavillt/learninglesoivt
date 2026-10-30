@@ -11,10 +11,10 @@ export const DIRECTION_PHRASES = [
   { icon: "🔄", phrase: "Turn around", esp: "Da la vuelta / regresa" },
   { icon: "🌉", phrase: "Go over the bridge", esp: "Cruza / pasa por el puente" },
   { icon: "🚶", phrase: "Go past the…", esp: "Pasa de largo el/la…" },
-  { icon: "◀️¹", phrase: "Take the first left", esp: "Toma la primera a la izquierda" },
-  { icon: "▶️¹", phrase: "Take the first right", esp: "Toma la primera a la derecha" },
-  { icon: "◀️²", phrase: "Take the second left", esp: "Toma la segunda a la izquierda" },
-  { icon: "▶️²", phrase: "Take the second right", esp: "Toma la segunda a la derecha" },
+  { icon: "◀️", step: 1, phrase: "Take the first left", esp: "Toma la primera a la izquierda" },
+  { icon: "▶️", step: 1, phrase: "Take the first right", esp: "Toma la primera a la derecha" },
+  { icon: "◀️", step: 2, phrase: "Take the second left", esp: "Toma la segunda a la izquierda" },
+  { icon: "▶️", step: 2, phrase: "Take the second right", esp: "Toma la segunda a la derecha" },
 ];
 
 export const PLACE_PHRASES = [
