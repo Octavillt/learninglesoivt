@@ -224,7 +224,7 @@ function VerbCard({
         <div className="vf-more" id={moreId}>
           <p>
             {pattern
-              ? <>{pattern.label} · <span className="vf-en" lang="en">{pattern.example}</span></>
+              ? <>{pattern.label} · <span className="vf-en" lang="en">{[verb.base, verb.past.join(" / "), verb.participle.join(" / ")].join(" · ")}</span></>
               : <>Regular · <span className="vf-en" lang="en">{verb.base} → {verb.past[0]}</span></>}
           </p>
           {verb.note && <p><strong>Nota:</strong> {verb.note}</p>}
