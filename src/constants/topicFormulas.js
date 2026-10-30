@@ -238,4 +238,19 @@ export const TOPIC_FORMULAS = {
     row("Cambio o estado con get", "Sujeto + get + adjetivo o participio + complemento", "They got married two years later.", "Se casaron dos años después."),
     row("Acción con have o make", "Sujeto + have/make + sustantivo de la colocación", "She made a decision.", "Ella tomó una decisión."),
   ] },
+  moneyCareer: { title: "Patrones para hablar de dinero y de tu carrera", note: "Aprende las colocaciones de dinero y de carrera como bloques fijos: combinan igual en pasado simple y después de going to.", rows: [
+    row("Gastar en", "Sujeto + spend + cantidad/money + on + cosa", "Leslie spends a lot of money on clothes.", "Leslie gasta mucho dinero en ropa."),
+    row("Ahorrar para", "Sujeto + save (money) + for + meta", "I'm saving money for a new car.", "Estoy ahorrando dinero para un coche nuevo."),
+    row("Plan de carrera", "Sujeto + am/is/are + going to + colocación de carrera", "Israel is going to work outdoors.", "Israel va a trabajar al aire libre."),
+    row("Plan probable", "Sujeto + am/is/are + probably + going to + verbo base", "Argelia is probably going to manage people.", "Argelia probablemente va a dirigir personal."),
+    row("Deseo", "Sujeto + want(s) to + colocación de carrera", "Eduardo wants to work overseas.", "Eduardo quiere trabajar en el extranjero."),
+  ] },
+  comparatives: { title: "Fórmulas de los comparativos", note: "Los comparativos comparan dos personas, animales o cosas. Cuenta las sílabas: adjetivo corto → -er + than; adjetivo largo → more + adjetivo + than.", rows: [
+    row("Adjetivo corto", "Sujeto + am/is/are + adjetivo + -er + than + complemento", "A rabbit is bigger than a hamster.", "Un conejo es más grande que un hámster."),
+    row("Adjetivo largo", "Sujeto + am/is/are + more + adjetivo + than + complemento", "Crocodiles are more dangerous than panthers.", "Los cocodrilos son más peligrosos que las panteras."),
+    row("Menos que", "Sujeto + am/is/are + less + adjetivo + than + complemento", "A motorcycle is less expensive than a car.", "Una motocicleta es menos cara que un coche."),
+    row("Tan … como", "Sujeto + am/is/are (+ not) + as + adjetivo + as + complemento", "Israel is as tall as Eduardo.", "Israel es tan alto como Eduardo."),
+    row("Pregunta", "Am/Is/Are + sujeto + comparativo + than + complemento + ?", "Is a rabbit bigger than a hamster?", "¿Un conejo es más grande que un hámster?"),
+    row("En pasado", "Sujeto + was/were + comparativo + than + complemento", "Yesterday was hotter than today.", "Ayer hizo más calor que hoy."),
+  ] },
 };

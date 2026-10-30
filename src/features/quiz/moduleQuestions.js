@@ -24,6 +24,9 @@ import { PRACTICE as MODULE_V_EXAM } from "../moduleVExam/data";
 import { PRACTICE as SIMPLE_PAST } from "../simplePast/data";
 import { PRACTICE as GOING_TO } from "../goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
+import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
+import { PRACTICE as COMPARATIVES } from "../comparatives/data";
+import { VERB_BANK } from "../verbFinder/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
 
@@ -49,10 +52,45 @@ function missingToken(topic, rows) {
   }));
 }
 
+// Una pregunta de cada tipo por verbo del banco de consulta.
+function verbBankQuestions(v) {
+  const { base, past, participle, es, esPast, kind, note } = v;
+  const meanings = es.split(/,\s*(?![^()]*\))/).map(part => part.trim()).filter(Boolean);
+  const noted = text => (note ? `${text} ${note}` : text);
+  return [
+    {
+      topic: "verbPast",
+      verb: base,
+      question: `Escribe el pasado simple de ${base}.`,
+      answers: [...new Set([past.join(" / "), ...past])],
+      hint: `Significa «${es}».`,
+      explanation: noted(`${base} → ${past.join(" / ")} = ${esPast}.`),
+    },
+    {
+      topic: "verbParticiple",
+      verb: base,
+      question: `Escribe el participio pasado de ${base}.`,
+      answers: [...new Set([participle.join(" / "), ...participle])],
+      hint: `Significa «${es}».`,
+      explanation: noted(`${base} → ${past.join(" / ")} → ${participle.join(" / ")}.${kind === "regular" ? " En los regulares, el participio es igual al pasado." : ""}`),
+    },
+    {
+      topic: "verbMeaning",
+      verb: base,
+      question: `¿Qué significa ${base}?`,
+      answers: [...new Set([es, ...meanings])],
+      ...(meanings.length > 1 ? { hint: "Basta con escribir uno de sus significados." } : {}),
+      explanation: noted(`${base} = ${es}.`),
+    },
+  ];
+}
+
 export const MODULE_QUESTIONS = [
   ...SIMPLE_PAST.map(row => ({ ...row, topic: "simplePast" })),
   ...GOING_TO.map(row => ({ ...row, topic: "goingTo" })),
   ...SOCIAL_COLLOCATIONS.map(row => ({ ...row, topic: "socialCollocations" })),
+  ...MONEY_CAREER.map(row => ({ ...row, topic: "moneyCareer" })),
+  ...COMPARATIVES.map(row => ({ ...row, topic: "comparatives" })),
   ...OCTOBER_EXAM.map(row => ({ topic: "octoberExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_V_EXAM.map(row => ({ topic: "moduleVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_IV_EXAM.map(row => ({ topic: "moduleIVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
@@ -90,4 +128,5 @@ export const MODULE_QUESTIONS = [
   ...[...GREETINGS, ...GOODBYES].map(([phrase, translation]) => ({ topic: "vocabulary", question: `Traduce al español: ${phrase}`, answers: [translation, ...translation.split(" / ")], explanation: `${phrase} = ${translation}` })),
   ...DIRECTIONS.map(row => ({ topic: "directions", question: `Traduce al inglés: ${row.q}`, answers: [row.answer], explanation: `${row.answer} — ${row.q}` })),
   ...EXAM_REVIEW.map(row => ({ topic: "examReview", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
+  ...VERB_BANK.flatMap(verbBankQuestions),
 ];

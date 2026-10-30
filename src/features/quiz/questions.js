@@ -1057,18 +1057,24 @@ export function questionKey(question) {
   return QUESTION_KEYS.get(question);
 }
 
+// Módulos que el Quiz puede practicar. Uno de consulta entra solo si define
+// sus secciones (quizTopics); el Quiz no se lista a sí mismo.
+export const QUIZ_LEVELS = LEVELS.filter(level => level.id !== "quiz" && (!level.reference || level.quizTopics));
+
+export function quizTopicsOf(level) {
+  return level.quizTopics ?? level.topics;
+}
+
 export function getByTopic(topic, levelId = "all", now = Date.now()) {
-  // El nivel de consulta (Verbos) no es una lección: no entra al banco del Quiz.
-  const studyTopics = LEVELS
-    .filter(level => level.id !== "quiz" && !level.reference)
-    .flatMap(level => level.topics);
-  const available = new Set(getAvailableTopics(studyTopics, now).map(item => item.id));
-  const selected = levelId === "all" ? null : LEVELS.find(level => level.id === levelId);
-  if (selected?.reference) return [];
-  const topics = selected?.topics;
+  // La mezcla general es de las lecciones; los verbos se practican eligiendo
+  // su módulo para que no acaparen la mezcla.
+  const levels = levelId === "all"
+    ? QUIZ_LEVELS.filter(level => topic !== "mixed" || !level.reference)
+    : QUIZ_LEVELS.filter(level => level.id === levelId);
+  const available = new Set(getAvailableTopics(levels.flatMap(quizTopicsOf), now).map(item => item.id));
   const seen = new Set();
   return QUESTIONS.filter(q => available.has(q.topic) && (topic === "mixed" || q.topic === topic) &&
-    (levelId === "all" || topics?.some(t => t.id === q.topic)))
+    (levelId === "all" || levels.some(level => quizTopicsOf(level).some(item => item.id === q.topic))))
     // Se queda la primera aparición: la de la lección, que acepta más variantes.
     .filter(q => !seen.has(questionKey(q)) && seen.add(questionKey(q)));
 }

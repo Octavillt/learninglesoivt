@@ -53,12 +53,22 @@ export const TOPICS_BASICO5 = [
   { id: "simplePast", label: "⏪ Pasado simple", english: "Simple Past", color: "#FB7185", stage: "Contar lo que pasó" },
   { id: "goingTo", label: "🗓️ Futuro con going to", english: "Going to — Future plans", color: "#34D399", stage: "Hacer planes" },
   { id: "socialCollocations", label: "🎉 Vida social y colocaciones", english: "Social Life & get / have / make Collocations", color: "#FBBF24", stage: "Contar experiencias y planes" },
+  { id: "moneyCareer", label: "💰 Dinero y planes de carrera", english: "Money & Career Plans", color: "#10B981", stage: "Hablar de dinero y de tu futuro" },
+  { id: "comparatives", label: "⚖️ Comparativos", english: "Comparatives", color: "#60A5FA", stage: "Comparar personas, animales y cosas" },
   { id: "moduleVExam", label: "📝 Guía de examen — Módulo V", english: "Module V Exam Study Guide", color: "#A855F7", stage: "Repaso de los tres temas del examen", availableUntil: MODULE_V_EXAM_END },
 ];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.
 export const TOPICS_VERBOS = [
   { id: "verbFinder", label: "📒 Verbos a la mano", english: "Verb Finder", color: "#8B5CF6", stage: "Consulta rápida" },
+];
+
+// Secciones con las que el Quiz practica ese módulo. No son lecciones: no
+// entran al buscador ni a la barra de temas.
+export const QUIZ_TOPICS_VERBOS = [
+  { id: "verbPast", label: "2️⃣ Pasado simple", english: "Simple Past", color: "#8B5CF6", lesson: "verbFinder" },
+  { id: "verbParticiple", label: "3️⃣ Participio pasado", english: "Past Participle", color: "#8B5CF6", lesson: "verbFinder" },
+  { id: "verbMeaning", label: "💬 Significado", english: "Meaning", color: "#8B5CF6", lesson: "verbFinder" },
 ];
 
 export const TOPICS_QUIZ = [
