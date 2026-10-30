@@ -160,6 +160,20 @@ describe("Verbos a la mano — consulta", () => {
     expect(screen.getByRole("heading", { level: 2, name: /Verbos irregulares/ })).toBeInTheDocument();
   });
 
+  it("el ejemplo del patrón usa las formas del propio verbo", () => {
+    render(<App />);
+    openVerbFinder();
+    const bring = within(card("bring"));
+    fireEvent.click(bring.getByRole("button", { name: /Más/ }));
+    expect(bring.getByText(/Pasado = participio/)).toBeInTheDocument();
+    expect(bring.getByText("bring · brought · brought")).toBeInTheDocument();
+    expect(bring.queryByText(/buy · bought/)).not.toBeInTheDocument();
+
+    const burn = within(card("burn"));
+    fireEvent.click(burn.getByRole("button", { name: /Más/ }));
+    expect(burn.getByText("burn · burned / burnt · burned / burnt")).toBeInTheDocument();
+  });
+
   it("muestra el sonido de -ed en los regulares", () => {
     render(<App />);
     openVerbFinder();
