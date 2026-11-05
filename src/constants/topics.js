@@ -1,4 +1,4 @@
-import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END, OCTOBER_EXAM_END, MODULE_V_EXAM_END } from "./topicAvailability";
+import { EXAM_REVIEW_END, TOPICS_EXAM_END, MODULE_IV_EXAM_END, OCTOBER_EXAM_END, MODULE_V_EXAM_END, NOVEMBER_EXAM_END } from "./topicAvailability";
 
 // El orden define la ruta sugerida dentro de cada módulo. Los ids conservan
 // su módulo original y se comparten con navegación, búsqueda, enlaces y Quiz.
@@ -55,7 +55,10 @@ export const TOPICS_BASICO5 = [
   { id: "socialCollocations", label: "🎉 Vida social y colocaciones", english: "Social Life & get / have / make Collocations", color: "#FBBF24", stage: "Contar experiencias y planes" },
   { id: "moneyCareer", label: "💰 Dinero y planes de carrera", english: "Money & Career Plans", color: "#10B981", stage: "Hablar de dinero y de tu futuro" },
   { id: "comparatives", label: "⚖️ Comparativos", english: "Comparatives", color: "#60A5FA", stage: "Comparar personas, animales y cosas" },
+  { id: "naturalFeatures", label: "🏞️ Lugares naturales", english: "Natural Features", color: "#84CC16", stage: "Describir y comparar la naturaleza" },
+  { id: "reviewOfTenses", label: "🧭 Repaso de tiempos verbales", english: "Review of Tenses", color: "#EAB308", stage: "Repaso de tiempos para el examen", availableUntil: NOVEMBER_EXAM_END },
   { id: "moduleVExam", label: "📝 Guía de examen — Módulo V", english: "Module V Exam Study Guide", color: "#A855F7", stage: "Repaso de los tres temas del examen", availableUntil: MODULE_V_EXAM_END },
+  { id: "novemberExam", label: "📝 Guía de examen — Noviembre", english: "November Exam Study Guide", color: "#06B6D4", stage: "Repaso de los cuatro temas del examen", availableUntil: NOVEMBER_EXAM_END },
 ];
 
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.

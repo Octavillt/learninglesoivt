@@ -21,6 +21,9 @@ import { PRACTICE as ADVERBS_MANNER } from "../adverbsManner/data";
 import { PRACTICE as MODULE_IV_EXAM } from "../moduleIVExam/data";
 import { PRACTICE as OCTOBER_EXAM } from "../octoberExam/data";
 import { PRACTICE as MODULE_V_EXAM } from "../moduleVExam/data";
+import { PRACTICE as NATURAL_FEATURES } from "../naturalFeatures/data";
+import { PRACTICE as REVIEW_OF_TENSES } from "../reviewOfTenses/data";
+import { PRACTICE as NOVEMBER_EXAM } from "../novemberExam/data";
 import { PRACTICE as SIMPLE_PAST } from "../simplePast/data";
 import { PRACTICE as GOING_TO } from "../goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
@@ -93,6 +96,9 @@ export const MODULE_QUESTIONS = [
   ...COMPARATIVES.map(row => ({ ...row, topic: "comparatives" })),
   ...OCTOBER_EXAM.map(row => ({ topic: "octoberExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_V_EXAM.map(row => ({ topic: "moduleVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
+  ...NATURAL_FEATURES.map(row => ({ ...row, topic: "naturalFeatures" })),
+  ...REVIEW_OF_TENSES.map(row => ({ ...row, topic: "reviewOfTenses" })),
+  ...NOVEMBER_EXAM.map(row => ({ topic: "novemberExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...MODULE_IV_EXAM.map(row => ({ topic: "moduleIVExam", question: row.question, options: row.options, answers: [row.options[row.correct]], explanation: row.explanation })),
   ...ADVERBS_MANNER.map(row => ({ ...row, topic: "adverbsManner" })),
   ...EXERCISE_WORDS.map(row => ({ ...row, topic: "exerciseWords" })),
