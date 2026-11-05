@@ -54,7 +54,7 @@ export const STUDY_TOPICS = [
       "Los ocho lugares naturales: desert (desierto), forest (bosque), hill (colina, cerro), lake (lago), mountain (montaña), river (río), volcano (volcán) y waterfall (cascada, catarata).",
       "Aprende cada palabra con su ejemplo de México: the Altar Desert, Chapultepec Forest, Tepeyac Hill, Lake Chapala, the Usumacinta River, Popocatépetl y Basaseachi Falls.",
       "Nombres propios: Lake va antes del nombre y sin the (Lake Chapala); River va después del nombre y con the (the Usumacinta River); las cascadas famosas se nombran con Falls (Basaseachi Falls).",
-      "Plurales: volcano → volcanoes (con -es); los demás solo agregan -s: deserts, forests, hills, lakes, mountains, rivers, waterfalls.",
+      "Plurales: volcano → volcanoes (con -es); los demás solo agregan -s: deserts, forests, hills, lakes, mountains, rivers, waterfalls (también se acepta volcanos).",
       "No confundas desert (desierto, una s) con dessert (postre, dos s).",
       "Comparaciones: a mountain is higher than a hill (high → higher); a desert is hotter than a forest (hot es CVC: hotter); Lake Chapala is bigger than Lake Pátzcuaro (big → bigger).",
       "Adjetivo largo: a volcano is more dangerous than a hill (more + adjetivo + than).",
@@ -63,7 +63,7 @@ export const STUDY_TOPICS = [
     ],
     vocab: [["desert", "desierto"], ["forest", "bosque"], ["hill", "colina, cerro"], ["lake", "lago"], ["mountain", "montaña"], ["river", "río"], ["volcano / volcanoes", "volcán / volcanes"], ["waterfall", "cascada, catarata"], ["Lake Chapala", "el Lago de Chapala"], ["the Usumacinta River", "el río Usumacinta"], ["Basaseachi Falls", "la cascada de Basaseachi"], ["Popocatépetl", "volcán activo de México"], ["higher than", "más alto que"], ["more dangerous than", "más peligroso que"]],
     examples: [["The Altar Desert is in Sonora.", "El Desierto de Altar está en Sonora."], ["Chapultepec Forest is in Mexico City.", "El Bosque de Chapultepec está en la Ciudad de México."], ["Tepeyac Hill is in Mexico City.", "El Cerro del Tepeyac está en la Ciudad de México."], ["Lake Chapala is in Jalisco.", "El Lago de Chapala está en Jalisco."], ["The Usumacinta River is between Mexico and Guatemala.", "El río Usumacinta está entre México y Guatemala."], ["Popocatépetl is an active volcano.", "El Popocatépetl es un volcán activo."], ["Basaseachi Falls is in Chihuahua.", "La cascada de Basaseachi está en Chihuahua."]],
-    mistake: "No: the Lake Chapala / dessert con dos s / volcanos → Sí: Lake Chapala sin the, desert con una s y volcano → volcanoes. Lake va antes del nombre y River después, con the.",
+    mistake: "No: the Lake Chapala / dessert con dos s → Sí: Lake Chapala sin the, desert con una s y volcano → volcanoes. Lake va antes del nombre y River después, con the.",
   },
 ];
 
@@ -104,7 +104,7 @@ export const PRACTICE = [
   q("naturalFeatures", "Traduce: desierto.", ["dessert", "desert", "forest"], 1, "Desert = desierto (una s); dessert con dos s es postre."),
   q("naturalFeatures", "¿Qué significa hill?", ["lago", "colina", "montaña"], 1, "Hill = colina o cerro: más baja que una mountain."),
   q("naturalFeatures", "¿Qué significa waterfall?", ["río", "bosque", "cascada"], 2, "Waterfall = cascada o catarata."),
-  q("naturalFeatures", "El plural de volcano es…", ["volcanos", "volcanoes", "volcanis"], 1, "Volcano forma el plural con -es: volcanoes."),
+  q("naturalFeatures", "El plural de volcano es…", ["volcanes", "volcanoes", "volcanis"], 1, "Volcano forma el plural con -es: volcanoes (también se acepta volcanos)."),
   q("naturalFeatures", "Completa: A mountain is ___ than a hill. (high)", ["higher", "higuer", "more high"], 0, "High es corto: high → higher + than."),
   q("naturalFeatures", "Completa: A desert is ___ than a forest. (hot)", ["hoter", "hotter", "more hot"], 1, "Hot es CVC: duplica la t y agrega -er: hotter."),
   q("naturalFeatures", "Completa: A volcano is ___ than a hill. (dangerous)", ["more dangerous", "dangerouser", "most dangerous"], 0, "Dangerous es largo: more + dangerous + than."),

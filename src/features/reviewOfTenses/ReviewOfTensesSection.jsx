@@ -75,18 +75,27 @@ function ExpressionDetector() {
   return (
     <>
       <div className="exam-pills" role="group" aria-label="Expresiones de tiempo">
-        {DETECTOR.map(item => (
-          <button
-            key={item.expression}
-            type="button"
-            className={`exam-pill${selected === item.expression ? " is-active" : ""}`}
-            aria-pressed={selected === item.expression}
-            onClick={() => setSelected(previous => previous === item.expression ? null : item.expression)}
-            style={{ cursor: "pointer" }}
-          >
-            <b lang="en">{item.expression}</b>
-          </button>
-        ))}
+        {DETECTOR.map(item => {
+          const itemTense = TENSES.find(t => t.id === item.tense);
+          const isActive = selected === item.expression;
+          return (
+            <button
+              key={item.expression}
+              type="button"
+              className={`exam-pill${isActive ? " is-active" : ""}`}
+              aria-pressed={isActive}
+              onClick={() => setSelected(previous => previous === item.expression ? null : item.expression)}
+              style={{
+                cursor: "pointer",
+                ...(isActive && itemTense
+                  ? { background: itemTense.color, borderColor: itemTense.color, color: "#0f172a" }
+                  : {}),
+              }}
+            >
+              <b lang="en">{item.expression}</b>
+            </button>
+          );
+        })}
       </div>
       <div role="status" aria-live="polite" style={{ ...card, borderLeft: `3px solid ${tense?.color ?? COLOR}` }}>
         {!entry && <p style={{ ...text, margin: 0 }}>Toca una expresión para ver qué tiempo pide.</p>}

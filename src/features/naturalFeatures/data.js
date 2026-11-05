@@ -18,7 +18,7 @@ export const NAME_RULES = [
   ["Lake Chapala", "Lake va antes del nombre y sin the."],
   ["the Usumacinta River", "River va después del nombre y con the."],
   ["Basaseachi Falls", "Las cascadas famosas se nombran con Falls."],
-  ["volcano → volcanoes", "Plural con -es; los demás solo agregan -s: deserts, forests, hills, lakes, mountains, rivers, waterfalls."],
+  ["volcano → volcanoes", "Plural con -es; los demás solo agregan -s: deserts, forests, hills, lakes, mountains, rivers, waterfalls (también se acepta volcanos)."],
   ["desert ≠ dessert", "Desert (desierto) lleva una s; dessert (postre) lleva dos."],
 ];
 
