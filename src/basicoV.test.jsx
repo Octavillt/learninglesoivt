@@ -14,7 +14,7 @@ import { PRACTICE as COMPARATIVES, ADJECTIVE_BANK, IRREGULARS, SHORT_EXAMPLES, L
 import { VERB_BANK } from "./features/verbFinder/data";
 import { getAvailableTopics } from "./constants/topicAvailability";
 
-const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations", "moneyCareer", "comparatives", "moduleVExam"];
+const BASICO5_TOPICS = ["simplePast", "goingTo", "socialCollocations", "moneyCareer", "comparatives", "naturalFeatures", "reviewOfTenses", "moduleVExam", "novemberExam"];
 
 function openTopic(label) {
   const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
