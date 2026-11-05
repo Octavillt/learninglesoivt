@@ -10,6 +10,7 @@ import { PRACTICE as SIMPLE_PAST } from "./features/simplePast/data";
 import { PRACTICE as GOING_TO } from "./features/goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "./features/socialCollocations/data";
 import { PRACTICE as MONEY_CAREER } from "./features/moneyCareer/data";
+import { PRACTICE as NATURAL_FEATURES, FEATURES, COMPARE as NATURE_COMPARE } from "./features/naturalFeatures/data";
 import { PRACTICE as COMPARATIVES, ADJECTIVE_BANK, IRREGULARS, SHORT_EXAMPLES, LONG_EXAMPLES } from "./features/comparatives/data";
 import { VERB_BANK } from "./features/verbFinder/data";
 import { getAvailableTopics } from "./constants/topicAvailability";
@@ -43,6 +44,7 @@ describe("Básico V — datos del módulo", () => {
     ["socialCollocations", SOCIAL_COLLOCATIONS],
     ["moneyCareer", MONEY_CAREER],
     ["comparatives", COMPARATIVES],
+    ["naturalFeatures", NATURAL_FEATURES],
   ])("las preguntas de práctica de %s están completas y llegan al Quiz", (topic, practice) => {
     expect(practice.length).toBeGreaterThanOrEqual(8);
     for (const row of practice) {
@@ -80,6 +82,18 @@ describe("Básico V — datos del módulo", () => {
       "Crocodiles are more dangerous than panthers.", "A spider is more poisonous than a snake.",
     ]));
     for (const row of [...SHORT_EXAMPLES, ...LONG_EXAMPLES]) expect(sentence(row.pts)).toMatch(/ than /);
+  });
+
+  it("Lugares naturales trae las ocho palabras con su ejemplo de México y compara con than", () => {
+    expect(FEATURES.map(([, en]) => en)).toEqual(["desert", "forest", "hill", "lake", "mountain", "river", "volcano", "waterfall"]);
+    for (const [emoji, en, esp, example, exampleEsp] of FEATURES) {
+      expect(emoji && esp && exampleEsp).toBeTruthy();
+      expect(example.toLowerCase()).toMatch(new RegExp(en === "waterfall" ? "falls" : en));
+    }
+    for (const [en, esp, rule] of NATURE_COMPARE) {
+      expect(en).toMatch(/ than | as .+ as /);
+      expect(esp && rule).toBeTruthy();
+    }
   });
 });
 
@@ -217,6 +231,28 @@ describe("Básico V — contenido visible", () => {
     expect(main).not.toHaveTextContent(/Lesson|Unit \d+|del libro/);
   });
 
+  it("Lugares naturales muestra los ocho lugares, ejemplos de México, comparaciones y tiempos sin citar el libro", () => {
+    render(<App />);
+    openBasicoV();
+    openTopic("🏞️ Lugares naturales");
+    const main = screen.getByRole("main");
+    expect(screen.getByRole("heading", { level: 2, name: "🏞️ Lugares naturales — Natural Features" })).toBeInTheDocument();
+    for (const word of ["desert", "forest", "hill", "lake", "mountain", "river", "volcano", "waterfall"]) {
+      expect(within(main).getAllByText(word, { exact: true }).length).toBeGreaterThan(0);
+    }
+    for (const sentence of [
+      "Popocatépetl is an active volcano.", "Lake Chapala is in Jalisco.", "An example of a waterfall here in Mexico is Basaseachi Falls.",
+      "A mountain is higher than a hill.", "A volcano is more dangerous than a hill.", "We visited Basaseachi Falls last summer.",
+    ]) expect(main).toHaveTextContent(sentence);
+    expect(main).toHaveTextContent(/desert ≠ dessert/);
+    expect(screen.getByRole("button", { name: /Repasar los comparativos/ })).toBeInTheDocument();
+    // Es permanente: no enlaza a Review of Tenses, que vence con el examen.
+    const links = within(main).getAllByRole("button", { name: /^🔗/ }).map(button => button.textContent);
+    expect(links.join(" | ")).toMatch(/Repasar el pasado simple.*Repasar los planes con going to/);
+    expect(links.join(" | ")).not.toMatch(/tiempos verbales|Review of Tenses/i);
+    expect(main).not.toHaveTextContent(/del libro|Lesson \d|Unit \d+|\bp\. ?\d+|Chile|Laja/);
+  });
+
   it("la tabla de comparativos filtra en inglés o en español, sin acentos", async () => {
     const user = userEvent.setup();
     render(<App />);
@@ -266,6 +302,8 @@ describe("Básico V — navegación, búsqueda y Quiz", () => {
     ["mejor que", "⚖️ Comparativos"],
     ["gonna", "🗓️ Futuro con going to"],
     ["didn't", "⏪ Pasado simple"],
+    ["volcano", "🏞️ Lugares naturales"],
+    ["cascada", "🏞️ Lugares naturales"],
   ])("el buscador lleva de '%s' a su sección", async (term, label) => {
     const user = userEvent.setup();
     render(<App />);
