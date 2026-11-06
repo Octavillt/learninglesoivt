@@ -29,6 +29,32 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  novemberExam: { title: "Fórmulas clave del examen de noviembre", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye diez preguntas por tema.", rows: [
+    row("Comparar: adjetivo corto", "Sujeto + am/is/are + adjetivo + -er + than + complemento", "A mountain is higher than a hill.", "Una montaña es más alta que una colina."),
+    row("Comparar: adjetivo largo", "Sujeto + am/is/are + more + adjetivo + than + complemento", "A volcano is more dangerous than a hill.", "Un volcán es más peligroso que una colina."),
+    row("Tiempo: presente simple", "Sujeto + verbo base (+ -s con he/she/it) + complemento + every day / every week", "She works every day.", "Ella trabaja todos los días."),
+    row("Tiempo: pasado simple", "Sujeto + verbo en pasado + complemento + yesterday / ago / last night", "He went to Six Flags two weeks ago.", "Él fue a Six Flags hace dos semanas."),
+    row("Dinero: gastar en", "Sujeto + spend + money + on + cosa", "Leslie spends a lot of money on clothes.", "Leslie gasta mucho dinero en ropa."),
+    row("Dinero: ahorrar para", "Sujeto + am/is/are + going to + save + money + for + meta", "I'm going to save money for a trip.", "Voy a ahorrar dinero para un viaje."),
+    row("Lugares: dar un ejemplo", "An example of a + lugar natural + here in Mexico is + nombre", "An example of a volcano here in Mexico is Popocatépetl.", "Un ejemplo de volcán aquí en México es el Popocatépetl."),
+    row("Lugares: contar una visita", "Sujeto + verbo en pasado + lugar natural + last …", "We visited Basaseachi Falls last summer.", "Visitamos la cascada de Basaseachi el verano pasado."),
+  ] },
+  reviewOfTenses: { title: "Fórmulas de los cuatro tiempos", note: "Primero busca la expresión de tiempo; después usa el auxiliar de ese tiempo.", rows: [
+    row("Simple Present", "Sujeto + verbo base (+ -s / -es con he / she / it) + complemento + every day / every week", "She works every day.", "Ella trabaja todos los días."),
+    row("Present Progressive", "Sujeto + am / is / are + verbo-ing + complemento + now / right now / at this moment", "We are studying English now.", "Estamos estudiando inglés ahora."),
+    row("Simple Past", "Sujeto + verbo en pasado + complemento + yesterday / ago / last night", "He went to Six Flags two weeks ago.", "Él fue a Six Flags hace dos semanas."),
+    row("Going to", "Sujeto + am / is / are + going to + verbo base + complemento + tomorrow / next week", "I'm going to visit my family tomorrow.", "Voy a visitar a mi familia mañana."),
+    row("Pregunta en presente", "Do / Does + sujeto + verbo base + complemento + ?", "Does she work every day?", "¿Ella trabaja todos los días?"),
+    row("Pregunta en pasado", "Did + sujeto + verbo base + complemento + ?", "Did you drink milk?", "¿Tomaste leche?"),
+  ] },
+  naturalFeatures: { title: "Patrones para hablar de lugares naturales", note: "Aprende cada lugar con un ejemplo de México y úsalo con comparativos y con los tiempos del módulo.", rows: [
+    row("Dar un ejemplo", "An example of a + lugar natural + here in Mexico is + nombre", "An example of a volcano here in Mexico is Popocatépetl.", "Un ejemplo de volcán aquí en México es el Popocatépetl."),
+    row("Ubicar", "Nombre + is in + lugar", "Lake Chapala is in Jalisco.", "El Lago de Chapala está en Jalisco."),
+    row("Comparar: adjetivo corto", "Lugar + is + adjetivo-er + than + lugar", "A mountain is higher than a hill.", "Una montaña es más alta que una colina."),
+    row("Comparar: adjetivo largo", "Lugar + is + more + adjetivo + than + lugar", "A volcano is more dangerous than a hill.", "Un volcán es más peligroso que una colina."),
+    row("Contar un viaje", "Sujeto + verbo en pasado + lugar natural + last …", "We visited Basaseachi Falls last summer.", "Visitamos la cascada de Basaseachi el verano pasado."),
+    row("Planear", "Sujeto + am / is / are + going to + verbo base + lugar natural", "I'm going to climb a hill tomorrow.", "Voy a subir una colina mañana."),
+  ] },
   moduleVExam: { title: "Fórmulas clave del examen del Módulo V", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye diez preguntas por tema.", rows: [
     row("Pasado: afirmación", "Sujeto + verbo en pasado simple + complemento + (expresión de tiempo)", "He ate cemitas.", "Él comió cemitas."),
     row("Pasado: negación", "Sujeto + did not / didn't + verbo base + complemento + (expresión de tiempo)", "She didn't do her homework.", "Ella no hizo su tarea."),

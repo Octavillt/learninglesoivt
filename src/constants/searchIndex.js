@@ -6,6 +6,8 @@ import { FORMATION_RULES } from "../features/adverbsManner/data";
 import { STUDY_TOPICS } from "../features/moduleIVExam/data";
 import { STUDY_TOPICS as OCTOBER_STUDY_TOPICS } from "../features/octoberExam/data";
 import { STUDY_TOPICS as MODULE_V_STUDY_TOPICS } from "../features/moduleVExam/data";
+import { STUDY_TOPICS as NOVEMBER_STUDY_TOPICS } from "../features/novemberExam/data";
+import { DETECTOR as NOVEMBER_TENSE_EXPRESSIONS } from "../features/reviewOfTenses/data";
 import { isTopicAvailable } from "./topicAvailability";
 
 // Índice de búsqueda global: por cada tema, guardamos su label + un puñado
@@ -18,6 +20,19 @@ const topicMeta = {};
 [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_VERBOS, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  novemberExam: ["guía de examen de noviembre", "examen noviembre", "november exam", "simulador", ...NOVEMBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
+  reviewOfTenses: [
+    "review of tenses", "repaso de tiempos", "tiempos verbales", "tenses", "time expressions", "expresiones de tiempo",
+    "every day", "right now", "at this moment", "yesterday", "ago", "last night", "tomorrow", "next week",
+    ...NOVEMBER_TENSE_EXPRESSIONS.map(item => item.expression),
+  ],
+  naturalFeatures: [
+    "natural features", "lugares naturales", "naturaleza", "desert", "desierto", "forest", "bosque", "hill", "colina",
+    "lake", "lago", "mountain", "montaña", "river", "río", "volcano", "volcán", "waterfall", "cascada", "catarata",
+    "Popocatépetl", "Chapala", "Usumacinta", "Basaseachi", "Tepeyac", "Chapultepec", "Altar", "Sierra Madre",
+    "beach", "playa", "island", "isla", "ocean", "sea", "océano", "mar", "valley", "valle", "canyon", "cañón",
+    "Copper Canyon", "Barranca del Cobre", "jungle", "selva", "cave", "cueva",
+  ],
   octoberExam: ["guía de examen de octubre", "examen octubre", "october exam", "cooking", "clothes", "tourism", "collocations", "could", "should", "gerund", "infinitive", ...OCTOBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   moduleVExam: ["guía de examen módulo v", "examen módulo v", "examen basico v", "examen básico v", "simple past", "pasado simple", "going to", "collocations", "social life", "vida social", "simulador", ...MODULE_V_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   moduleIVExam: ["guía de examen", "examen módulo iv", "exam study guide", "simulador", ...STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],

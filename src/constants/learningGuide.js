@@ -1,6 +1,24 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  novemberExam: {
+    goal: "Integrar comparativos, los cuatro tiempos verbales, el vocabulario de dinero y los lugares naturales para preparar el examen de noviembre.",
+    recall: ["comparatives", "reviewOfTenses", "moneyCareer", "naturalFeatures"],
+    task: "Di que una montaña es más alta que una colina, que ayer gastaste dinero en ropa y que vas a ahorrar dinero para un viaje.",
+    answer: "A mountain is higher than a hill. Yesterday I spent money on clothes. I'm going to save money for a trip. Higher + than compara; yesterday pide pasado simple (spend → spent, spend money on) y going to + save expresa el plan.",
+  },
+  reviewOfTenses: {
+    goal: "Identificar el presente simple, el presente progresivo, el pasado simple y going to por su expresión de tiempo y su auxiliar.",
+    recall: ["simplePresent", "progressive", "simplePast", "goingTo"],
+    task: "Di que Leslie estudia inglés todos los días, que ahora mismo lo está estudiando, que ayer lo estudió y que mañana lo va a estudiar.",
+    answer: "Leslie studies English every day. She is studying English right now. She studied English yesterday. She is going to study English tomorrow. Every day → presente simple; right now → progresivo; yesterday → pasado simple; tomorrow → going to.",
+  },
+  naturalFeatures: {
+    goal: "Nombrar los ocho lugares naturales, dar un ejemplo de cada uno en México y compararlos con -er o more + than.",
+    recall: ["comparatives", "simplePast", "goingTo"],
+    task: "Di que un ejemplo de volcán en México es el Popocatépetl, que una montaña es más alta que una colina y que visitaste una cascada el verano pasado.",
+    answer: "An example of a volcano here in Mexico is Popocatépetl. A mountain is higher than a hill. I visited a waterfall last summer. High → higher + than; last summer pide pasado simple: visited.",
+  },
   moduleVExam: {
     goal: "Integrar pasado simple, futuro con going to y colocaciones de vida social para preparar el examen del módulo V.",
     recall: ["simplePast", "goingTo", "socialCollocations"],

@@ -49,6 +49,9 @@ import SocialCollocationsSection from "./features/socialCollocations/SocialCollo
 import MoneyCareerSection from "./features/moneyCareer/MoneyCareerSection";
 import ComparativesSection from "./features/comparatives/ComparativesSection";
 import ModuleVExamSection from "./features/moduleVExam/ModuleVExamSection";
+import NaturalFeaturesSection from "./features/naturalFeatures/NaturalFeaturesSection";
+import ReviewOfTensesSection from "./features/reviewOfTenses/ReviewOfTensesSection";
+import NovemberExamSection from "./features/novemberExam/NovemberExamSection";
 import VerbFinderSection from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
@@ -87,6 +90,9 @@ const SECTIONS = {
   moneyCareer: MoneyCareerSection,
   comparatives: ComparativesSection,
   moduleVExam: ModuleVExamSection,
+  naturalFeatures: NaturalFeaturesSection,
+  reviewOfTenses: ReviewOfTensesSection,
+  novemberExam: NovemberExamSection,
   verbFinder: VerbFinderSection,
   fruits:         FruitsSection,
   plural:         PluralSection,

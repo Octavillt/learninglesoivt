@@ -11,7 +11,7 @@ const membership = {
   basico2: "irregularVerbs adjectives whQuestions articles possessiveAdjectives possessiveNouns gerunds simplePresent",
   basico3: "inOnAt simplePresentAdvanced directions topicsExam examReview",
   basico4: "bodyParts can countable foodGroups exerciseWords adverbsManner moduleIVExam octoberExam",
-  basico5: "simplePast goingTo socialCollocations moneyCareer comparatives moduleVExam",
+  basico5: "simplePast goingTo socialCollocations moneyCareer comparatives naturalFeatures reviewOfTenses moduleVExam novemberExam",
 };
 
 beforeEach(() => localStorage.clear());
@@ -33,7 +33,7 @@ describe("Recorrido de aprendizaje", () => {
         seen.add(topic.id);
       }
     }
-    expect(seen.size).toBe(41);
+    expect(seen.size).toBe(44);
   });
 
   it.each(LEVELS.filter(level => level.id !== "quiz" && !level.reference))("abre cada sección y su autoevaluación en $label", level => {
