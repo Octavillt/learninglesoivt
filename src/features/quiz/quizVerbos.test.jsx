@@ -16,9 +16,9 @@ function verbQuestion(topic, base) {
 }
 
 describe("Quiz — módulo Verbos", () => {
-  it("suma el módulo Verbos después de Básico V con una sección por tipo de pregunta", () => {
+  it("suma el módulo Verbos después de Básico VI con una sección por tipo de pregunta", () => {
     const ids = QUIZ_LEVELS.map(level => level.id);
-    expect(ids.indexOf("verbos")).toBe(ids.indexOf("basico5") + 1);
+    expect(ids.indexOf("verbos")).toBe(ids.indexOf("basico6") + 1);
     expect(ids).not.toContain("quiz");
     const verbos = QUIZ_LEVELS.find(level => level.id === "verbos");
     expect(verbos.quizTopics.map(topic => topic.id)).toEqual(VERB_TOPICS);
@@ -96,9 +96,9 @@ describe("Quiz — módulo Verbos", () => {
   it("muestra el módulo y sus secciones en los selectores del Quiz", () => {
     render(<QuizSection />);
     const levelSelect = screen.getByLabelText("Módulo", { exact: true });
-    expect(within(levelSelect).getByRole("option", { name: "Todos los módulos (Básico I a V)" })).toHaveValue("all");
+    expect(within(levelSelect).getByRole("option", { name: "Todos los módulos (Básico I a VI)" })).toHaveValue("all");
     expect(within(levelSelect).getByRole("option", { name: "📒 Verbos" })).toHaveValue("verbos");
-    expect(screen.getByText(/Básico I a V y los verbos de Verbos a la mano/)).toBeInTheDocument();
+    expect(screen.getByText(/Básico I a VI y los verbos de Verbos a la mano/)).toBeInTheDocument();
     fireEvent.change(levelSelect, { target: { value: "verbos" } });
     const sections = within(screen.getByLabelText("Sección", { exact: true })).getAllByRole("option").map(option => option.textContent);
     expect(sections).toEqual(["🎲 Todos los temas de este módulo", "2️⃣ Pasado simple", "3️⃣ Participio pasado", "💬 Significado"]);

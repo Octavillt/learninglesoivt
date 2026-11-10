@@ -52,6 +52,7 @@ import ModuleVExamSection from "./features/moduleVExam/ModuleVExamSection";
 import NaturalFeaturesSection from "./features/naturalFeatures/NaturalFeaturesSection";
 import ReviewOfTensesSection from "./features/reviewOfTenses/ReviewOfTensesSection";
 import NovemberExamSection from "./features/novemberExam/NovemberExamSection";
+import PastProgressiveSection from "./features/pastProgressive/PastProgressiveSection";
 import VerbFinderSection from "./features/verbFinder/VerbFinderSection";
 import Footer              from "./components/Footer";
 import BackToTop           from "./components/BackToTop";
@@ -93,6 +94,7 @@ const SECTIONS = {
   naturalFeatures: NaturalFeaturesSection,
   reviewOfTenses: ReviewOfTensesSection,
   novemberExam: NovemberExamSection,
+  pastProgressive: PastProgressiveSection,
   verbFinder: VerbFinderSection,
   fruits:         FruitsSection,
   plural:         PluralSection,
