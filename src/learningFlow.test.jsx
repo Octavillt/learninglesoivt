@@ -12,6 +12,7 @@ const membership = {
   basico3: "inOnAt simplePresentAdvanced directions topicsExam examReview",
   basico4: "bodyParts can countable foodGroups exerciseWords adverbsManner moduleIVExam octoberExam",
   basico5: "simplePast goingTo socialCollocations moneyCareer comparatives naturalFeatures reviewOfTenses moduleVExam novemberExam",
+  basico6: "pastProgressive",
 };
 
 beforeEach(() => localStorage.clear());
@@ -33,7 +34,7 @@ describe("Recorrido de aprendizaje", () => {
         seen.add(topic.id);
       }
     }
-    expect(seen.size).toBe(44);
+    expect(seen.size).toBe(45);
   });
 
   it.each(LEVELS.filter(level => level.id !== "quiz" && !level.reference))("abre cada sección y su autoevaluación en $label", level => {

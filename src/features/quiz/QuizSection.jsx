@@ -23,7 +23,7 @@ export default function QuizSection({ initialSelection }) {
   return (
     <div>
       <h2 style={{ color: "#fff", marginTop: 0 }}>🎯 Quiz</h2>
-      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a V y los verbos de Verbos a la mano. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
+      <p style={{ color: "#94a3b8", lineHeight: 1.6 }}>Repasa las secciones disponibles de Básico I a VI y los verbos de Verbos a la mano. Elige un módulo, practica un tema o combina todos. Responde, lee la explicación y vuelve a la lección si necesitas reforzarla.</p>
 
       {/* Puntuación */}
       <div style={{ background: "var(--surface, #1e293b)", borderRadius: "12px", padding: "14px 18px", marginBottom: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -40,7 +40,7 @@ export default function QuizSection({ initialSelection }) {
 
       <label htmlFor="quiz-level" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Módulo</label>
       <select id="quiz-level" value={levelId} onChange={e => setLevelId(e.target.value)} style={{ width: "100%", padding: 11, borderRadius: 10, background: "var(--surface, #1e293b)", color: "#fff", fontSize: 16, marginBottom: 12 }}>
-        <option value="all">Todos los módulos (Básico I a V)</option>
+        <option value="all">Todos los módulos (Básico I a VI)</option>
         {QUIZ_LEVELS.map(level => <option key={level.id} value={level.id}>{level.label}</option>)}
       </select>
       <label htmlFor="quiz-topic" style={{ color: "#cbd5e1", display: "block", marginBottom: 6 }}>Sección</label>
