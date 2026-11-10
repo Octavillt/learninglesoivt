@@ -29,6 +29,13 @@ const existence = [
 ];
 
 export const TOPIC_FORMULAS = {
+  pastProgressive: { note: "Was va con I / he / she / it y were con you / we / they. El verbo principal siempre lleva -ing y la expresión de tiempo es opcional.", rows: [
+    row("Afirmación", "Sujeto + was / were + verbo-ing + complemento + (expresión de tiempo)", "I was watching TV.", "Yo estaba viendo la televisión."),
+    row("Negación", "Sujeto + wasn't / weren't + verbo-ing + complemento + (expresión de tiempo)", "Octa wasn't doing the chores.", "Octa no estaba haciendo los quehaceres."),
+    row("Pregunta sí/no", "Was / Were + sujeto + verbo-ing + complemento + (expresión de tiempo) + ?", "Were you going shopping?", "¿Estabas yendo de compras?"),
+    row("Respuesta corta", "Yes, + sujeto + was / were. / No, + sujeto + wasn't / weren't.", "Yes, I was. / No, I wasn't.", "Sí, estaba. / No, no estaba."),
+    row("Pregunta de información", "Palabra WH + was / were + sujeto + verbo-ing + complemento + (expresión de tiempo) + ?", "What were you doing yesterday?", "¿Qué estabas haciendo ayer?"),
+  ] },
   novemberExam: { title: "Fórmulas clave del examen de noviembre", note: "Cada pestaña desarrolla un tema con vocabulario, ejemplos y errores frecuentes. El simulador incluye diez preguntas por tema.", rows: [
     row("Comparar: adjetivo corto", "Sujeto + am/is/are + adjetivo + -er + than + complemento", "A mountain is higher than a hill.", "Una montaña es más alta que una colina."),
     row("Comparar: adjetivo largo", "Sujeto + am/is/are + more + adjetivo + than + complemento", "A volcano is more dangerous than a hill.", "Un volcán es más peligroso que una colina."),

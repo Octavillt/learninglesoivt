@@ -38,9 +38,9 @@ afterEach(() => {
 });
 
 describe("Verbos a la mano — lugar en la plataforma", () => {
-  it("aparece como módulo independiente entre Básico V y el Quiz", () => {
+  it("aparece como módulo independiente entre Básico VI y el Quiz", () => {
     const ids = LEVELS.map(level => level.id);
-    expect(ids.indexOf("verbos")).toBe(ids.indexOf("basico5") + 1);
+    expect(ids.indexOf("verbos")).toBe(ids.indexOf("basico6") + 1);
     expect(ids.at(-1)).toBe("quiz");
     render(<App />);
     expect(screen.getByRole("button", { name: "📒 Verbos", exact: true })).toBeEnabled();
@@ -66,11 +66,11 @@ describe("Verbos a la mano — lugar en la plataforma", () => {
     expect(sections.join(" ")).not.toMatch(/Verbos a la mano/);
   });
 
-  it("al terminar Básico V sigue proponiendo repasar todos los módulos", () => {
+  it("al terminar Básico VI sigue proponiendo repasar todos los módulos", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-11-01T12:00:00-06:00"));
     render(<App />);
-    fireEvent.click(screen.getByRole("button", { name: "Básico V", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: "Básico VI", exact: true }));
     const navigation = within(screen.getByRole("navigation", { name: "Temas del módulo" }));
     const topics = navigation.getAllByRole("button");
     fireEvent.click(topics.at(-1));

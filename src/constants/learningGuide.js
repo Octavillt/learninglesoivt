@@ -1,6 +1,12 @@
 // Cada objetivo y autoevaluación se limita al contenido de su sección.
 // Las referencias conectan bases ya vistas sin cambiar temas de módulo.
 export const LEARNING_GUIDE = {
+  pastProgressive: {
+    goal: "Contar lo que estaba pasando en un momento del pasado con was/were + verbo en -ing: afirmar, negar y preguntar.",
+    recall: ["progressive", "simplePast", "whQuestions"],
+    task: "Di que ayer a las 8 p. m. estabas viendo la televisión, que Octa no estaba haciendo los quehaceres y pregunta qué estaban haciendo ellos.",
+    answer: "I was watching TV at 8 p.m. yesterday. Octa wasn't doing the chores. What were they doing? I y he/she/it usan was; you/we/they usan were. El verbo principal siempre va en -ing.",
+  },
   novemberExam: {
     goal: "Integrar comparativos, los cuatro tiempos verbales, el vocabulario de dinero y los lugares naturales para preparar el examen de noviembre.",
     recall: ["comparatives", "reviewOfTenses", "moneyCareer", "naturalFeatures"],

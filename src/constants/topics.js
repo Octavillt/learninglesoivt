@@ -61,6 +61,10 @@ export const TOPICS_BASICO5 = [
   { id: "novemberExam", label: "📝 Guía de examen — Noviembre", english: "November Exam Study Guide", color: "#06B6D4", stage: "Repaso de los cuatro temas del examen", availableUntil: NOVEMBER_EXAM_END },
 ];
 
+export const TOPICS_BASICO6 = [
+  { id: "pastProgressive", label: "⏳ Pasado progresivo", english: "Past Progressive / Continuous", color: "#C084FC", stage: "Contar lo que estaba pasando" },
+];
+
 // Módulo de consulta (no de estudio): reúne todos los verbos de la plataforma.
 export const TOPICS_VERBOS = [
   { id: "verbFinder", label: "📒 Verbos a la mano", english: "Verb Finder", color: "#8B5CF6", stage: "Consulta rápida" },
@@ -79,5 +83,5 @@ export const TOPICS_QUIZ = [
 ];
 
 export const TOPIC_BY_ID = Object.fromEntries(
-  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_VERBOS, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
+  [...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_BASICO6, ...TOPICS_VERBOS, ...TOPICS_QUIZ].map(topic => [topic.id, topic]),
 );

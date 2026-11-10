@@ -1,4 +1,4 @@
-import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_VERBOS, TOPICS_QUIZ } from "./topics";
+import { TOPICS, TOPICS_BASICO2, TOPICS_BASICO3, TOPICS_BASICO4, TOPICS_BASICO5, TOPICS_BASICO6, TOPICS_VERBOS, TOPICS_QUIZ } from "./topics";
 import { BODY_WORDS } from "../features/bodyParts/data";
 import { FOOD_GROUPS, FOOD_ADJECTIVES, EXTRA_WORDS } from "../features/foodGroups/data";
 import { EXERCISE_WORDS } from "../features/exerciseWords/data";
@@ -17,9 +17,15 @@ import { isTopicAvailable } from "./topicAvailability";
 // palabras más relevantes (no hace falta ser exhaustivo).
 
 const topicMeta = {};
-[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_VERBOS, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
+[...TOPICS, ...TOPICS_BASICO2, ...TOPICS_BASICO3, ...TOPICS_BASICO4, ...TOPICS_BASICO5, ...TOPICS_BASICO6, ...TOPICS_VERBOS, ...TOPICS_QUIZ].forEach(t => { topicMeta[t.id] = t; });
 
 const SEARCH_KEYWORDS = {
+  pastProgressive: [
+    "past progressive", "past continuous", "pasado progresivo", "pasado continuo", "was", "were", "wasn't", "weren't",
+    "was watching", "were going", "was doing", "watching TV", "doing the chores", "going shopping", "quehaceres", "ir de compras",
+    "what were you doing", "qué estabas haciendo", "estaba haciendo", "when", "while", "mientras",
+    "at that moment", "en ese momento", "at this time yesterday", "all day yesterday",
+  ],
   novemberExam: ["guía de examen de noviembre", "examen noviembre", "november exam", "simulador", ...NOVEMBER_STUDY_TOPICS.flatMap(topic => [topic.title, ...topic.rules, ...topic.vocab.flat(), ...topic.examples.flat()])],
   reviewOfTenses: [
     "review of tenses", "repaso de tiempos", "tiempos verbales", "tenses", "time expressions", "expresiones de tiempo",
@@ -338,6 +344,7 @@ function buildIndex() {
     { levelId: "basico3", topics: TOPICS_BASICO3 },
     { levelId: "basico4", topics: TOPICS_BASICO4 },
     { levelId: "basico5", topics: TOPICS_BASICO5 },
+    { levelId: "basico6", topics: TOPICS_BASICO6 },
     { levelId: "verbos", topics: TOPICS_VERBOS },
     { levelId: "quiz", topics: TOPICS_QUIZ },
   ].forEach(({ levelId, topics }) => {
