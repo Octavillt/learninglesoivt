@@ -29,6 +29,7 @@ import { PRACTICE as GOING_TO } from "../goingTo/data";
 import { PRACTICE as SOCIAL_COLLOCATIONS } from "../socialCollocations/data";
 import { PRACTICE as MONEY_CAREER } from "../moneyCareer/data";
 import { PRACTICE as COMPARATIVES } from "../comparatives/data";
+import { PRACTICE as PAST_PROGRESSIVE } from "../pastProgressive/data";
 import { VERB_BANK } from "../verbFinder/data";
 
 const sentence = pts => pts.map(p => typeof p === "string" ? p : p.r === "zero" ? "" : p.t).join("").replace(/\s+/g, " ");
@@ -89,6 +90,7 @@ function verbBankQuestions(v) {
 }
 
 export const MODULE_QUESTIONS = [
+  ...PAST_PROGRESSIVE.map(row => ({ ...row, topic: "pastProgressive" })),
   ...SIMPLE_PAST.map(row => ({ ...row, topic: "simplePast" })),
   ...GOING_TO.map(row => ({ ...row, topic: "goingTo" })),
   ...SOCIAL_COLLOCATIONS.map(row => ({ ...row, topic: "socialCollocations" })),
